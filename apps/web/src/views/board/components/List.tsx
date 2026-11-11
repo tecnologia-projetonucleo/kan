@@ -265,23 +265,29 @@ export default function List({
                     },
                   ]
                 : []),
-              {
-                label: t`Collapse list`,
-                action: () => updatePreferences({ collapsed: true }),
-                icon: (
-                  <HiChevronDoubleLeft className="h-[18px] w-[18px] text-dark-900" />
-                ),
-              },
-              {
-                label:
-                  wipLimit != null
-                    ? t`Change WIP limit (${wipLimit})`
-                    : t`Set WIP limit`,
-                action: handleSetWipLimit,
-                icon: (
-                  <HiOutlineAdjustmentsHorizontal className="h-[18px] w-[18px] text-dark-900" />
-                ),
-              },
+              // Preferences are keyed by publicId, so an optimistic list
+              // (placeholder id) gets no menu until the server confirms it.
+              ...(!isOptimistic
+                ? [
+                    {
+                      label: t`Collapse list`,
+                      action: () => updatePreferences({ collapsed: true }),
+                      icon: (
+                        <HiChevronDoubleLeft className="h-[18px] w-[18px] text-dark-900" />
+                      ),
+                    },
+                    {
+                      label:
+                        wipLimit != null
+                          ? t`Change WIP limit (${wipLimit})`
+                          : t`Set WIP limit`,
+                      action: handleSetWipLimit,
+                      icon: (
+                        <HiOutlineAdjustmentsHorizontal className="h-[18px] w-[18px] text-dark-900" />
+                      ),
+                    },
+                  ]
+                : []),
               ...(!isOptimistic && (canDeleteList || isCreator)
                 ? [
                     {
