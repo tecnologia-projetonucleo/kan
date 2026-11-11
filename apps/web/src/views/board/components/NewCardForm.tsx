@@ -158,6 +158,9 @@ export function NewCardForm({
               dueDate: args.dueDate ?? null,
               cardNumber: null,
               comments: [],
+              commentCount: 0,
+              createdAt: new Date(),
+              listEnteredAt: new Date(),
               checklists: [],
               attachments: [],
               labels: oldBoard.labels.filter((label) =>

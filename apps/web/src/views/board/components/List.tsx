@@ -4,11 +4,15 @@ import { CSS } from "@dnd-kit/utilities";
 import { t } from "@lingui/core/macro";
 import { useForm } from "react-hook-form";
 import {
+  HiChevronDoubleLeft,
+  HiChevronDoubleRight,
   HiEllipsisHorizontal,
+  HiOutlineAdjustmentsHorizontal,
   HiOutlinePlusSmall,
   HiOutlineSquaresPlus,
   HiOutlineTrash,
 } from "react-icons/hi2";
+import { twMerge } from "tailwind-merge";
 
 import { authClient } from "@kan/auth/client";
 
@@ -19,10 +23,17 @@ import { usePermissions } from "~/hooks/usePermissions";
 import { useModal } from "~/providers/modal";
 import { api } from "~/utils/api";
 import { isPlaceholderPublicId } from "~/utils/helpers";
+import {
+  getListTone,
+  TONE_DOT_CLASS,
+  TONE_TINT,
+  useListPreferences,
+} from "../utils/listStatus";
 
 interface ListProps {
   children: ReactNode;
   list: List;
+  cardCount: number;
   setSelectedPublicListId: (publicListId: PublicListId) => void;
 }
 
@@ -42,8 +53,27 @@ type PublicListId = string;
 export default function List({
   children,
   list,
+  cardCount,
   setSelectedPublicListId,
 }: ListProps) {
+  const tone = getListTone(list.name);
+  const { preferences, update: updatePreferences } = useListPreferences(
+    list.publicId,
+  );
+  const wipLimit = preferences.wipLimit;
+  const isOverWip = wipLimit != null && cardCount > wipLimit;
+
+  const handleSetWipLimit = () => {
+    const answer = window.prompt(
+      t`Maximum number of cards in this list (leave empty to remove the limit)`,
+      wipLimit != null ? String(wipLimit) : "",
+    );
+    if (answer === null) return;
+    const parsed = Number.parseInt(answer, 10);
+    updatePreferences({
+      wipLimit: Number.isFinite(parsed) && parsed > 0 ? parsed : null,
+    });
+  };
   const { openModal } = useModal();
   const { canCreateCard, canEditList, canDeleteList } = usePermissions();
   const { data: session } = authClient.useSession();
@@ -100,7 +130,68 @@ export default function List({
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+    backgroundImage: TONE_TINT[tone],
   };
+
+  const countBadge = (
+    <Tooltip
+      content={
+        wipLimit != null
+          ? isOverWip
+            ? t`Over the WIP limit of ${wipLimit}`
+            : t`WIP limit: ${wipLimit}`
+          : undefined
+      }
+    >
+      <span
+        aria-label={t`${cardCount} cards`}
+        className={twMerge(
+          "shrink-0 rounded-full px-1.5 text-xs tabular-nums text-light-800 dark:text-dark-800",
+          isOverWip &&
+            "bg-amber-500/15 font-semibold text-amber-700 dark:text-amber-400",
+        )}
+      >
+        {wipLimit != null ? `${cardCount}/${wipLimit}` : cardCount}
+      </span>
+    </Tooltip>
+  );
+
+  const baseClassName = twMerge(
+    "dark-text-dark-1000 mr-5 h-fit snap-start rounded-md border border-light-400 bg-light-300 py-2 text-neutral-900 dark:border-[#26262b] dark:bg-[#18181b] md:snap-align-none",
+    tone === "blocked" && "border-red-300/60 dark:border-red-500/25",
+    isOverWip && "border-amber-500/70 dark:border-amber-500/60",
+    canDrag ? (isDragging ? "cursor-grabbing" : "cursor-grab") : "",
+  );
+
+  if (preferences.collapsed) {
+    return (
+      <div
+        data-board-draggable
+        ref={setNodeRef}
+        style={style}
+        {...attributes}
+        {...listeners}
+        className={twMerge(
+          baseClassName,
+          "flex w-11 shrink-0 flex-col items-center gap-3 px-1",
+        )}
+      >
+        <button
+          type="button"
+          onClick={() => updatePreferences({ collapsed: false })}
+          aria-label={t`Expand list`}
+          className="rounded-md p-1 text-dark-900 hover:bg-light-400 dark:hover:bg-dark-200"
+        >
+          <HiChevronDoubleRight className="h-4 w-4" aria-hidden="true" />
+        </button>
+        <span className={`h-2 w-2 rounded-full ${TONE_DOT_CLASS[tone]}`} />
+        {countBadge}
+        <span className="whitespace-nowrap text-sm font-medium [writing-mode:vertical-rl]">
+          {list.name}
+        </span>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -109,15 +200,20 @@ export default function List({
       style={style}
       {...attributes}
       {...listeners}
-      className={`dark-text-dark-1000 mr-5 h-fit min-w-[18rem] max-w-[18rem] snap-start rounded-md border border-light-400 bg-light-300 py-2 pl-2 pr-1 text-neutral-900 dark:border-dark-300 dark:bg-dark-100 md:snap-align-none ${
-        canDrag ? (isDragging ? "cursor-grabbing" : "cursor-grab") : ""
-      }`}
+      className={twMerge(
+        baseClassName,
+        "min-w-[280px] max-w-[360px] flex-[1_1_280px] pl-2 pr-1",
+      )}
     >
       <div className="mb-2 flex justify-between">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-full focus-visible:outline-none"
+          className="flex w-full min-w-0 items-center gap-2 pl-3 pt-1 focus-visible:outline-none"
         >
+          <span
+            aria-hidden="true"
+            className={`h-2 w-2 shrink-0 rounded-full ${TONE_DOT_CLASS[tone]}`}
+          />
           <input
             id="name"
             type="text"
@@ -125,8 +221,9 @@ export default function List({
             {...register("name")}
             onBlur={handleSubmit(onSubmit)}
             readOnly={!canEdit || isOptimistic}
-            className="w-full border-0 bg-transparent px-4 pt-1 text-sm font-medium text-neutral-900 focus:ring-0 focus-visible:outline-none dark:text-dark-1000"
+            className="min-w-0 flex-1 border-0 bg-transparent p-0 text-sm font-medium text-neutral-900 focus:ring-0 focus-visible:outline-none dark:text-dark-1000"
           />
+          {countBadge}
         </form>
         <div className="flex items-center">
           <Tooltip
@@ -157,6 +254,23 @@ export default function List({
                     },
                   ]
                 : []),
+              {
+                label: t`Collapse list`,
+                action: () => updatePreferences({ collapsed: true }),
+                icon: (
+                  <HiChevronDoubleLeft className="h-[18px] w-[18px] text-dark-900" />
+                ),
+              },
+              {
+                label:
+                  wipLimit != null
+                    ? t`Change WIP limit (${wipLimit})`
+                    : t`Set WIP limit`,
+                action: handleSetWipLimit,
+                icon: (
+                  <HiOutlineAdjustmentsHorizontal className="h-[18px] w-[18px] text-dark-900" />
+                ),
+              },
               ...(!isOptimistic && (canDeleteList || isCreator)
                 ? [
                     {

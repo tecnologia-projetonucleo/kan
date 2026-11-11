@@ -79,6 +79,7 @@ import { UpdateBoardSlugForm } from "./components/UpdateBoardSlugForm";
 import ViewToggle from "./components/ViewToggle";
 import VisibilityButton from "./components/VisibilityButton";
 import { createBoardCollisionDetection } from "./dnd/collision";
+import { getListTone } from "./utils/listStatus";
 
 type PublicListId = string;
 
@@ -863,7 +864,7 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
       <PageHead
         title={`${boardData?.name ?? (isTemplate ? t`Template` : t`Board`)} | ${workspace.name ?? t`Workspace`}`}
       />
-      <div className="relative flex h-full flex-col">
+      <div className="relative flex h-full flex-col dark:bg-[#0f0f10]">
         <PatternedBackground />
         <div className="z-10 flex w-full flex-col justify-between p-6 md:flex-row md:p-8">
           {isLoading && !boardData && (
@@ -1034,12 +1035,15 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
                       items={listIds}
                       strategy={horizontalListSortingStrategy}
                     >
-                      <div className="flex w-max">
-                        <div className="min-w-[10px] md:min-w-[2rem]" />
+                      <div className="flex w-full">
+                        <div className="min-w-[10px] shrink-0 md:min-w-[2rem]" />
                         {lists.map((list) => (
                           <List
                             key={`list.${list.publicId}`}
                             list={list}
+                            cardCount={
+                              (cardsByList[list.publicId] ?? list.cards).length
+                            }
                             setSelectedPublicListId={(publicListId) => {
                               setNewCardInitialDueDate(null);
                               setSelectedPublicListId(publicListId);
@@ -1047,6 +1051,7 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
                           >
                             <CardList
                               listPublicId={list.publicId}
+                              listTone={getListTone(list.name)}
                               cards={cardsByList[list.publicId] ?? list.cards}
                               cardPrefix={boardData.workspace.cardPrefix}
                               canEditCard={!!canEditCard}
@@ -1066,7 +1071,7 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
                             />
                           </List>
                         ))}
-                        <div className="min-w-[calc(100vw-18rem)] md:min-w-[0.75rem]" />
+                        <div className="min-w-[calc(100vw-18rem)] shrink-0 md:min-w-[0.75rem]" />
                       </div>
                     </SortableContext>
                     <DragOverlay dropAnimation={activeCard ? undefined : null}>

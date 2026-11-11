@@ -5,11 +5,13 @@ import { env } from "next-runtime-env";
 
 import type { CardDragData } from "../dnd/types";
 import type { BoardCard } from "../types";
+import type { ListTone } from "../utils/listStatus";
 import CardPreview from "./CardPreview";
 
 interface SortableCardProps {
   card: BoardCard;
   listPublicId: string;
+  listTone: ListTone;
   cardPrefix: string;
   cardHref: string;
   canEditCard: boolean;
@@ -19,6 +21,7 @@ interface SortableCardProps {
 export default function SortableCard({
   card,
   listPublicId,
+  listTone,
   cardPrefix,
   cardHref,
   canEditCard,
@@ -69,7 +72,7 @@ export default function SortableCard({
       {...attributes}
       {...listeners}
     >
-      <CardPreview card={card} cardPrefix={cardPrefix} />
+      <CardPreview card={card} cardPrefix={cardPrefix} listTone={listTone} />
     </Link>
   );
 }

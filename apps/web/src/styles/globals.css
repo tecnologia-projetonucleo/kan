@@ -42,6 +42,31 @@ html {
       overflow-wrap: anywhere;
     }
   }
+
+  /* Thin list scrollbar that only shows while the list is hovered. */
+  .list-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+  .list-scroll:hover {
+    scrollbar-color: rgb(0 0 0 / 0.2) transparent;
+  }
+  .dark .list-scroll:hover {
+    scrollbar-color: rgb(255 255 255 / 0.15) transparent;
+  }
+  .list-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+  .list-scroll::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 9999px;
+  }
+  .list-scroll:hover::-webkit-scrollbar-thumb {
+    background: rgb(0 0 0 / 0.2);
+  }
+  .dark .list-scroll:hover::-webkit-scrollbar-thumb {
+    background: rgb(255 255 255 / 0.15);
+  }
 }
 
 /* Tippy.js tooltip theme */

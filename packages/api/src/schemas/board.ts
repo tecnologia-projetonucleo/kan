@@ -46,6 +46,9 @@ const boardDetailCardSchema = z.object({
   attachments: z.array(z.object({ publicId: z.string() })),
   checklists: z.array(checklistResponseSchema),
   comments: z.array(z.object({ publicId: z.string() })),
+  createdAt: z.date(),
+  commentCount: z.number(),
+  listEnteredAt: z.date(),
 });
 
 // ─── board.byId ──────────────────────────────────────────────
