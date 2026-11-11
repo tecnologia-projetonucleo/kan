@@ -79,6 +79,8 @@ const Card = ({
   const isBlocked = listTone === "blocked";
   const isDone = listTone === "done" || listTone === "cancelled";
   const blockedSince = isBlocked ? listEnteredAt : undefined;
+  // A missed due date stops mattering once the card is done or cancelled.
+  const showOverdue = isOverdue && !isDone;
   const fullDate = (date: Date) => format(date, "PPp", { locale: dateLocale });
 
   const hasMeta =
@@ -94,6 +96,8 @@ const Card = ({
       className={twMerge(
         "flex flex-col overflow-hidden rounded-md border border-light-300 bg-light-50 px-3 py-2 text-sm text-neutral-900 shadow-sm transition duration-150 hover:-translate-y-px hover:border-light-500 hover:shadow-md dark:border-[#2e2e33] dark:bg-[#232327] dark:text-dark-1000 dark:hover:border-[#45454d] dark:hover:bg-[#27272c]",
         isDone && "opacity-60 hover:opacity-100",
+        showOverdue &&
+          "border-red-400/70 hover:border-red-500 dark:border-red-500/50 dark:hover:border-red-400/80",
       )}
     >
       {ticketNumber && (
@@ -133,9 +137,13 @@ const Card = ({
               <span
                 className={twMerge(
                   "flex items-center gap-1",
-                  isOverdue && "text-red-600 dark:text-red-400",
+                  showOverdue && "font-medium text-red-600 dark:text-red-400",
                 )}
-                title={t`Due ${fullDate(dueDate)}`}
+                title={
+                  showOverdue
+                    ? t`Overdue since ${fullDate(dueDate)}`
+                    : t`Due ${fullDate(dueDate)}`
+                }
               >
                 <HiOutlineClock className="h-3.5 w-3.5" aria-hidden="true" />
                 {format(dueDate, showYear ? "do MMM yyyy" : "do MMM", {
