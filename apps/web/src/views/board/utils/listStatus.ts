@@ -21,20 +21,13 @@ const TONE_PATTERNS: [ListTone, RegExp][] = [
 ];
 
 export function getListTone(name: string): ListTone {
-  const normalized = name.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  const normalized = name
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
   const match = TONE_PATTERNS.find(([, pattern]) => pattern.test(normalized));
   return match?.[0] ?? "default";
 }
-
-export const TONE_DOT_CLASS: Record<ListTone, string> = {
-  backlog: "bg-neutral-400",
-  prioritized: "bg-violet-500",
-  progress: "bg-blue-500",
-  blocked: "bg-red-500",
-  done: "bg-green-500",
-  cancelled: "bg-neutral-600",
-  default: "bg-neutral-400",
-};
 
 // Subtle tint layered over the list background so the column keeps its
 // theme colour in both light and dark mode.

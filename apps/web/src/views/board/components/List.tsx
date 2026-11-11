@@ -17,6 +17,7 @@ import { twMerge } from "tailwind-merge";
 import { authClient } from "@kan/auth/client";
 
 import type { ListDragData } from "../dnd/types";
+import type { ListTone } from "../utils/listStatus";
 import Dropdown from "~/components/Dropdown";
 import { Tooltip } from "~/components/Tooltip";
 import { usePermissions } from "~/hooks/usePermissions";
@@ -25,10 +26,20 @@ import { api } from "~/utils/api";
 import { isPlaceholderPublicId } from "~/utils/helpers";
 import {
   getListTone,
-  TONE_DOT_CLASS,
   TONE_TINT,
   useListPreferences,
 } from "../utils/listStatus";
+
+// Kept in a .tsx file: Tailwind only scans .tsx sources for class names.
+const TONE_DOT_CLASS: Record<ListTone, string> = {
+  backlog: "bg-neutral-400",
+  prioritized: "bg-violet-500",
+  progress: "bg-blue-500",
+  blocked: "bg-red-500",
+  done: "bg-green-500",
+  cancelled: "bg-neutral-600",
+  default: "bg-neutral-400",
+};
 
 interface ListProps {
   children: ReactNode;
