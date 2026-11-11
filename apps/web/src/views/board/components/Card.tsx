@@ -1,18 +1,21 @@
+import { t } from "@lingui/core/macro";
 import { format, isBefore, isSameYear, startOfDay } from "date-fns";
 import { HiOutlinePaperClip } from "react-icons/hi";
 import {
-  HiBars3BottomLeft,
   HiChatBubbleLeft,
   HiOutlineClock,
+  HiOutlineLockClosed,
 } from "react-icons/hi2";
 import { twMerge } from "tailwind-merge";
 
+import type { ListTone } from "../utils/listStatus";
 import Avatar from "~/components/Avatar";
 import Badge from "~/components/Badge";
 import CircularProgress from "~/components/CircularProgress";
 import LabelIcon from "~/components/LabelIcon";
 import { useLocalisation } from "~/hooks/useLocalisation";
 import { getAvatarUrl } from "~/utils/helpers";
+import { compactAge } from "../utils/listStatus";
 
 const Card = ({
   title,
@@ -20,10 +23,13 @@ const Card = ({
   labels,
   members,
   checklists,
-  description,
   comments,
+  commentCount,
   attachments,
   dueDate,
+  createdAt,
+  listEnteredAt,
+  listTone,
 }: {
   title: string;
   ticketNumber?: string | null;
@@ -43,10 +49,16 @@ const Card = ({
       index: number;
     }[];
   }[];
-  description: string | null;
+  // Kept for callers such as the public board; the board footer no longer
+  // shows a description icon.
+  description?: string | null;
   comments: { publicId: string }[];
+  commentCount?: number;
   attachments?: { publicId: string }[];
   dueDate?: Date | null;
+  createdAt?: Date;
+  listEnteredAt?: Date;
+  listTone?: ListTone;
 }) => {
   const { dateLocale } = useLocalisation();
   const showYear = dueDate ? !isSameYear(dueDate, new Date()) : false;
@@ -62,73 +74,114 @@ const Card = ({
   const progress =
     totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0;
 
-  const hasDescription =
-    description && description.replace(/<[^>]*>/g, "").trim().length > 0;
-  const hasAttachments = attachments && attachments.length > 0;
-  const hasDueDate = !!dueDate;
+  const totalComments = commentCount ?? comments.length;
+  const attachmentCount = attachments?.length ?? 0;
+  const isBlocked = listTone === "blocked";
+  const isDone = listTone === "done" || listTone === "cancelled";
+  const blockedSince = isBlocked ? listEnteredAt : undefined;
+  // A missed due date stops mattering once the card is done or cancelled.
+  const showOverdue = isOverdue && !isDone;
+  const fullDate = (date: Date) => format(date, "PPp", { locale: dateLocale });
+
+  const hasMeta =
+    !!dueDate ||
+    totalComments > 0 ||
+    attachmentCount > 0 ||
+    !!createdAt ||
+    !!blockedSince;
+  const hasRight = checklists.length > 0 || members.length > 0;
 
   return (
-    <div className="flex flex-col overflow-hidden rounded-md border border-light-200 bg-light-50 px-3 py-2 text-sm text-neutral-900 dark:border-dark-200 dark:bg-dark-200 dark:text-dark-1000 dark:hover:bg-dark-300">
+    <div
+      className={twMerge(
+        "flex flex-col overflow-hidden rounded-md border border-light-300 bg-light-50 px-3 py-2 text-sm text-neutral-900 shadow-sm transition duration-150 hover:-translate-y-px hover:border-light-500 hover:shadow-md dark:border-[#2e2e33] dark:bg-[#232327] dark:text-dark-1000 dark:hover:border-[#45454d] dark:hover:bg-[#27272c]",
+        isDone && "opacity-60 hover:opacity-100",
+        showOverdue &&
+          "border-red-400/70 hover:border-red-500 dark:border-red-500/50 dark:hover:border-red-400/80",
+      )}
+    >
       {ticketNumber && (
-        <span className="mb-1 text-xs text-light-700 dark:text-dark-800">
+        <span className="mb-0.5 font-mono text-[10px] leading-4 text-light-700 dark:text-dark-700">
           {ticketNumber}
         </span>
       )}
-      <span className="break-words">{title}</span>
-      {labels.length ||
-      members.length ||
-      checklists.length > 0 ||
-      hasDescription ||
-      comments.length > 0 ||
-      hasDueDate ||
-      hasAttachments ? (
-        <div className="mt-2 flex flex-col justify-end">
-          <div className="space-x-0.5">
-            {labels.map((label) => (
-              <Badge
-                value={label.name}
-                iconLeft={<LabelIcon colourCode={label.colourCode} />}
-              />
-            ))}
+      <span className="break-words font-medium">{title}</span>
+      {labels.length > 0 && (
+        <div className="mt-2 flex flex-wrap gap-0.5">
+          {labels.map((label) => (
+            <Badge
+              key={label.name}
+              value={label.name}
+              iconLeft={<LabelIcon colourCode={label.colourCode} />}
+            />
+          ))}
+        </div>
+      )}
+      {(hasMeta || hasRight) && (
+        <div className="mt-2 flex items-center justify-between gap-1">
+          <div className="flex min-w-0 flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] text-light-800 dark:text-dark-800">
+            {blockedSince && (
+              <span
+                className="flex items-center gap-1 font-medium text-red-600 dark:text-red-400"
+                title={t`Blocked since ${fullDate(blockedSince)}`}
+              >
+                <HiOutlineLockClosed
+                  className="h-3.5 w-3.5"
+                  aria-hidden="true"
+                />
+
+                {compactAge(blockedSince)}
+              </span>
+            )}
+            {dueDate && (
+              <span
+                className={twMerge(
+                  "flex items-center gap-1",
+                  showOverdue && "font-medium text-red-600 dark:text-red-400",
+                )}
+                title={
+                  showOverdue
+                    ? t`Overdue since ${fullDate(dueDate)}`
+                    : t`Due ${fullDate(dueDate)}`
+                }
+              >
+                <HiOutlineClock className="h-3.5 w-3.5" aria-hidden="true" />
+                {format(dueDate, showYear ? "do MMM yyyy" : "do MMM", {
+                  locale: dateLocale,
+                })}
+              </span>
+            )}
+            {totalComments > 0 && (
+              <span
+                className="flex items-center gap-1"
+                aria-label={t`${totalComments} comments`}
+              >
+                <HiChatBubbleLeft className="h-3.5 w-3.5" aria-hidden="true" />
+                {totalComments}
+              </span>
+            )}
+            {attachmentCount > 0 && (
+              <span
+                className="flex items-center gap-1"
+                aria-label={t`${attachmentCount} attachments`}
+              >
+                <HiOutlinePaperClip
+                  className="h-3.5 w-3.5"
+                  aria-hidden="true"
+                />
+                {attachmentCount}
+              </span>
+            )}
+            {createdAt && (
+              <span title={t`Created ${fullDate(createdAt)}`}>
+                {compactAge(createdAt)}
+              </span>
+            )}
           </div>
-          <div className="mt-2 flex items-center justify-between gap-1">
-            <div className="flex items-center gap-2">
-              {hasDescription && (
-                <div className="flex items-center gap-1 text-light-700 dark:text-dark-800">
-                  <HiBars3BottomLeft className="h-4 w-4" />
-                </div>
-              )}
-              {hasDueDate && dueDate && (
-                <div
-                  className={twMerge(
-                    "flex items-center gap-1",
-                    isOverdue
-                      ? "text-red-600 dark:text-red-400"
-                      : "text-light-800 dark:text-dark-800",
-                  )}
-                >
-                  <HiOutlineClock className="h-4 w-4" />
-                  <span className="text-[11px]">
-                    {format(dueDate, showYear ? "do MMM yyyy" : "do MMM", {
-                      locale: dateLocale,
-                    })}
-                  </span>
-                </div>
-              )}
-              {comments.length > 0 && (
-                <div className="flex items-center gap-1 text-light-700 dark:text-dark-800">
-                  <HiChatBubbleLeft className="h-4 w-4" />
-                </div>
-              )}
-              {hasAttachments && (
-                <div className="flex items-center gap-1 text-light-700 dark:text-dark-800">
-                  <HiOutlinePaperClip className="h-4 w-4" />
-                </div>
-              )}
-            </div>
-            <div className="flex items-center justify-end gap-1">
+          {hasRight && (
+            <div className="flex shrink-0 items-center justify-end gap-1">
               {checklists.length > 0 && (
-                <div className="flex items-center gap-1 rounded-full border-[1px] border-light-300 px-2 py-1 dark:border-dark-600">
+                <div className="flex items-center gap-1 rounded-full border-[1px] border-light-300 px-2 py-0.5 dark:border-dark-600">
                   <CircularProgress
                     progress={progress || 2}
                     size="sm"
@@ -141,13 +194,14 @@ const Card = ({
               )}
               {members.length > 0 && (
                 <div className="isolate flex justify-end -space-x-1 overflow-hidden">
-                  {members.map(({ user, email }) => {
+                  {members.map(({ publicId, user, email }) => {
                     const avatarUrl = user?.image
                       ? getAvatarUrl(user.image)
                       : undefined;
 
                     return (
                       <Avatar
+                        key={publicId}
                         name={user?.name ?? ""}
                         email={user?.email ?? email}
                         imageUrl={avatarUrl}
@@ -158,9 +212,9 @@ const Card = ({
                 </div>
               )}
             </div>
-          </div>
+          )}
         </div>
-      ) : null}
+      )}
     </div>
   );
 };

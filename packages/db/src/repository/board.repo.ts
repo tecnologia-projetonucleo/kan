@@ -98,10 +98,7 @@ export const getAllByWorkspaceId = async (
         ? eq(boards.isArchived, opts.archived)
         : undefined,
       memberBoardIds
-        ? or(
-            eq(boards.type, "template"),
-            inArray(boards.id, memberBoardIds),
-          )
+        ? or(eq(boards.type, "template"), inArray(boards.id, memberBoardIds))
         : undefined,
     ),
   });
@@ -276,6 +273,7 @@ export const getByPublicId = async (
         with: {
           cards: {
             columns: {
+              id: true,
               publicId: true,
               title: true,
               description: true,
@@ -283,6 +281,7 @@ export const getByPublicId = async (
               index: true,
               dueDate: true,
               cardNumber: true,
+              createdAt: true,
             },
             with: {
               labels: {
@@ -387,23 +386,67 @@ export const getByPublicId = async (
 
   if (!board) return null;
 
+  const cardMeta = await getCardBoardMeta(
+    db,
+    board.lists.flatMap((list) => list.cards.map((card) => card.id)),
+  );
+
   const formattedResult = {
     ...board,
     favorite: board.userFavorites.length > 0,
     userFavorites: undefined,
     lists: board.lists.map((list) => ({
       ...list,
-      cards: list.cards.map((card) => ({
+      cards: list.cards.map(({ id, ...card }) => ({
         ...card,
         labels: card.labels.map((label) => label.label),
         members: card.members
           .map((member) => member.member)
           .filter((member) => member.deletedAt === null),
+        commentCount: cardMeta.commentCounts.get(id) ?? 0,
+        // Cards that never changed list have been in it since creation.
+        listEnteredAt: cardMeta.listEnteredAt.get(id) ?? card.createdAt,
       })),
     })),
   };
 
   return formattedResult;
+};
+
+// Comment counts and the time each card entered its current list, in two
+// grouped queries so the board query does not grow per card.
+const getCardBoardMeta = async (db: dbClient, cardIds: number[]) => {
+  const commentCounts = new Map<number, number>();
+  const listEnteredAt = new Map<number, Date>();
+  if (cardIds.length === 0) return { commentCounts, listEnteredAt };
+
+  const [commentRows, moveRows] = await Promise.all([
+    db
+      .select({ cardId: comments.cardId, total: count() })
+      .from(comments)
+      .where(and(inArray(comments.cardId, cardIds), isNull(comments.deletedAt)))
+      .groupBy(comments.cardId),
+    db
+      .select({
+        cardId: cardActivities.cardId,
+        lastMove: sql<Date>`max(${cardActivities.createdAt})`.mapWith(
+          cardActivities.createdAt,
+        ),
+      })
+      .from(cardActivities)
+      .where(
+        and(
+          inArray(cardActivities.cardId, cardIds),
+          eq(cardActivities.type, "card.updated.list"),
+        ),
+      )
+      .groupBy(cardActivities.cardId),
+  ]);
+
+  for (const row of commentRows) commentCounts.set(row.cardId, row.total);
+  for (const row of moveRows) listEnteredAt.set(row.cardId, row.lastMove);
+
+  return { commentCounts, listEnteredAt };
 };
 
 export const getBySlug = async (
