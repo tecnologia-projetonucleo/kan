@@ -41,6 +41,7 @@ import { DeleteCommentConfirmation } from "./components/DeleteCommentConfirmatio
 import Dropdown from "./components/Dropdown";
 import { DueDateSelector } from "./components/DueDateSelector";
 import { PrioritySelector } from "./components/PrioritySelector";
+import { AreaSelector } from "./components/AreaSelector";
 import LabelSelector from "./components/LabelSelector";
 import ListSelector from "./components/ListSelector";
 import MemberSelector from "./components/MemberSelector";
@@ -146,17 +147,21 @@ export function CardRightPanel({ isTemplate }: { isTemplate?: boolean }) {
         />
       </div>
       <div className="mb-4 flex w-full flex-row">
-        <p className="my-2 mb-2 w-[100px] text-sm font-medium">{t`Labels`}</p>
-        <LabelSelector
+        <p className="my-2 mb-2 w-[100px] shrink-0 text-sm font-medium">
+          {t`Responsible area`}
+        </p>
+        <AreaSelector
           cardPublicId={cardId ?? ""}
-          labels={formattedLabels}
+          area={card?.area}
           isLoading={!card}
           disabled={!canEdit}
         />
       </div>
       {!isTemplate && (
         <div className="mb-4 flex w-full flex-row">
-          <p className="my-2 mb-2 w-[100px] text-sm font-medium">{t`Members`}</p>
+          <p className="my-2 mb-2 w-[100px] shrink-0 text-sm font-medium">
+            {t`Responsible`}
+          </p>
           <MemberSelector
             cardPublicId={cardId ?? ""}
             members={formattedMembers}
@@ -165,6 +170,15 @@ export function CardRightPanel({ isTemplate }: { isTemplate?: boolean }) {
           />
         </div>
       )}
+      <div className="mb-4 flex w-full flex-row">
+        <p className="my-2 mb-2 w-[100px] text-sm font-medium">{t`Labels`}</p>
+        <LabelSelector
+          cardPublicId={cardId ?? ""}
+          labels={formattedLabels}
+          isLoading={!card}
+          disabled={!canEdit}
+        />
+      </div>
       <div className="mb-4 flex w-full flex-row">
         <p className="my-2 mb-2 w-[100px] text-sm font-medium">{t`Due date`}</p>
         <DueDateSelector

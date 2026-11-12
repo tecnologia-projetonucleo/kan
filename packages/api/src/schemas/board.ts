@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { cardPrioritySchema } from "./priority";
+import { cardAreaSchema, cardPrioritySchema } from "./priority";
 
 import {
   checklistResponseSchema,
@@ -44,6 +44,7 @@ const boardDetailCardSchema = z.object({
   cardNumber: z.number().nullable(),
   dueDate: z.date().nullable(),
   priority: cardPrioritySchema.default("normal"),
+  area: cardAreaSchema.nullable().default(null),
   labels: z.array(labelSchema),
   members: z.array(boardCardMemberSchema),
   attachments: z.array(z.object({ publicId: z.string() })),
@@ -92,6 +93,7 @@ const boardSlugCardSchema = z.object({
   index: z.number(),
   dueDate: z.date().nullable(),
   priority: cardPrioritySchema.default("normal"),
+  area: cardAreaSchema.nullable().default(null),
   labels: z.array(labelSchema),
   attachments: z.array(z.object({ publicId: z.string() })),
   checklists: z.array(checklistResponseSchema),

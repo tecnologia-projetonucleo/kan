@@ -1,7 +1,7 @@
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
-import type { CardPriority } from "@kan/db/schema";
+import type { CardArea, CardPriority } from "@kan/db/schema";
 import * as cardRepo from "@kan/db/repository/card.repo";
 import { CardLabelBoardError } from "@kan/db/repository/card.repo";
 import * as cardActivityRepo from "@kan/db/repository/cardActivity.repo";
@@ -23,7 +23,7 @@ import {
   commentDeleteResponseSchema,
   commentResponseSchema,
 } from "../schemas";
-import { cardPrioritySchema } from "../schemas/priority";
+import { cardAreaSchema, cardPrioritySchema } from "../schemas/priority";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { mergeActivities } from "../utils/activities";
 import { createAvatarUrlResolver } from "../utils/avatarUrls";
@@ -62,6 +62,7 @@ export const cardRouter = createTRPCRouter({
         position: z.enum(["start", "end"]),
         dueDate: z.date().nullable().optional(),
         priority: cardPrioritySchema.optional(),
+        area: cardAreaSchema.optional(),
       }),
     )
     .output(cardCreateResponseSchema)
@@ -155,6 +156,7 @@ export const cardRouter = createTRPCRouter({
         position: input.position,
         dueDate: input.dueDate ?? null,
         priority: input.priority,
+        area: input.area,
       });
 
       const newCardId = newCard.id;
@@ -1000,6 +1002,7 @@ export const cardRouter = createTRPCRouter({
         listPublicId: z.string().min(12).optional(),
         dueDate: z.date().nullable().optional(),
         priority: cardPrioritySchema.optional(),
+        area: cardAreaSchema.optional(),
       }),
     )
     .output(cardUpdateResponseSchema)
@@ -1093,6 +1096,7 @@ export const cardRouter = createTRPCRouter({
             publicId: string;
             dueDate: Date | null;
             priority: CardPriority;
+            area: CardArea | null;
           }
         | undefined;
 
@@ -1109,7 +1113,8 @@ export const cardRouter = createTRPCRouter({
         input.title ||
         normalizedDescription !== undefined ||
         input.dueDate !== undefined ||
-        input.priority !== undefined
+        input.priority !== undefined ||
+        input.area !== undefined
       ) {
         result = await cardRepo.update(
           ctx.db,
@@ -1120,6 +1125,7 @@ export const cardRouter = createTRPCRouter({
             }),
             ...(input.dueDate !== undefined && { dueDate: input.dueDate }),
             ...(input.priority !== undefined && { priority: input.priority }),
+            ...(input.area !== undefined && { area: input.area }),
           },
           { cardPublicId: input.cardPublicId },
         );
@@ -1527,6 +1533,7 @@ export const cardRouter = createTRPCRouter({
         position: "end",
         dueDate: sourceCard.dueDate ?? null,
         priority: sourceCard.priority,
+        area: sourceCard.area,
       });
 
       if (input.index !== undefined && input.index >= 0) {

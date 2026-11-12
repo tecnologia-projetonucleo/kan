@@ -60,7 +60,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        358
+        372
       ]
     ],
     "translation": "{0} | {1}"
@@ -124,7 +124,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        583
+        651
       ]
     ],
     "translation": "{0} etiketter"
@@ -146,7 +146,6 @@
     "translation": "{0} blev ikke fundet"
   },
   "9w3eEU": {
-    "translation": "",
     "message": "{attachmentCount} attachments",
     "placeholders": {
       "attachmentCount": [
@@ -157,9 +156,10 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        173
+        197
       ]
-    ]
+    ],
+    "translation": ""
   },
   "0xWkkH": {
     "message": "{boardCount, plural, one {Import board (1)} other {Import boards ({boardCount})}}",
@@ -178,7 +178,6 @@
     "translation": "{boardCount, plural, one {Importér tavle (1)} other {Importér tavler ({boardCount})}}"
   },
   "2TFOnh": {
-    "translation": "",
     "message": "{cardCount} cards",
     "placeholders": {
       "cardCount": [
@@ -191,7 +190,8 @@
         "src/views/board/components/List.tsx",
         158
       ]
-    ]
+    ],
+    "translation": ""
   },
   "yndBF+": {
     "message": "{projectCount, plural, one {Import project (1)} other {Import projects ({projectCount})}}",
@@ -210,7 +210,6 @@
     "translation": "{projectCount, plural, one {Importér projekt (1)} other {Importér projekter ({projectCount})}}"
   },
   "uJ5FWW": {
-    "translation": "",
     "message": "{totalComments} comments",
     "placeholders": {
       "totalComments": [
@@ -221,9 +220,10 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        164
+        188
       ]
-    ]
+    ],
+    "translation": ""
   },
   "9lFfqv": {
     "message": "/month",
@@ -481,7 +481,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        514
+        528
       ],
       [
         "src/views/public/board/CardModal.tsx",
@@ -674,10 +674,6 @@
       [
         "src/views/board/members/index.tsx",
         223
-      ],
-      [
-        "src/views/card/components/MemberSelector.tsx",
-        138
       ],
       [
         "src/views/members/components/InviteMemberForm.tsx",
@@ -1452,11 +1448,11 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        646
+        714
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        647
+        715
       ]
     ],
     "translation": ""
@@ -1681,7 +1677,6 @@
     "translation": "Faktureringsportal"
   },
   "d+4g8a": {
-    "translation": "",
     "message": "Blocked since {0}",
     "placeholders": {
       "0": [
@@ -1692,9 +1687,10 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        133
+        157
       ]
-    ]
+    ],
+    "translation": ""
   },
   "OLMhPm": {
     "message": "Blockquote",
@@ -1735,7 +1731,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        358
+        372
       ],
       [
         "src/views/public/board/index.tsx",
@@ -2577,7 +2573,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        358
+        372
       ]
     ],
     "translation": "Kort"
@@ -2629,11 +2625,11 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        421
+        435
       ],
       [
         "src/views/card/index.tsx",
-        458
+        472
       ]
     ],
     "translation": "Kortet blev ikke fundet"
@@ -2657,7 +2653,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        440
+        455
       ]
     ],
     "translation": "Korttitel"
@@ -2731,7 +2727,6 @@
     "translation": "Skift appens skriftstørrelse."
   },
   "dz3b1/": {
-    "translation": "",
     "message": "Change WIP limit ({wipLimit})",
     "placeholders": {
       "wipLimit": [
@@ -2744,7 +2739,8 @@
         "src/views/board/components/List.tsx",
         282
       ]
-    ]
+    ],
+    "translation": ""
   },
   "yD3ZSw": {
     "message": "Change your language preferences.",
@@ -2850,6 +2846,18 @@
     ],
     "translation": "Vælg et abonnement"
   },
+  "6Fm28k": {
+    "message": "Choose an area",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        535
+      ]
+    ],
+    "translation": ""
+  },
   "5EMoSo": {
     "message": "Choose plan",
     "placeholders": {},
@@ -2865,6 +2873,30 @@
       ]
     ],
     "translation": "Vælg abonnement"
+  },
+  "Jp3yds": {
+    "message": "Choose the area (required)",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/AreaSelector.tsx",
+        94
+      ]
+    ],
+    "translation": ""
+  },
+  "OrWoDw": {
+    "message": "Choose who is responsible (required)",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/MemberSelector.tsx",
+        145
+      ]
+    ],
+    "translation": ""
   },
   "VHS0aJ": {
     "message": "Clear all custom permissions?",
@@ -2949,7 +2981,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        412
+        426
       ],
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
@@ -3011,7 +3043,6 @@
     "translation": "Samarbejde"
   },
   "PuvGJE": {
-    "translation": "",
     "message": "Collapse list",
     "placeholders": {},
     "comments": [],
@@ -3020,7 +3051,8 @@
         "src/views/board/components/List.tsx",
         273
       ]
-    ]
+    ],
+    "translation": ""
   },
   "AUYALh": {
     "message": "Coming soon",
@@ -3514,7 +3546,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        678
+        746
       ],
       [
         "src/views/board/components/NewListForm.tsx",
@@ -3542,7 +3574,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        688
+        761
       ]
     ],
     "translation": "Opret kort"
@@ -3634,7 +3666,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        545
+        613
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -3712,7 +3744,6 @@
     "translation": "Oprettet"
   },
   "MXSt4t": {
-    "translation": "",
     "message": "Created {0}",
     "placeholders": {
       "0": [
@@ -3723,9 +3754,10 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        183
+        207
       ]
-    ]
+    ],
+    "translation": ""
   },
   "f8lDFq": {
     "message": "created the card",
@@ -4463,7 +4495,6 @@
     "translation": "Download mislykkedes"
   },
   "hSsySs": {
-    "translation": "",
     "message": "Due {0}",
     "placeholders": {
       "0": [
@@ -4474,9 +4505,10 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        152
+        176
       ]
-    ]
+    ],
+    "translation": ""
   },
   "XicmhT": {
     "message": "Due date",
@@ -4489,11 +4521,11 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        600
+        668
       ],
       [
         "src/views/card/index.tsx",
-        169
+        183
       ]
     ],
     "translation": "Forfaldsdato"
@@ -5228,7 +5260,6 @@
     "translation": "Udførelse"
   },
   "mzs5zl": {
-    "translation": "",
     "message": "Expand list",
     "placeholders": {},
     "comments": [],
@@ -5237,7 +5268,8 @@
         "src/views/board/components/List.tsx",
         193
       ]
-    ]
+    ],
+    "translation": ""
   },
   "GwNIE2": {
     "message": "Extended Roadmap",
@@ -6036,16 +6068,16 @@
     "translation": ""
   },
   "yx/fMc": {
-    "translation": "",
     "message": "High",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/components/CardPriority.tsx",
-        16
+        12
       ]
-    ]
+    ],
+    "translation": ""
   },
   "CB/NpV": {
     "message": "High Priority",
@@ -6671,7 +6703,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        549
+        617
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -6679,7 +6711,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        149
+        174
       ]
     ],
     "translation": "Etiketter"
@@ -6892,7 +6924,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        131
+        132
       ]
     ],
     "translation": "Liste"
@@ -7030,16 +7062,16 @@
     "translation": "Elsket af teams verden over"
   },
   "nTWWCZ": {
-    "translation": "",
     "message": "Low",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/components/CardPriority.tsx",
-        18
+        14
       ]
-    ]
+    ],
+    "translation": ""
   },
   "O9jVbx": {
     "message": "Low Priority",
@@ -7134,7 +7166,6 @@
     "translation": "Marketing"
   },
   "EDIINl": {
-    "translation": "",
     "message": "Maximum number of cards in this list (leave empty to remove the limit)",
     "placeholders": {},
     "comments": [],
@@ -7143,7 +7174,8 @@
         "src/views/board/components/List.tsx",
         79
       ]
-    ]
+    ],
+    "translation": ""
   },
   "agPptk": {
     "message": "Medium",
@@ -7253,18 +7285,6 @@
       [
         "src/views/board/components/Filters.tsx",
         151
-      ],
-      [
-        "src/views/board/components/NewCardForm.tsx",
-        507
-      ],
-      [
-        "src/views/card/components/MemberSelector.tsx",
-        116
-      ],
-      [
-        "src/views/card/index.tsx",
-        159
       ],
       [
         "src/views/members/index.tsx",
@@ -7567,7 +7587,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        423
+        438
       ]
     ],
     "translation": "Nyt kort"
@@ -7760,6 +7780,18 @@
     ],
     "translation": "Ingen arkiverede tavler"
   },
+  "bNFm6B": {
+    "message": "No area",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/CardArea.tsx",
+        76
+      ]
+    ],
+    "translation": ""
+  },
   "Eg99Sc": {
     "message": "No authentication methods are currently available",
     "placeholders": {},
@@ -7880,6 +7912,18 @@
     ],
     "translation": "Der er endnu ikke oprettet nogen lister"
   },
+  "Ou8jzT": {
+    "message": "No one responsible",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/Card.tsx",
+        248
+      ]
+    ],
+    "translation": ""
+  },
   "i30J2U": {
     "message": "No projects found",
     "placeholders": {},
@@ -7932,17 +7976,29 @@
     ],
     "translation": "Ingen webhooks konfigureret. Tilføj en webhook for at modtage notifikationer."
   },
+  "gDZn5d": {
+    "message": "Nobody is responsible for this card yet",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/Card.tsx",
+        247
+      ]
+    ],
+    "translation": ""
+  },
   "CsekCi": {
-    "translation": "",
     "message": "Normal",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/components/CardPriority.tsx",
-        20
+        16
       ]
-    ]
+    ],
+    "translation": ""
   },
   "9h7RDh": {
     "message": "Offer",
@@ -8117,7 +8173,6 @@
     "translation": "OSS-venner"
   },
   "eC7IFE": {
-    "translation": "",
     "message": "Over the WIP limit of {wipLimit}",
     "placeholders": {
       "wipLimit": [
@@ -8130,7 +8185,8 @@
         "src/views/board/components/List.tsx",
         152
       ]
-    ]
+    ],
+    "translation": ""
   },
   "ddrz1m": {
     "message": "Overdue",
@@ -8145,7 +8201,6 @@
     "translation": "Overskredet"
   },
   "3RRdND": {
-    "translation": "",
     "message": "Overdue since {0}",
     "placeholders": {
       "0": [
@@ -8156,9 +8211,10 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        151
+        175
       ]
-    ]
+    ],
+    "translation": ""
   },
   "P6dJdq": {
     "message": "Overrides cleared",
@@ -8619,7 +8675,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        209
+        216
       ],
       [
         "src/views/board/components/NewListForm.tsx",
@@ -8660,6 +8716,10 @@
       [
         "src/views/boards/components/ImportBoardsForm.tsx",
         395
+      ],
+      [
+        "src/views/card/components/AreaSelector.tsx",
+        40
       ],
       [
         "src/views/card/components/AttachmentThumbnails.tsx",
@@ -8731,11 +8791,11 @@
       ],
       [
         "src/views/card/index.tsx",
-        269
+        283
       ],
       [
         "src/views/card/index.tsx",
-        282
+        296
       ],
       [
         "src/views/members/components/DeleteMemberConfirmation.tsx",
@@ -8921,24 +8981,24 @@
     "translation": "Priser"
   },
   "1hKEom": {
-    "translation": "",
     "message": "Priority",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/components/CardPriority.tsx",
-        87
+        83
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        479
+        495
       ],
       [
         "src/views/card/index.tsx",
-        140
+        141
       ]
-    ]
+    ],
+    "translation": ""
   },
   "ESClHO": {
     "message": "Priority email support",
@@ -8961,7 +9021,6 @@
     "translation": "Prioriteret e-mailsupport"
   },
   "HXA1G7": {
-    "translation": "",
     "message": "Priority: {label}",
     "placeholders": {
       "label": [
@@ -8972,9 +9031,10 @@
     "origin": [
       [
         "src/components/CardPriority.tsx",
-        59
+        55
       ]
-    ]
+    ],
+    "translation": ""
   },
   "ScJ9fj": {
     "message": "Privacy policy",
@@ -9204,7 +9264,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        665
+        733
       ]
     ],
     "translation": ""
@@ -9467,6 +9527,70 @@
       ]
     ],
     "translation": "Ressourcer"
+  },
+  "XQACoK": {
+    "message": "Responsible",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        559
+      ],
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        570
+      ],
+      [
+        "src/views/card/components/MemberSelector.tsx",
+        116
+      ],
+      [
+        "src/views/card/index.tsx",
+        163
+      ]
+    ],
+    "translation": ""
+  },
+  "HrdRaJ": {
+    "message": "Responsible area",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        504
+      ],
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        520
+      ],
+      [
+        "src/views/card/components/AreaSelector.tsx",
+        74
+      ],
+      [
+        "src/views/card/index.tsx",
+        151
+      ]
+    ],
+    "translation": ""
+  },
+  "dAhUmS": {
+    "message": "Responsible area: {0}",
+    "placeholders": {
+      "0": [
+        "info.name"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/components/CardArea.tsx",
+        83
+      ]
+    ],
+    "translation": ""
   },
   "5k0NLb": {
     "message": "Review",
@@ -9998,7 +10122,6 @@
     "translation": "Opsæt dit arbejdsområde"
   },
   "Iw6WJa": {
-    "translation": "",
     "message": "Set WIP limit",
     "placeholders": {},
     "comments": [],
@@ -10007,7 +10130,8 @@
         "src/views/board/components/List.tsx",
         283
       ]
-    ]
+    ],
+    "translation": ""
   },
   "Tz0i8g": {
     "message": "Settings",
@@ -10372,7 +10496,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        343
+        358
       ]
     ],
     "translation": ""
@@ -10937,7 +11061,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        344
+        359
       ]
     ],
     "translation": ""
@@ -11133,6 +11257,18 @@
       ]
     ],
     "translation": "Denne tavle-URL er allerede taget"
+  },
+  "d+Qooc": {
+    "message": "This card has no responsible area yet",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/CardArea.tsx",
+        70
+      ]
+    ],
+    "translation": ""
   },
   "mTwGOf": {
     "message": "This invitation link is invalid or has expired.",
@@ -11461,7 +11597,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        281
+        295
       ]
     ],
     "translation": "Kunne ikke tilføje etiket"
@@ -11537,7 +11673,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        206
+        213
       ]
     ],
     "translation": "Kunne ikke oprette kort"
@@ -11802,6 +11938,18 @@
     ],
     "translation": "Kunne ikke teste webhook"
   },
+  "xL5zmm": {
+    "message": "Unable to update area",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/AreaSelector.tsx",
+        39
+      ]
+    ],
+    "translation": ""
+  },
   "T7Mywq": {
     "message": "Unable to update board",
     "placeholders": {},
@@ -11849,7 +11997,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        268
+        282
       ]
     ],
     "translation": "Kunne ikke opdatere kort"
@@ -11963,7 +12111,6 @@
     "translation": "Kunne ikke opdatere rettigheder"
   },
   "uPW/GB": {
-    "translation": "",
     "message": "Unable to update priority",
     "placeholders": {},
     "comments": [],
@@ -11972,7 +12119,8 @@
         "src/views/card/components/PrioritySelector.tsx",
         39
       ]
-    ]
+    ],
+    "translation": ""
   },
   "TFv5tM": {
     "message": "Unable to update role",
@@ -12907,7 +13055,6 @@
     "translation": "Hvorfor lave et open source-alternativ til Trello?"
   },
   "/Xr4VE": {
-    "translation": "",
     "message": "WIP limit: {wipLimit}",
     "placeholders": {
       "wipLimit": [
@@ -12920,7 +13067,8 @@
         "src/views/board/components/List.tsx",
         153
       ]
-    ]
+    ],
+    "translation": ""
   },
   "pmUArF": {
     "message": "Workspace",

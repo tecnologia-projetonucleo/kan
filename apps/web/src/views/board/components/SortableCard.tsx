@@ -12,6 +12,7 @@ interface SortableCardProps {
   card: BoardCard;
   listPublicId: string;
   listTone: ListTone;
+  requireAssignee?: boolean;
   cardPrefix: string;
   cardHref: string;
   canEditCard: boolean;
@@ -22,6 +23,7 @@ export default function SortableCard({
   card,
   listPublicId,
   listTone,
+  requireAssignee,
   cardPrefix,
   cardHref,
   canEditCard,
@@ -72,7 +74,12 @@ export default function SortableCard({
       {...attributes}
       {...listeners}
     >
-      <CardPreview card={card} cardPrefix={cardPrefix} listTone={listTone} />
+      <CardPreview
+        card={card}
+        cardPrefix={cardPrefix}
+        listTone={listTone}
+        requireAssignee={requireAssignee}
+      />
     </Link>
   );
 }

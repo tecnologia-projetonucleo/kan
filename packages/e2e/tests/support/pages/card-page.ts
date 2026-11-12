@@ -204,17 +204,22 @@ export class CardPage {
 
   private memberSelectorTrigger() {
     return this.page
-      .locator('[aria-label="Members"]')
+      .locator('[aria-label="Responsible"]')
       .filter({ visible: true });
   }
 
   async assignMember(memberName: string) {
     await this.memberSelectorTrigger().click();
-    const updated = waitForTrpcMutation(this.page, "card.addOrRemoveMember");
-    await this.page
+    const option = this.page
       .getByRole("checkbox", { name: memberName })
-      .filter({ visible: true })
-      .click();
+      .filter({ visible: true });
+    // New cards already have someone responsible; do not toggle them off.
+    if (await option.isChecked()) {
+      await this.page.keyboard.press("Escape");
+      return;
+    }
+    const updated = waitForTrpcMutation(this.page, "card.addOrRemoveMember");
+    await option.click();
     await updated;
     await this.page.keyboard.press("Escape");
   }

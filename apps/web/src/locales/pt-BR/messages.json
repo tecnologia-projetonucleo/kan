@@ -60,7 +60,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        358
+        372
       ]
     ],
     "translation": "{0} | {1}"
@@ -124,7 +124,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        583
+        651
       ]
     ],
     "translation": "{0} etiquetas"
@@ -146,7 +146,6 @@
     "translation": "{0} não encontrado"
   },
   "9w3eEU": {
-    "translation": "{attachmentCount} anexos",
     "message": "{attachmentCount} attachments",
     "placeholders": {
       "attachmentCount": [
@@ -157,9 +156,10 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        173
+        197
       ]
-    ]
+    ],
+    "translation": "{attachmentCount} anexos"
   },
   "0xWkkH": {
     "message": "{boardCount, plural, one {Import board (1)} other {Import boards ({boardCount})}}",
@@ -178,7 +178,6 @@
     "translation": "{boardCount, plural, one {Importar quadro (1)} other {Importar quadros ({boardCount})}}"
   },
   "2TFOnh": {
-    "translation": "{cardCount} cards",
     "message": "{cardCount} cards",
     "placeholders": {
       "cardCount": [
@@ -191,7 +190,8 @@
         "src/views/board/components/List.tsx",
         158
       ]
-    ]
+    ],
+    "translation": "{cardCount} cards"
   },
   "yndBF+": {
     "message": "{projectCount, plural, one {Import project (1)} other {Import projects ({projectCount})}}",
@@ -210,7 +210,6 @@
     "translation": "{projectCount, plural, one {Importar projeto (1)} other {Importar projetos ({projectCount})}}"
   },
   "uJ5FWW": {
-    "translation": "{totalComments} comentários",
     "message": "{totalComments} comments",
     "placeholders": {
       "totalComments": [
@@ -221,9 +220,10 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        164
+        188
       ]
-    ]
+    ],
+    "translation": "{totalComments} comentários"
   },
   "9lFfqv": {
     "message": "/month",
@@ -481,7 +481,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        514
+        528
       ],
       [
         "src/views/public/board/CardModal.tsx",
@@ -674,10 +674,6 @@
       [
         "src/views/board/members/index.tsx",
         223
-      ],
-      [
-        "src/views/card/components/MemberSelector.tsx",
-        138
       ],
       [
         "src/views/members/components/InviteMemberForm.tsx",
@@ -1452,11 +1448,11 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        646
+        714
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        647
+        715
       ]
     ],
     "translation": "Anexar arquivos"
@@ -1681,7 +1677,6 @@
     "translation": "Portal de cobrança"
   },
   "d+4g8a": {
-    "translation": "Bloqueado desde {0}",
     "message": "Blocked since {0}",
     "placeholders": {
       "0": [
@@ -1692,9 +1687,10 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        133
+        157
       ]
-    ]
+    ],
+    "translation": "Bloqueado desde {0}"
   },
   "OLMhPm": {
     "message": "Blockquote",
@@ -1735,7 +1731,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        358
+        372
       ],
       [
         "src/views/public/board/index.tsx",
@@ -2577,7 +2573,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        358
+        372
       ]
     ],
     "translation": "Cartão"
@@ -2629,11 +2625,11 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        421
+        435
       ],
       [
         "src/views/card/index.tsx",
-        458
+        472
       ]
     ],
     "translation": "Cartão não encontrado"
@@ -2657,7 +2653,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        440
+        455
       ]
     ],
     "translation": "Título do cartão"
@@ -2731,7 +2727,6 @@
     "translation": "Altere o tamanho da fonte do aplicativo."
   },
   "dz3b1/": {
-    "translation": "Alterar limite WIP ({wipLimit})",
     "message": "Change WIP limit ({wipLimit})",
     "placeholders": {
       "wipLimit": [
@@ -2744,7 +2739,8 @@
         "src/views/board/components/List.tsx",
         282
       ]
-    ]
+    ],
+    "translation": "Alterar limite WIP ({wipLimit})"
   },
   "yD3ZSw": {
     "message": "Change your language preferences.",
@@ -2850,6 +2846,18 @@
     ],
     "translation": "Escolha um plano"
   },
+  "6Fm28k": {
+    "message": "Choose an area",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        535
+      ]
+    ],
+    "translation": "Escolha a área"
+  },
   "5EMoSo": {
     "message": "Choose plan",
     "placeholders": {},
@@ -2865,6 +2873,30 @@
       ]
     ],
     "translation": "Escolher plano"
+  },
+  "Jp3yds": {
+    "message": "Choose the area (required)",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/AreaSelector.tsx",
+        94
+      ]
+    ],
+    "translation": "Escolha a área (obrigatório)"
+  },
+  "OrWoDw": {
+    "message": "Choose who is responsible (required)",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/MemberSelector.tsx",
+        145
+      ]
+    ],
+    "translation": "Escolha o responsável (obrigatório)"
   },
   "VHS0aJ": {
     "message": "Clear all custom permissions?",
@@ -2949,7 +2981,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        412
+        426
       ],
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
@@ -3011,7 +3043,6 @@
     "translation": "Colaboração"
   },
   "PuvGJE": {
-    "translation": "Recolher coluna",
     "message": "Collapse list",
     "placeholders": {},
     "comments": [],
@@ -3020,7 +3051,8 @@
         "src/views/board/components/List.tsx",
         273
       ]
-    ]
+    ],
+    "translation": "Recolher coluna"
   },
   "AUYALh": {
     "message": "Coming soon",
@@ -3527,7 +3559,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        678
+        746
       ],
       [
         "src/views/board/components/NewListForm.tsx",
@@ -3555,7 +3587,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        688
+        761
       ]
     ],
     "translation": "Criar cartão"
@@ -3647,7 +3679,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        545
+        613
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -3725,7 +3757,6 @@
     "translation": "Criado"
   },
   "MXSt4t": {
-    "translation": "Criado em {0}",
     "message": "Created {0}",
     "placeholders": {
       "0": [
@@ -3736,9 +3767,10 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        183
+        207
       ]
-    ]
+    ],
+    "translation": "Criado em {0}"
   },
   "f8lDFq": {
     "message": "created the card",
@@ -4502,7 +4534,6 @@
     "translation": "Falha no download"
   },
   "hSsySs": {
-    "translation": "Entrega em {0}",
     "message": "Due {0}",
     "placeholders": {
       "0": [
@@ -4513,9 +4544,10 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        152
+        176
       ]
-    ]
+    ],
+    "translation": "Entrega em {0}"
   },
   "XicmhT": {
     "message": "Due date",
@@ -4528,11 +4560,11 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        600
+        668
       ],
       [
         "src/views/card/index.tsx",
-        169
+        183
       ]
     ],
     "translation": "Data de vencimento"
@@ -5280,7 +5312,6 @@
     "translation": "Execução"
   },
   "mzs5zl": {
-    "translation": "Expandir coluna",
     "message": "Expand list",
     "placeholders": {},
     "comments": [],
@@ -5289,7 +5320,8 @@
         "src/views/board/components/List.tsx",
         193
       ]
-    ]
+    ],
+    "translation": "Expandir coluna"
   },
   "GwNIE2": {
     "message": "Extended Roadmap",
@@ -6088,16 +6120,16 @@
     "translation": "Título 3"
   },
   "yx/fMc": {
-    "translation": "Alta",
     "message": "High",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/components/CardPriority.tsx",
-        16
+        12
       ]
-    ]
+    ],
+    "translation": "Alta"
   },
   "CB/NpV": {
     "message": "High Priority",
@@ -6736,7 +6768,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        549
+        617
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -6744,7 +6776,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        149
+        174
       ]
     ],
     "translation": "Etiquetas"
@@ -6970,7 +7002,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        131
+        132
       ]
     ],
     "translation": "Lista"
@@ -7108,16 +7140,16 @@
     "translation": "Amado por equipes no mundo todo"
   },
   "nTWWCZ": {
-    "translation": "Baixa",
     "message": "Low",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/components/CardPriority.tsx",
-        18
+        14
       ]
-    ]
+    ],
+    "translation": "Baixa"
   },
   "O9jVbx": {
     "message": "Low Priority",
@@ -7212,7 +7244,6 @@
     "translation": "Marketing"
   },
   "EDIINl": {
-    "translation": "Número máximo de cards nesta coluna (deixe vazio para remover o limite)",
     "message": "Maximum number of cards in this list (leave empty to remove the limit)",
     "placeholders": {},
     "comments": [],
@@ -7221,7 +7252,8 @@
         "src/views/board/components/List.tsx",
         79
       ]
-    ]
+    ],
+    "translation": "Número máximo de cards nesta coluna (deixe vazio para remover o limite)"
   },
   "agPptk": {
     "message": "Medium",
@@ -7331,18 +7363,6 @@
       [
         "src/views/board/components/Filters.tsx",
         151
-      ],
-      [
-        "src/views/board/components/NewCardForm.tsx",
-        507
-      ],
-      [
-        "src/views/card/components/MemberSelector.tsx",
-        116
-      ],
-      [
-        "src/views/card/index.tsx",
-        159
       ],
       [
         "src/views/members/index.tsx",
@@ -7645,7 +7665,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        423
+        438
       ]
     ],
     "translation": "Novo cartão"
@@ -7838,6 +7858,18 @@
     ],
     "translation": "Nenhum quadro arquivado"
   },
+  "bNFm6B": {
+    "message": "No area",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/CardArea.tsx",
+        76
+      ]
+    ],
+    "translation": "Sem área"
+  },
   "Eg99Sc": {
     "message": "No authentication methods are currently available",
     "placeholders": {},
@@ -7958,6 +7990,18 @@
     ],
     "translation": "Nenhuma lista foi criada ainda"
   },
+  "Ou8jzT": {
+    "message": "No one responsible",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/Card.tsx",
+        248
+      ]
+    ],
+    "translation": "Sem responsável"
+  },
   "i30J2U": {
     "message": "No projects found",
     "placeholders": {},
@@ -8010,17 +8054,29 @@
     ],
     "translation": "Nenhum webhook configurado. Adicione um webhook para receber notificações."
   },
+  "gDZn5d": {
+    "message": "Nobody is responsible for this card yet",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/Card.tsx",
+        247
+      ]
+    ],
+    "translation": "Este card ainda não tem responsável"
+  },
   "CsekCi": {
-    "translation": "Normal",
     "message": "Normal",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/components/CardPriority.tsx",
-        20
+        16
       ]
-    ]
+    ],
+    "translation": "Normal"
   },
   "9h7RDh": {
     "message": "Offer",
@@ -8195,7 +8251,6 @@
     "translation": "Amigos OSS"
   },
   "eC7IFE": {
-    "translation": "Acima do limite WIP de {wipLimit}",
     "message": "Over the WIP limit of {wipLimit}",
     "placeholders": {
       "wipLimit": [
@@ -8208,7 +8263,8 @@
         "src/views/board/components/List.tsx",
         152
       ]
-    ]
+    ],
+    "translation": "Acima do limite WIP de {wipLimit}"
   },
   "ddrz1m": {
     "message": "Overdue",
@@ -8223,7 +8279,6 @@
     "translation": "Atrasado"
   },
   "3RRdND": {
-    "translation": "Atrasado desde {0}",
     "message": "Overdue since {0}",
     "placeholders": {
       "0": [
@@ -8234,9 +8289,10 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        151
+        175
       ]
-    ]
+    ],
+    "translation": "Atrasado desde {0}"
   },
   "P6dJdq": {
     "message": "Overrides cleared",
@@ -8697,7 +8753,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        209
+        216
       ],
       [
         "src/views/board/components/NewListForm.tsx",
@@ -8738,6 +8794,10 @@
       [
         "src/views/boards/components/ImportBoardsForm.tsx",
         395
+      ],
+      [
+        "src/views/card/components/AreaSelector.tsx",
+        40
       ],
       [
         "src/views/card/components/AttachmentThumbnails.tsx",
@@ -8809,11 +8869,11 @@
       ],
       [
         "src/views/card/index.tsx",
-        269
+        283
       ],
       [
         "src/views/card/index.tsx",
-        282
+        296
       ],
       [
         "src/views/members/components/DeleteMemberConfirmation.tsx",
@@ -8999,24 +9059,24 @@
     "translation": "Preços"
   },
   "1hKEom": {
-    "translation": "Prioridade",
     "message": "Priority",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/components/CardPriority.tsx",
-        87
+        83
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        479
+        495
       ],
       [
         "src/views/card/index.tsx",
-        140
+        141
       ]
-    ]
+    ],
+    "translation": "Prioridade"
   },
   "ESClHO": {
     "message": "Priority email support",
@@ -9039,7 +9099,6 @@
     "translation": "Suporte prioritário por e-mail"
   },
   "HXA1G7": {
-    "translation": "Prioridade: {label}",
     "message": "Priority: {label}",
     "placeholders": {
       "label": [
@@ -9050,9 +9109,10 @@
     "origin": [
       [
         "src/components/CardPriority.tsx",
-        59
+        55
       ]
-    ]
+    ],
+    "translation": "Prioridade: {label}"
   },
   "ScJ9fj": {
     "message": "Privacy policy",
@@ -9282,7 +9342,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        665
+        733
       ]
     ],
     "translation": "Remover arquivo"
@@ -9545,6 +9605,70 @@
       ]
     ],
     "translation": "Recursos"
+  },
+  "XQACoK": {
+    "message": "Responsible",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        559
+      ],
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        570
+      ],
+      [
+        "src/views/card/components/MemberSelector.tsx",
+        116
+      ],
+      [
+        "src/views/card/index.tsx",
+        163
+      ]
+    ],
+    "translation": "Responsável"
+  },
+  "HrdRaJ": {
+    "message": "Responsible area",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        504
+      ],
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        520
+      ],
+      [
+        "src/views/card/components/AreaSelector.tsx",
+        74
+      ],
+      [
+        "src/views/card/index.tsx",
+        151
+      ]
+    ],
+    "translation": "Área responsável"
+  },
+  "dAhUmS": {
+    "message": "Responsible area: {0}",
+    "placeholders": {
+      "0": [
+        "info.name"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/components/CardArea.tsx",
+        83
+      ]
+    ],
+    "translation": "Área responsável: {0}"
   },
   "5k0NLb": {
     "message": "Review",
@@ -10076,7 +10200,6 @@
     "translation": "Configure seu workspace"
   },
   "Iw6WJa": {
-    "translation": "Definir limite WIP",
     "message": "Set WIP limit",
     "placeholders": {},
     "comments": [],
@@ -10085,7 +10208,8 @@
         "src/views/board/components/List.tsx",
         283
       ]
-    ]
+    ],
+    "translation": "Definir limite WIP"
   },
   "Tz0i8g": {
     "message": "Settings",
@@ -10450,7 +10574,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        343
+        358
       ]
     ],
     "translation": "Alguns anexos falharam"
@@ -11015,7 +11139,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        344
+        359
       ]
     ],
     "translation": "O card foi criado, mas {failedCount} de {0} anexos não puderam ser enviados."
@@ -11211,6 +11335,18 @@
       ]
     ],
     "translation": "Esta URL de quadro já foi utilizada"
+  },
+  "d+Qooc": {
+    "message": "This card has no responsible area yet",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/CardArea.tsx",
+        70
+      ]
+    ],
+    "translation": "Este card ainda não tem área responsável"
   },
   "mTwGOf": {
     "message": "This invitation link is invalid or has expired.",
@@ -11539,7 +11675,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        281
+        295
       ]
     ],
     "translation": "Não foi possível adicionar etiqueta"
@@ -11615,7 +11751,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        206
+        213
       ]
     ],
     "translation": "Não foi possível criar card"
@@ -11880,6 +12016,18 @@
     ],
     "translation": "Não foi possível testar o webhook"
   },
+  "xL5zmm": {
+    "message": "Unable to update area",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/AreaSelector.tsx",
+        39
+      ]
+    ],
+    "translation": "Não foi possível atualizar a área"
+  },
   "T7Mywq": {
     "message": "Unable to update board",
     "placeholders": {},
@@ -11927,7 +12075,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        268
+        282
       ]
     ],
     "translation": "Não foi possível atualizar o cartão"
@@ -12041,7 +12189,6 @@
     "translation": "Não foi possível atualizar as permissões"
   },
   "uPW/GB": {
-    "translation": "Não foi possível atualizar a prioridade",
     "message": "Unable to update priority",
     "placeholders": {},
     "comments": [],
@@ -12050,7 +12197,8 @@
         "src/views/card/components/PrioritySelector.tsx",
         39
       ]
-    ]
+    ],
+    "translation": "Não foi possível atualizar a prioridade"
   },
   "TFv5tM": {
     "message": "Unable to update role",
@@ -13015,7 +13163,6 @@
     "translation": "Por que fazer um Trello de código aberto?"
   },
   "/Xr4VE": {
-    "translation": "Limite WIP: {wipLimit}",
     "message": "WIP limit: {wipLimit}",
     "placeholders": {
       "wipLimit": [
@@ -13028,7 +13175,8 @@
         "src/views/board/components/List.tsx",
         153
       ]
-    ]
+    ],
+    "translation": "Limite WIP: {wipLimit}"
   },
   "pmUArF": {
     "message": "Workspace",

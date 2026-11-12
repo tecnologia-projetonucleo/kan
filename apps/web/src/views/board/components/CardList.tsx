@@ -15,6 +15,7 @@ import SortableCard from "./SortableCard";
 interface CardListProps {
   listPublicId: string;
   listTone: ListTone;
+  requireAssignee?: boolean;
   cards: BoardCard[];
   cardPrefix: string;
   canEditCard: boolean;
@@ -26,6 +27,7 @@ interface CardListProps {
 export default function CardList({
   listPublicId,
   listTone,
+  requireAssignee,
   cards,
   cardPrefix,
   canEditCard,
@@ -91,6 +93,7 @@ export default function CardList({
               card={card}
               listPublicId={listPublicId}
               listTone={listTone}
+              requireAssignee={requireAssignee}
               cardPrefix={cardPrefix}
               cardHref={getCardHref(card.publicId)}
               canEditCard={canEditCard}

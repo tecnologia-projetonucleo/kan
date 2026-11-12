@@ -6,12 +6,14 @@ interface CardPreviewProps {
   card: BoardCard;
   cardPrefix: string;
   listTone?: ListTone;
+  requireAssignee?: boolean;
 }
 
 export default function CardPreview({
   card,
   cardPrefix,
   listTone,
+  requireAssignee,
 }: CardPreviewProps) {
   return (
     <Card
@@ -31,6 +33,8 @@ export default function CardPreview({
       listEnteredAt={card.listEnteredAt}
       listTone={listTone}
       priority={card.priority}
+      area={card.area}
+      requireAssignee={requireAssignee}
     />
   );
 }
