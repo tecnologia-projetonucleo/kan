@@ -202,10 +202,12 @@ function CardListChip({
   cardPublicId,
   lists,
   disabled,
+  requireMoveComment,
 }: {
   cardPublicId: string;
   lists: { key: string; value: string; selected: boolean }[];
   disabled: boolean;
+  requireMoveComment: boolean;
 }) {
   return (
     <div className="rounded-[5px] bg-light-200 text-xs font-semibold dark:bg-dark-200 [&>*]:!border-transparent">
@@ -215,6 +217,7 @@ function CardListChip({
         isLoading={false}
         disabled={disabled}
         showChevron
+        requireMoveComment={requireMoveComment}
       />
     </div>
   );
@@ -420,6 +423,7 @@ export default function CardPage({ isTemplate }: { isTemplate?: boolean }) {
                   cardPublicId={cardId}
                   lists={formattedLists}
                   disabled={!canEdit}
+                  requireMoveComment={!isTemplate}
                 />
                 {card.cardNumber != null &&
                   card.list.board.workspace.cardPrefix && (

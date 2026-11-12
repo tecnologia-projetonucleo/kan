@@ -34,6 +34,19 @@ export class CardPage {
       .getByRole("checkbox", { name: targetListName })
       .filter({ visible: true })
       .click();
+
+    // Blocked, waiting-for-validation and done lists ask for a comment.
+    const dialog = this.page.getByRole("dialog", { name: "Comment required" });
+    const asked = await dialog
+      .waitFor({ state: "visible", timeout: 2000 })
+      .then(
+        () => true,
+        () => false,
+      );
+    if (asked) {
+      await dialog.getByRole("textbox").fill("Moved by the e2e test");
+      await dialog.getByRole("button", { name: "Comment and move" }).click();
+    }
     await updated;
   }
 

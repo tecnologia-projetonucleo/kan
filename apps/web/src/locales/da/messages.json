@@ -60,7 +60,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        408
+        411
       ]
     ],
     "translation": "{0} | {1}"
@@ -140,7 +140,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        944
+        995
       ]
     ],
     "translation": "{0} blev ikke fundet"
@@ -617,7 +617,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        542
+        546
       ]
     ],
     "translation": "Tilføj tjekliste"
@@ -1472,7 +1472,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1000
+        1051
       ]
     ],
     "translation": ""
@@ -1804,7 +1804,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        916
+        967
       ],
       [
         "src/views/board/members/index.tsx",
@@ -1812,11 +1812,11 @@
       ],
       [
         "src/views/card/components/MoveCardForm.tsx",
-        120
+        132
       ],
       [
         "src/views/card/index.tsx",
-        408
+        411
       ],
       [
         "src/views/public/board/index.tsx",
@@ -1913,7 +1913,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        934
+        985
       ]
     ],
     "translation": ""
@@ -2589,6 +2589,10 @@
         49
       ],
       [
+        "src/components/MoveCommentDialog.tsx",
+        100
+      ],
+      [
         "src/components/YouTubeEmbed/EditYouTubeModal.tsx",
         176
       ],
@@ -2630,7 +2634,7 @@
       ],
       [
         "src/views/card/components/MoveCardForm.tsx",
-        172
+        203
       ],
       [
         "src/views/members/components/DeleteMemberConfirmation.tsx",
@@ -2674,7 +2678,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        408
+        411
       ]
     ],
     "translation": "Kort"
@@ -2720,16 +2724,16 @@
     "translation": "Tildelinger af medlemmer til kortet fjernes, når kortet flyttes til et andet arbejdsområde."
   },
   "wmwvU1": {
-    "translation": "",
     "message": "Card moved",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/card/components/MoveCardForm.tsx",
-        78
+        88
       ]
-    ]
+    ],
+    "translation": ""
   },
   "fEY2vP": {
     "message": "Card not found",
@@ -2738,11 +2742,11 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        467
+        471
       ],
       [
         "src/views/card/index.tsx",
-        481
+        485
       ]
     ],
     "translation": "Kortet blev ikke fundet"
@@ -2770,7 +2774,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        493
+        497
       ]
     ],
     "translation": "Korttitel"
@@ -2782,7 +2786,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        489
+        500
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -2958,7 +2962,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        549
+        553
       ]
     ],
     "translation": ""
@@ -3166,11 +3170,11 @@
       ],
       [
         "src/views/card/components/MoveCardForm.tsx",
-        102
+        114
       ],
       [
         "src/views/card/index.tsx",
-        458
+        462
       ],
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
@@ -3255,6 +3259,34 @@
     ],
     "translation": "Kommer snart"
   },
+  "NBdIgR": {
+    "message": "Comment",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/MoveCommentDialog.tsx",
+        95
+      ],
+      [
+        "src/views/card/components/MoveCardForm.tsx",
+        173
+      ]
+    ],
+    "translation": ""
+  },
+  "eR+dAc": {
+    "message": "Comment and move",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/MoveCommentDialog.tsx",
+        107
+      ]
+    ],
+    "translation": ""
+  },
   "dYbQ1T": {
     "message": "Comment options",
     "placeholders": {},
@@ -3263,6 +3295,26 @@
       [
         "src/views/card/components/Comment.tsx",
         161
+      ]
+    ],
+    "translation": ""
+  },
+  "syfAAQ": {
+    "message": "Comment required",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/MoveCommentDialog.tsx",
+        82
+      ],
+      [
+        "src/views/board/index.tsx",
+        384
+      ],
+      [
+        "src/views/card/components/ListSelector.tsx",
+        72
       ]
     ],
     "translation": ""
@@ -3294,7 +3346,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        590
+        594
       ]
     ],
     "translation": ""
@@ -3883,11 +3935,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        146
+        149
       ],
       [
         "src/views/board/index.tsx",
-        1118
+        1169
       ]
     ],
     "translation": "Opret ny liste"
@@ -4011,7 +4063,7 @@
     "origin": [
       [
         "src/views/card/components/ListSelector.tsx",
-        97
+        123
       ]
     ],
     "translation": ""
@@ -4458,7 +4510,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        513
+        517
       ]
     ],
     "translation": ""
@@ -4758,11 +4810,15 @@
       ],
       [
         "src/views/board/index.tsx",
-        381
+        392
       ],
       [
         "src/views/board/index.tsx",
-        426
+        437
+      ],
+      [
+        "src/views/board/index.tsx",
+        762
       ],
       [
         "src/views/card/components/DueDateSelector.tsx",
@@ -4770,7 +4826,7 @@
       ],
       [
         "src/views/card/components/ListSelector.tsx",
-        59
+        80
       ]
     ],
     "translation": ""
@@ -6035,7 +6091,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1100
+        1151
       ]
     ],
     "translation": "Kom i gang ved at oprette en ny liste"
@@ -6267,7 +6323,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        976
+        1027
       ]
     ],
     "translation": ""
@@ -6998,16 +7054,16 @@
     "translation": "Etiketter og filtre"
   },
   "i1CRWq": {
-    "translation": "",
     "message": "Labels from this board are removed, and responsible people without access to the new board are unassigned.",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/card/components/MoveCardForm.tsx",
-        165
+        196
       ]
-    ]
+    ],
+    "translation": ""
   },
   "vXIe7J": {
     "message": "Language",
@@ -7165,7 +7221,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        487
+        498
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -7193,7 +7249,7 @@
       ],
       [
         "src/views/card/components/MoveCardForm.tsx",
-        137
+        149
       ]
     ],
     "translation": "Liste"
@@ -7663,19 +7719,18 @@
     "translation": "Flyt tavle til et andet arbejdsområde"
   },
   "TnU3pN": {
-    "translation": "",
     "message": "Move card",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/card/components/MoveCardForm.tsx",
-        181
+        222
       ]
-    ]
+    ],
+    "translation": ""
   },
   "CluBqG": {
-    "translation": "",
     "message": "Move to another board",
     "placeholders": {},
     "comments": [],
@@ -7686,9 +7741,10 @@
       ],
       [
         "src/views/card/components/MoveCardForm.tsx",
-        98
+        110
       ]
-    ]
+    ],
+    "translation": ""
   },
   "51UCsN": {
     "message": "Move to another list",
@@ -7756,6 +7812,26 @@
       ]
     ],
     "translation": "flyttede kortet til en anden liste"
+  },
+  "l1XnpG": {
+    "message": "Moving a card to this list needs a comment.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/index.tsx",
+        385
+      ],
+      [
+        "src/views/card/components/ListSelector.tsx",
+        73
+      ],
+      [
+        "src/views/card/components/MoveCardForm.tsx",
+        97
+      ]
+    ],
+    "translation": ""
   },
   "uEGGDs": {
     "message": "My webhook",
@@ -7936,7 +8012,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1032
+        1083
       ]
     ],
     "translation": "Ny liste"
@@ -8220,7 +8296,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1096
+        1147
       ]
     ],
     "translation": "Ingen lister"
@@ -8232,7 +8308,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1101
+        1152
       ]
     ],
     "translation": "Der er endnu ikke oprettet nogen lister"
@@ -8404,7 +8480,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        325
+        328
       ]
     ],
     "translation": ""
@@ -9048,15 +9124,15 @@
       ],
       [
         "src/views/board/index.tsx",
-        297
+        300
       ],
       [
         "src/views/board/index.tsx",
-        389
+        400
       ],
       [
         "src/views/board/index.tsx",
-        434
+        445
       ],
       [
         "src/views/boards/components/ImportBoardsForm.tsx",
@@ -9116,7 +9192,7 @@
       ],
       [
         "src/views/card/components/ListSelector.tsx",
-        67
+        88
       ],
       [
         "src/views/card/components/MemberSelector.tsx",
@@ -9124,7 +9200,7 @@
       ],
       [
         "src/views/card/components/MoveCardForm.tsx",
-        88
+        100
       ],
       [
         "src/views/card/components/NewChecklistForm.tsx",
@@ -9144,11 +9220,11 @@
       ],
       [
         "src/views/card/index.tsx",
-        319
+        322
       ],
       [
         "src/views/card/index.tsx",
-        332
+        335
       ],
       [
         "src/views/members/components/DeleteMemberConfirmation.tsx",
@@ -9252,7 +9328,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        496
+        507
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -10401,19 +10477,23 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        382
+        393
       ],
       [
         "src/views/board/index.tsx",
-        427
+        438
+      ],
+      [
+        "src/views/board/index.tsx",
+        763
       ],
       [
         "src/views/card/components/ListSelector.tsx",
-        60
+        81
       ],
       [
         "src/views/card/components/MoveCardForm.tsx",
-        87
+        99
       ]
     ],
     "translation": ""
@@ -11119,7 +11199,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        975
+        1026
       ]
     ],
     "translation": ""
@@ -11195,11 +11275,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        916
+        967
       ],
       [
         "src/views/board/index.tsx",
-        953
+        1004
       ]
     ],
     "translation": "Skabelon"
@@ -11449,7 +11529,6 @@
     "translation": "Kortet er blevet duplikeret."
   },
   "XVBwC+": {
-    "translation": "",
     "message": "The card is now on {0}.",
     "placeholders": {
       "0": [
@@ -11460,9 +11539,10 @@
     "origin": [
       [
         "src/views/card/components/MoveCardForm.tsx",
-        79
+        89
       ]
-    ]
+    ],
+    "translation": ""
   },
   "kwssev": {
     "message": "The card was created, but {failedCount} of {0} attachments could not be uploaded.",
@@ -11588,16 +11668,16 @@
     "translation": "Tema"
   },
   "Y84mWx": {
-    "translation": "",
     "message": "There is no other board in this workspace.",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/card/components/MoveCardForm.tsx",
-        114
+        126
       ]
-    ]
+    ],
+    "translation": ""
   },
   "Yf9FAx": {
     "message": "They won't be able to access this workspace.",
@@ -11664,16 +11744,16 @@
     "translation": "Denne API-nøgle vises kun én gang. Gem den et sikkert sted."
   },
   "uTUhHv": {
-    "translation": "",
     "message": "This board has no lists yet.",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/card/components/MoveCardForm.tsx",
-        153
+        165
       ]
-    ]
+    ],
+    "translation": ""
   },
   "l4asa1": {
     "message": "This board is private or does not exist",
@@ -11724,16 +11804,16 @@
     "translation": "Dette invitationslink er ugyldigt eller udløbet."
   },
   "afgZRd": {
-    "translation": "",
     "message": "This list requires a due date. Set one on the card first, or pick an earlier list.",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/card/components/MoveCardForm.tsx",
-        160
+        191
       ]
-    ]
+    ],
+    "translation": ""
   },
   "vlxQFL": {
     "message": "This member's permissions have been reset to their role defaults.",
@@ -11907,6 +11987,41 @@
     ],
     "translation": "Opgaver"
   },
+  "40kVab": {
+    "message": "To move \"{cardTitle}\" to {listName}, leave a comment explaining why.",
+    "placeholders": {
+      "cardTitle": [
+        "cardTitle"
+      ],
+      "listName": [
+        "listName"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/components/MoveCommentDialog.tsx",
+        86
+      ]
+    ],
+    "translation": ""
+  },
+  "Q15qpk": {
+    "message": "To move the card to {listName}, leave a comment explaining why.",
+    "placeholders": {
+      "listName": [
+        "listName"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/components/MoveCommentDialog.tsx",
+        87
+      ]
+    ],
+    "translation": ""
+  },
   "ecUA8p": {
     "message": "Today",
     "placeholders": {},
@@ -12062,7 +12177,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        331
+        334
       ]
     ],
     "translation": "Kunne ikke tilføje etiket"
@@ -12086,7 +12201,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        324
+        327
       ]
     ],
     "translation": ""
@@ -12126,7 +12241,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        494
+        505
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -12334,7 +12449,7 @@
       ],
       [
         "src/views/card/components/MoveCardForm.tsx",
-        85
+        95
       ]
     ],
     "translation": "Kunne ikke flytte kort"
@@ -12474,11 +12589,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        388
+        399
       ],
       [
         "src/views/card/index.tsx",
-        318
+        321
       ]
     ],
     "translation": "Kunne ikke opdatere kort"
@@ -12526,7 +12641,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        433
+        444
       ],
       [
         "src/views/card/components/DueDateSelector.tsx",
@@ -12554,11 +12669,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        296
+        299
       ],
       [
         "src/views/card/components/ListSelector.tsx",
-        66
+        87
       ]
     ],
     "translation": "Kunne ikke opdatere liste"
@@ -13535,6 +13650,22 @@
     ],
     "translation": "Da Trello blev lanceret i 2011, imponerede det alle med sin gennemtænkte enkelhed, men gennem årene mistede det sin magi og udviklede sig til noget, der minder mere om \"Jira Lite\". Dette projekt er vores forsøg på at genfinde magien i Trellos oprindelige enkelhed som open source."
   },
+  "EVnXTM": {
+    "message": "Why is the card going to {selectedListName}?",
+    "placeholders": {
+      "selectedListName": [
+        "selectedListName"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/MoveCardForm.tsx",
+        183
+      ]
+    ],
+    "translation": ""
+  },
   "SFnH1j": {
     "message": "Why make an open source Trello?",
     "placeholders": {},
@@ -13578,7 +13709,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        916
+        967
       ],
       [
         "src/views/boards/index.tsx",
@@ -13835,6 +13966,18 @@
     ],
     "translation": "arbejdsområde-url"
   },
+  "NFAB0N": {
+    "message": "Write the comment...",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/MoveCommentDialog.tsx",
+        94
+      ]
+    ],
+    "translation": ""
+  },
   "4kJRen": {
     "message": "Writing",
     "placeholders": {},
@@ -13975,11 +14118,11 @@
       ],
       [
         "src/views/board/index.tsx",
-        1020
+        1071
       ],
       [
         "src/views/board/index.tsx",
-        1107
+        1158
       ],
       [
         "src/views/boards/components/BoardsList.tsx",

@@ -27,7 +27,12 @@ import { cardAreaSchema, cardPrioritySchema } from "../schemas/priority";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { mergeActivities } from "../utils/activities";
 import { createAvatarUrlResolver } from "../utils/avatarUrls";
-import { dueDateRequiredError, listRequiresDueDate } from "../utils/dueDateRule";
+import {
+  commentRequiredError,
+  dueDateRequiredError,
+  listRequiresComment,
+  listRequiresDueDate,
+} from "../utils/dueDateRule";
 import { sendMentionEmails } from "../utils/notifications";
 import {
   assertBoardAccess,
@@ -1013,6 +1018,9 @@ export const cardRouter = createTRPCRouter({
         dueDate: z.date().nullable().optional(),
         priority: cardPrioritySchema.optional(),
         area: cardAreaSchema.optional(),
+        // Required when moving into a blocked, waiting-for-validation or done
+        // list; saved as a regular comment on the card.
+        comment: z.string().max(10000).optional(),
       }),
     )
     .output(cardUpdateResponseSchema)
@@ -1098,9 +1106,19 @@ export const cardRouter = createTRPCRouter({
         });
       }
 
+      const changesList = !!newList && newList.id !== existingCard.listId;
+      const moveComment = input.comment?.trim();
+      if (
+        changesList &&
+        card.boardType !== "template" &&
+        newList &&
+        listRequiresComment(newList.name) &&
+        !moveComment
+      )
+        throw commentRequiredError();
+
       // Only checked when the card changes list or loses its date, so cards
       // that were already in progress before the rule can still be edited.
-      const changesList = !!newList && newList.id !== existingCard.listId;
       const clearsDueDate = input.dueDate === null;
       if ((changesList || clearsDueDate) && card.boardType !== "template") {
         const finalDueDate =
@@ -1280,6 +1298,22 @@ export const cardRouter = createTRPCRouter({
             createdBy: userId,
           });
         }
+      }
+
+      if (moveComment) {
+        const moveCommentRow = await cardCommentRepo.create(ctx.db, {
+          comment: moveComment,
+          createdBy: userId,
+          cardId: card.id,
+        });
+        if (moveCommentRow)
+          activities.push({
+            type: "card.updated.comment.added" as const,
+            cardId: card.id,
+            commentId: moveCommentRow.id,
+            toComment: moveCommentRow.comment,
+            createdBy: userId,
+          });
       }
 
       if (activities.length > 0) {

@@ -3,13 +3,16 @@ import { useEffect, useMemo, useState } from "react";
 import { HiXMark } from "react-icons/hi2";
 
 import Button from "~/components/Button";
+import { commentTextToHtml } from "~/components/MoveCommentDialog";
 import { useModal } from "~/providers/modal";
 import { usePopup } from "~/providers/popup";
 import { api } from "~/utils/api";
 import { invalidateCard } from "~/utils/cardInvalidation";
 import {
   getDueDateRequiredListIds,
+  isCommentRequiredError,
   isDueDateRequiredError,
+  listRequiresComment,
 } from "~/views/board/utils/listStatus";
 
 interface MoveCardFormProps {
@@ -51,6 +54,7 @@ export function MoveCardForm({
 
   const [boardPublicId, setBoardPublicId] = useState("");
   const [listPublicId, setListPublicId] = useState("");
+  const [comment, setComment] = useState("");
 
   const selectedBoard = targets.find(
     (board) => board.publicId === boardPublicId,
@@ -63,6 +67,12 @@ export function MoveCardForm({
   useEffect(() => {
     setListPublicId(selectedBoard?.lists[0]?.publicId ?? "");
   }, [selectedBoard]);
+
+  const selectedListName =
+    selectedBoard?.lists.find((list) => list.publicId === listPublicId)?.name ??
+    "";
+  const needsComment =
+    !!selectedListName && listRequiresComment(selectedListName);
 
   const needsDueDate =
     !!selectedBoard &&
@@ -83,9 +93,11 @@ export function MoveCardForm({
     onError: (error) => {
       showPopup({
         header: t`Unable to move card`,
-        message: isDueDateRequiredError(error)
-          ? t`Set a due date before moving the card to In Progress or any list after it.`
-          : t`Please try again later, or contact customer support.`,
+        message: isCommentRequiredError(error)
+          ? t`Moving a card to this list needs a comment.`
+          : isDueDateRequiredError(error)
+            ? t`Set a due date before moving the card to In Progress or any list after it.`
+            : t`Please try again later, or contact customer support.`,
         icon: "error",
       });
     },
@@ -155,6 +167,25 @@ export function MoveCardForm({
             )}
           </label>
 
+          {needsComment && (
+            <label className="block">
+              <span className="mb-1 block text-xs font-semibold text-light-800 dark:text-dark-800">
+                {t`Comment`}
+                <span className="text-red-500" aria-hidden="true">
+                  {" "}
+                  *
+                </span>
+              </span>
+              <textarea
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                rows={3}
+                placeholder={t`Why is the card going to ${selectedListName}?`}
+                className="block w-full resize-y rounded-md border-0 bg-white/5 px-3 py-2 text-sm text-neutral-900 shadow-sm ring-1 ring-inset ring-light-600 focus:ring-2 focus:ring-inset focus:ring-light-700 dark:text-dark-1000 dark:ring-dark-700"
+              />
+            </label>
+          )}
+
           {needsDueDate && (
             <p className="rounded-md border border-dashed border-amber-500/60 px-3 py-2 text-xs text-amber-700 dark:border-amber-400/50 dark:text-amber-300">
               {t`This list requires a due date. Set one on the card first, or pick an earlier list.`}
@@ -173,9 +204,19 @@ export function MoveCardForm({
         </Button>
         <Button
           onClick={() =>
-            moveCard.mutate({ cardPublicId, listPublicId, index: 0 })
+            moveCard.mutate({
+              cardPublicId,
+              listPublicId,
+              index: 0,
+              ...(needsComment && { comment: commentTextToHtml(comment) }),
+            })
           }
-          disabled={!listPublicId || needsDueDate || moveCard.isPending}
+          disabled={
+            !listPublicId ||
+            needsDueDate ||
+            (needsComment && !comment.trim()) ||
+            moveCard.isPending
+          }
           isLoading={moveCard.isPending}
         >
           {t`Move card`}
