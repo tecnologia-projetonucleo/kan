@@ -111,7 +111,8 @@ test(
     await expect(firstComment).toBeVisible();
     await expect(newestComment).toHaveCount(0);
     await expect(loadMore).toBeVisible();
-    expect(await verticalPosition(commentForm)).toBeGreaterThan(
+    // The comment box sits above the activity in both orders.
+    expect(await verticalPosition(commentForm)).toBeLessThan(
       await verticalPosition(loadMore),
     );
 
@@ -157,7 +158,7 @@ test(
     expect(await verticalPosition(freshComment)).toBeGreaterThan(
       await verticalPosition(loadMore),
     );
-    expect(await verticalPosition(commentForm)).toBeGreaterThan(
+    expect(await verticalPosition(commentForm)).toBeLessThan(
       await verticalPosition(freshComment),
     );
   },

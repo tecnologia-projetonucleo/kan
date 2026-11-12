@@ -1,15 +1,16 @@
 import { t } from "@lingui/core/macro";
 import { env } from "next-runtime-env";
 import { useRef, useState } from "react";
-import { HiOutlinePaperClip } from "react-icons/hi";
-import { HiCheckBadge } from "react-icons/hi2";
+import { HiOutlineCheckCircle, HiOutlinePaperClip } from "react-icons/hi2";
 import { twMerge } from "tailwind-merge";
 
-import Button from "~/components/Button";
 import { useModal } from "~/providers/modal";
 import { usePopup } from "~/providers/popup";
 import { api } from "~/utils/api";
 import { invalidateCard } from "~/utils/cardInvalidation";
+
+const ACTION_CLASS =
+  "flex items-center gap-1.5 rounded-[5px] border border-light-300 px-2.5 py-1.5 text-sm font-medium text-light-900 hover:bg-light-200 disabled:cursor-wait disabled:opacity-60 dark:border-dark-300 dark:text-dark-900 dark:hover:bg-dark-200";
 
 export function AttachmentUpload({ cardPublicId }: { cardPublicId: string }) {
   const { openModal } = useModal();
@@ -118,30 +119,28 @@ export function AttachmentUpload({ cardPublicId }: { cardPublicId: string }) {
             : "border-transparent",
         )}
       >
-        <div className="flex items-center justify-between p-2">
-          <Button
+        <div className="flex flex-wrap items-center gap-2 p-1">
+          <button
             type="button"
-            variant="ghost"
-            aria-label={t`Add checklist`}
-            iconLeft={
-              <HiCheckBadge className="h-4 w-4 text-light-950 dark:text-dark-950" />
-            }
-            iconOnly
-            size="sm"
             onClick={() => openModal("ADD_CHECKLIST")}
-          />
-          <Button
+            aria-label={t`Add checklist`}
+            className={ACTION_CLASS}
+          >
+            <HiOutlineCheckCircle className="h-4 w-4" aria-hidden="true" />
+            {t`Checklist`}
+          </button>
+          <button
             type="button"
-            variant="ghost"
-            iconLeft={
-              <HiOutlinePaperClip className="h-4 w-4 text-light-950 dark:text-dark-950" />
-            }
-            isLoading={uploading}
             disabled={uploading}
-            iconOnly
-            size="sm"
             onClick={() => inputRef.current?.click()}
-          />
+            className={ACTION_CLASS}
+          >
+            <HiOutlinePaperClip className="h-4 w-4" aria-hidden="true" />
+            {uploading ? t`Uploading...` : t`Attachment`}
+          </button>
+          <span className="hidden text-xs text-light-700 dark:text-dark-700 sm:inline">
+            {t`or drop files here`}
+          </span>
         </div>
       </div>
     </div>

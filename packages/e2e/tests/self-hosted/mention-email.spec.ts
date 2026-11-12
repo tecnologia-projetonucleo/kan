@@ -78,7 +78,10 @@ function commentEditor(page: Page): Locator {
   return page
     .locator("div")
     .filter({
-      has: page.getByRole("heading", { name: "Activity", exact: true }),
+      has: page.getByRole("heading", {
+        name: "Comments and activity",
+        exact: true,
+      }),
     })
     .last()
     .locator('.tiptap[contenteditable="true"]');
@@ -100,7 +103,8 @@ async function startEditingComment(page: Page): Promise<Locator> {
     .click();
   await page.getByRole("menuitem", { name: "Edit comment" }).click();
 
-  return commentEditor(page).first();
+  // The new comment box sits above the activity; the edited comment is last.
+  return commentEditor(page).last();
 }
 
 async function saveComment(page: Page) {

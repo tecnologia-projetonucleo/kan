@@ -8,12 +8,15 @@ import { usePopup } from "~/providers/popup";
 import { useWorkspace } from "~/providers/workspace";
 import { api } from "~/utils/api";
 import { invalidateCard } from "~/utils/cardInvalidation";
+import { isDueDateRequiredError } from "~/views/board/utils/listStatus";
 
 interface DueDateSelectorProps {
   cardPublicId: string;
   dueDate: Date | null | undefined;
   isLoading?: boolean;
   disabled?: boolean;
+  // The card sits in In Progress or a later list, where a date is mandatory.
+  required?: boolean;
 }
 
 export function DueDateSelector({
@@ -21,6 +24,7 @@ export function DueDateSelector({
   dueDate,
   isLoading = false,
   disabled = false,
+  required = false,
 }: DueDateSelectorProps) {
   const { showPopup } = usePopup();
   const { workspace } = useWorkspace();
@@ -57,8 +61,16 @@ export function DueDateSelector({
 
       return { previousCard };
     },
-    onError: (_error, _update, context) => {
+    onError: (error, _update, context) => {
       utils.card.byId.setData({ cardPublicId }, context?.previousCard);
+      if (isDueDateRequiredError(error)) {
+        showPopup({
+          header: t`Due date required`,
+          message: t`Cards in In Progress and the lists after it must keep a due date.`,
+          icon: "error",
+        });
+        return;
+      }
       showPopup({
         header: t`Unable to update due date`,
         message: t`Please try again later, or contact customer support.`,
@@ -111,14 +123,18 @@ export function DueDateSelector({
         type="button"
         onClick={() => !disabled && setIsOpen(!isOpen)}
         disabled={isLoading || disabled}
-        className={`flex h-full w-full items-center rounded-[5px] border-[1px] border-light-50 py-1 pl-2 text-left text-xs text-neutral-900 dark:border-dark-50 dark:text-dark-1000 ${disabled ? "cursor-not-allowed opacity-60" : "hover:border-light-300 hover:bg-light-200 dark:hover:border-dark-200 dark:hover:bg-dark-100"}`}
+        className={`flex h-full w-full items-center rounded-[5px] border-[1px] py-1 pl-2 text-left text-xs ${
+          required && !dueDate
+            ? "border-dashed border-amber-500/60 pr-2 text-amber-700 dark:border-amber-400/50 dark:text-amber-300"
+            : "border-light-50 text-neutral-900 dark:border-dark-50 dark:text-dark-1000"
+        } ${disabled ? "cursor-not-allowed opacity-60" : "hover:border-light-300 hover:bg-light-200 dark:hover:border-dark-200 dark:hover:bg-dark-100"}`}
       >
         {dueDate ? (
           <span>{format(dueDate, "MMM d, yyyy")}</span>
         ) : (
           <>
             <HiMiniPlus size={22} className="pr-2" />
-            {t`Set due date`}
+            {required ? t`Set the due date (required)` : t`Set due date`}
           </>
         )}
       </button>

@@ -60,7 +60,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        372
+        407
       ]
     ],
     "translation": "{0} | {1}"
@@ -124,7 +124,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        651
+        659
       ]
     ],
     "translation": "{0} labels"
@@ -140,7 +140,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        893
+        917
       ]
     ],
     "translation": "{0} not found"
@@ -156,7 +156,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        197
+        211
       ]
     ],
     "translation": "{attachmentCount} attachments"
@@ -220,7 +220,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        188
+        202
       ]
     ],
     "translation": "{totalComments} comments"
@@ -370,6 +370,18 @@
     ],
     "translation": "404 - Page Not Found | kan.bn"
   },
+  "3fkgYi": {
+    "message": "A due date is required in this list",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/Card.tsx",
+        192
+      ]
+    ],
+    "translation": "A due date is required in this list"
+  },
   "/rn4RE": {
     "message": "A powerful, flexible kanban app that helps you organise work, track progress, and deliver results—all in one place.",
     "placeholders": {},
@@ -480,10 +492,6 @@
     "comments": [],
     "origin": [
       [
-        "src/views/card/index.tsx",
-        528
-      ],
-      [
         "src/views/public/board/CardModal.tsx",
         211
       ]
@@ -513,6 +521,22 @@
       ]
     ],
     "translation": "Activity logs"
+  },
+  "m16xKo": {
+    "message": "Add",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        625
+      ],
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        681
+      ]
+    ],
+    "translation": "Add"
   },
   "UGCIzB": {
     "message": "Add / edit label",
@@ -585,11 +609,15 @@
     "origin": [
       [
         "src/views/card/components/AttachmentUpload.tsx",
-        125
+        126
       ],
       [
         "src/views/card/components/Dropdown.tsx",
         123
+      ],
+      [
+        "src/views/card/index.tsx",
+        541
       ]
     ],
     "translation": "Add checklist"
@@ -693,6 +721,30 @@
       ]
     ],
     "translation": "Add to favorites"
+  },
+  "DPxsXe": {
+    "message": "Add to the bottom of the list",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        768
+      ]
+    ],
+    "translation": "Add to the bottom of the list"
+  },
+  "NEgQJQ": {
+    "message": "Add to the top of the list",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        767
+      ]
+    ],
+    "translation": "Add to the top of the list"
   },
   "cWXW+7": {
     "message": "Add webhook",
@@ -1448,14 +1500,31 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        714
+        708
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        715
+        709
       ]
     ],
-    "translation": "Attach files"
+    "translation": "Attach files",
+    "obsolete": true
+  },
+  "UY1vmE": {
+    "message": "Attachment",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        757
+      ],
+      [
+        "src/views/card/components/AttachmentUpload.tsx",
+        139
+      ]
+    ],
+    "translation": "Attachment"
   },
   "iVIGZb": {
     "message": "Attachment uploaded",
@@ -1464,7 +1533,7 @@
     "origin": [
       [
         "src/views/card/components/AttachmentUpload.tsx",
-        45
+        46
       ]
     ],
     "translation": "Attachment uploaded"
@@ -1687,7 +1756,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        157
+        162
       ]
     ],
     "translation": "Blocked since {0}"
@@ -1723,7 +1792,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        865
+        889
       ],
       [
         "src/views/board/members/index.tsx",
@@ -1731,7 +1800,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        372
+        407
       ],
       [
         "src/views/public/board/index.tsx",
@@ -1828,7 +1897,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        883
+        907
       ]
     ],
     "translation": "Board name"
@@ -2037,6 +2106,18 @@
       ]
     ],
     "translation": "Boards you archive will appear here."
+  },
+  "uMhwNP": {
+    "message": "Bottom of list",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        777
+      ]
+    ],
+    "translation": "Bottom of list"
   },
   "ZDo4HN": {
     "message": "Brainstorming",
@@ -2573,7 +2654,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        372
+        407
       ]
     ],
     "translation": "Card"
@@ -2625,11 +2706,11 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        435
+        466
       ],
       [
         "src/views/card/index.tsx",
-        472
+        480
       ]
     ],
     "translation": "Card not found"
@@ -2653,7 +2734,11 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        455
+        517
+      ],
+      [
+        "src/views/card/index.tsx",
+        492
       ]
     ],
     "translation": "Card title"
@@ -2665,7 +2750,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        438
+        462
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -2689,6 +2774,30 @@
       ]
     ],
     "translation": "Cards"
+  },
+  "E7ql/H": {
+    "message": "Cards created in In Progress or any list after it need a due date.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        221
+      ]
+    ],
+    "translation": "Cards created in In Progress or any list after it need a due date."
+  },
+  "e+xTi9": {
+    "message": "Cards in In Progress and the lists after it must keep a due date.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/DueDateSelector.tsx",
+        69
+      ]
+    ],
+    "translation": "Cards in In Progress and the lists after it must keep a due date."
   },
   "VhMDMg": {
     "message": "Change Password",
@@ -2806,6 +2915,22 @@
     ],
     "translation": "Check your inbox"
   },
+  "ANtE4t": {
+    "message": "Checklist",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/AttachmentUpload.tsx",
+        130
+      ],
+      [
+        "src/views/card/index.tsx",
+        548
+      ]
+    ],
+    "translation": "Checklist"
+  },
   "GnRmu4": {
     "message": "Checklist name",
     "placeholders": {},
@@ -2853,7 +2978,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        535
+        561
       ]
     ],
     "translation": "Choose an area"
@@ -2885,6 +3010,30 @@
       ]
     ],
     "translation": "Choose the area (required)"
+  },
+  "fnWWdG": {
+    "message": "Choose the date",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        679
+      ]
+    ],
+    "translation": "Choose the date"
+  },
+  "pOUIRc": {
+    "message": "Choose who",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        581
+      ]
+    ],
+    "translation": "Choose who"
   },
   "OrWoDw": {
     "message": "Choose who is responsible (required)",
@@ -2980,8 +3129,12 @@
         281
       ],
       [
+        "src/views/board/components/NewCardForm.tsx",
+        499
+      ],
+      [
         "src/views/card/index.tsx",
-        426
+        457
       ],
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
@@ -3097,6 +3250,18 @@
       ]
     ],
     "translation": "Comments"
+  },
+  "IqHhda": {
+    "message": "Comments and activity",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/index.tsx",
+        589
+      ]
+    ],
+    "translation": "Comments and activity"
   },
   "7i8j3G": {
     "message": "Company",
@@ -3559,7 +3724,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        746
+        805
       ],
       [
         "src/views/board/components/NewListForm.tsx",
@@ -3587,7 +3752,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        761
+        821
       ]
     ],
     "translation": "Create card"
@@ -3679,7 +3844,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        613
+        621
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -3695,11 +3860,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        139
+        143
       ],
       [
         "src/views/board/index.tsx",
-        1021
+        1045
       ]
     ],
     "translation": "Create new list"
@@ -3767,7 +3932,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        207
+        221
       ]
     ],
     "translation": "Created {0}"
@@ -3823,7 +3988,7 @@
     "origin": [
       [
         "src/views/card/components/ListSelector.tsx",
-        85
+        97
       ]
     ],
     "translation": "Current list"
@@ -4272,6 +4437,22 @@
     ],
     "translation": "deleted checklist item <0>{0}</0>"
   },
+  "Nu4oKW": {
+    "message": "Description",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        720
+      ],
+      [
+        "src/views/card/index.tsx",
+        512
+      ]
+    ],
+    "translation": "Description"
+  },
   "f8fH8W": {
     "message": "Design",
     "placeholders": {},
@@ -4544,7 +4725,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        176
+        181
       ]
     ],
     "translation": "Due {0}"
@@ -4564,10 +4745,38 @@
       ],
       [
         "src/views/card/index.tsx",
-        183
+        186
       ]
     ],
     "translation": "Due date"
+  },
+  "ggUiHr": {
+    "message": "Due date required",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        220
+      ],
+      [
+        "src/views/board/index.tsx",
+        354
+      ],
+      [
+        "src/views/board/index.tsx",
+        399
+      ],
+      [
+        "src/views/card/components/DueDateSelector.tsx",
+        68
+      ],
+      [
+        "src/views/card/components/ListSelector.tsx",
+        59
+      ]
+    ],
+    "translation": "Due date required"
   },
   "ri1hHe": {
     "message": "Due next month",
@@ -5462,7 +5671,7 @@
     "origin": [
       [
         "src/views/card/components/AttachmentUpload.tsx",
-        52
+        53
       ]
     ],
     "translation": "Failed to upload attachment. Please try again."
@@ -5842,7 +6051,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1003
+        1027
       ]
     ],
     "translation": "Get started by creating a new list"
@@ -6768,7 +6977,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        617
+        612
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -6776,7 +6985,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        174
+        177
       ]
     ],
     "translation": "Labels"
@@ -6974,7 +7183,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        436
+        460
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -6999,10 +7208,6 @@
       [
         "src/views/board/components/CardContextDuplicateModal.tsx",
         117
-      ],
-      [
-        "src/views/card/index.tsx",
-        132
       ]
     ],
     "translation": "List"
@@ -7665,7 +7870,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        438
+        494
       ]
     ],
     "translation": "New card"
@@ -7717,7 +7922,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        945
+        969
       ]
     ],
     "translation": "New list"
@@ -7918,6 +8123,18 @@
     ],
     "translation": "No credit card required"
   },
+  "mLhWqs": {
+    "message": "No date",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/Card.tsx",
+        196
+      ]
+    ],
+    "translation": "No date"
+  },
   "MK16u2": {
     "message": "No dates",
     "placeholders": {},
@@ -7973,7 +8190,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        999
+        1023
       ]
     ],
     "translation": "No lists"
@@ -7985,7 +8202,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1004
+        1028
       ]
     ],
     "translation": "No lists have been created yet"
@@ -7997,7 +8214,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        248
+        262
       ]
     ],
     "translation": "No one responsible"
@@ -8061,7 +8278,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        247
+        261
       ]
     ],
     "translation": "Nobody is responsible for this card yet"
@@ -8210,6 +8427,18 @@
     ],
     "translation": "or"
   },
+  "JIqOMm": {
+    "message": "or drop files here",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/AttachmentUpload.tsx",
+        142
+      ]
+    ],
+    "translation": "or drop files here"
+  },
   "Uci+Ph": {
     "message": "Ordered List",
     "placeholders": {},
@@ -8289,7 +8518,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        175
+        180
       ]
     ],
     "translation": "Overdue since {0}"
@@ -8753,7 +8982,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        216
+        230
       ],
       [
         "src/views/board/components/NewListForm.tsx",
@@ -8777,15 +9006,15 @@
       ],
       [
         "src/views/board/index.tsx",
-        290
+        294
       ],
       [
         "src/views/board/index.tsx",
-        346
+        362
       ],
       [
         "src/views/board/index.tsx",
-        383
+        407
       ],
       [
         "src/views/boards/components/ImportBoardsForm.tsx",
@@ -8837,7 +9066,7 @@
       ],
       [
         "src/views/card/components/DueDateSelector.tsx",
-        64
+        76
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -8845,7 +9074,7 @@
       ],
       [
         "src/views/card/components/ListSelector.tsx",
-        55
+        67
       ],
       [
         "src/views/card/components/MemberSelector.tsx",
@@ -8869,11 +9098,11 @@
       ],
       [
         "src/views/card/index.tsx",
-        283
+        318
       ],
       [
         "src/views/card/index.tsx",
-        296
+        331
       ],
       [
         "src/views/members/components/DeleteMemberConfirmation.tsx",
@@ -8977,7 +9206,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        445
+        469
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -9069,11 +9298,11 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        495
+        530
       ],
       [
         "src/views/card/index.tsx",
-        141
+        149
       ]
     ],
     "translation": "Priority"
@@ -9342,7 +9571,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        733
+        792
       ]
     ],
     "translation": "Remove file"
@@ -9613,11 +9842,11 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        559
+        568
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        570
+        575
       ],
       [
         "src/views/card/components/MemberSelector.tsx",
@@ -9625,7 +9854,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        163
+        168
       ]
     ],
     "translation": "Responsible"
@@ -9637,11 +9866,11 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        504
+        538
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        520
+        550
       ],
       [
         "src/views/card/components/AreaSelector.tsx",
@@ -9649,7 +9878,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        151
+        158
       ]
     ],
     "translation": "Responsible area"
@@ -10119,6 +10348,26 @@
     ],
     "translation": "Senior"
   },
+  "HH42U4": {
+    "message": "Set a due date before moving the card to In Progress or any list after it.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/index.tsx",
+        355
+      ],
+      [
+        "src/views/board/index.tsx",
+        400
+      ],
+      [
+        "src/views/card/components/ListSelector.tsx",
+        60
+      ]
+    ],
+    "translation": "Set a due date before moving the card to In Progress or any list after it."
+  },
   "GXGbXi": {
     "message": "Set a password to enable password-based login.",
     "placeholders": {},
@@ -10146,7 +10395,7 @@
       ],
       [
         "src/views/card/components/DueDateSelector.tsx",
-        121
+        137
       ]
     ],
     "translation": "Set due date"
@@ -10186,6 +10435,18 @@
       ]
     ],
     "translation": "set the due date"
+  },
+  "U1fgzg": {
+    "message": "Set the due date (required)",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/DueDateSelector.tsx",
+        137
+      ]
+    ],
+    "translation": "Set the due date (required)"
   },
   "JjEJSy": {
     "message": "Set up your workspace",
@@ -10574,7 +10835,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        358
+        376
       ]
     ],
     "translation": "Some attachments failed"
@@ -10872,11 +11133,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        865
+        889
       ],
       [
         "src/views/board/index.tsx",
-        902
+        926
       ]
     ],
     "translation": "Template"
@@ -11139,7 +11400,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        359
+        377
       ]
     ],
     "translation": "The card was created, but {failedCount} of {0} attachments could not be uploaded."
@@ -11568,6 +11829,18 @@
     ],
     "translation": "Token is required"
   },
+  "aKcOAG": {
+    "message": "Top of list",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        777
+      ]
+    ],
+    "translation": "Top of list"
+  },
   "eEQyz+": {
     "message": "Track all card changes with detailed activity history.",
     "placeholders": {},
@@ -11675,7 +11948,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        295
+        330
       ]
     ],
     "translation": "Unable to add label"
@@ -11727,7 +12000,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        443
+        467
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -11751,7 +12024,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        213
+        227
       ]
     ],
     "translation": "Unable to create card"
@@ -12071,11 +12344,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        345
+        361
       ],
       [
         "src/views/card/index.tsx",
-        282
+        317
       ]
     ],
     "translation": "Unable to update card"
@@ -12123,11 +12396,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        382
+        406
       ],
       [
         "src/views/card/components/DueDateSelector.tsx",
-        63
+        75
       ]
     ],
     "translation": "Unable to update due date"
@@ -12151,11 +12424,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        289
+        293
       ],
       [
         "src/views/card/components/ListSelector.tsx",
-        54
+        66
       ]
     ],
     "translation": "Unable to update list"
@@ -12640,10 +12913,22 @@
     "origin": [
       [
         "src/views/card/components/AttachmentUpload.tsx",
-        51
+        52
       ]
     ],
     "translation": "Upload failed"
+  },
+  "GxkJXS": {
+    "message": "Uploading...",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/AttachmentUpload.tsx",
+        139
+      ]
+    ],
+    "translation": "Uploading..."
   },
   "BBUDfW": {
     "message": "Urgent",
@@ -13193,7 +13478,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        865
+        889
       ],
       [
         "src/views/boards/index.tsx",
@@ -13603,11 +13888,11 @@
       ],
       [
         "src/views/board/index.tsx",
-        933
+        957
       ],
       [
         "src/views/board/index.tsx",
-        1010
+        1034
       ],
       [
         "src/views/boards/components/BoardsList.tsx",
@@ -13817,7 +14102,7 @@
     "origin": [
       [
         "src/views/card/components/AttachmentUpload.tsx",
-        46
+        47
       ]
     ],
     "translation": "Your file has been uploaded successfully."

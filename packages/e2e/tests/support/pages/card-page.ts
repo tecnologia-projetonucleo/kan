@@ -105,7 +105,7 @@ export class CardPage {
 
   private activitySection() {
     return this.page
-      .getByRole("heading", { name: "Activity", exact: true })
+      .getByRole("heading", { name: "Comments and activity", exact: true })
       .locator("..")
       .locator("..");
   }
@@ -131,7 +131,9 @@ export class CardPage {
       .click();
     await this.page.getByRole("menuitem", { name: "Edit comment" }).click();
 
-    const editor = this.editableCommentEditor().first();
+    // The new comment box sits above the activity, so the comment being
+    // edited is the last editor in the column.
+    const editor = this.editableCommentEditor().last();
     await editor.click();
     await this.page.keyboard.press("ControlOrMeta+A");
     await editor.pressSequentially(newText);

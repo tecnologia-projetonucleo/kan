@@ -463,3 +463,11 @@ export const getWorkspaceAndListIdByListPublicId = async (
       }
     : null;
 };
+
+// Id, name and position of every live list on a board. Used by the due date
+// rule, which depends on where the "in progress" list sits.
+export const getPositionsByBoardId = (db: dbClient, boardId: number) =>
+  db.query.lists.findMany({
+    columns: { id: true, name: true, index: true },
+    where: and(eq(lists.boardId, boardId), isNull(lists.deletedAt)),
+  });
