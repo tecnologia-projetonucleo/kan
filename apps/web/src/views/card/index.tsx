@@ -579,7 +579,7 @@ export default function CardPage({ isTemplate }: { isTemplate?: boolean }) {
 
           {/* Side column: comments and activity */}
           {card && (
-            <aside className="list-scroll w-full shrink-0 border-t border-light-300 bg-light-100 px-4 py-6 dark:border-dark-300 dark:bg-[#141416] md:px-6 lg:w-[400px] lg:overflow-y-auto lg:border-l lg:border-t-0">
+            <div className="list-scroll w-full shrink-0 border-t border-light-300 bg-light-100 px-4 py-6 dark:border-dark-300 dark:bg-[#141416] md:px-6 lg:w-[400px] lg:overflow-y-auto lg:border-l lg:border-t-0">
               <header className="mb-4 flex items-center justify-between gap-2">
                 <h2 className="flex items-center gap-2 text-sm font-semibold text-light-1000 dark:text-dark-1000">
                   <HiOutlineChatBubbleBottomCenterText
@@ -608,7 +608,7 @@ export default function CardPage({ isTemplate }: { isTemplate?: boolean }) {
                 order={activitySortOrder}
                 recentCommentPublicIds={recentCommentPublicIds}
               />
-            </aside>
+            </div>
           )}
         </div>
         <>
