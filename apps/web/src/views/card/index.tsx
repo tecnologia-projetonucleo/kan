@@ -538,6 +538,7 @@ export default function CardPage({ isTemplate }: { isTemplate?: boolean }) {
                         <button
                           type="button"
                           onClick={() => openModal("ADD_CHECKLIST")}
+                          aria-label={t`Add checklist`}
                           className={ACTION_BUTTON_CLASS}
                         >
                           <HiOutlineCheckCircle

@@ -124,7 +124,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        647
+        659
       ]
     ],
     "translation": "{0} etiquetas"
@@ -371,7 +371,6 @@
     "translation": "404 - Página Não Encontrada | kan.bn"
   },
   "3fkgYi": {
-    "translation": "Nesta coluna a data de vencimento é obrigatória",
     "message": "A due date is required in this list",
     "placeholders": {},
     "comments": [],
@@ -380,7 +379,8 @@
         "src/views/board/components/Card.tsx",
         192
       ]
-    ]
+    ],
+    "translation": "Nesta coluna a data de vencimento é obrigatória"
   },
   "/rn4RE": {
     "message": "A powerful, flexible kanban app that helps you organise work, track progress, and deliver results—all in one place.",
@@ -523,20 +523,20 @@
     "translation": "Registros de atividades"
   },
   "m16xKo": {
-    "translation": "Adicionar",
     "message": "Add",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        613
+        625
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        669
+        681
       ]
-    ]
+    ],
+    "translation": "Adicionar"
   },
   "UGCIzB": {
     "message": "Add / edit label",
@@ -608,8 +608,16 @@
     "comments": [],
     "origin": [
       [
+        "src/views/card/components/AttachmentUpload.tsx",
+        126
+      ],
+      [
         "src/views/card/components/Dropdown.tsx",
         123
+      ],
+      [
+        "src/views/card/index.tsx",
+        541
       ]
     ],
     "translation": "Adicionar checklist"
@@ -715,28 +723,28 @@
     "translation": "Adicionar aos favoritos"
   },
   "DPxsXe": {
-    "translation": "Adicionar no fim da coluna",
     "message": "Add to the bottom of the list",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        756
+        768
       ]
-    ]
+    ],
+    "translation": "Adicionar no fim da coluna"
   },
   "NEgQJQ": {
-    "translation": "Adicionar no topo da coluna",
     "message": "Add to the top of the list",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        755
+        767
       ]
-    ]
+    ],
+    "translation": "Adicionar no topo da coluna"
   },
   "cWXW+7": {
     "message": "Add webhook",
@@ -1503,20 +1511,20 @@
     "obsolete": true
   },
   "UY1vmE": {
-    "translation": "Anexo",
     "message": "Attachment",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        745
+        757
       ],
       [
         "src/views/card/components/AttachmentUpload.tsx",
-        138
+        139
       ]
-    ]
+    ],
+    "translation": "Anexo"
   },
   "iVIGZb": {
     "message": "Attachment uploaded",
@@ -2100,16 +2108,16 @@
     "translation": "Os quadros que você arquivar aparecerão aqui."
   },
   "uMhwNP": {
-    "translation": "Fim da coluna",
     "message": "Bottom of list",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        765
+        777
       ]
-    ]
+    ],
+    "translation": "Fim da coluna"
   },
   "ZDo4HN": {
     "message": "Brainstorming",
@@ -2726,7 +2734,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        506
+        517
       ],
       [
         "src/views/card/index.tsx",
@@ -2768,7 +2776,6 @@
     "translation": "Cards"
   },
   "E7ql/H": {
-    "translation": "Cards criados em Em Andamento ou nas colunas seguintes precisam de data de vencimento.",
     "message": "Cards created in In Progress or any list after it need a due date.",
     "placeholders": {},
     "comments": [],
@@ -2777,10 +2784,10 @@
         "src/views/board/components/NewCardForm.tsx",
         221
       ]
-    ]
+    ],
+    "translation": "Cards criados em Em Andamento ou nas colunas seguintes precisam de data de vencimento."
   },
   "e+xTi9": {
-    "translation": "Cards em Em Andamento e nas colunas seguintes precisam manter a data de vencimento.",
     "message": "Cards in In Progress and the lists after it must keep a due date.",
     "placeholders": {},
     "comments": [],
@@ -2789,7 +2796,8 @@
         "src/views/card/components/DueDateSelector.tsx",
         69
       ]
-    ]
+    ],
+    "translation": "Cards em Em Andamento e nas colunas seguintes precisam manter a data de vencimento."
   },
   "VhMDMg": {
     "message": "Change Password",
@@ -2908,20 +2916,20 @@
     "translation": "Verifique sua caixa de entrada"
   },
   "ANtE4t": {
-    "translation": "Checklist",
     "message": "Checklist",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/card/components/AttachmentUpload.tsx",
-        129
+        130
       ],
       [
         "src/views/card/index.tsx",
-        547
+        548
       ]
-    ]
+    ],
+    "translation": "Checklist"
   },
   "GnRmu4": {
     "message": "Checklist name",
@@ -2970,7 +2978,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        550
+        561
       ]
     ],
     "translation": "Escolha a área"
@@ -3004,28 +3012,28 @@
     "translation": "Escolha a área (obrigatório)"
   },
   "fnWWdG": {
-    "translation": "Escolha a data",
     "message": "Choose the date",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        667
+        679
       ]
-    ]
+    ],
+    "translation": "Escolha a data"
   },
   "pOUIRc": {
-    "translation": "Escolha quem",
     "message": "Choose who",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        569
+        581
       ]
-    ]
+    ],
+    "translation": "Escolha quem"
   },
   "OrWoDw": {
     "message": "Choose who is responsible (required)",
@@ -3122,7 +3130,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        490
+        499
       ],
       [
         "src/views/card/index.tsx",
@@ -3244,16 +3252,16 @@
     "translation": "Comentários"
   },
   "IqHhda": {
-    "translation": "Comentários e atividade",
     "message": "Comments and activity",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/card/index.tsx",
-        588
+        589
       ]
-    ]
+    ],
+    "translation": "Comentários e atividade"
   },
   "7i8j3G": {
     "message": "Company",
@@ -3716,7 +3724,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        793
+        805
       ],
       [
         "src/views/board/components/NewListForm.tsx",
@@ -3744,7 +3752,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        809
+        821
       ]
     ],
     "translation": "Criar cartão"
@@ -3836,7 +3844,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        609
+        621
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -4430,20 +4438,20 @@
     "translation": "excluiu o item da checklist <0>{0}</0>"
   },
   "Nu4oKW": {
-    "translation": "Descrição",
     "message": "Description",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        708
+        720
       ],
       [
         "src/views/card/index.tsx",
         512
       ]
-    ]
+    ],
+    "translation": "Descrição"
   },
   "f8fH8W": {
     "message": "Design",
@@ -4733,7 +4741,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        656
+        668
       ],
       [
         "src/views/card/index.tsx",
@@ -4743,7 +4751,6 @@
     "translation": "Data de vencimento"
   },
   "ggUiHr": {
-    "translation": "Data de vencimento obrigatória",
     "message": "Due date required",
     "placeholders": {},
     "comments": [],
@@ -4768,7 +4775,8 @@
         "src/views/card/components/ListSelector.tsx",
         59
       ]
-    ]
+    ],
+    "translation": "Data de vencimento obrigatória"
   },
   "ri1hHe": {
     "message": "Due next month",
@@ -6969,7 +6977,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        600
+        612
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -7862,7 +7870,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        485
+        494
       ]
     ],
     "translation": "Novo cartão"
@@ -8116,7 +8124,6 @@
     "translation": "Não é necessário cartão de crédito"
   },
   "mLhWqs": {
-    "translation": "Sem data",
     "message": "No date",
     "placeholders": {},
     "comments": [],
@@ -8125,7 +8132,8 @@
         "src/views/board/components/Card.tsx",
         196
       ]
-    ]
+    ],
+    "translation": "Sem data"
   },
   "MK16u2": {
     "message": "No dates",
@@ -8420,16 +8428,16 @@
     "translation": "ou"
   },
   "JIqOMm": {
-    "translation": "ou solte arquivos aqui",
     "message": "or drop files here",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/card/components/AttachmentUpload.tsx",
-        141
+        142
       ]
-    ]
+    ],
+    "translation": "ou solte arquivos aqui"
   },
   "Uci+Ph": {
     "message": "Ordered List",
@@ -9290,7 +9298,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        519
+        530
       ],
       [
         "src/views/card/index.tsx",
@@ -9563,7 +9571,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        780
+        792
       ]
     ],
     "translation": "Remover arquivo"
@@ -9834,7 +9842,11 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        557
+        568
+      ],
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        575
       ],
       [
         "src/views/card/components/MemberSelector.tsx",
@@ -9854,11 +9866,11 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        527
+        538
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        539
+        550
       ],
       [
         "src/views/card/components/AreaSelector.tsx",
@@ -10337,7 +10349,6 @@
     "translation": "Sênior"
   },
   "HH42U4": {
-    "translation": "Defina a data de vencimento antes de mover o card para Em Andamento ou colunas seguintes.",
     "message": "Set a due date before moving the card to In Progress or any list after it.",
     "placeholders": {},
     "comments": [],
@@ -10354,7 +10365,8 @@
         "src/views/card/components/ListSelector.tsx",
         60
       ]
-    ]
+    ],
+    "translation": "Defina a data de vencimento antes de mover o card para Em Andamento ou colunas seguintes."
   },
   "GXGbXi": {
     "message": "Set a password to enable password-based login.",
@@ -10425,7 +10437,6 @@
     "translation": "definiu a data de vencimento"
   },
   "U1fgzg": {
-    "translation": "Defina a data (obrigatório)",
     "message": "Set the due date (required)",
     "placeholders": {},
     "comments": [],
@@ -10434,7 +10445,8 @@
         "src/views/card/components/DueDateSelector.tsx",
         137
       ]
-    ]
+    ],
+    "translation": "Defina a data (obrigatório)"
   },
   "JjEJSy": {
     "message": "Set up your workspace",
@@ -10823,7 +10835,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        367
+        376
       ]
     ],
     "translation": "Alguns anexos falharam"
@@ -11388,7 +11400,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        368
+        377
       ]
     ],
     "translation": "O card foi criado, mas {failedCount} de {0} anexos não puderam ser enviados."
@@ -11818,16 +11830,16 @@
     "translation": "Token é obrigatório"
   },
   "aKcOAG": {
-    "translation": "Topo da coluna",
     "message": "Top of list",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        765
+        777
       ]
-    ]
+    ],
+    "translation": "Topo da coluna"
   },
   "eEQyz+": {
     "message": "Track all card changes with detailed activity history.",
@@ -12907,16 +12919,16 @@
     "translation": "Falha no upload"
   },
   "GxkJXS": {
-    "translation": "Enviando...",
     "message": "Uploading...",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/card/components/AttachmentUpload.tsx",
-        138
+        139
       ]
-    ]
+    ],
+    "translation": "Enviando..."
   },
   "BBUDfW": {
     "message": "Urgent",

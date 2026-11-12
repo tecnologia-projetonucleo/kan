@@ -123,6 +123,7 @@ export function AttachmentUpload({ cardPublicId }: { cardPublicId: string }) {
           <button
             type="button"
             onClick={() => openModal("ADD_CHECKLIST")}
+            aria-label={t`Add checklist`}
             className={ACTION_CLASS}
           >
             <HiOutlineCheckCircle className="h-4 w-4" aria-hidden="true" />

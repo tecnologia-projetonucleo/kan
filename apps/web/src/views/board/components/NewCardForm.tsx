@@ -335,6 +335,15 @@ export function NewCardForm({
   };
 
   const onSubmit = async (data: NewCardFormInput) => {
+    // Enter in the title submits too, so the required fields are checked here
+    // and not only through the disabled button.
+    if (
+      !data.area ||
+      (!isTemplate && data.memberPublicIds.length === 0) ||
+      (dueDateRequired && !data.dueDate)
+    )
+      return;
+
     const filesToUpload = pendingFiles;
     setPendingFiles([]);
 
@@ -481,9 +490,9 @@ export function NewCardForm({
               <HiChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
             </div>
           </CheckboxDropdown>
-          <span className="whitespace-nowrap text-xs text-light-700 dark:text-dark-800">
+          <h2 className="whitespace-nowrap text-xs font-normal text-light-700 dark:text-dark-800">
             {t`New card`}
-          </span>
+          </h2>
         </div>
         <button
           type="button"
@@ -563,6 +572,7 @@ export function NewCardForm({
                 handleSelect={(_groupKey, item) =>
                   handleSelectMembers(item.key)
                 }
+                ariaLabel={t`Responsible`}
               >
                 <div
                   className={`${chipClass} ${memberPublicIds.length ? chipFilled : chipMissing}`}
