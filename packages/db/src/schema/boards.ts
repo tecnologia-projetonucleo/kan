@@ -63,6 +63,9 @@ export const boards = pgTable(
     visibility: boardVisibilityEnum("visibility").notNull().default("private"),
     type: boardTypeEnum("type").notNull().default("regular"),
     isArchived: boolean("isArchived").notNull().default(false),
+    // Board-wide setting, changed by workspace admins: group the board view
+    // into one swimlane per responsible area.
+    areaLanes: boolean("areaLanes").notNull().default(false),
     sourceBoardId: bigint("sourceBoardId", { mode: "number" }),
   },
   (table) => [

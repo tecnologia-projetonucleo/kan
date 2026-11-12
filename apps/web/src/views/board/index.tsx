@@ -28,9 +28,11 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   HiOutlinePlusSmall,
+  HiOutlineQueueList,
   HiOutlineRectangleStack,
   HiOutlineSquare3Stack3D,
 } from "react-icons/hi2";
+import { twMerge } from "tailwind-merge";
 
 import type { UpdateBoardInput } from "@kan/api/types";
 
@@ -77,6 +79,7 @@ import { NewListForm } from "./components/NewListForm";
 import { NewTemplateForm } from "./components/NewTemplateForm";
 import { UpdateBoardSlugForm } from "./components/UpdateBoardSlugForm";
 import ViewToggle from "./components/ViewToggle";
+import AreaLanesView from "./components/AreaLanesView";
 import VisibilityButton from "./components/VisibilityButton";
 import { createBoardCollisionDetection } from "./dnd/collision";
 import {
@@ -303,6 +306,30 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
   const dueDateRequiredListIds = getDueDateRequiredListIds(
     boardData?.lists ?? [],
   );
+
+  const updateAreaLanes = api.board.update.useMutation({
+    onMutate: async (args) => {
+      await utils.board.byId.cancel();
+      const previous = utils.board.byId.getData(queryParams);
+      utils.board.byId.setData(queryParams, (oldBoard) =>
+        oldBoard && args.areaLanes !== undefined
+          ? { ...oldBoard, areaLanes: args.areaLanes }
+          : oldBoard,
+      );
+      return { previous };
+    },
+    onError: (_error, _args, context) => {
+      utils.board.byId.setData(queryParams, context?.previous);
+      showPopup({
+        header: t`Unable to change the board layout`,
+        message: t`Only workspace admins can turn swimlanes on or off.`,
+        icon: "error",
+      });
+    },
+    onSettled: async () => {
+      await utils.board.byId.invalidate(queryParams);
+    },
+  });
 
   const updateCardMutation = api.card.update.useMutation({
     onMutate: async (args) => {
@@ -939,6 +966,42 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
                 {boardData && (
                   <>
                     <ViewToggle view={view} onChange={handleViewChange} />
+                    {view === "board" &&
+                      !isTemplate &&
+                      workspace.role === "admin" && (
+                        <Tooltip
+                          content={
+                            boardData.areaLanes
+                              ? t`Swimlanes by area are on for everyone on this board`
+                              : t`Group the board by responsible area for everyone`
+                          }
+                        >
+                          <button
+                            type="button"
+                            aria-pressed={boardData.areaLanes}
+                            onClick={() =>
+                              updateAreaLanes.mutate({
+                                boardPublicId: boardId ?? "",
+                                areaLanes: !boardData.areaLanes,
+                              })
+                            }
+                            className={twMerge(
+                              "flex items-center gap-1.5 rounded-md border-[1px] px-2.5 py-1.5 text-sm font-semibold transition-colors sm:px-3",
+                              boardData.areaLanes
+                                ? "border-light-600 bg-light-200 text-light-1000 dark:border-dark-600 dark:bg-dark-300 dark:text-dark-1000"
+                                : "border-light-600 bg-light-50 text-light-900 hover:text-light-1000 dark:border-dark-600 dark:bg-dark-50 dark:text-dark-900 dark:hover:text-dark-1000",
+                            )}
+                          >
+                            <HiOutlineQueueList
+                              className="h-4 w-4"
+                              aria-hidden="true"
+                            />
+                            <span className="hidden sm:inline">
+                              {t`Area lanes`}
+                            </span>
+                          </button>
+                        </Tooltip>
+                      )}
                     <Filters
                       labels={boardData.labels}
                       members={boardData.workspace.members.filter(
@@ -1001,6 +1064,16 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
               onCardDrop={handleCalendarCardDrop}
             />
           )
+        ) : boardData?.areaLanes && !isTemplate ? (
+          <div className="min-h-0 flex-1">
+            <AreaLanesView
+              lists={boardData.lists}
+              cardPrefix={boardData.workspace.cardPrefix}
+              isTemplate={!!isTemplate}
+              dueDateRequiredListIds={dueDateRequiredListIds}
+              getCardHref={(cardPublicId) => `/cards/${cardPublicId}${cardReturnQuery}`}
+            />
+          </div>
         ) : (
           <div
             ref={scrollRef}

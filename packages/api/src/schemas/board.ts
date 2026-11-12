@@ -62,6 +62,7 @@ export const boardDetailSchema = z.object({
   slug: z.string(),
   visibility: z.string(),
   isArchived: z.boolean(),
+  areaLanes: z.boolean().default(false),
   favorite: z.boolean(),
   workspace: z.object({
     publicId: z.string(),

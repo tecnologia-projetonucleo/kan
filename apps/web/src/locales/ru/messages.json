@@ -140,7 +140,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        917
+        944
       ]
     ],
     "translation": "{0} не найдено"
@@ -1465,6 +1465,18 @@
     ],
     "translation": ""
   },
+  "64oFmH": {
+    "translation": "",
+    "message": "Area lanes",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/index.tsx",
+        1000
+      ]
+    ]
+  },
   "PyYD/v": {
     "message": "assigned <0>{0}</0> to the card",
     "placeholders": {
@@ -1792,7 +1804,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        889
+        916
       ],
       [
         "src/views/board/members/index.tsx",
@@ -1897,7 +1909,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        907
+        934
       ]
     ],
     "translation": "Название доски"
@@ -2750,7 +2762,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        462
+        489
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -3860,11 +3872,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        143
+        146
       ],
       [
         "src/views/board/index.tsx",
-        1045
+        1118
       ]
     ],
     "translation": "Создать новый список"
@@ -4761,11 +4773,11 @@
       ],
       [
         "src/views/board/index.tsx",
-        354
+        381
       ],
       [
         "src/views/board/index.tsx",
-        399
+        426
       ],
       [
         "src/views/card/components/DueDateSelector.tsx",
@@ -6051,7 +6063,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1027
+        1100
       ]
     ],
     "translation": "Начните с создания нового списка"
@@ -6275,6 +6287,18 @@
       ]
     ],
     "translation": "Google SSO + SAML"
+  },
+  "AEYz6E": {
+    "translation": "",
+    "message": "Group the board by responsible area for everyone",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/index.tsx",
+        976
+      ]
+    ]
   },
   "O1wAlQ": {
     "message": "Guest",
@@ -7183,7 +7207,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        460
+        487
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -7922,7 +7946,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        969
+        1032
       ]
     ],
     "translation": "Новый список"
@@ -8071,6 +8095,10 @@
       [
         "src/components/CardArea.tsx",
         76
+      ],
+      [
+        "src/views/board/components/AreaLanesView.tsx",
+        55
       ]
     ],
     "translation": ""
@@ -8110,6 +8138,18 @@
       ]
     ],
     "translation": "Нет карт с дедлайном"
+  },
+  "r2k5Ix": {
+    "translation": "",
+    "message": "No cards on this board yet",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/AreaLanesView.tsx",
+        112
+      ]
+    ]
   },
   "OpNhRn": {
     "message": "No credit card required",
@@ -8190,7 +8230,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1023
+        1096
       ]
     ],
     "translation": "Нет списков"
@@ -8202,7 +8242,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1028
+        1101
       ]
     ],
     "translation": "Списки ещё не созданы"
@@ -8366,6 +8406,18 @@
       ]
     ],
     "translation": "После удаления рабочего пространства возврата не будет. Это действие необратимо."
+  },
+  "XsnkFI": {
+    "translation": "",
+    "message": "Only workspace admins can turn swimlanes on or off.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/index.tsx",
+        325
+      ]
+    ]
   },
   "69b7aE": {
     "message": "Open command menu",
@@ -9006,15 +9058,15 @@
       ],
       [
         "src/views/board/index.tsx",
-        294
+        297
       ],
       [
         "src/views/board/index.tsx",
-        362
+        389
       ],
       [
         "src/views/board/index.tsx",
-        407
+        434
       ],
       [
         "src/views/boards/components/ImportBoardsForm.tsx",
@@ -9206,7 +9258,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        469
+        496
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -10355,11 +10407,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        355
+        382
       ],
       [
         "src/views/board/index.tsx",
-        400
+        427
       ],
       [
         "src/views/card/components/ListSelector.tsx",
@@ -11062,6 +11114,18 @@
     ],
     "translation": "Поддержите развитие проекта"
   },
+  "u3Wi2i": {
+    "translation": "",
+    "message": "Swimlanes by area are on for everyone on this board",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/index.tsx",
+        975
+      ]
+    ]
+  },
   "D+NlUC": {
     "message": "System",
     "placeholders": {},
@@ -11133,11 +11197,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        889
+        916
       ],
       [
         "src/views/board/index.tsx",
-        926
+        953
       ]
     ],
     "translation": "Шаблон"
@@ -11965,6 +12029,18 @@
     ],
     "translation": ""
   },
+  "ndqB/k": {
+    "translation": "",
+    "message": "Unable to change the board layout",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/index.tsx",
+        324
+      ]
+    ]
+  },
   "LeM5RY": {
     "message": "Unable to clear overrides",
     "placeholders": {},
@@ -12000,7 +12076,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        467
+        494
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -12344,7 +12420,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        361
+        388
       ],
       [
         "src/views/card/index.tsx",
@@ -12396,7 +12472,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        406
+        433
       ],
       [
         "src/views/card/components/DueDateSelector.tsx",
@@ -12424,7 +12500,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        293
+        296
       ],
       [
         "src/views/card/components/ListSelector.tsx",
@@ -13478,7 +13554,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        889
+        916
       ],
       [
         "src/views/boards/index.tsx",
@@ -13888,11 +13964,11 @@
       ],
       [
         "src/views/board/index.tsx",
-        957
+        1020
       ],
       [
         "src/views/board/index.tsx",
-        1034
+        1107
       ],
       [
         "src/views/boards/components/BoardsList.tsx",

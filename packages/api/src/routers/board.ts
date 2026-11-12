@@ -493,6 +493,7 @@ export const boardRouter = createTRPCRouter({
         visibility: z.enum(["public", "private"]).optional(),
         favorite: z.boolean().optional(),
         isArchived: z.boolean().optional(),
+        areaLanes: z.boolean().optional(),
       }),
     )
     .output(boardUpdateResponseSchema)
@@ -525,6 +526,17 @@ export const boardRouter = createTRPCRouter({
       );
       await assertBoardAccess(ctx.db, userId, board);
 
+      // The swimlane layout applies to everyone on the board, so only
+      // workspace admins may switch it.
+      if (
+        input.areaLanes !== undefined &&
+        !(await isWorkspaceAdmin(ctx.db, userId, board.workspaceId))
+      )
+        throw new TRPCError({
+          message: `Only workspace admins can change the swimlane layout`,
+          code: "FORBIDDEN",
+        });
+
       // Handle favorite toggle separately
       if (input.favorite !== undefined) {
         if (input.favorite) {
@@ -535,7 +547,7 @@ export const boardRouter = createTRPCRouter({
       }
 
       // Handle other updates (name, slug, visibility)
-      const hasOtherUpdates = input.name || input.slug || input.visibility !== undefined || input.isArchived !== undefined;
+      const hasOtherUpdates = input.name || input.slug || input.visibility !== undefined || input.isArchived !== undefined || input.areaLanes !== undefined;
 
       if (!hasOtherUpdates) {
         // Only favorite was updated, return success
@@ -563,6 +575,7 @@ export const boardRouter = createTRPCRouter({
         boardPublicId: input.boardPublicId,
         visibility: input.visibility,
         isArchived: input.isArchived,
+        areaLanes: input.areaLanes,
       });
 
       if (!result)
