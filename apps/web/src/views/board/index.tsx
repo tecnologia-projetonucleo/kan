@@ -1116,7 +1116,7 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
             />
           )
         ) : boardData?.areaLanes && !isTemplate ? (
-          <div className="min-h-0 flex-1">
+          <div className="relative z-10 min-h-0 flex-1">
             <AreaLanesView
               lists={boardData.lists}
               cardPrefix={boardData.workspace.cardPrefix}
