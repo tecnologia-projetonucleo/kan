@@ -219,6 +219,7 @@ export const getByPublicId = async (
       slug: true,
       visibility: true,
       isArchived: true,
+      areaLanes: true,
     },
     with: {
       userFavorites: {
@@ -724,6 +725,7 @@ export const update = async (
     visibility: BoardVisibilityStatus | undefined;
     boardPublicId: string;
     isArchived?: boolean;
+    areaLanes?: boolean;
   },
 ) => {
   const [result] = await db
@@ -735,6 +737,9 @@ export const update = async (
       updatedAt: new Date(),
       ...(boardInput.isArchived !== undefined && {
         isArchived: boardInput.isArchived,
+      }),
+      ...(boardInput.areaLanes !== undefined && {
+        areaLanes: boardInput.areaLanes,
       }),
     })
     .where(eq(boards.publicId, boardInput.boardPublicId))

@@ -1,0 +1,1 @@
+ALTER TABLE "board" ADD COLUMN "areaLanes" boolean DEFAULT false NOT NULL;
