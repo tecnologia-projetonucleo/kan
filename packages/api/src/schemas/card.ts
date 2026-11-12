@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+import { cardPrioritySchema } from "./priority";
+
 import {
   checklistResponseSchema,
   labelSchema,
@@ -17,6 +19,7 @@ export const cardUpdateResponseSchema = z.object({
   title: z.string(),
   description: z.string().nullable(),
   dueDate: z.date().nullable(),
+  priority: cardPrioritySchema.default("normal"),
 });
 
 // ─── Comment responses ───────────────────────────────────────
@@ -49,6 +52,7 @@ export const cardDetailSchema = z.object({
   cardNumber: z.number().nullable(),
   index: z.number(),
   dueDate: z.date().nullable(),
+  priority: cardPrioritySchema.default("normal"),
   createdBy: z.string().nullable(),
   labels: z.array(labelSchema),
   attachments: z.array(

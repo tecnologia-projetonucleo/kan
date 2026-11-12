@@ -280,6 +280,7 @@ export const getByPublicId = async (
               listId: true,
               index: true,
               dueDate: true,
+              priority: true,
               cardNumber: true,
               createdAt: true,
             },
@@ -522,6 +523,7 @@ export const getBySlug = async (
               listId: true,
               index: true,
               dueDate: true,
+              priority: true,
               cardNumber: true,
             },
             with: {

@@ -30,6 +30,7 @@ export default function CardPreview({
       createdAt={card.createdAt}
       listEnteredAt={card.listEnteredAt}
       listTone={listTone}
+      priority={card.priority}
     />
   );
 }

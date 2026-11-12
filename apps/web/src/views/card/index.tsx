@@ -40,6 +40,7 @@ import { DeleteChecklistConfirmation } from "./components/DeleteChecklistConfirm
 import { DeleteCommentConfirmation } from "./components/DeleteCommentConfirmation";
 import Dropdown from "./components/Dropdown";
 import { DueDateSelector } from "./components/DueDateSelector";
+import { PrioritySelector } from "./components/PrioritySelector";
 import LabelSelector from "./components/LabelSelector";
 import ListSelector from "./components/ListSelector";
 import MemberSelector from "./components/MemberSelector";
@@ -131,6 +132,15 @@ export function CardRightPanel({ isTemplate }: { isTemplate?: boolean }) {
         <ListSelector
           cardPublicId={cardId ?? ""}
           lists={formattedLists}
+          isLoading={!card}
+          disabled={!canEdit}
+        />
+      </div>
+      <div className="mb-4 flex w-full flex-row">
+        <p className="my-2 mb-2 w-[100px] text-sm font-medium">{t`Priority`}</p>
+        <PrioritySelector
+          cardPublicId={cardId ?? ""}
+          priority={card?.priority}
           isLoading={!card}
           disabled={!canEdit}
         />
