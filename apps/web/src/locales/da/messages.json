@@ -124,7 +124,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        645
+        651
       ]
     ],
     "translation": "{0} etiketter"
@@ -1448,11 +1448,11 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        708
+        714
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        709
+        715
       ]
     ],
     "translation": ""
@@ -2653,7 +2653,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        450
+        455
       ]
     ],
     "translation": "Korttitel"
@@ -2853,7 +2853,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        530
+        535
       ]
     ],
     "translation": ""
@@ -2887,7 +2887,6 @@
     "translation": ""
   },
   "OrWoDw": {
-    "translation": "",
     "message": "Choose who is responsible (required)",
     "placeholders": {},
     "comments": [],
@@ -2896,7 +2895,8 @@
         "src/views/card/components/MemberSelector.tsx",
         145
       ]
-    ]
+    ],
+    "translation": ""
   },
   "VHS0aJ": {
     "message": "Clear all custom permissions?",
@@ -3546,7 +3546,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        740
+        746
       ],
       [
         "src/views/board/components/NewListForm.tsx",
@@ -3574,7 +3574,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        755
+        761
       ]
     ],
     "translation": "Opret kort"
@@ -3666,7 +3666,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        607
+        613
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -4521,7 +4521,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        662
+        668
       ],
       [
         "src/views/card/index.tsx",
@@ -6703,7 +6703,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        611
+        617
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -7587,7 +7587,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        433
+        438
       ]
     ],
     "translation": "Nyt kort"
@@ -7913,7 +7913,6 @@
     "translation": "Der er endnu ikke oprettet nogen lister"
   },
   "Ou8jzT": {
-    "translation": "",
     "message": "No one responsible",
     "placeholders": {},
     "comments": [],
@@ -7922,7 +7921,8 @@
         "src/views/board/components/Card.tsx",
         248
       ]
-    ]
+    ],
+    "translation": ""
   },
   "i30J2U": {
     "message": "No projects found",
@@ -7977,7 +7977,6 @@
     "translation": "Ingen webhooks konfigureret. Tilføj en webhook for at modtage notifikationer."
   },
   "gDZn5d": {
-    "translation": "",
     "message": "Nobody is responsible for this card yet",
     "placeholders": {},
     "comments": [],
@@ -7986,7 +7985,8 @@
         "src/views/board/components/Card.tsx",
         247
       ]
-    ]
+    ],
+    "translation": ""
   },
   "CsekCi": {
     "message": "Normal",
@@ -8991,7 +8991,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        490
+        495
       ],
       [
         "src/views/card/index.tsx",
@@ -9264,7 +9264,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        727
+        733
       ]
     ],
     "translation": ""
@@ -9529,14 +9529,17 @@
     "translation": "Ressourcer"
   },
   "XQACoK": {
-    "translation": "",
     "message": "Responsible",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        564
+        559
+      ],
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        570
       ],
       [
         "src/views/card/components/MemberSelector.tsx",
@@ -9546,7 +9549,8 @@
         "src/views/card/index.tsx",
         163
       ]
-    ]
+    ],
+    "translation": ""
   },
   "HrdRaJ": {
     "message": "Responsible area",
@@ -9555,11 +9559,11 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        499
+        504
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        515
+        520
       ],
       [
         "src/views/card/components/AreaSelector.tsx",
@@ -10492,7 +10496,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        353
+        358
       ]
     ],
     "translation": ""
@@ -11057,7 +11061,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        354
+        359
       ]
     ],
     "translation": ""

@@ -1,6 +1,7 @@
 import type { Page } from "@playwright/test";
 import { expect } from "@playwright/test";
 
+import { fillRequiredCardFields } from "../new-card-fields";
 import { waitForTrpcMutation, waitForTrpcQuery } from "../wait-for-trpc";
 
 export class BoardPage {
@@ -44,6 +45,7 @@ export class BoardPage {
       : this.page;
     await scope.getByRole("button", { name: "Add card", exact: true }).click();
     await this.page.getByPlaceholder("Card title").fill(title);
+    await fillRequiredCardFields(this.page);
     const created = waitForTrpcMutation(this.page, "card.create");
     await this.page.getByRole("button", { name: "Create card" }).click();
     await this.page

@@ -1,6 +1,7 @@
 import type { Page } from "@playwright/test";
 import { expect } from "@playwright/test";
 
+import { fillRequiredCardFields } from "../new-card-fields";
 import { waitForTrpcMutation } from "../wait-for-trpc";
 
 export function toDateKey(date: Date) {
@@ -71,6 +72,7 @@ export class CalendarPage {
     await this.dayCell(date).click();
     await this.page.getByRole("heading", { name: "New card" }).waitFor();
     await this.page.getByPlaceholder("Card title").fill(title);
+    await fillRequiredCardFields(this.page);
     const created = waitForTrpcMutation(this.page, "card.create");
     await this.page.getByRole("button", { name: "Create card" }).click();
     await this.page

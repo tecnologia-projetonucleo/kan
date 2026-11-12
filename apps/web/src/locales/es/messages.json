@@ -124,7 +124,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        645
+        651
       ]
     ],
     "translation": "{0} etiquetas"
@@ -1448,11 +1448,11 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        708
+        714
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        709
+        715
       ]
     ],
     "translation": "Adjuntar archivos"
@@ -2653,7 +2653,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        450
+        455
       ]
     ],
     "translation": "Título de la tarjeta"
@@ -2853,7 +2853,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        530
+        535
       ]
     ],
     "translation": ""
@@ -2887,7 +2887,6 @@
     "translation": ""
   },
   "OrWoDw": {
-    "translation": "",
     "message": "Choose who is responsible (required)",
     "placeholders": {},
     "comments": [],
@@ -2896,7 +2895,8 @@
         "src/views/card/components/MemberSelector.tsx",
         145
       ]
-    ]
+    ],
+    "translation": ""
   },
   "VHS0aJ": {
     "message": "Clear all custom permissions?",
@@ -3559,7 +3559,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        740
+        746
       ],
       [
         "src/views/board/components/NewListForm.tsx",
@@ -3587,7 +3587,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        755
+        761
       ]
     ],
     "translation": "Crear tarjeta"
@@ -3679,7 +3679,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        607
+        613
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -4560,7 +4560,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        662
+        668
       ],
       [
         "src/views/card/index.tsx",
@@ -6768,7 +6768,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        611
+        617
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -7665,7 +7665,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        433
+        438
       ]
     ],
     "translation": "Nueva tarjeta"
@@ -7991,7 +7991,6 @@
     "translation": "Aún no se han creado listas"
   },
   "Ou8jzT": {
-    "translation": "",
     "message": "No one responsible",
     "placeholders": {},
     "comments": [],
@@ -8000,7 +7999,8 @@
         "src/views/board/components/Card.tsx",
         248
       ]
-    ]
+    ],
+    "translation": ""
   },
   "i30J2U": {
     "message": "No projects found",
@@ -8055,7 +8055,6 @@
     "translation": "No hay webhooks configurados. Agregue un webhook para recibir notificaciones."
   },
   "gDZn5d": {
-    "translation": "",
     "message": "Nobody is responsible for this card yet",
     "placeholders": {},
     "comments": [],
@@ -8064,7 +8063,8 @@
         "src/views/board/components/Card.tsx",
         247
       ]
-    ]
+    ],
+    "translation": ""
   },
   "CsekCi": {
     "message": "Normal",
@@ -9069,7 +9069,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        490
+        495
       ],
       [
         "src/views/card/index.tsx",
@@ -9342,7 +9342,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        727
+        733
       ]
     ],
     "translation": "Eliminar archivo"
@@ -9607,14 +9607,17 @@
     "translation": "Recursos"
   },
   "XQACoK": {
-    "translation": "",
     "message": "Responsible",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        564
+        559
+      ],
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        570
       ],
       [
         "src/views/card/components/MemberSelector.tsx",
@@ -9624,7 +9627,8 @@
         "src/views/card/index.tsx",
         163
       ]
-    ]
+    ],
+    "translation": ""
   },
   "HrdRaJ": {
     "message": "Responsible area",
@@ -9633,11 +9637,11 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        499
+        504
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        515
+        520
       ],
       [
         "src/views/card/components/AreaSelector.tsx",
@@ -10570,7 +10574,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        353
+        358
       ]
     ],
     "translation": "Error en algunos archivos adjuntos"
@@ -11135,7 +11139,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        354
+        359
       ]
     ],
     "translation": "La tarjeta se creó, pero no se pudieron cargar {failedCount} de {0} archivos adjuntos."

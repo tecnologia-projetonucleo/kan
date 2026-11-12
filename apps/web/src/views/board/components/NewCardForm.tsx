@@ -321,6 +321,11 @@ export function NewCardForm({
   };
 
   const onSubmit = async (data: NewCardFormInput) => {
+    // Enter in the title submits too, so the required fields are checked here
+    // and not only through the disabled button.
+    if (!data.area || (!isTemplate && data.memberPublicIds.length === 0))
+      return;
+
     const filesToUpload = pendingFiles;
     setPendingFiles([]);
 
@@ -551,6 +556,7 @@ export function NewCardForm({
                 handleSelect={(_groupKey, item) =>
                   handleSelectMembers(item.key)
                 }
+                ariaLabel={t`Responsible`}
               >
                 <div
                   className={`flex h-full w-full items-center rounded-[5px] border-[1px] px-2 py-1 text-left text-xs ${
