@@ -19,6 +19,7 @@ vi.mock("@kan/db/repository/card.repo", () => ({
   getByPublicId: vi.fn(),
   reorder: vi.fn(),
   getAssignees: vi.fn(),
+  removeLabelsFromOtherBoards: vi.fn().mockResolvedValue([]),
 }));
 
 vi.mock("@kan/db/repository/cardActivity.repo", () => ({

@@ -7,10 +7,12 @@ import {
   gt,
   inArray,
   isNull,
+  ne,
   sql,
 } from "drizzle-orm";
 
 import type { dbClient } from "@kan/db/client";
+import type { CardArea, CardPriority } from "@kan/db/schema";
 import {
   cardActivities,
   cardAttachments,
@@ -24,7 +26,6 @@ import {
   workspaceMembers,
   workspaces,
 } from "@kan/db/schema";
-import type { CardArea, CardPriority } from "@kan/db/schema";
 import { generateUID } from "@kan/shared/utils";
 
 export const getCount = async (db: dbClient) => {
@@ -280,7 +281,6 @@ export const assertCardLabelBoardsMatch = async (
           pair.labelId,
         );
     }
-
   }
 };
 
@@ -1135,6 +1135,36 @@ export const hardDeleteCardLabelRelationship = async (
     .returning();
 
   return result;
+};
+
+// Labels belong to a board. When a card moves to another board, the links
+// to labels of any other board are dropped; returns the removed label ids.
+export const removeLabelsFromOtherBoards = async (
+  db: dbClient,
+  args: { cardId: number; boardId: number },
+) => {
+  const stale = await db
+    .select({ labelId: cardsToLabels.labelId })
+    .from(cardsToLabels)
+    .innerJoin(labels, eq(labels.id, cardsToLabels.labelId))
+    .where(
+      and(
+        eq(cardsToLabels.cardId, args.cardId),
+        ne(labels.boardId, args.boardId),
+      ),
+    );
+  const labelIds = stale.map((row) => row.labelId);
+  if (!labelIds.length) return labelIds;
+
+  await db
+    .delete(cardsToLabels)
+    .where(
+      and(
+        eq(cardsToLabels.cardId, args.cardId),
+        inArray(cardsToLabels.labelId, labelIds),
+      ),
+    );
+  return labelIds;
 };
 
 export const hardDeleteAllCardLabelRelationships = async (

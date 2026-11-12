@@ -60,7 +60,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        407
+        408
       ]
     ],
     "translation": "{0} | {1}"
@@ -613,11 +613,11 @@
       ],
       [
         "src/views/card/components/Dropdown.tsx",
-        123
+        124
       ],
       [
         "src/views/card/index.tsx",
-        541
+        542
       ]
     ],
     "translation": "Ajouter une checklist"
@@ -1466,7 +1466,6 @@
     "translation": ""
   },
   "64oFmH": {
-    "translation": "",
     "message": "Area lanes",
     "placeholders": {},
     "comments": [],
@@ -1475,7 +1474,8 @@
         "src/views/board/index.tsx",
         1000
       ]
-    ]
+    ],
+    "translation": ""
   },
   "PyYD/v": {
     "message": "assigned <0>{0}</0> to the card",
@@ -1811,8 +1811,12 @@
         209
       ],
       [
+        "src/views/card/components/MoveCardForm.tsx",
+        120
+      ],
+      [
         "src/views/card/index.tsx",
-        407
+        408
       ],
       [
         "src/views/public/board/index.tsx",
@@ -2625,6 +2629,10 @@
         77
       ],
       [
+        "src/views/card/components/MoveCardForm.tsx",
+        172
+      ],
+      [
         "src/views/members/components/DeleteMemberConfirmation.tsx",
         55
       ],
@@ -2666,7 +2674,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        407
+        408
       ]
     ],
     "translation": "Carte"
@@ -2682,7 +2690,7 @@
       ],
       [
         "src/views/card/components/Dropdown.tsx",
-        46
+        47
       ]
     ],
     "translation": "Carte dupliquée"
@@ -2694,7 +2702,7 @@
     "origin": [
       [
         "src/views/card/components/Dropdown.tsx",
-        48
+        49
       ]
     ],
     "translation": "Carte dupliquée avec succès."
@@ -2711,6 +2719,18 @@
     ],
     "translation": "Les membres affectés aux cartes seront supprimés lors du déplacement vers un autre espace de travail."
   },
+  "wmwvU1": {
+    "translation": "",
+    "message": "Card moved",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/MoveCardForm.tsx",
+        78
+      ]
+    ]
+  },
   "fEY2vP": {
     "message": "Card not found",
     "placeholders": {},
@@ -2718,11 +2738,11 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        466
+        467
       ],
       [
         "src/views/card/index.tsx",
-        480
+        481
       ]
     ],
     "translation": "Carte introuvable"
@@ -2734,7 +2754,7 @@
     "origin": [
       [
         "src/views/card/components/Dropdown.tsx",
-        167
+        179
       ]
     ],
     "translation": "Options de la carte"
@@ -2750,7 +2770,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        492
+        493
       ]
     ],
     "translation": "Titre de la carte"
@@ -2766,7 +2786,7 @@
       ],
       [
         "src/views/card/components/Dropdown.tsx",
-        74
+        75
       ],
       [
         "src/views/public/board/CardModal.tsx",
@@ -2938,7 +2958,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        548
+        549
       ]
     ],
     "translation": ""
@@ -3145,8 +3165,12 @@
         499
       ],
       [
+        "src/views/card/components/MoveCardForm.tsx",
+        102
+      ],
+      [
         "src/views/card/index.tsx",
-        457
+        458
       ],
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
@@ -3270,7 +3294,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        589
+        590
       ]
     ],
     "translation": ""
@@ -3620,7 +3644,7 @@
     "origin": [
       [
         "src/views/card/components/Dropdown.tsx",
-        107
+        108
       ]
     ],
     "translation": "Copier le lien de la carte"
@@ -3692,7 +3716,7 @@
     "origin": [
       [
         "src/views/card/components/Dropdown.tsx",
-        114
+        115
       ]
     ],
     "translation": "Copier l'ID du ticket"
@@ -4308,7 +4332,7 @@
       ],
       [
         "src/views/card/components/Dropdown.tsx",
-        152
+        164
       ]
     ],
     "translation": "Supprimer la carte"
@@ -4460,7 +4484,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        512
+        513
       ]
     ],
     "translation": ""
@@ -4757,7 +4781,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        186
+        187
       ]
     ],
     "translation": "Date d'échéance"
@@ -4865,7 +4889,7 @@
       ],
       [
         "src/views/card/components/Dropdown.tsx",
-        130
+        131
       ]
     ],
     "translation": "Dupliquer la carte"
@@ -6289,7 +6313,6 @@
     "translation": "Google SSO + SAML"
   },
   "AEYz6E": {
-    "translation": "",
     "message": "Group the board by responsible area for everyone",
     "placeholders": {},
     "comments": [],
@@ -6298,7 +6321,8 @@
         "src/views/board/index.tsx",
         976
       ]
-    ]
+    ],
+    "translation": ""
   },
   "O1wAlQ": {
     "message": "Guest",
@@ -6515,7 +6539,7 @@
     "origin": [
       [
         "src/views/card/components/Dropdown.tsx",
-        91
+        92
       ]
     ],
     "translation": "ID copié"
@@ -7009,7 +7033,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        177
+        178
       ]
     ],
     "translation": "Étiquettes"
@@ -7037,6 +7061,18 @@
       ]
     ],
     "translation": "Étiquettes et filtres"
+  },
+  "i1CRWq": {
+    "translation": "",
+    "message": "Labels from this board are removed, and responsible people without access to the new board are unassigned.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/MoveCardForm.tsx",
+        165
+      ]
+    ]
   },
   "vXIe7J": {
     "message": "Language",
@@ -7211,7 +7247,7 @@
       ],
       [
         "src/views/card/components/Dropdown.tsx",
-        72
+        73
       ],
       [
         "src/views/public/board/CardModal.tsx",
@@ -7232,6 +7268,10 @@
       [
         "src/views/board/components/CardContextDuplicateModal.tsx",
         117
+      ],
+      [
+        "src/views/card/components/MoveCardForm.tsx",
+        137
       ]
     ],
     "translation": "Liste"
@@ -7700,6 +7740,34 @@
     ],
     "translation": "Déplacer le tableau vers un autre espace de travail"
   },
+  "TnU3pN": {
+    "translation": "",
+    "message": "Move card",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/MoveCardForm.tsx",
+        181
+      ]
+    ]
+  },
+  "CluBqG": {
+    "translation": "",
+    "message": "Move to another board",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/Dropdown.tsx",
+        151
+      ],
+      [
+        "src/views/card/components/MoveCardForm.tsx",
+        98
+      ]
+    ]
+  },
   "51UCsN": {
     "message": "Move to another list",
     "placeholders": {},
@@ -8140,7 +8208,6 @@
     "translation": "Aucune carte à échéance"
   },
   "r2k5Ix": {
-    "translation": "",
     "message": "No cards on this board yet",
     "placeholders": {},
     "comments": [],
@@ -8149,7 +8216,8 @@
         "src/views/board/components/AreaLanesView.tsx",
         112
       ]
-    ]
+    ],
+    "translation": ""
   },
   "OpNhRn": {
     "message": "No credit card required",
@@ -8408,7 +8476,6 @@
     "translation": "Une fois votre espace de travail supprimé, il n'y a pas de retour en arrière possible. Cette action ne peut pas être annulée."
   },
   "XsnkFI": {
-    "translation": "",
     "message": "Only workspace admins can turn swimlanes on or off.",
     "placeholders": {},
     "comments": [],
@@ -8417,7 +8484,8 @@
         "src/views/board/index.tsx",
         325
       ]
-    ]
+    ],
+    "translation": ""
   },
   "69b7aE": {
     "message": "Open command menu",
@@ -9133,6 +9201,10 @@
         82
       ],
       [
+        "src/views/card/components/MoveCardForm.tsx",
+        88
+      ],
+      [
         "src/views/card/components/NewChecklistForm.tsx",
         82
       ],
@@ -9150,11 +9222,11 @@
       ],
       [
         "src/views/card/index.tsx",
-        318
+        319
       ],
       [
         "src/views/card/index.tsx",
-        331
+        332
       ],
       [
         "src/views/members/components/DeleteMemberConfirmation.tsx",
@@ -9262,15 +9334,15 @@
       ],
       [
         "src/views/card/components/Dropdown.tsx",
-        55
+        56
       ],
       [
         "src/views/card/components/Dropdown.tsx",
-        81
+        82
       ],
       [
         "src/views/card/components/Dropdown.tsx",
-        100
+        101
       ],
       [
         "src/views/public/board/CardModal.tsx",
@@ -9354,7 +9426,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        149
+        150
       ]
     ],
     "translation": ""
@@ -9906,7 +9978,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        168
+        169
       ]
     ],
     "translation": ""
@@ -9930,7 +10002,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        158
+        159
       ]
     ],
     "translation": ""
@@ -10416,6 +10488,10 @@
       [
         "src/views/card/components/ListSelector.tsx",
         60
+      ],
+      [
+        "src/views/card/components/MoveCardForm.tsx",
+        87
       ]
     ],
     "translation": ""
@@ -11115,7 +11191,6 @@
     "translation": "Soutenir le développement du projet"
   },
   "u3Wi2i": {
-    "translation": "",
     "message": "Swimlanes by area are on for everyone on this board",
     "placeholders": {},
     "comments": [],
@@ -11124,7 +11199,8 @@
         "src/views/board/index.tsx",
         975
       ]
-    ]
+    ],
+    "translation": ""
   },
   "D+NlUC": {
     "message": "System",
@@ -11450,6 +11526,22 @@
     ],
     "translation": "La carte a été dupliquée."
   },
+  "XVBwC+": {
+    "translation": "",
+    "message": "The card is now on {0}.",
+    "placeholders": {
+      "0": [
+        "selectedBoard?.name ?? \"\""
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/MoveCardForm.tsx",
+        79
+      ]
+    ]
+  },
   "kwssev": {
     "message": "The card was created, but {failedCount} of {0} attachments could not be uploaded.",
     "placeholders": {
@@ -11573,6 +11665,18 @@
     ],
     "translation": "Thème"
   },
+  "Y84mWx": {
+    "translation": "",
+    "message": "There is no other board in this workspace.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/MoveCardForm.tsx",
+        114
+      ]
+    ]
+  },
   "Yf9FAx": {
     "message": "They won't be able to access this workspace.",
     "placeholders": {},
@@ -11637,6 +11741,18 @@
     ],
     "translation": "Cette clé API ne sera affichée qu'une seule fois. Veuillez la sauvegarder dans un endroit sécurisé."
   },
+  "uTUhHv": {
+    "translation": "",
+    "message": "This board has no lists yet.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/MoveCardForm.tsx",
+        153
+      ]
+    ]
+  },
   "l4asa1": {
     "message": "This board is private or does not exist",
     "placeholders": {},
@@ -11684,6 +11800,18 @@
       ]
     ],
     "translation": "Ce lien d'invitation est invalide ou a expiré."
+  },
+  "afgZRd": {
+    "translation": "",
+    "message": "This list requires a due date. Set one on the card first, or pick an earlier list.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/MoveCardForm.tsx",
+        160
+      ]
+    ]
   },
   "vlxQFL": {
     "message": "This member's permissions have been reset to their role defaults.",
@@ -11812,7 +11940,7 @@
     "origin": [
       [
         "src/views/card/components/Dropdown.tsx",
-        93
+        94
       ]
     ],
     "translation": "ID du ticket copié dans le presse-papiers"
@@ -12012,7 +12140,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        330
+        331
       ]
     ],
     "translation": "Impossible d'ajouter l'étiquette"
@@ -12030,7 +12158,6 @@
     "translation": ""
   },
   "ndqB/k": {
-    "translation": "",
     "message": "Unable to change the board layout",
     "placeholders": {},
     "comments": [],
@@ -12039,7 +12166,8 @@
         "src/views/board/index.tsx",
         324
       ]
-    ]
+    ],
+    "translation": ""
   },
   "LeM5RY": {
     "message": "Unable to clear overrides",
@@ -12060,7 +12188,7 @@
     "origin": [
       [
         "src/views/card/components/Dropdown.tsx",
-        98
+        99
       ]
     ],
     "translation": "Impossible de copier l'ID"
@@ -12080,7 +12208,7 @@
       ],
       [
         "src/views/card/components/Dropdown.tsx",
-        79
+        80
       ],
       [
         "src/views/public/board/CardModal.tsx",
@@ -12256,7 +12384,7 @@
       ],
       [
         "src/views/card/components/Dropdown.tsx",
-        53
+        54
       ]
     ],
     "translation": "Impossible de dupliquer la carte"
@@ -12281,6 +12409,10 @@
       [
         "src/views/board/components/CardContextMoveListModal.tsx",
         41
+      ],
+      [
+        "src/views/card/components/MoveCardForm.tsx",
+        85
       ]
     ],
     "translation": "Impossible de déplacer la carte"
@@ -12424,7 +12556,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        317
+        318
       ]
     ],
     "translation": "Impossible de mettre à jour la carte"
