@@ -1255,6 +1255,19 @@ export const cardRouter = createTRPCRouter({
           ).map((member) => member.id),
         );
 
+        const removedLabelIds = await cardRepo.removeLabelsFromOtherBoards(
+          ctx.db,
+          { cardId: card.id, boardId: newList.boardId },
+        );
+        for (const labelId of removedLabelIds) {
+          activities.push({
+            type: "card.updated.label.removed" as const,
+            cardId: card.id,
+            labelId,
+            createdBy: userId,
+          });
+        }
+
         for (const member of assignees.filter((m) => !keep.has(m.id))) {
           await cardRepo.hardDeleteCardMemberRelationship(ctx.db, {
             cardId: card.id,

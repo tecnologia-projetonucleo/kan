@@ -3,6 +3,7 @@ import {
   HiEllipsisHorizontal,
   HiHashtag,
   HiLink,
+  HiOutlineArrowsRightLeft,
   HiOutlineCheckCircle,
   HiOutlineDocumentDuplicate,
   HiOutlineTrash,
@@ -144,6 +145,17 @@ export default function CardDropdown({
             ),
             disabled: duplicateCard.isPending || !listPublicId,
           },
+          ...(!isTemplate
+            ? [
+                {
+                  label: t`Move to another board`,
+                  action: () => openModal("MOVE_CARD_BOARD"),
+                  icon: (
+                    <HiOutlineArrowsRightLeft className="h-[16px] w-[16px] text-dark-900" />
+                  ),
+                },
+              ]
+            : []),
         ]
       : []),
     ...(canDeleteCard || isCreator

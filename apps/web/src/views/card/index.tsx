@@ -50,6 +50,7 @@ import { AreaSelector } from "./components/AreaSelector";
 import LabelSelector from "./components/LabelSelector";
 import ListSelector from "./components/ListSelector";
 import MemberSelector from "./components/MemberSelector";
+import { MoveCardForm } from "./components/MoveCardForm";
 import { NewChecklistForm } from "./components/NewChecklistForm";
 import NewCommentForm from "./components/NewCommentForm";
 
@@ -646,6 +647,20 @@ export default function CardPage({ isTemplate }: { isTemplate?: boolean }) {
               labelPublicId={entityId}
             />
           </Modal>
+
+          {card && (
+            <Modal
+              modalSize="sm"
+              isVisible={isOpen && modalContentType === "MOVE_CARD_BOARD"}
+            >
+              <MoveCardForm
+                cardPublicId={cardId}
+                currentBoardPublicId={card.list.board.publicId}
+                workspacePublicId={card.list.board.workspace.publicId}
+                hasDueDate={!!card.dueDate}
+              />
+            </Modal>
+          )}
 
           <Modal
             modalSize="sm"
