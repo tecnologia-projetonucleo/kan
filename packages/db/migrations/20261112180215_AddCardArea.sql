@@ -1,0 +1,2 @@
+CREATE TYPE "public"."card_area" AS ENUM('produto', 'dados', 'tecnologia', 'risco', 'sportbook', 'cassino', 'atendimento', 'criativo', 'crm', 'afiliado', 'financeiro', 'marketing');--> statement-breakpoint
+ALTER TABLE "card" ADD COLUMN "area" "card_area";

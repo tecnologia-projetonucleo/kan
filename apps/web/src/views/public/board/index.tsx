@@ -228,6 +228,7 @@ export default function PublicBoardView() {
                               attachments={card.attachments}
                               dueDate={card.dueDate ?? null}
                               priority={card.priority}
+                              area={card.area}
                             />
                           </Link>
                         );

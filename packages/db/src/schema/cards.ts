@@ -59,6 +59,23 @@ export const cardPriorities = ["high", "normal", "low"] as const;
 export type CardPriority = (typeof cardPriorities)[number];
 export const cardPriorityEnum = pgEnum("card_priority", cardPriorities);
 
+export const cardAreas = [
+  "produto",
+  "dados",
+  "tecnologia",
+  "risco",
+  "sportbook",
+  "cassino",
+  "atendimento",
+  "criativo",
+  "crm",
+  "afiliado",
+  "financeiro",
+  "marketing",
+] as const;
+export type CardArea = (typeof cardAreas)[number];
+export const cardAreaEnum = pgEnum("card_area", cardAreas);
+
 export const cards = pgTable(
   "card",
   {
@@ -85,6 +102,9 @@ export const cards = pgTable(
     ),
     dueDate: timestamp("dueDate"),
     priority: cardPriorityEnum("priority").notNull().default("normal"),
+    // Nullable only for cards created before the field existed; the app
+    // requires it for new cards.
+    area: cardAreaEnum("area"),
   },
   (table) => [
     index("card_list_number_idx").on(table.listId, table.cardNumber),

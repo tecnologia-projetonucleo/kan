@@ -24,7 +24,7 @@ import {
   workspaceMembers,
   workspaces,
 } from "@kan/db/schema";
-import type { CardPriority } from "@kan/db/schema";
+import type { CardArea, CardPriority } from "@kan/db/schema";
 import { generateUID } from "@kan/shared/utils";
 
 export const getCount = async (db: dbClient) => {
@@ -47,6 +47,7 @@ export const create = async (
     position: "start" | "end";
     dueDate?: Date | null;
     priority?: CardPriority;
+    area?: CardArea | null;
   },
 ) => {
   return db.transaction(async (tx) => {
@@ -109,6 +110,7 @@ export const create = async (
         cardNumber,
         dueDate: cardInput.dueDate ?? null,
         ...(cardInput.priority && { priority: cardInput.priority }),
+        area: cardInput.area ?? null,
       })
       .returning({
         id: cards.id,
@@ -327,6 +329,7 @@ export const update = async (
     description?: string | null;
     dueDate?: Date | null;
     priority?: CardPriority;
+    area?: CardArea | null;
   },
   args: {
     cardPublicId: string;
@@ -339,6 +342,7 @@ export const update = async (
       description: cardInput.description,
       dueDate: cardInput.dueDate !== undefined ? cardInput.dueDate : undefined,
       priority: cardInput.priority,
+      area: cardInput.area,
       updatedAt: new Date(),
     })
     .where(and(eq(cards.publicId, args.cardPublicId), isNull(cards.deletedAt)))
@@ -349,6 +353,7 @@ export const update = async (
       description: cards.description,
       dueDate: cards.dueDate,
       priority: cards.priority,
+      area: cards.area,
     });
 
   return result;
@@ -385,6 +390,7 @@ export const getByPublicId = (db: dbClient, cardPublicId: string) => {
       listId: true,
       dueDate: true,
       priority: true,
+      area: true,
     },
     with: {
       list: {
@@ -613,6 +619,7 @@ export const getWithListAndMembersByPublicId = async (
       description: true,
       dueDate: true,
       priority: true,
+      area: true,
       createdBy: true,
       cardNumber: true,
       index: true,
@@ -1007,6 +1014,7 @@ export const reorder = async (
         description: true,
         dueDate: true,
         priority: true,
+        area: true,
       },
       where: eq(cards.id, card.id),
     });

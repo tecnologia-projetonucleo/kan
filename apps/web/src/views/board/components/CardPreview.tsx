@@ -31,6 +31,7 @@ export default function CardPreview({
       listEnteredAt={card.listEnteredAt}
       listTone={listTone}
       priority={card.priority}
+      area={card.area}
     />
   );
 }

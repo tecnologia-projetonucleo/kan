@@ -9,9 +9,11 @@ import {
 import { twMerge } from "tailwind-merge";
 
 import type { ListTone } from "../utils/listStatus";
+import type { CardArea } from "~/components/CardArea";
 import type { CardPriority } from "~/components/CardPriority";
 import Avatar from "~/components/Avatar";
 import Badge from "~/components/Badge";
+import { AreaTag } from "~/components/CardArea";
 import { PriorityBadge } from "~/components/CardPriority";
 import CircularProgress from "~/components/CircularProgress";
 import LabelIcon from "~/components/LabelIcon";
@@ -33,6 +35,7 @@ const Card = ({
   listEnteredAt,
   listTone,
   priority,
+  area,
 }: {
   title: string;
   ticketNumber?: string | null;
@@ -63,6 +66,8 @@ const Card = ({
   listEnteredAt?: Date;
   listTone?: ListTone;
   priority?: CardPriority;
+  // undefined: caller has no area data; null: card has no area yet.
+  area?: CardArea | null;
 }) => {
   const { dateLocale } = useLocalisation();
   const showYear = dueDate ? !isSameYear(dueDate, new Date()) : false;
@@ -104,11 +109,24 @@ const Card = ({
           "border-red-400/70 hover:border-red-500 dark:border-red-500/50 dark:hover:border-red-400/80",
       )}
     >
-      {(ticketNumber ?? priority) && (
+      {(ticketNumber ?? priority ?? area !== undefined) && (
         <div className="mb-1 flex items-center justify-between gap-2">
-          <span className="font-mono text-[10px] leading-4 text-light-700 dark:text-dark-700">
-            {ticketNumber}
-          </span>
+          <div className="flex min-w-0 items-center gap-1.5">
+            {ticketNumber && (
+              <span className="shrink-0 font-mono text-[10px] leading-4 text-light-700 dark:text-dark-700">
+                {ticketNumber}
+              </span>
+            )}
+            {ticketNumber && area !== undefined && (
+              <span
+                aria-hidden="true"
+                className="text-[10px] text-light-600 dark:text-dark-600"
+              >
+                ·
+              </span>
+            )}
+            {area !== undefined && <AreaTag area={area} />}
+          </div>
           {priority && <PriorityBadge priority={priority} />}
         </div>
       )}

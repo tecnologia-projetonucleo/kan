@@ -14,10 +14,12 @@ import {
 import type { NewCardInput } from "@kan/api/types";
 import { generateUID } from "@kan/shared/utils";
 
+import type { CardArea } from "~/components/CardArea";
 import type { CardPriority } from "~/components/CardPriority";
 import type { WorkspaceMember } from "~/components/Editor";
 import Avatar from "~/components/Avatar";
 import Button from "~/components/Button";
+import { AreaDot, CARD_AREAS, getArea } from "~/components/CardArea";
 import { PriorityPicker } from "~/components/CardPriority";
 import CheckboxDropdown from "~/components/CheckboxDropdown";
 import DateSelector from "~/components/DateSelector";
@@ -32,10 +34,11 @@ import { useWorkspace } from "~/providers/workspace";
 import { api } from "~/utils/api";
 import { formatMemberDisplayName, getAvatarUrl } from "~/utils/helpers";
 
-type NewCardFormInput = NewCardInput & {
+type NewCardFormInput = Omit<NewCardInput, "area" | "priority"> & {
   isCreateAnotherEnabled: boolean;
   dueDate?: Date | null;
   priority: CardPriority;
+  area: CardArea | null;
 };
 
 interface QueryParams {
@@ -79,6 +82,7 @@ export function NewCardForm({
       position: "start",
       dueDate: initialDueDate,
       priority: "normal",
+      area: null,
     },
     resetOnClose: true,
   });
@@ -96,6 +100,8 @@ export function NewCardForm({
   const description = watch("description");
   const dueDate = watch("dueDate");
   const priority = watch("priority") ?? "normal";
+  const area = watch("area") ?? null;
+  const selectedArea = getArea(area);
   const [isDateSelectorOpen, setIsDateSelectorOpen] = useState(false);
 
   // Files queued for upload after the card is created. Kept outside of
@@ -162,6 +168,7 @@ export function NewCardForm({
               description: "",
               dueDate: args.dueDate ?? null,
               priority: args.priority ?? "normal",
+              area: args.area ?? null,
               cardNumber: null,
               comments: [],
               commentCount: 0,
@@ -227,6 +234,8 @@ export function NewCardForm({
           position,
           dueDate: null,
           priority: "normal" as const,
+          // Keep the area: cards created in a row usually share it.
+          area: watch("area"),
         };
         reset(newFormState);
         saveFormState(newFormState);
@@ -326,6 +335,7 @@ export function NewCardForm({
         position: data.position,
         dueDate: data.dueDate ?? null,
         priority: data.priority ?? "normal",
+        area: data.area ?? undefined,
       });
     } catch {
       // onError already surfaced the failure; keep the files queued for retry.
@@ -474,14 +484,54 @@ export function NewCardForm({
             />
           </div>
         </div>
-        <div className="mt-3 flex items-center gap-2">
-          <span className="text-xs font-medium text-light-900 dark:text-dark-900">
-            {t`Priority`}
-          </span>
-          <PriorityPicker
-            value={priority}
-            onChange={(next) => setValue("priority", next)}
-          />
+        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-medium text-light-900 dark:text-dark-900">
+              {t`Priority`}
+            </span>
+            <PriorityPicker
+              value={priority}
+              onChange={(next) => setValue("priority", next)}
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="whitespace-nowrap text-xs font-medium text-light-900 dark:text-dark-900">
+              {t`Responsible area`}
+              <span className="text-red-500" aria-hidden="true">
+                {" "}
+                *
+              </span>
+            </span>
+            <CheckboxDropdown
+              items={CARD_AREAS.map((option) => ({
+                key: option.key,
+                value: option.name,
+                selected: option.key === area,
+                leftIcon: <AreaDot colour={option.colour} />,
+              }))}
+              handleSelect={(_groupKey, item) =>
+                setValue("area", item.key as CardArea)
+              }
+              ariaLabel={t`Responsible area`}
+            >
+              <div
+                className={`flex h-full w-full items-center gap-1.5 rounded-[5px] border-[1px] px-2 py-1 text-left text-xs ${
+                  selectedArea
+                    ? "border-light-600 bg-light-200 text-light-800 hover:bg-light-300 dark:border-dark-600 dark:bg-dark-400 dark:text-dark-1000 dark:hover:bg-dark-500"
+                    : "border-dashed border-amber-500/70 text-amber-700 hover:bg-amber-500/10 dark:border-amber-400/60 dark:text-amber-300"
+                }`}
+              >
+                {selectedArea ? (
+                  <>
+                    <AreaDot colour={selectedArea.colour} />
+                    {selectedArea.name}
+                  </>
+                ) : (
+                  t`Choose an area`
+                )}
+              </div>
+            </CheckboxDropdown>
+          </div>
         </div>
         <div className="mt-2 flex space-x-1">
           <div className="w-fit">
@@ -683,7 +733,7 @@ export function NewCardForm({
         <div>
           <Button
             type="submit"
-            disabled={title.length === 0 || createCard.isPending}
+            disabled={title.length === 0 || !area || createCard.isPending}
           >
             {t`Create card`}
           </Button>
