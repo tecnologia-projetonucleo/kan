@@ -9,8 +9,10 @@ import {
 import { twMerge } from "tailwind-merge";
 
 import type { ListTone } from "../utils/listStatus";
+import type { CardPriority } from "~/components/CardPriority";
 import Avatar from "~/components/Avatar";
 import Badge from "~/components/Badge";
+import { PriorityBadge } from "~/components/CardPriority";
 import CircularProgress from "~/components/CircularProgress";
 import LabelIcon from "~/components/LabelIcon";
 import { useLocalisation } from "~/hooks/useLocalisation";
@@ -30,6 +32,7 @@ const Card = ({
   createdAt,
   listEnteredAt,
   listTone,
+  priority,
 }: {
   title: string;
   ticketNumber?: string | null;
@@ -59,6 +62,7 @@ const Card = ({
   createdAt?: Date;
   listEnteredAt?: Date;
   listTone?: ListTone;
+  priority?: CardPriority;
 }) => {
   const { dateLocale } = useLocalisation();
   const showYear = dueDate ? !isSameYear(dueDate, new Date()) : false;
@@ -100,10 +104,13 @@ const Card = ({
           "border-red-400/70 hover:border-red-500 dark:border-red-500/50 dark:hover:border-red-400/80",
       )}
     >
-      {ticketNumber && (
-        <span className="mb-0.5 font-mono text-[10px] leading-4 text-light-700 dark:text-dark-700">
-          {ticketNumber}
-        </span>
+      {(ticketNumber ?? priority) && (
+        <div className="mb-1 flex items-center justify-between gap-2">
+          <span className="font-mono text-[10px] leading-4 text-light-700 dark:text-dark-700">
+            {ticketNumber}
+          </span>
+          {priority && <PriorityBadge priority={priority} />}
+        </div>
       )}
       <span className="break-words font-medium">{title}</span>
       {labels.length > 0 && (

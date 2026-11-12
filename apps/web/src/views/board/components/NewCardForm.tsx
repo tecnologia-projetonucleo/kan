@@ -14,9 +14,11 @@ import {
 import type { NewCardInput } from "@kan/api/types";
 import { generateUID } from "@kan/shared/utils";
 
+import type { CardPriority } from "~/components/CardPriority";
 import type { WorkspaceMember } from "~/components/Editor";
 import Avatar from "~/components/Avatar";
 import Button from "~/components/Button";
+import { PriorityPicker } from "~/components/CardPriority";
 import CheckboxDropdown from "~/components/CheckboxDropdown";
 import DateSelector from "~/components/DateSelector";
 import Editor from "~/components/Editor";
@@ -33,6 +35,7 @@ import { formatMemberDisplayName, getAvatarUrl } from "~/utils/helpers";
 type NewCardFormInput = NewCardInput & {
   isCreateAnotherEnabled: boolean;
   dueDate?: Date | null;
+  priority: CardPriority;
 };
 
 interface QueryParams {
@@ -75,6 +78,7 @@ export function NewCardForm({
       isCreateAnotherEnabled: false,
       position: "start",
       dueDate: initialDueDate,
+      priority: "normal",
     },
     resetOnClose: true,
   });
@@ -91,6 +95,7 @@ export function NewCardForm({
   const title = watch("title");
   const description = watch("description");
   const dueDate = watch("dueDate");
+  const priority = watch("priority") ?? "normal";
   const [isDateSelectorOpen, setIsDateSelectorOpen] = useState(false);
 
   // Files queued for upload after the card is created. Kept outside of
@@ -156,6 +161,7 @@ export function NewCardForm({
               listId: 2,
               description: "",
               dueDate: args.dueDate ?? null,
+              priority: args.priority ?? "normal",
               cardNumber: null,
               comments: [],
               commentCount: 0,
@@ -220,6 +226,7 @@ export function NewCardForm({
           isCreateAnotherEnabled,
           position,
           dueDate: null,
+          priority: "normal" as const,
         };
         reset(newFormState);
         saveFormState(newFormState);
@@ -318,6 +325,7 @@ export function NewCardForm({
         memberPublicIds: data.memberPublicIds,
         position: data.position,
         dueDate: data.dueDate ?? null,
+        priority: data.priority ?? "normal",
       });
     } catch {
       // onError already surfaced the failure; keep the files queued for retry.
@@ -465,6 +473,15 @@ export function NewCardForm({
               enableYouTubeEmbed={false}
             />
           </div>
+        </div>
+        <div className="mt-3 flex items-center gap-2">
+          <span className="text-xs font-medium text-light-900 dark:text-dark-900">
+            {t`Priority`}
+          </span>
+          <PriorityPicker
+            value={priority}
+            onChange={(next) => setValue("priority", next)}
+          />
         </div>
         <div className="mt-2 flex space-x-1">
           <div className="w-fit">
