@@ -14,7 +14,9 @@ export async function fillRequiredCardFields(page: Page) {
     .getByRole("checkbox", { name: "Produto" })
     .filter({ visible: true })
     .click();
-  await page.getByPlaceholder("Card title").click();
+  // Any click outside the open menu closes it; the form body reports itself
+  // as covering the title while the menu is open, so skip that check.
+  await page.getByPlaceholder("Card title").click({ force: true });
 
   const responsible = page
     .locator('[aria-label="Responsible"]')
@@ -23,5 +25,7 @@ export async function fillRequiredCardFields(page: Page) {
   if ((await responsible.count()) === 0) return;
   await responsible.first().click();
   await page.getByRole("checkbox").filter({ visible: true }).first().click();
-  await page.getByPlaceholder("Card title").click();
+  // Any click outside the open menu closes it; the form body reports itself
+  // as covering the title while the menu is open, so skip that check.
+  await page.getByPlaceholder("Card title").click({ force: true });
 }
