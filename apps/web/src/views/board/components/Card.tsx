@@ -5,6 +5,7 @@ import {
   HiChatBubbleLeft,
   HiOutlineClock,
   HiOutlineLockClosed,
+  HiOutlineUser,
 } from "react-icons/hi2";
 import { twMerge } from "tailwind-merge";
 
@@ -36,6 +37,7 @@ const Card = ({
   listTone,
   priority,
   area,
+  requireAssignee,
 }: {
   title: string;
   ticketNumber?: string | null;
@@ -68,6 +70,8 @@ const Card = ({
   priority?: CardPriority;
   // undefined: caller has no area data; null: card has no area yet.
   area?: CardArea | null;
+  // Board view only: flag cards that nobody is responsible for.
+  requireAssignee?: boolean;
 }) => {
   const { dateLocale } = useLocalisation();
   const showYear = dueDate ? !isSameYear(dueDate, new Date()) : false;
@@ -98,7 +102,9 @@ const Card = ({
     attachmentCount > 0 ||
     !!createdAt ||
     !!blockedSince;
-  const hasRight = checklists.length > 0 || members.length > 0;
+  const missingAssignee = !!requireAssignee && members.length === 0;
+  const hasRight =
+    checklists.length > 0 || members.length > 0 || missingAssignee;
 
   return (
     <div
@@ -235,6 +241,15 @@ const Card = ({
                     );
                   })}
                 </div>
+              )}
+              {missingAssignee && (
+                <span
+                  title={t`Nobody is responsible for this card yet`}
+                  aria-label={t`No one responsible`}
+                  className="flex h-6 w-6 items-center justify-center rounded-full border border-dashed border-amber-500/70 text-amber-600 dark:border-amber-400/60 dark:text-amber-300"
+                >
+                  <HiOutlineUser className="h-3.5 w-3.5" aria-hidden="true" />
+                </span>
               )}
             </div>
           )}

@@ -229,7 +229,7 @@ export function NewCardForm({
           description: "",
           listPublicId: watch("listPublicId"),
           labelPublicIds: [],
-          memberPublicIds: [],
+          memberPublicIds: watch("memberPublicIds"),
           isCreateAnotherEnabled,
           position,
           dueDate: null,
@@ -552,9 +552,21 @@ export function NewCardForm({
                   handleSelectMembers(item.key)
                 }
               >
-                <div className="flex h-full w-full items-center rounded-[5px] border-[1px] border-light-600 bg-light-200 px-2 py-1 text-left text-xs text-light-800 hover:bg-light-300 dark:border-dark-600 dark:bg-dark-400 dark:text-dark-1000 dark:hover:bg-dark-500">
+                <div
+                  className={`flex h-full w-full items-center rounded-[5px] border-[1px] px-2 py-1 text-left text-xs ${
+                    memberPublicIds.length
+                      ? "border-light-600 bg-light-200 text-light-800 hover:bg-light-300 dark:border-dark-600 dark:bg-dark-400 dark:text-dark-1000 dark:hover:bg-dark-500"
+                      : "border-dashed border-amber-500/70 text-amber-700 hover:bg-amber-500/10 dark:border-amber-400/60 dark:text-amber-300"
+                  }`}
+                >
                   {!memberPublicIds.length ? (
-                    t`Members`
+                    <span>
+                      {t`Responsible`}
+                      <span className="text-red-500" aria-hidden="true">
+                        {" "}
+                        *
+                      </span>
+                    </span>
                   ) : (
                     <div className="flex -space-x-1 overflow-hidden">
                       {memberPublicIds.map((memberPublicId) => {
@@ -733,7 +745,12 @@ export function NewCardForm({
         <div>
           <Button
             type="submit"
-            disabled={title.length === 0 || !area || createCard.isPending}
+            disabled={
+              title.length === 0 ||
+              !area ||
+              (!isTemplate && memberPublicIds.length === 0) ||
+              createCard.isPending
+            }
           >
             {t`Create card`}
           </Button>

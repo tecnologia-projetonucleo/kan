@@ -1052,6 +1052,7 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
                             <CardList
                               listPublicId={list.publicId}
                               listTone={getListTone(list.name)}
+                              requireAssignee={!isTemplate}
                               cards={cardsByList[list.publicId] ?? list.cards}
                               cardPrefix={boardData.workspace.cardPrefix}
                               canEditCard={!!canEditCard}

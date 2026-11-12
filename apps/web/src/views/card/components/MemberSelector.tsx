@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { t } from "@lingui/core/macro";
-import { HiMiniPlus } from "react-icons/hi2";
+import { HiOutlineExclamationTriangle } from "react-icons/hi2";
 
 import Avatar from "~/components/Avatar";
 import CheckboxDropdown from "~/components/CheckboxDropdown";
@@ -113,12 +113,16 @@ export default function MemberSelector({
           }}
           handleCreate={disabled ? undefined : handleInviteMember}
           createNewItemLabel={t`Invite member`}
-          ariaLabel={t`Members`}
+          ariaLabel={t`Responsible`}
           disabled={disabled}
           asChild
         >
           <div
-            className={`flex h-full w-full items-center rounded-[5px] border-[1px] border-light-50 py-1 pl-2 text-left text-xs text-neutral-900 dark:border-dark-50 dark:text-dark-1000 ${disabled ? "cursor-not-allowed opacity-60" : "hover:border-light-300 hover:bg-light-200 dark:hover:border-dark-200 dark:hover:bg-dark-100"}`}
+            className={`flex h-full w-full items-center gap-1.5 rounded-[5px] border-[1px] py-1 pl-2 text-left text-xs ${
+              selectedMembers.length
+                ? "border-light-50 text-neutral-900 dark:border-dark-50 dark:text-dark-1000"
+                : "border-dashed border-amber-500/60 pr-2 text-amber-700 dark:border-amber-400/50 dark:text-amber-300"
+            } ${disabled ? "cursor-not-allowed opacity-60" : "hover:border-light-300 hover:bg-light-200 dark:hover:border-dark-200 dark:hover:bg-dark-100"}`}
           >
             {selectedMembers.length ? (
               <div className="isolate flex justify-end -space-x-1 overflow-hidden">
@@ -134,8 +138,11 @@ export default function MemberSelector({
               </div>
             ) : (
               <>
-                <HiMiniPlus size={22} className="pr-2" />
-                {t`Add member`}
+                <HiOutlineExclamationTriangle
+                  className="h-3.5 w-3.5"
+                  aria-hidden="true"
+                />
+                {t`Choose who is responsible (required)`}
               </>
             )}
           </div>
