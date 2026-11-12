@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { listRequiresDueDate } from "./dueDateRule";
+import { listRequiresComment, listRequiresDueDate } from "./dueDateRule";
 
 const board = [
   { id: 1, name: "Backlog", index: 0 },
@@ -37,5 +37,22 @@ describe("listRequiresDueDate", () => {
         2,
       ),
     ).toBe(false);
+  });
+});
+
+describe("listRequiresComment", () => {
+  it("requires a comment for blocked, validation and done lists", () => {
+    for (const name of [
+      "Bloqueado",
+      "Aguardando validação",
+      "Concluído",
+      "Done",
+    ])
+      expect(listRequiresComment(name)).toBe(true);
+  });
+
+  it("does not require a comment elsewhere", () => {
+    for (const name of ["Backlog", "Priorizada", "Em Andamento", "Cancelado"])
+      expect(listRequiresComment(name)).toBe(false);
   });
 });

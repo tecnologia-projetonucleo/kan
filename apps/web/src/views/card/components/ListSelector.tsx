@@ -1,11 +1,17 @@
 import { t } from "@lingui/core/macro";
+import { useState } from "react";
 import { HiChevronDown } from "react-icons/hi2";
 
 import CheckboxDropdown from "~/components/CheckboxDropdown";
+import MoveCommentDialog from "~/components/MoveCommentDialog";
 import { usePopup } from "~/providers/popup";
 import { api } from "~/utils/api";
 import { invalidateCard } from "~/utils/cardInvalidation";
-import { isDueDateRequiredError } from "~/views/board/utils/listStatus";
+import {
+  isCommentRequiredError,
+  isDueDateRequiredError,
+  listRequiresComment,
+} from "~/views/board/utils/listStatus";
 
 interface ListSelectorProps {
   cardPublicId: string;
@@ -17,6 +23,8 @@ interface ListSelectorProps {
   isLoading: boolean;
   disabled?: boolean;
   showChevron?: boolean;
+  // Ask for a comment when moving into blocked, validation or done lists.
+  requireMoveComment?: boolean;
 }
 
 export default function ListSelector({
@@ -25,7 +33,12 @@ export default function ListSelector({
   isLoading,
   disabled = false,
   showChevron = false,
+  requireMoveComment = false,
 }: ListSelectorProps) {
+  const [pending, setPending] = useState<{
+    listPublicId: string;
+    listName: string;
+  } | null>(null);
   const utils = api.useUtils();
 
   const { showPopup } = usePopup();
@@ -54,6 +67,14 @@ export default function ListSelector({
     },
     onError: (error, _newList, context) => {
       utils.card.byId.setData({ cardPublicId }, context?.previousCard);
+      if (isCommentRequiredError(error)) {
+        showPopup({
+          header: t`Comment required`,
+          message: t`Moving a card to this list needs a comment.`,
+          icon: "error",
+        });
+        return;
+      }
       if (isDueDateRequiredError(error)) {
         showPopup({
           header: t`Due date required`,
@@ -86,6 +107,11 @@ export default function ListSelector({
         <CheckboxDropdown
           items={lists}
           handleSelect={(_, member) => {
+            if (member.key === selectedList?.key) return;
+            if (requireMoveComment && listRequiresComment(member.value)) {
+              setPending({ listPublicId: member.key, listName: member.value });
+              return;
+            }
             updateCardList.mutate({
               cardPublicId,
               listPublicId: member.key,
@@ -108,6 +134,24 @@ export default function ListSelector({
             )}
           </div>
         </CheckboxDropdown>
+      )}
+      {pending && (
+        <MoveCommentDialog
+          listName={pending.listName}
+          isPending={updateCardList.isPending}
+          onCancel={() => setPending(null)}
+          onConfirm={(comment) =>
+            updateCardList.mutate(
+              {
+                cardPublicId,
+                listPublicId: pending.listPublicId,
+                index: 0,
+                comment,
+              },
+              { onSettled: () => setPending(null) },
+            )
+          }
+        />
       )}
     </>
   );

@@ -85,8 +85,11 @@ import { createBoardCollisionDetection } from "./dnd/collision";
 import {
   getDueDateRequiredListIds,
   getListTone,
+  isCommentRequiredError,
   isDueDateRequiredError,
+  listRequiresComment,
 } from "./utils/listStatus";
+import MoveCommentDialog from "~/components/MoveCommentDialog";
 
 type PublicListId = string;
 
@@ -376,6 +379,14 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
     },
     onError: (error, _newList, context) => {
       utils.board.byId.setData(queryParams, context?.previousState);
+      if (isCommentRequiredError(error)) {
+        showPopup({
+          header: t`Comment required`,
+          message: t`Moving a card to this list needs a comment.`,
+          icon: "error",
+        });
+        return;
+      }
       if (isDueDateRequiredError(error)) {
         showPopup({
           header: t`Due date required`,
@@ -524,6 +535,13 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
 
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
   const [activeWidth, setActiveWidth] = useState<number | null>(null);
+  const [pendingMove, setPendingMove] = useState<{
+    cardPublicId: string;
+    listPublicId: string;
+    index: number;
+    listName: string;
+    cardTitle?: string;
+  } | null>(null);
   const [dragCardsByList, setDragCardsByList] = useState<Record<
     string,
     BoardCard[]
@@ -723,6 +741,39 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
         finalPreview[destListPublicId]?.findIndex(
           (card) => card.publicId === active.id,
         ) ?? overIndex;
+
+      const sourceListPublicId = Object.entries(baseCardsByList).find(
+        ([, cards]) => cards.some((card) => card.publicId === activeIdStr),
+      )?.[0];
+      const destList = boardData?.lists.find(
+        (list) => list.publicId === destListPublicId,
+      );
+      const movedCard = destCards[activeIndex];
+      if (
+        !isTemplate &&
+        destList &&
+        sourceListPublicId !== destListPublicId &&
+        listRequiresComment(destList.name)
+      ) {
+        setDragCardsByList(null);
+        // Ask for the date first: the move would be refused without it.
+        if (dueDateRequiredListIds.has(destListPublicId) && !movedCard?.dueDate) {
+          showPopup({
+            header: t`Due date required`,
+            message: t`Set a due date before moving the card to In Progress or any list after it.`,
+            icon: "error",
+          });
+          return;
+        }
+        setPendingMove({
+          cardPublicId: activeIdStr,
+          listPublicId: destListPublicId,
+          index: finalIndex,
+          listName: destList.name,
+          cardTitle: movedCard?.title,
+        });
+        return;
+      }
 
       setDragCardsByList(finalPreview);
 
@@ -1195,6 +1246,30 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
               </>
             ) : null}
           </div>
+        )}
+        {pendingMove && (
+          <MoveCommentDialog
+            listName={pendingMove.listName}
+            cardTitle={pendingMove.cardTitle}
+            isPending={updateCardMutation.isPending}
+            onCancel={() => setPendingMove(null)}
+            onConfirm={(comment) =>
+              updateCardMutation.mutate(
+                {
+                  cardPublicId: pendingMove.cardPublicId,
+                  listPublicId: pendingMove.listPublicId,
+                  index: pendingMove.index,
+                  comment,
+                },
+                {
+                  onSettled: () => {
+                    setPendingMove(null);
+                    setDragCardsByList(null);
+                  },
+                },
+              )
+            }
+          />
         )}
         {contextMenu && (
           <CardContextMenu

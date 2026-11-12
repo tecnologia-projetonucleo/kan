@@ -109,3 +109,20 @@ export function getDueDateRequiredListIds(
 export const isDueDateRequiredError = (
   error: { message?: string } | null | undefined,
 ) => !!error?.message?.includes("DUE_DATE_REQUIRED");
+
+// Comment rule (mirrors packages/api utils/dueDateRule.ts): entering a
+// blocked, waiting-for-validation or done list needs a comment.
+const COMMENT_LIST_PATTERN =
+  /bloque|blocked|impedid|travad|aguardando|valida|review|homolog|conclu|done|complete|finaliz|entregue/;
+
+export const listRequiresComment = (name: string) =>
+  COMMENT_LIST_PATTERN.test(
+    name
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/g, "")
+      .toLowerCase(),
+  );
+
+export const isCommentRequiredError = (
+  error: { message?: string } | null | undefined,
+) => !!error?.message?.includes("COMMENT_REQUIRED");

@@ -30,3 +30,18 @@ export const dueDateRequiredError = () =>
     message:
       "DUE_DATE_REQUIRED: a due date is required for cards in the in-progress list and the lists after it",
   });
+
+// Lists whose entry must be justified with a comment: blocked, waiting for
+// validation and done. Matched by name, like the in-progress list above.
+const COMMENT_PATTERN =
+  /bloque|blocked|impedid|travad|aguardando|valida|review|homolog|conclu|done|complete|finaliz|entregue/;
+
+export const listRequiresComment = (name: string) =>
+  COMMENT_PATTERN.test(normalize(name));
+
+export const commentRequiredError = () =>
+  new TRPCError({
+    code: "BAD_REQUEST",
+    message:
+      "COMMENT_REQUIRED: moving a card to a blocked, waiting-for-validation or done list needs a comment",
+  });
