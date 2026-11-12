@@ -27,6 +27,7 @@ import { cardAreaSchema, cardPrioritySchema } from "../schemas/priority";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { mergeActivities } from "../utils/activities";
 import { createAvatarUrlResolver } from "../utils/avatarUrls";
+import { dueDateRequiredError, listRequiresDueDate } from "../utils/dueDateRule";
 import { sendMentionEmails } from "../utils/notifications";
 import {
   assertBoardAccess,
@@ -92,6 +93,15 @@ export const cardRouter = createTRPCRouter({
         workspaceId: list.workspaceId,
         type: list.boardType,
       });
+
+      if (!input.dueDate && list.boardType !== "template") {
+        const boardLists = await listRepo.getPositionsByBoardId(
+          ctx.db,
+          list.boardId,
+        );
+        if (listRequiresDueDate(boardLists, list.id))
+          throw dueDateRequiredError();
+      }
 
       // Resolved before the card is created: the labels must belong to the
       // board the card is being created on, and a rejection after cardRepo.create
@@ -1086,6 +1096,25 @@ export const cardRouter = createTRPCRouter({
           message: `Card with public ID ${input.cardPublicId} not found`,
           code: "NOT_FOUND",
         });
+      }
+
+      // Only checked when the card changes list or loses its date, so cards
+      // that were already in progress before the rule can still be edited.
+      const changesList = !!newList && newList.id !== existingCard.listId;
+      const clearsDueDate = input.dueDate === null;
+      if ((changesList || clearsDueDate) && card.boardType !== "template") {
+        const finalDueDate =
+          input.dueDate !== undefined ? input.dueDate : existingCard.dueDate;
+        if (!finalDueDate) {
+          const boardLists = await listRepo.getPositionsByBoardId(
+            ctx.db,
+            newList?.boardId ?? card.boardId,
+          );
+          if (
+            listRequiresDueDate(boardLists, newList?.id ?? existingCard.listId)
+          )
+            throw dueDateRequiredError();
+        }
       }
 
       let result:

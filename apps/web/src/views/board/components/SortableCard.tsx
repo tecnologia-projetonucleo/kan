@@ -13,6 +13,7 @@ interface SortableCardProps {
   listPublicId: string;
   listTone: ListTone;
   requireAssignee?: boolean;
+  requireDueDate?: boolean;
   cardPrefix: string;
   cardHref: string;
   canEditCard: boolean;
@@ -24,6 +25,7 @@ export default function SortableCard({
   listPublicId,
   listTone,
   requireAssignee,
+  requireDueDate,
   cardPrefix,
   cardHref,
   canEditCard,
@@ -79,6 +81,7 @@ export default function SortableCard({
         cardPrefix={cardPrefix}
         listTone={listTone}
         requireAssignee={requireAssignee}
+        requireDueDate={requireDueDate}
       />
     </Link>
   );

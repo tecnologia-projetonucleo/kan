@@ -7,6 +7,7 @@ interface CardPreviewProps {
   cardPrefix: string;
   listTone?: ListTone;
   requireAssignee?: boolean;
+  requireDueDate?: boolean;
 }
 
 export default function CardPreview({
@@ -14,6 +15,7 @@ export default function CardPreview({
   cardPrefix,
   listTone,
   requireAssignee,
+  requireDueDate,
 }: CardPreviewProps) {
   return (
     <Card
@@ -35,6 +37,7 @@ export default function CardPreview({
       priority={card.priority}
       area={card.area}
       requireAssignee={requireAssignee}
+      requireDueDate={requireDueDate}
     />
   );
 }

@@ -3,8 +3,12 @@ import { useRouter } from "next/router";
 import { t } from "@lingui/core/macro";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { HiXMark } from "react-icons/hi2";
-import { IoChevronForwardSharp } from "react-icons/io5";
+import {
+  HiBars3BottomLeft,
+  HiOutlineChatBubbleBottomCenterText,
+  HiOutlineCheckCircle,
+  HiXMark,
+} from "react-icons/hi2";
 
 import { authClient } from "@kan/auth/client";
 
@@ -30,6 +34,7 @@ import { getBoardReturnUrl } from "~/utils/board-return-url";
 import { invalidateCard } from "~/utils/cardInvalidation";
 import { formatMemberDisplayName, getAvatarUrl } from "~/utils/helpers";
 import { DeleteLabelConfirmation } from "../../components/DeleteLabelConfirmation";
+import { getDueDateRequiredListIds } from "../board/utils/listStatus";
 import ActivityList from "./components/ActivityList";
 import { ActivitySortOrderToggle } from "./components/ActivitySortOrderToggle";
 import { AttachmentThumbnails } from "./components/AttachmentThumbnails";
@@ -48,13 +53,16 @@ import MemberSelector from "./components/MemberSelector";
 import { NewChecklistForm } from "./components/NewChecklistForm";
 import NewCommentForm from "./components/NewCommentForm";
 
+const ACTION_BUTTON_CLASS =
+  "flex items-center gap-1.5 rounded-[5px] border border-light-300 px-2.5 py-1.5 text-sm font-medium text-light-900 hover:bg-light-200 dark:border-dark-300 dark:text-dark-900 dark:hover:bg-dark-200";
+
 interface FormValues {
   cardId: string;
   title: string;
   description: string;
 }
 
-export function CardRightPanel({ isTemplate }: { isTemplate?: boolean }) {
+export function CardFields({ isTemplate }: { isTemplate?: boolean }) {
   const router = useRouter();
   const { canEditCard } = usePermissions();
   const { data: session } = authClient.useSession();
@@ -90,13 +98,6 @@ export function CardRightPanel({ isTemplate }: { isTemplate?: boolean }) {
       };
     }) ?? [];
 
-  const formattedLists =
-    board?.lists.map((list) => ({
-      key: list.publicId,
-      value: list.name,
-      selected: list.publicId === card?.list.publicId,
-    })) ?? [];
-
   const formattedMembers =
     workspaceMembers?.map((member) => {
       const isSelected = selectedMembers?.some(
@@ -126,68 +127,94 @@ export function CardRightPanel({ isTemplate }: { isTemplate?: boolean }) {
       };
     }) ?? [];
 
+  const dueDateRequired =
+    !isTemplate &&
+    !!card &&
+    getDueDateRequiredListIds(board?.lists ?? []).has(card.list.publicId);
+
+  const field = (label: string, control: React.ReactNode) => (
+    <div className="flex min-w-[150px] flex-col gap-1">
+      <span className="text-xs font-semibold text-light-800 dark:text-dark-800">
+        {label}
+      </span>
+      <div className="flex min-h-[30px] items-center">{control}</div>
+    </div>
+  );
+
+  // Rendered inside the card body, Trello-style: each field is a small
+  // heading over its value, wrapping across the column.
   return (
-    <div className="h-full w-[360px] border-l-[1px] border-light-300 bg-light-50 p-8 text-light-900 dark:border-dark-300 dark:bg-dark-50 dark:text-dark-900">
-      <div className="mb-4 flex w-full flex-row pt-[18px]">
-        <p className="my-2 mb-2 w-[100px] text-sm font-medium">{t`List`}</p>
-        <ListSelector
-          cardPublicId={cardId ?? ""}
-          lists={formattedLists}
-          isLoading={!card}
-          disabled={!canEdit}
-        />
-      </div>
-      <div className="mb-4 flex w-full flex-row">
-        <p className="my-2 mb-2 w-[100px] text-sm font-medium">{t`Priority`}</p>
+    <div className="flex flex-wrap gap-x-6 gap-y-4 text-light-900 dark:text-dark-900">
+      {field(
+        t`Priority`,
         <PrioritySelector
           cardPublicId={cardId ?? ""}
           priority={card?.priority}
           isLoading={!card}
           disabled={!canEdit}
-        />
-      </div>
-      <div className="mb-4 flex w-full flex-row">
-        <p className="my-2 mb-2 w-[100px] shrink-0 text-sm font-medium">
-          {t`Responsible area`}
-        </p>
+        />,
+      )}
+      {field(
+        t`Responsible area`,
         <AreaSelector
           cardPublicId={cardId ?? ""}
           area={card?.area}
           isLoading={!card}
           disabled={!canEdit}
-        />
-      </div>
-      {!isTemplate && (
-        <div className="mb-4 flex w-full flex-row">
-          <p className="my-2 mb-2 w-[100px] shrink-0 text-sm font-medium">
-            {t`Responsible`}
-          </p>
+        />,
+      )}
+      {!isTemplate &&
+        field(
+          t`Responsible`,
           <MemberSelector
             cardPublicId={cardId ?? ""}
             members={formattedMembers}
             isLoading={!card}
             disabled={!canEdit}
-          />
-        </div>
-      )}
-      <div className="mb-4 flex w-full flex-row">
-        <p className="my-2 mb-2 w-[100px] text-sm font-medium">{t`Labels`}</p>
+          />,
+        )}
+      {field(
+        t`Labels`,
         <LabelSelector
           cardPublicId={cardId ?? ""}
           labels={formattedLabels}
           isLoading={!card}
           disabled={!canEdit}
-        />
-      </div>
-      <div className="mb-4 flex w-full flex-row">
-        <p className="my-2 mb-2 w-[100px] text-sm font-medium">{t`Due date`}</p>
+        />,
+      )}
+      {field(
+        t`Due date`,
         <DueDateSelector
           cardPublicId={cardId ?? ""}
           dueDate={card?.dueDate}
           isLoading={!card}
           disabled={!canEdit}
-        />
-      </div>
+          required={dueDateRequired}
+        />,
+      )}
+    </div>
+  );
+}
+
+// List switcher shown as a chip in the card header.
+function CardListChip({
+  cardPublicId,
+  lists,
+  disabled,
+}: {
+  cardPublicId: string;
+  lists: { key: string; value: string; selected: boolean }[];
+  disabled: boolean;
+}) {
+  return (
+    <div className="rounded-[5px] bg-light-200 text-xs font-semibold dark:bg-dark-200 [&>*]:!border-transparent">
+      <ListSelector
+        cardPublicId={cardPublicId}
+        lists={lists}
+        isLoading={false}
+        disabled={disabled}
+        showChevron
+      />
     </div>
   );
 }
@@ -197,6 +224,7 @@ export default function CardPage({ isTemplate }: { isTemplate?: boolean }) {
   const activitySortOrder = useActivitySortOrder();
   const utils = api.useUtils();
   const {
+    openModal,
     modalContentType,
     entityId,
     getModalState,
@@ -260,6 +288,13 @@ export default function CardPage({ isTemplate }: { isTemplate?: boolean }) {
     router.query.returnUrl,
     `/${isTemplate ? "templates" : "boards"}/${boardId}`,
   );
+
+  const formattedLists =
+    board?.lists.map((list) => ({
+      key: list.publicId,
+      value: list.name,
+      selected: list.publicId === card?.list.publicId,
+    })) ?? [];
 
   const editorWorkspaceMembers =
     workspaceMembers
@@ -372,40 +407,36 @@ export default function CardPage({ isTemplate }: { isTemplate?: boolean }) {
         title={t`${card?.title ?? t`Card`} | ${board?.name ?? t`Board`}`}
       />
       <div className="flex h-full flex-1 flex-col overflow-hidden">
-        {/* Full-width top strip with board link and dropdown */}
-        <div className="flex w-full items-center justify-between border-b-[1px] border-light-300 bg-light-50 px-8 py-2 dark:border-dark-300 dark:bg-dark-50">
+        {/* Header: list chip and card number on the left, menu and close on the right */}
+        <div className="flex w-full items-center justify-between gap-3 border-b-[1px] border-light-300 bg-light-50 px-4 py-2 dark:border-dark-300 dark:bg-dark-50 md:px-6">
           {!card && isLoading && (
-            <div className="flex space-x-2">
-              <div className="h-[1.5rem] w-[150px] animate-pulse rounded-[5px] bg-light-300 dark:bg-dark-300" />
-            </div>
+            <div className="h-[1.5rem] w-[150px] animate-pulse rounded-[5px] bg-light-300 dark:bg-dark-300" />
           )}
           {card && (
             <>
-              <div className="flex items-center gap-1">
+              <div className="flex min-w-0 items-center gap-2">
+                <CardListChip
+                  cardPublicId={cardId}
+                  lists={formattedLists}
+                  disabled={!canEdit}
+                />
+                {card.cardNumber != null &&
+                  card.list.board.workspace.cardPrefix && (
+                    <span className="whitespace-nowrap font-mono text-xs text-light-700 dark:text-dark-800">
+                      {card.list.board.workspace.cardPrefix}-{card.cardNumber}
+                    </span>
+                  )}
+                <span className="hidden text-light-600 dark:text-dark-600 sm:inline">
+                  ·
+                </span>
                 <Link
-                  className="whitespace-nowrapleading-[1.5rem] text-sm font-bold text-light-900 dark:text-dark-950"
-                  href={`${isTemplate ? "/templates" : "/boards"}`}
-                >
-                  {workspace.name}
-                </Link>
-                <IoChevronForwardSharp className="h-[10px] w-[10px] text-light-900 dark:text-dark-900" />
-                <Link
-                  className="whitespace-nowrap text-sm font-bold leading-[1.5rem] text-light-900 dark:text-dark-950"
+                  className="hidden truncate text-xs text-light-800 hover:underline dark:text-dark-800 sm:inline"
                   href={boardReturnUrl}
                 >
                   {board?.name}
                 </Link>
-                {card.cardNumber != null &&
-                  card.list.board.workspace.cardPrefix && (
-                    <>
-                      <IoChevronForwardSharp className="h-[10px] w-[10px] text-light-900 dark:text-dark-900" />
-                      <span className="whitespace-nowrap text-sm font-bold leading-[1.5rem] text-light-700 dark:text-dark-800">
-                        {card.list.board.workspace.cardPrefix}-{card.cardNumber}
-                      </span>
-                    </>
-                  )}
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1">
                 <Dropdown
                   cardPublicId={cardId}
                   isTemplate={isTemplate}
@@ -436,135 +467,149 @@ export default function CardPage({ isTemplate }: { isTemplate?: boolean }) {
             </p>
           )}
         </div>
-        <div className="scrollbar-thumb-rounded-[4px] scrollbar-track-rounded-[4px] w-full flex-1 overflow-y-auto scrollbar scrollbar-track-light-200 scrollbar-thumb-light-400 hover:scrollbar-thumb-light-400 dark:scrollbar-track-dark-100 dark:scrollbar-thumb-dark-300 dark:hover:scrollbar-thumb-dark-300">
-          <div className="p-auto mx-auto flex h-full w-full max-w-[800px] flex-col">
-            <div className="p-6 md:p-8">
-              <div className="mb-8 md:mt-4">
-                {!card && isLoading && (
-                  <div className="flex space-x-2">
-                    <div className="h-[2.3rem] w-[300px] animate-pulse rounded-[5px] bg-light-300 dark:bg-dark-300" />
-                  </div>
-                )}
-                {card && (
-                  <form
-                    onSubmit={handleSubmit(onSubmit)}
-                    className="w-full space-y-6"
-                  >
-                    <div>
-                      <textarea
-                        id="title"
-                        {...register("title")}
-                        onBlur={canEdit ? handleSubmit(onSubmit) : undefined}
-                        rows={1}
-                        disabled={!canEdit}
-                        className={`block w-full resize-none overflow-hidden border-0 bg-transparent p-0 py-0 font-bold leading-relaxed text-neutral-900 focus:ring-0 dark:text-dark-1000 sm:text-[1.2rem] ${!canEdit ? "cursor-default" : ""}`}
-                        onInput={(e) => {
-                          const target = e.target as HTMLTextAreaElement;
-                          target.style.height = "auto";
-                          target.style.height = `${target.scrollHeight}px`;
-                        }}
-                      />
-                    </div>
-                  </form>
-                )}
-                {!card && !isLoading && (
-                  <p className="block p-0 py-0 font-bold leading-[2.3rem] tracking-tight text-neutral-900 dark:text-dark-1000 sm:text-[1.2rem]">
-                    {t`Card not found`}
-                  </p>
-                )}
-              </div>
+
+        <div className="flex min-h-0 flex-1 flex-col overflow-y-auto lg:flex-row lg:overflow-hidden">
+          {/* Main column: title, actions, fields, description, checklists, attachments */}
+          <div className="list-scroll min-w-0 flex-1 px-4 py-6 md:px-8 lg:overflow-y-auto">
+            <div className="mx-auto w-full max-w-[760px]">
+              {!card && isLoading && (
+                <div className="h-[2.3rem] w-[300px] animate-pulse rounded-[5px] bg-light-300 dark:bg-dark-300" />
+              )}
+              {!card && !isLoading && (
+                <p className="font-bold text-neutral-900 dark:text-dark-1000 sm:text-[1.2rem]">
+                  {t`Card not found`}
+                </p>
+              )}
               {card && (
                 <>
-                  <div className="mb-10 flex w-full max-w-2xl flex-col justify-between">
+                  <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+                    <textarea
+                      id="title"
+                      {...register("title")}
+                      onBlur={canEdit ? handleSubmit(onSubmit) : undefined}
+                      rows={1}
+                      disabled={!canEdit}
+                      aria-label={t`Card title`}
+                      className={`block w-full resize-none overflow-hidden rounded-[5px] border-0 bg-transparent p-0 text-xl font-bold leading-snug text-neutral-900 focus:ring-0 dark:text-dark-1000 sm:text-2xl ${!canEdit ? "cursor-default" : ""}`}
+                      onInput={(e) => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = "auto";
+                        target.style.height = `${target.scrollHeight}px`;
+                      }}
+                    />
+                  </form>
+
+                  <div className="mt-5">
+                    <CardFields isTemplate={isTemplate} />
+                  </div>
+
+                  <section className="mt-8">
+                    <h2 className="mb-2 flex items-center gap-2 text-sm font-semibold text-light-1000 dark:text-dark-1000">
+                      <HiBars3BottomLeft
+                        className="h-5 w-5 text-light-800 dark:text-dark-800"
+                        aria-hidden="true"
+                      />
+                      {t`Description`}
+                    </h2>
                     <form
                       onSubmit={handleSubmit(onSubmit)}
-                      className="w-full space-y-6"
+                      className="rounded-md border border-light-300 px-3 py-2 dark:border-dark-300"
                     >
-                      <div className="mt-2">
-                        <Editor
-                          content={card.description}
-                          onChange={
-                            canEdit
-                              ? (e) => setValue("description", e)
-                              : undefined
-                          }
-                          onBlur={
-                            canEdit ? () => handleSubmit(onSubmit)() : undefined
-                          }
-                          workspaceMembers={workspaceMembers ?? []}
-                          readOnly={!canEdit}
-                        />
-                      </div>
-                    </form>
-                  </div>
-                  <Checklists
-                    checklists={card.checklists}
-                    cardPublicId={cardId}
-                    activeChecklistForm={activeChecklistForm}
-                    setActiveChecklistForm={setActiveChecklistForm}
-                    viewOnly={!canEdit}
-                  />
-                  {!isTemplate && (
-                    <>
-                      {card?.attachments.length > 0 && (
-                        <div className="mt-6">
-                          <AttachmentThumbnails
-                            attachments={card.attachments}
-                            cardPublicId={cardId ?? ""}
-                            isReadOnly={!canEdit}
-                          />
-                        </div>
-                      )}
-                      {canEdit && (
-                        <div className="mt-6">
-                          <AttachmentUpload cardPublicId={cardId} />
-                        </div>
-                      )}
-                    </>
-                  )}
-                  <div className="border-t-[1px] border-light-300 pt-12 dark:border-dark-300">
-                    <header className="flex items-center justify-between pb-4">
-                      <h2 className="text-md font-medium text-light-1000 dark:text-dark-1000">
-                        {t`Activity`}
-                      </h2>
-                      <ActivitySortOrderToggle
-                        order={activitySortOrder}
-                        onChange={setActivitySortOrder}
+                      <Editor
+                        content={card.description}
+                        onChange={
+                          canEdit
+                            ? (e) => setValue("description", e)
+                            : undefined
+                        }
+                        onBlur={
+                          canEdit ? () => handleSubmit(onSubmit)() : undefined
+                        }
+                        workspaceMembers={workspaceMembers ?? []}
+                        readOnly={!canEdit}
                       />
-                    </header>
-                    {!isTemplate && activitySortOrder === "newest" && (
-                      <div className="mb-2">
-                        <NewCommentForm
-                          cardPublicId={cardId}
-                          workspaceMembers={editorWorkspaceMembers}
-                          onCommentCreated={handleCommentCreated}
-                        />
-                      </div>
-                    )}
-                    <div>
-                      <ActivityList
+                    </form>
+                  </section>
+
+                  {/* Checklist and attachment actions sit right after the description */}
+                  {canEdit && (
+                    <div className="mt-3">
+                      {isTemplate ? (
+                        <button
+                          type="button"
+                          onClick={() => openModal("ADD_CHECKLIST")}
+                          className={ACTION_BUTTON_CLASS}
+                        >
+                          <HiOutlineCheckCircle
+                            className="h-4 w-4"
+                            aria-hidden="true"
+                          />
+                          {t`Checklist`}
+                        </button>
+                      ) : (
+                        <AttachmentUpload cardPublicId={cardId} />
+                      )}
+                    </div>
+                  )}
+
+                  <div className="mt-6">
+                    <Checklists
+                      checklists={card.checklists}
+                      cardPublicId={cardId}
+                      activeChecklistForm={activeChecklistForm}
+                      setActiveChecklistForm={setActiveChecklistForm}
+                      viewOnly={!canEdit}
+                    />
+                  </div>
+
+                  {!isTemplate && card.attachments.length > 0 && (
+                    <div className="mt-6">
+                      <AttachmentThumbnails
+                        attachments={card.attachments}
                         cardPublicId={cardId}
-                        isLoading={!card}
-                        order={activitySortOrder}
-                        recentCommentPublicIds={recentCommentPublicIds}
+                        isReadOnly={!canEdit}
                       />
                     </div>
-                    {!isTemplate && activitySortOrder === "oldest" && (
-                      <div className="mt-6">
-                        <NewCommentForm
-                          cardPublicId={cardId}
-                          workspaceMembers={editorWorkspaceMembers}
-                          onCommentCreated={handleCommentCreated}
-                        />
-                      </div>
-                    )}
-                  </div>
+                  )}
                 </>
               )}
             </div>
           </div>
-        </div>
 
+          {/* Side column: comments and activity */}
+          {card && (
+            <aside className="list-scroll w-full shrink-0 border-t border-light-300 bg-light-100 px-4 py-6 dark:border-dark-300 dark:bg-[#141416] md:px-6 lg:w-[400px] lg:overflow-y-auto lg:border-l lg:border-t-0">
+              <header className="mb-4 flex items-center justify-between gap-2">
+                <h2 className="flex items-center gap-2 text-sm font-semibold text-light-1000 dark:text-dark-1000">
+                  <HiOutlineChatBubbleBottomCenterText
+                    className="h-5 w-5 text-light-800 dark:text-dark-800"
+                    aria-hidden="true"
+                  />
+                  {t`Comments and activity`}
+                </h2>
+                <ActivitySortOrderToggle
+                  order={activitySortOrder}
+                  onChange={setActivitySortOrder}
+                />
+              </header>
+              {!isTemplate && (
+                <div className="mb-4">
+                  <NewCommentForm
+                    cardPublicId={cardId}
+                    workspaceMembers={editorWorkspaceMembers}
+                    onCommentCreated={handleCommentCreated}
+                  />
+                </div>
+              )}
+              <ActivityList
+                cardPublicId={cardId}
+                isLoading={!card}
+                order={activitySortOrder}
+                recentCommentPublicIds={recentCommentPublicIds}
+              />
+            </aside>
+          )}
+        </div>
         <>
           <Modal
             modalSize="md"

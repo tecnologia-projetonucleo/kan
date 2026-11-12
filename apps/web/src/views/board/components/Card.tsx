@@ -38,6 +38,7 @@ const Card = ({
   priority,
   area,
   requireAssignee,
+  requireDueDate,
 }: {
   title: string;
   ticketNumber?: string | null;
@@ -72,6 +73,8 @@ const Card = ({
   area?: CardArea | null;
   // Board view only: flag cards that nobody is responsible for.
   requireAssignee?: boolean;
+  // Board view only: the card sits where a due date is mandatory.
+  requireDueDate?: boolean;
 }) => {
   const { dateLocale } = useLocalisation();
   const showYear = dueDate ? !isSameYear(dueDate, new Date()) : false;
@@ -96,8 +99,10 @@ const Card = ({
   const showOverdue = isOverdue && !isDone;
   const fullDate = (date: Date) => format(date, "PPp", { locale: dateLocale });
 
+  const missingDueDate = !!requireDueDate && !dueDate;
   const hasMeta =
     !!dueDate ||
+    missingDueDate ||
     totalComments > 0 ||
     attachmentCount > 0 ||
     !!createdAt ||
@@ -180,6 +185,15 @@ const Card = ({
                 {format(dueDate, showYear ? "do MMM yyyy" : "do MMM", {
                   locale: dateLocale,
                 })}
+              </span>
+            )}
+            {missingDueDate && (
+              <span
+                title={t`A due date is required in this list`}
+                className="flex items-center gap-1 rounded-full border border-dashed border-amber-500/60 px-1.5 font-medium text-amber-700 dark:border-amber-400/50 dark:text-amber-300"
+              >
+                <HiOutlineClock className="h-3.5 w-3.5" aria-hidden="true" />
+                {t`No date`}
               </span>
             )}
             {totalComments > 0 && (

@@ -16,6 +16,7 @@ interface CardListProps {
   listPublicId: string;
   listTone: ListTone;
   requireAssignee?: boolean;
+  requireDueDate?: boolean;
   cards: BoardCard[];
   cardPrefix: string;
   canEditCard: boolean;
@@ -28,6 +29,7 @@ export default function CardList({
   listPublicId,
   listTone,
   requireAssignee,
+  requireDueDate,
   cards,
   cardPrefix,
   canEditCard,
@@ -94,6 +96,7 @@ export default function CardList({
               listPublicId={listPublicId}
               listTone={listTone}
               requireAssignee={requireAssignee}
+              requireDueDate={requireDueDate}
               cardPrefix={cardPrefix}
               cardHref={getCardHref(card.publicId)}
               canEditCard={canEditCard}

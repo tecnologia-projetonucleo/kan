@@ -1,9 +1,11 @@
 import { t } from "@lingui/core/macro";
+import { HiChevronDown } from "react-icons/hi2";
 
 import CheckboxDropdown from "~/components/CheckboxDropdown";
 import { usePopup } from "~/providers/popup";
 import { api } from "~/utils/api";
 import { invalidateCard } from "~/utils/cardInvalidation";
+import { isDueDateRequiredError } from "~/views/board/utils/listStatus";
 
 interface ListSelectorProps {
   cardPublicId: string;
@@ -14,6 +16,7 @@ interface ListSelectorProps {
   }[];
   isLoading: boolean;
   disabled?: boolean;
+  showChevron?: boolean;
 }
 
 export default function ListSelector({
@@ -21,6 +24,7 @@ export default function ListSelector({
   lists,
   isLoading,
   disabled = false,
+  showChevron = false,
 }: ListSelectorProps) {
   const utils = api.useUtils();
 
@@ -48,8 +52,16 @@ export default function ListSelector({
 
       return { previousCard };
     },
-    onError: (_error, _newList, context) => {
+    onError: (error, _newList, context) => {
       utils.card.byId.setData({ cardPublicId }, context?.previousCard);
+      if (isDueDateRequiredError(error)) {
+        showPopup({
+          header: t`Due date required`,
+          message: t`Set a due date before moving the card to In Progress or any list after it.`,
+          icon: "error",
+        });
+        return;
+      }
       showPopup({
         header: t`Unable to update list`,
         message: t`Please try again later, or contact customer support.`,
@@ -88,6 +100,12 @@ export default function ListSelector({
             className={`flex h-full w-full items-center rounded-[5px] border-[1px] border-light-50 py-1 pl-2 text-left text-xs text-neutral-900 dark:border-dark-50 dark:text-dark-1000 ${disabled ? "cursor-not-allowed opacity-60" : "hover:border-light-300 hover:bg-light-200 dark:hover:border-dark-200 dark:hover:bg-dark-100"}`}
           >
             {selectedList?.value}
+            {showChevron && (
+              <HiChevronDown
+                className="ml-1 mr-1.5 h-3.5 w-3.5"
+                aria-hidden="true"
+              />
+            )}
           </div>
         </CheckboxDropdown>
       )}

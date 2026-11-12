@@ -2,10 +2,13 @@ import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import { format } from "date-fns";
 import { env } from "next-runtime-env";
+import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { HiOutlinePaperClip } from "react-icons/hi";
 import {
+  HiBars3BottomLeft,
+  HiChevronDown,
   HiOutlineBarsArrowDown,
   HiOutlineBarsArrowUp,
   HiXMark,
@@ -24,7 +27,6 @@ import { PriorityPicker } from "~/components/CardPriority";
 import CheckboxDropdown from "~/components/CheckboxDropdown";
 import DateSelector from "~/components/DateSelector";
 import Editor from "~/components/Editor";
-import Input from "~/components/Input";
 import LabelIcon from "~/components/LabelIcon";
 import Toggle from "~/components/Toggle";
 import { useModalFormState } from "~/hooks/useModalFormState";
@@ -33,6 +35,10 @@ import { usePopup } from "~/providers/popup";
 import { useWorkspace } from "~/providers/workspace";
 import { api } from "~/utils/api";
 import { formatMemberDisplayName, getAvatarUrl } from "~/utils/helpers";
+import {
+  getDueDateRequiredListIds,
+  isDueDateRequiredError,
+} from "../utils/listStatus";
 
 type NewCardFormInput = Omit<NewCardInput, "area" | "priority"> & {
   isCreateAnotherEnabled: boolean;
@@ -209,6 +215,14 @@ export function NewCardForm({
     },
     onError: (error, _newList, context) => {
       utils.board.byId.setData(queryParams, context?.previousState);
+      if (isDueDateRequiredError(error)) {
+        showPopup({
+          header: t`Due date required`,
+          message: t`Cards created in In Progress or any list after it need a due date.`,
+          icon: "error",
+        });
+        return;
+      }
       showPopup({
         header: t`Unable to create card`,
         message: error.data?.zodError?.fieldErrors.title?.[0]
@@ -390,6 +404,33 @@ export function NewCardForm({
   };
 
   const selectedList = formattedLists.find((item) => item.selected);
+  const dueDateRequired =
+    !isTemplate &&
+    getDueDateRequiredListIds(boardData?.lists ?? []).has(
+      watch("listPublicId"),
+    );
+
+  const chipClass =
+    "flex h-full min-h-[28px] w-full items-center gap-1.5 rounded-[5px] border-[1px] px-2 py-1 text-left text-xs";
+  const chipFilled =
+    "border-light-600 bg-light-200 text-light-800 hover:bg-light-300 dark:border-dark-600 dark:bg-dark-400 dark:text-dark-1000 dark:hover:bg-dark-500";
+  const chipMissing =
+    "border-dashed border-amber-500/70 text-amber-700 hover:bg-amber-500/10 dark:border-amber-400/60 dark:text-amber-300";
+
+  const field = (label: string, required: boolean, control: ReactNode) => (
+    <div className="flex flex-col gap-1">
+      <span className="whitespace-nowrap text-xs font-semibold text-light-800 dark:text-dark-800">
+        {label}
+        {required && (
+          <span className="text-red-500" aria-hidden="true">
+            {" "}
+            *
+          </span>
+        )}
+      </span>
+      <div className="w-fit">{control}</div>
+    </div>
+  );
 
   return (
     <form
@@ -427,38 +468,248 @@ export function NewCardForm({
           e.target.value = "";
         }}
       />
-      <div className="px-5 pt-5">
-        <div className="flex w-full items-center justify-between pb-5">
-          <h2 className="text-sm font-bold text-neutral-900 dark:text-dark-1000">
-            {t`New card`}
-          </h2>
-          <button
-            type="button"
-            className="rounded p-1 hover:bg-light-200 focus:outline-none dark:hover:bg-dark-300"
-            onClick={(e) => {
-              closeModal();
-              e.preventDefault();
-            }}
+
+      {/* Header: list chip on the left, close on the right */}
+      <div className="flex items-center justify-between gap-2 border-b border-light-300 px-5 py-3 dark:border-dark-300">
+        <div className="flex items-center gap-2">
+          <CheckboxDropdown
+            items={formattedLists}
+            handleSelect={(_groupKey, item) => handleSelectList(item.key)}
           >
-            <HiXMark size={18} className="text-light-900 dark:text-dark-900" />
-          </button>
+            <div className="flex items-center gap-1 rounded-[5px] bg-light-200 px-2 py-1 text-xs font-semibold text-light-1000 hover:bg-light-300 dark:bg-dark-200 dark:text-dark-1000 dark:hover:bg-dark-300">
+              {selectedList?.value}
+              <HiChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
+            </div>
+          </CheckboxDropdown>
+          <span className="whitespace-nowrap text-xs text-light-700 dark:text-dark-800">
+            {t`New card`}
+          </span>
+        </div>
+        <button
+          type="button"
+          aria-label={t`Close`}
+          className="rounded p-1 hover:bg-light-200 focus:outline-none dark:hover:bg-dark-300"
+          onClick={(e) => {
+            closeModal();
+            e.preventDefault();
+          }}
+        >
+          <HiXMark size={18} className="text-light-900 dark:text-dark-900" />
+        </button>
+      </div>
+
+      <div className="list-scroll max-h-[70vh] overflow-y-auto px-5 py-5">
+        <input
+          id="title"
+          type="text"
+          autoComplete="off"
+          // eslint-disable-next-line jsx-a11y/no-autofocus
+          autoFocus
+          placeholder={t`Card title`}
+          {...register("title")}
+          onKeyDown={async (e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              await handleSubmit(onSubmit)();
+            }
+          }}
+          className="block w-full rounded-[5px] border-0 bg-transparent px-0 py-1 text-xl font-bold text-neutral-900 placeholder:text-light-700 focus:ring-0 dark:text-dark-1000 dark:placeholder:text-dark-700"
+        />
+
+        <div className="mt-4 flex flex-wrap gap-x-5 gap-y-3">
+          {field(
+            t`Priority`,
+            false,
+            <PriorityPicker
+              value={priority}
+              onChange={(next) => setValue("priority", next)}
+            />,
+          )}
+          {field(
+            t`Responsible area`,
+            true,
+            <CheckboxDropdown
+              items={CARD_AREAS.map((option) => ({
+                key: option.key,
+                value: option.name,
+                selected: option.key === area,
+                leftIcon: <AreaDot colour={option.colour} />,
+              }))}
+              handleSelect={(_groupKey, item) =>
+                setValue("area", item.key as CardArea)
+              }
+              ariaLabel={t`Responsible area`}
+            >
+              <div
+                className={`${chipClass} ${selectedArea ? chipFilled : chipMissing}`}
+              >
+                {selectedArea ? (
+                  <>
+                    <AreaDot colour={selectedArea.colour} />
+                    {selectedArea.name}
+                  </>
+                ) : (
+                  t`Choose an area`
+                )}
+              </div>
+            </CheckboxDropdown>,
+          )}
+          {!isTemplate &&
+            field(
+              t`Responsible`,
+              true,
+              <CheckboxDropdown
+                items={formattedMembers}
+                handleSelect={(_groupKey, item) =>
+                  handleSelectMembers(item.key)
+                }
+              >
+                <div
+                  className={`${chipClass} ${memberPublicIds.length ? chipFilled : chipMissing}`}
+                >
+                  {!memberPublicIds.length ? (
+                    t`Choose who`
+                  ) : (
+                    <div className="flex -space-x-1 overflow-hidden">
+                      {memberPublicIds.map((memberPublicId) => {
+                        const member = formattedMembers.find(
+                          (member) => member.key === memberPublicId,
+                        );
+
+                        return (
+                          <span
+                            key={member?.key}
+                            title={member?.value}
+                            className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-400 ring-1 ring-light-200 dark:ring-dark-500"
+                          >
+                            <span className="text-[8px] font-medium leading-none text-white">
+                              {member?.value
+                                .split(" ")
+                                .map((namePart) =>
+                                  namePart.charAt(0).toUpperCase(),
+                                )
+                                .join("")}
+                            </span>
+                          </span>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              </CheckboxDropdown>,
+            )}
+          {field(
+            t`Labels`,
+            false,
+            <CheckboxDropdown
+              items={formattedLabels}
+              handleSelect={(_groupKey, item) => handleSelectLabels(item.key)}
+              handleEdit={(labelPublicId) =>
+                openModal("EDIT_LABEL", labelPublicId)
+              }
+              handleCreate={() => openModal("NEW_LABEL")}
+              createNewItemLabel={t`Create new label`}
+            >
+              <div className={`${chipClass} ${chipFilled}`}>
+                {!labelPublicIds.length ? (
+                  t`Add`
+                ) : (
+                  <>
+                    <div
+                      className={
+                        labelPublicIds.length > 1
+                          ? "flex -space-x-[2px] overflow-hidden"
+                          : "flex items-center"
+                      }
+                    >
+                      {labelPublicIds.map((labelPublicId) => {
+                        const label = boardData?.labels.find(
+                          (label) => label.publicId === labelPublicId,
+                        );
+
+                        return (
+                          <span key={labelPublicId} className="flex items-center">
+                            <svg
+                              fill={label?.colourCode ?? "#3730a3"}
+                              className="h-2 w-2"
+                              viewBox="0 0 6 6"
+                              aria-hidden="true"
+                            >
+                              <circle cx={3} cy={3} r={3} />
+                            </svg>
+                            {labelPublicIds.length === 1 && (
+                              <span className="ml-1">{label?.name}</span>
+                            )}
+                          </span>
+                        );
+                      })}
+                    </div>
+                    {labelPublicIds.length > 1 && (
+                      <div className="ml-1">
+                        <Trans>{`${labelPublicIds.length} labels`}</Trans>
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
+            </CheckboxDropdown>,
+          )}
+          {field(
+            t`Due date`,
+            dueDateRequired,
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setIsDateSelectorOpen(!isDateSelectorOpen)}
+                className={`${chipClass} ${dueDate || !dueDateRequired ? chipFilled : chipMissing}`}
+              >
+                {dueDate ? (
+                  <span>{format(dueDate, "MMM d, yyyy")}</span>
+                ) : dueDateRequired ? (
+                  t`Choose the date`
+                ) : (
+                  t`Add`
+                )}
+              </button>
+              {isDateSelectorOpen && (
+                <>
+                  <div
+                    className="fixed inset-0 z-10"
+                    onClick={() => setIsDateSelectorOpen(false)}
+                  />
+                  <div
+                    className="absolute right-0 top-full z-20 mt-2 rounded-md border border-light-200 bg-light-50 shadow-lg dark:border-dark-200 dark:bg-dark-100"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                    }}
+                    onMouseDown={(e) => {
+                      e.stopPropagation();
+                    }}
+                  >
+                    <DateSelector
+                      selectedDate={dueDate ?? undefined}
+                      onDateSelect={(date) => {
+                        setValue("dueDate", date ?? null);
+                        setIsDateSelectorOpen(false);
+                      }}
+                      weekStartsOn={workspace.weekStartDay}
+                    />
+                  </div>
+                </>
+              )}
+            </div>,
+          )}
         </div>
 
-        <div>
-          <Input
-            id="title"
-            placeholder={t`Card title`}
-            {...register("title")}
-            onKeyDown={async (e) => {
-              if (e.key === "Enter") {
-                e.preventDefault();
-                await handleSubmit(onSubmit)();
-              }
-            }}
-          />
-        </div>
-        <div className="mt-2">
-          <div className="block max-h-48 min-h-24 w-full overflow-y-auto rounded-md border-0 bg-dark-300 bg-white/5 px-3 py-2 text-sm shadow-sm ring-1 ring-inset ring-light-600 focus-within:ring-2 focus-within:ring-inset focus-within:ring-light-700 dark:ring-dark-700 dark:focus-within:ring-dark-700 sm:leading-6">
+        <section className="mt-6">
+          <h3 className="mb-2 flex items-center gap-2 text-sm font-semibold text-light-1000 dark:text-dark-1000">
+            <HiBars3BottomLeft
+              className="h-5 w-5 text-light-800 dark:text-dark-800"
+              aria-hidden="true"
+            />
+            {t`Description`}
+          </h3>
+          <div className="block max-h-48 min-h-24 w-full overflow-y-auto rounded-md border border-light-300 px-3 py-2 text-sm focus-within:border-light-600 dark:border-dark-300 dark:focus-within:border-dark-600 sm:leading-6">
             <Editor
               content={description}
               onChange={(value) => {
@@ -483,233 +734,37 @@ export function NewCardForm({
               enableYouTubeEmbed={false}
             />
           </div>
-        </div>
-        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-medium text-light-900 dark:text-dark-900">
-              {t`Priority`}
-            </span>
-            <PriorityPicker
-              value={priority}
-              onChange={(next) => setValue("priority", next)}
-            />
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="whitespace-nowrap text-xs font-medium text-light-900 dark:text-dark-900">
-              {t`Responsible area`}
-              <span className="text-red-500" aria-hidden="true">
-                {" "}
-                *
-              </span>
-            </span>
-            <CheckboxDropdown
-              items={CARD_AREAS.map((option) => ({
-                key: option.key,
-                value: option.name,
-                selected: option.key === area,
-                leftIcon: <AreaDot colour={option.colour} />,
-              }))}
-              handleSelect={(_groupKey, item) =>
-                setValue("area", item.key as CardArea)
-              }
-              ariaLabel={t`Responsible area`}
-            >
-              <div
-                className={`flex h-full w-full items-center gap-1.5 rounded-[5px] border-[1px] px-2 py-1 text-left text-xs ${
-                  selectedArea
-                    ? "border-light-600 bg-light-200 text-light-800 hover:bg-light-300 dark:border-dark-600 dark:bg-dark-400 dark:text-dark-1000 dark:hover:bg-dark-500"
-                    : "border-dashed border-amber-500/70 text-amber-700 hover:bg-amber-500/10 dark:border-amber-400/60 dark:text-amber-300"
-                }`}
-              >
-                {selectedArea ? (
-                  <>
-                    <AreaDot colour={selectedArea.colour} />
-                    {selectedArea.name}
-                  </>
-                ) : (
-                  t`Choose an area`
-                )}
-              </div>
-            </CheckboxDropdown>
-          </div>
-        </div>
-        <div className="mt-2 flex space-x-1">
-          <div className="w-fit">
-            <CheckboxDropdown
-              items={formattedLists}
-              handleSelect={(_groupKey, item) => handleSelectList(item.key)}
-            >
-              <div className="flex h-full w-full items-center rounded-[5px] border-[1px] border-light-600 bg-light-200 px-2 py-1 text-left text-xs text-light-800 hover:bg-light-300 dark:border-dark-600 dark:bg-dark-400 dark:text-dark-1000 dark:hover:bg-dark-500">
-                {selectedList?.value}
-              </div>
-            </CheckboxDropdown>
-          </div>
-          {!isTemplate && (
-            <div className="w-fit">
-              <CheckboxDropdown
-                items={formattedMembers}
-                handleSelect={(_groupKey, item) =>
-                  handleSelectMembers(item.key)
-                }
-              >
-                <div
-                  className={`flex h-full w-full items-center rounded-[5px] border-[1px] px-2 py-1 text-left text-xs ${
-                    memberPublicIds.length
-                      ? "border-light-600 bg-light-200 text-light-800 hover:bg-light-300 dark:border-dark-600 dark:bg-dark-400 dark:text-dark-1000 dark:hover:bg-dark-500"
-                      : "border-dashed border-amber-500/70 text-amber-700 hover:bg-amber-500/10 dark:border-amber-400/60 dark:text-amber-300"
-                  }`}
-                >
-                  {!memberPublicIds.length ? (
-                    <span>
-                      {t`Responsible`}
-                      <span className="text-red-500" aria-hidden="true">
-                        {" "}
-                        *
-                      </span>
-                    </span>
-                  ) : (
-                    <div className="flex -space-x-1 overflow-hidden">
-                      {memberPublicIds.map((memberPublicId) => {
-                        const member = formattedMembers.find(
-                          (member) => member.key === memberPublicId,
-                        );
+        </section>
 
-                        return (
-                          <span
-                            key={member?.key}
-                            className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-gray-400 ring-1 ring-light-200 dark:ring-dark-500"
-                          >
-                            <span className="text-[8px] font-medium leading-none text-white">
-                              {member?.value
-                                .split(" ")
-                                .map((namePart) =>
-                                  namePart.charAt(0).toUpperCase(),
-                                )
-                                .join("")}
-                            </span>
-                          </span>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-              </CheckboxDropdown>
-            </div>
-          )}
-          <div className="w-fit">
-            <CheckboxDropdown
-              items={formattedLabels}
-              handleSelect={(_groupKey, item) => handleSelectLabels(item.key)}
-              handleEdit={(labelPublicId) =>
-                openModal("EDIT_LABEL", labelPublicId)
-              }
-              handleCreate={() => openModal("NEW_LABEL")}
-              createNewItemLabel={t`Create new label`}
-            >
-              <div className="flex h-full w-full items-center rounded-[5px] border-[1px] border-light-600 bg-light-200 px-2 py-1 text-left text-xs text-light-800 hover:bg-light-300 dark:border-dark-600 dark:bg-dark-400 dark:text-dark-1000 dark:hover:bg-dark-500">
-                {!labelPublicIds.length ? (
-                  t`Labels`
-                ) : (
-                  <>
-                    <div
-                      className={
-                        labelPublicIds.length > 1
-                          ? "flex -space-x-[2px] overflow-hidden"
-                          : "flex items-center"
-                      }
-                    >
-                      {labelPublicIds.map((labelPublicId) => {
-                        const label = boardData?.labels.find(
-                          (label) => label.publicId === labelPublicId,
-                        );
-
-                        return (
-                          <>
-                            <svg
-                              fill={label?.colourCode ?? "#3730a3"}
-                              className="h-2 w-2"
-                              viewBox="0 0 6 6"
-                              aria-hidden="true"
-                            >
-                              <circle cx={3} cy={3} r={3} />
-                            </svg>
-                            {labelPublicIds.length === 1 && (
-                              <div className="ml-1">{label?.name}</div>
-                            )}
-                          </>
-                        );
-                      })}
-                    </div>
-                    {labelPublicIds.length > 1 && (
-                      <div className="ml-1">
-                        <Trans>{`${labelPublicIds.length} labels`}</Trans>
-                      </div>
-                    )}
-                  </>
-                )}
-              </div>
-            </CheckboxDropdown>
-          </div>
-          <div className="relative w-fit">
-            <button
-              type="button"
-              onClick={() => setIsDateSelectorOpen(!isDateSelectorOpen)}
-              className="flex h-full w-full items-center rounded-[5px] border-[1px] border-light-600 bg-light-200 px-2 py-1 text-left text-xs text-light-800 hover:bg-light-300 dark:border-dark-600 dark:bg-dark-400 dark:text-dark-1000 dark:hover:bg-dark-500"
-            >
-              {dueDate ? (
-                <span>{format(dueDate, "MMM d, yyyy")}</span>
-              ) : (
-                <>{t`Due date`}</>
-              )}
-            </button>
-            {isDateSelectorOpen && (
-              <>
-                <div
-                  className="fixed inset-0 z-10"
-                  onClick={() => setIsDateSelectorOpen(false)}
-                />
-                <div
-                  className="absolute left-0 top-full z-20 mt-2 rounded-md border border-light-200 bg-light-50 shadow-lg dark:border-dark-200 dark:bg-dark-100"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                  }}
-                  onMouseDown={(e) => {
-                    e.stopPropagation();
-                  }}
-                >
-                  <DateSelector
-                    selectedDate={dueDate ?? undefined}
-                    onDateSelect={(date) => {
-                      setValue("dueDate", date ?? null);
-                      setIsDateSelectorOpen(false);
-                    }}
-                    weekStartsOn={workspace.weekStartDay}
-                  />
-                </div>
-              </>
-            )}
-          </div>
+        {/* Attachments after the description, as on the card page */}
+        <div className="mt-3 flex flex-wrap items-center gap-2">
           <button
+            type="button"
+            onClick={() => fileInputRef.current?.click()}
+            className="flex items-center gap-1.5 rounded-[5px] border border-light-300 px-2.5 py-1.5 text-sm font-medium text-light-900 hover:bg-light-200 dark:border-dark-300 dark:text-dark-900 dark:hover:bg-dark-200"
+          >
+            <HiOutlinePaperClip className="h-4 w-4" aria-hidden="true" />
+            {t`Attachment`}
+          </button>
+          <button
+            type="button"
             onClick={(e) => {
               e.preventDefault();
               setValue("position", position === "start" ? "end" : "start");
             }}
-            className="flex h-auto items-center rounded-[5px] border-[1px] border-light-600 bg-light-200 px-1.5 py-1 text-left text-xs text-light-800 hover:bg-light-300 focus-visible:outline-none dark:border-dark-600 dark:bg-dark-400 dark:text-dark-1000 dark:hover:bg-dark-500"
+            title={
+              position === "start"
+                ? t`Add to the top of the list`
+                : t`Add to the bottom of the list`
+            }
+            className="flex items-center gap-1.5 rounded-[5px] border border-light-300 px-2.5 py-1.5 text-sm text-light-900 hover:bg-light-200 dark:border-dark-300 dark:text-dark-900 dark:hover:bg-dark-200"
           >
             {position === "start" ? (
-              <HiOutlineBarsArrowUp size={14} />
+              <HiOutlineBarsArrowUp className="h-4 w-4" aria-hidden="true" />
             ) : (
-              <HiOutlineBarsArrowDown size={14} />
+              <HiOutlineBarsArrowDown className="h-4 w-4" aria-hidden="true" />
             )}
-          </button>
-          <button
-            type="button"
-            onClick={() => fileInputRef.current?.click()}
-            aria-label={t`Attach files`}
-            title={t`Attach files`}
-            className="flex h-auto items-center rounded-[5px] border-[1px] border-light-600 bg-light-200 px-1.5 py-1 text-left text-xs text-light-800 hover:bg-light-300 focus-visible:outline-none dark:border-dark-600 dark:bg-dark-400 dark:text-dark-1000 dark:hover:bg-dark-500"
-          >
-            <HiOutlinePaperClip size={14} />
+            {position === "start" ? t`Top of list` : t`Bottom of list`}
           </button>
         </div>
         {pendingFiles.length > 0 && (
@@ -735,7 +790,7 @@ export function NewCardForm({
         )}
       </div>
 
-      <div className="mt-5 flex items-center justify-end space-x-4 border-t border-light-600 px-5 pb-5 pt-5 dark:border-dark-600">
+      <div className="flex items-center justify-end space-x-4 border-t border-light-600 px-5 py-4 dark:border-dark-600">
         <Toggle
           label={t`Create another`}
           isChecked={isCreateAnotherEnabled}
@@ -749,6 +804,7 @@ export function NewCardForm({
               title.length === 0 ||
               !area ||
               (!isTemplate && memberPublicIds.length === 0) ||
+              (dueDateRequired && !dueDate) ||
               createCard.isPending
             }
           >

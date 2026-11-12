@@ -60,7 +60,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        372
+        407
       ]
     ],
     "translation": "{0} | {1}"
@@ -124,7 +124,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        645
+        647
       ]
     ],
     "translation": "{0} etiketter"
@@ -140,7 +140,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        893
+        917
       ]
     ],
     "translation": "{0} blev ikke fundet"
@@ -156,7 +156,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        197
+        211
       ]
     ],
     "translation": ""
@@ -220,7 +220,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        188
+        202
       ]
     ],
     "translation": ""
@@ -370,6 +370,18 @@
     ],
     "translation": "404 - Siden blev ikke fundet | kan.bn"
   },
+  "3fkgYi": {
+    "translation": "",
+    "message": "A due date is required in this list",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/Card.tsx",
+        192
+      ]
+    ]
+  },
   "/rn4RE": {
     "message": "A powerful, flexible kanban app that helps you organise work, track progress, and deliver results—all in one place.",
     "placeholders": {},
@@ -480,10 +492,6 @@
     "comments": [],
     "origin": [
       [
-        "src/views/card/index.tsx",
-        528
-      ],
-      [
         "src/views/public/board/CardModal.tsx",
         211
       ]
@@ -513,6 +521,22 @@
       ]
     ],
     "translation": "Aktivitetslogs"
+  },
+  "m16xKo": {
+    "translation": "",
+    "message": "Add",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        613
+      ],
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        669
+      ]
+    ]
   },
   "UGCIzB": {
     "message": "Add / edit label",
@@ -583,10 +607,6 @@
     "placeholders": {},
     "comments": [],
     "origin": [
-      [
-        "src/views/card/components/AttachmentUpload.tsx",
-        125
-      ],
       [
         "src/views/card/components/Dropdown.tsx",
         123
@@ -693,6 +713,30 @@
       ]
     ],
     "translation": "Føj til favoritter"
+  },
+  "DPxsXe": {
+    "translation": "",
+    "message": "Add to the bottom of the list",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        756
+      ]
+    ]
+  },
+  "NEgQJQ": {
+    "translation": "",
+    "message": "Add to the top of the list",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        755
+      ]
+    ]
   },
   "cWXW+7": {
     "message": "Add webhook",
@@ -1455,7 +1499,24 @@
         709
       ]
     ],
-    "translation": ""
+    "translation": "",
+    "obsolete": true
+  },
+  "UY1vmE": {
+    "translation": "",
+    "message": "Attachment",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        745
+      ],
+      [
+        "src/views/card/components/AttachmentUpload.tsx",
+        138
+      ]
+    ]
   },
   "iVIGZb": {
     "message": "Attachment uploaded",
@@ -1464,7 +1525,7 @@
     "origin": [
       [
         "src/views/card/components/AttachmentUpload.tsx",
-        45
+        46
       ]
     ],
     "translation": "Vedhæftet fil uploadet"
@@ -1687,7 +1748,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        157
+        162
       ]
     ],
     "translation": ""
@@ -1723,7 +1784,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        865
+        889
       ],
       [
         "src/views/board/members/index.tsx",
@@ -1731,7 +1792,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        372
+        407
       ],
       [
         "src/views/public/board/index.tsx",
@@ -1828,7 +1889,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        883
+        907
       ]
     ],
     "translation": ""
@@ -2037,6 +2098,18 @@
       ]
     ],
     "translation": "Tavler, du arkiverer, vises her."
+  },
+  "uMhwNP": {
+    "translation": "",
+    "message": "Bottom of list",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        765
+      ]
+    ]
   },
   "ZDo4HN": {
     "message": "Brainstorming",
@@ -2573,7 +2646,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        372
+        407
       ]
     ],
     "translation": "Kort"
@@ -2625,11 +2698,11 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        435
+        466
       ],
       [
         "src/views/card/index.tsx",
-        472
+        480
       ]
     ],
     "translation": "Kortet blev ikke fundet"
@@ -2653,7 +2726,11 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        450
+        506
+      ],
+      [
+        "src/views/card/index.tsx",
+        492
       ]
     ],
     "translation": "Korttitel"
@@ -2665,7 +2742,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        438
+        462
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -2689,6 +2766,30 @@
       ]
     ],
     "translation": ""
+  },
+  "E7ql/H": {
+    "translation": "",
+    "message": "Cards created in In Progress or any list after it need a due date.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        221
+      ]
+    ]
+  },
+  "e+xTi9": {
+    "translation": "",
+    "message": "Cards in In Progress and the lists after it must keep a due date.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/DueDateSelector.tsx",
+        69
+      ]
+    ]
   },
   "VhMDMg": {
     "message": "Change Password",
@@ -2806,6 +2907,22 @@
     ],
     "translation": "Tjek din indbakke"
   },
+  "ANtE4t": {
+    "translation": "",
+    "message": "Checklist",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/AttachmentUpload.tsx",
+        129
+      ],
+      [
+        "src/views/card/index.tsx",
+        547
+      ]
+    ]
+  },
   "GnRmu4": {
     "message": "Checklist name",
     "placeholders": {},
@@ -2853,7 +2970,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        530
+        550
       ]
     ],
     "translation": ""
@@ -2886,8 +3003,31 @@
     ],
     "translation": ""
   },
-  "OrWoDw": {
+  "fnWWdG": {
     "translation": "",
+    "message": "Choose the date",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        667
+      ]
+    ]
+  },
+  "pOUIRc": {
+    "translation": "",
+    "message": "Choose who",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        569
+      ]
+    ]
+  },
+  "OrWoDw": {
     "message": "Choose who is responsible (required)",
     "placeholders": {},
     "comments": [],
@@ -2896,7 +3036,8 @@
         "src/views/card/components/MemberSelector.tsx",
         145
       ]
-    ]
+    ],
+    "translation": ""
   },
   "VHS0aJ": {
     "message": "Clear all custom permissions?",
@@ -2980,8 +3121,12 @@
         281
       ],
       [
+        "src/views/board/components/NewCardForm.tsx",
+        490
+      ],
+      [
         "src/views/card/index.tsx",
-        426
+        457
       ],
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
@@ -3097,6 +3242,18 @@
       ]
     ],
     "translation": "Kommentarer"
+  },
+  "IqHhda": {
+    "translation": "",
+    "message": "Comments and activity",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/index.tsx",
+        588
+      ]
+    ]
   },
   "7i8j3G": {
     "message": "Company",
@@ -3546,7 +3703,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        740
+        793
       ],
       [
         "src/views/board/components/NewListForm.tsx",
@@ -3574,7 +3731,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        755
+        809
       ]
     ],
     "translation": "Opret kort"
@@ -3666,7 +3823,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        607
+        609
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -3682,11 +3839,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        139
+        143
       ],
       [
         "src/views/board/index.tsx",
-        1021
+        1045
       ]
     ],
     "translation": "Opret ny liste"
@@ -3754,7 +3911,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        207
+        221
       ]
     ],
     "translation": ""
@@ -3810,7 +3967,7 @@
     "origin": [
       [
         "src/views/card/components/ListSelector.tsx",
-        85
+        97
       ]
     ],
     "translation": ""
@@ -4246,6 +4403,22 @@
     ],
     "translation": "slettede tjeklistepunktet <0>{0}</0>"
   },
+  "Nu4oKW": {
+    "translation": "",
+    "message": "Description",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        708
+      ],
+      [
+        "src/views/card/index.tsx",
+        512
+      ]
+    ]
+  },
   "f8fH8W": {
     "message": "Design",
     "placeholders": {},
@@ -4505,7 +4678,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        176
+        181
       ]
     ],
     "translation": ""
@@ -4521,14 +4694,42 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        662
+        656
       ],
       [
         "src/views/card/index.tsx",
-        183
+        186
       ]
     ],
     "translation": "Forfaldsdato"
+  },
+  "ggUiHr": {
+    "translation": "",
+    "message": "Due date required",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        220
+      ],
+      [
+        "src/views/board/index.tsx",
+        354
+      ],
+      [
+        "src/views/board/index.tsx",
+        399
+      ],
+      [
+        "src/views/card/components/DueDateSelector.tsx",
+        68
+      ],
+      [
+        "src/views/card/components/ListSelector.tsx",
+        59
+      ]
+    ]
   },
   "ri1hHe": {
     "message": "Due next month",
@@ -5410,7 +5611,7 @@
     "origin": [
       [
         "src/views/card/components/AttachmentUpload.tsx",
-        52
+        53
       ]
     ],
     "translation": "Den vedhæftede fil kunne ikke uploades. Prøv igen."
@@ -5790,7 +5991,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1003
+        1027
       ]
     ],
     "translation": "Kom i gang ved at oprette en ny liste"
@@ -6703,7 +6904,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        611
+        600
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -6711,7 +6912,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        174
+        177
       ]
     ],
     "translation": "Etiketter"
@@ -6896,7 +7097,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        436
+        460
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -6921,10 +7122,6 @@
       [
         "src/views/board/components/CardContextDuplicateModal.tsx",
         117
-      ],
-      [
-        "src/views/card/index.tsx",
-        132
       ]
     ],
     "translation": "Liste"
@@ -7587,7 +7784,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        433
+        485
       ]
     ],
     "translation": "Nyt kort"
@@ -7639,7 +7836,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        945
+        969
       ]
     ],
     "translation": "Ny liste"
@@ -7840,6 +8037,18 @@
     ],
     "translation": "Intet kreditkort påkrævet"
   },
+  "mLhWqs": {
+    "translation": "",
+    "message": "No date",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/Card.tsx",
+        196
+      ]
+    ]
+  },
   "MK16u2": {
     "message": "No dates",
     "placeholders": {},
@@ -7895,7 +8104,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        999
+        1023
       ]
     ],
     "translation": "Ingen lister"
@@ -7907,22 +8116,22 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1004
+        1028
       ]
     ],
     "translation": "Der er endnu ikke oprettet nogen lister"
   },
   "Ou8jzT": {
-    "translation": "",
     "message": "No one responsible",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        248
+        262
       ]
-    ]
+    ],
+    "translation": ""
   },
   "i30J2U": {
     "message": "No projects found",
@@ -7977,16 +8186,16 @@
     "translation": "Ingen webhooks konfigureret. Tilføj en webhook for at modtage notifikationer."
   },
   "gDZn5d": {
-    "translation": "",
     "message": "Nobody is responsible for this card yet",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        247
+        261
       ]
-    ]
+    ],
+    "translation": ""
   },
   "CsekCi": {
     "message": "Normal",
@@ -8132,6 +8341,18 @@
     ],
     "translation": "eller"
   },
+  "JIqOMm": {
+    "translation": "",
+    "message": "or drop files here",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/AttachmentUpload.tsx",
+        141
+      ]
+    ]
+  },
   "Uci+Ph": {
     "message": "Ordered List",
     "placeholders": {},
@@ -8211,7 +8432,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        175
+        180
       ]
     ],
     "translation": ""
@@ -8675,7 +8896,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        216
+        230
       ],
       [
         "src/views/board/components/NewListForm.tsx",
@@ -8699,15 +8920,15 @@
       ],
       [
         "src/views/board/index.tsx",
-        290
+        294
       ],
       [
         "src/views/board/index.tsx",
-        346
+        362
       ],
       [
         "src/views/board/index.tsx",
-        383
+        407
       ],
       [
         "src/views/boards/components/ImportBoardsForm.tsx",
@@ -8759,7 +8980,7 @@
       ],
       [
         "src/views/card/components/DueDateSelector.tsx",
-        64
+        76
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -8767,7 +8988,7 @@
       ],
       [
         "src/views/card/components/ListSelector.tsx",
-        55
+        67
       ],
       [
         "src/views/card/components/MemberSelector.tsx",
@@ -8791,11 +9012,11 @@
       ],
       [
         "src/views/card/index.tsx",
-        283
+        318
       ],
       [
         "src/views/card/index.tsx",
-        296
+        331
       ],
       [
         "src/views/members/components/DeleteMemberConfirmation.tsx",
@@ -8899,7 +9120,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        445
+        469
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -8991,11 +9212,11 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        490
+        519
       ],
       [
         "src/views/card/index.tsx",
-        141
+        149
       ]
     ],
     "translation": ""
@@ -9264,7 +9485,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        727
+        780
       ]
     ],
     "translation": ""
@@ -9529,14 +9750,13 @@
     "translation": "Ressourcer"
   },
   "XQACoK": {
-    "translation": "",
     "message": "Responsible",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        564
+        557
       ],
       [
         "src/views/card/components/MemberSelector.tsx",
@@ -9544,9 +9764,10 @@
       ],
       [
         "src/views/card/index.tsx",
-        163
+        168
       ]
-    ]
+    ],
+    "translation": ""
   },
   "HrdRaJ": {
     "message": "Responsible area",
@@ -9555,11 +9776,11 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        499
+        527
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        515
+        539
       ],
       [
         "src/views/card/components/AreaSelector.tsx",
@@ -9567,7 +9788,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        151
+        158
       ]
     ],
     "translation": ""
@@ -10037,6 +10258,26 @@
     ],
     "translation": "Senior"
   },
+  "HH42U4": {
+    "translation": "",
+    "message": "Set a due date before moving the card to In Progress or any list after it.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/index.tsx",
+        355
+      ],
+      [
+        "src/views/board/index.tsx",
+        400
+      ],
+      [
+        "src/views/card/components/ListSelector.tsx",
+        60
+      ]
+    ]
+  },
   "GXGbXi": {
     "message": "Set a password to enable password-based login.",
     "placeholders": {},
@@ -10064,7 +10305,7 @@
       ],
       [
         "src/views/card/components/DueDateSelector.tsx",
-        121
+        137
       ]
     ],
     "translation": "Angiv forfaldsdato"
@@ -10104,6 +10345,18 @@
       ]
     ],
     "translation": "angav forfaldsdatoen"
+  },
+  "U1fgzg": {
+    "translation": "",
+    "message": "Set the due date (required)",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/DueDateSelector.tsx",
+        137
+      ]
+    ]
   },
   "JjEJSy": {
     "message": "Set up your workspace",
@@ -10492,7 +10745,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        353
+        367
       ]
     ],
     "translation": ""
@@ -10790,11 +11043,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        865
+        889
       ],
       [
         "src/views/board/index.tsx",
-        902
+        926
       ]
     ],
     "translation": "Skabelon"
@@ -11057,7 +11310,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        354
+        368
       ]
     ],
     "translation": ""
@@ -11486,6 +11739,18 @@
     ],
     "translation": "Token er påkrævet"
   },
+  "aKcOAG": {
+    "translation": "",
+    "message": "Top of list",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        765
+      ]
+    ]
+  },
   "eEQyz+": {
     "message": "Track all card changes with detailed activity history.",
     "placeholders": {},
@@ -11593,7 +11858,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        295
+        330
       ]
     ],
     "translation": "Kunne ikke tilføje etiket"
@@ -11645,7 +11910,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        443
+        467
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -11669,7 +11934,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        213
+        227
       ]
     ],
     "translation": "Kunne ikke oprette kort"
@@ -11989,11 +12254,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        345
+        361
       ],
       [
         "src/views/card/index.tsx",
-        282
+        317
       ]
     ],
     "translation": "Kunne ikke opdatere kort"
@@ -12041,11 +12306,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        382
+        406
       ],
       [
         "src/views/card/components/DueDateSelector.tsx",
-        63
+        75
       ]
     ],
     "translation": "Kunne ikke opdatere forfaldsdato"
@@ -12069,11 +12334,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        289
+        293
       ],
       [
         "src/views/card/components/ListSelector.tsx",
-        54
+        66
       ]
     ],
     "translation": "Kunne ikke opdatere liste"
@@ -12541,10 +12806,22 @@
     "origin": [
       [
         "src/views/card/components/AttachmentUpload.tsx",
-        51
+        52
       ]
     ],
     "translation": "Upload mislykkedes"
+  },
+  "GxkJXS": {
+    "translation": "",
+    "message": "Uploading...",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/AttachmentUpload.tsx",
+        138
+      ]
+    ]
   },
   "BBUDfW": {
     "message": "Urgent",
@@ -13081,7 +13358,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        865
+        889
       ],
       [
         "src/views/boards/index.tsx",
@@ -13478,11 +13755,11 @@
       ],
       [
         "src/views/board/index.tsx",
-        933
+        957
       ],
       [
         "src/views/board/index.tsx",
-        1010
+        1034
       ],
       [
         "src/views/boards/components/BoardsList.tsx",
@@ -13666,7 +13943,7 @@
     "origin": [
       [
         "src/views/card/components/AttachmentUpload.tsx",
-        46
+        47
       ]
     ],
     "translation": "Din fil er blevet uploadet."

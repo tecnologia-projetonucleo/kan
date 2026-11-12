@@ -93,3 +93,19 @@ export function useListPreferences(listPublicId: string) {
 
   return { preferences, update };
 }
+
+// Due date rule (mirrors packages/api utils/dueDateRule.ts): a due date is
+// required from the "in progress" list onwards. `lists` must be in board order.
+export function getDueDateRequiredListIds(
+  lists: { publicId: string; name: string }[],
+): Set<string> {
+  const progressAt = lists.findIndex(
+    (list) => getListTone(list.name) === "progress",
+  );
+  if (progressAt < 0) return new Set();
+  return new Set(lists.slice(progressAt).map((list) => list.publicId));
+}
+
+export const isDueDateRequiredError = (
+  error: { message?: string } | null | undefined,
+) => !!error?.message?.includes("DUE_DATE_REQUIRED");

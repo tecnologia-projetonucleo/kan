@@ -79,7 +79,11 @@ import { UpdateBoardSlugForm } from "./components/UpdateBoardSlugForm";
 import ViewToggle from "./components/ViewToggle";
 import VisibilityButton from "./components/VisibilityButton";
 import { createBoardCollisionDetection } from "./dnd/collision";
-import { getListTone } from "./utils/listStatus";
+import {
+  getDueDateRequiredListIds,
+  getListTone,
+  isDueDateRequiredError,
+} from "./utils/listStatus";
 
 type PublicListId = string;
 
@@ -296,6 +300,10 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
     },
   });
 
+  const dueDateRequiredListIds = getDueDateRequiredListIds(
+    boardData?.lists ?? [],
+  );
+
   const updateCardMutation = api.card.update.useMutation({
     onMutate: async (args) => {
       await utils.board.byId.cancel();
@@ -339,8 +347,16 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
 
       return { previousState: currentState };
     },
-    onError: (_error, _newList, context) => {
+    onError: (error, _newList, context) => {
       utils.board.byId.setData(queryParams, context?.previousState);
+      if (isDueDateRequiredError(error)) {
+        showPopup({
+          header: t`Due date required`,
+          message: t`Set a due date before moving the card to In Progress or any list after it.`,
+          icon: "error",
+        });
+        return;
+      }
       showPopup({
         header: t`Unable to update card`,
         message: t`Please try again later, or contact customer support.`,
@@ -376,8 +392,16 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
 
       return { previousState: currentState };
     },
-    onError: (_error, _args, context) => {
+    onError: (error, _args, context) => {
       utils.board.byId.setData(queryParams, context?.previousState);
+      if (isDueDateRequiredError(error)) {
+        showPopup({
+          header: t`Due date required`,
+          message: t`Set a due date before moving the card to In Progress or any list after it.`,
+          icon: "error",
+        });
+        return;
+      }
       showPopup({
         header: t`Unable to update due date`,
         message: t`Please try again later, or contact customer support.`,
@@ -1053,6 +1077,10 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
                               listPublicId={list.publicId}
                               listTone={getListTone(list.name)}
                               requireAssignee={!isTemplate}
+                              requireDueDate={
+                                !isTemplate &&
+                                dueDateRequiredListIds.has(list.publicId)
+                              }
                               cards={cardsByList[list.publicId] ?? list.cards}
                               cardPrefix={boardData.workspace.cardPrefix}
                               canEditCard={!!canEditCard}

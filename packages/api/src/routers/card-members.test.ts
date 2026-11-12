@@ -34,6 +34,8 @@ vi.mock("@kan/db/repository/label.repo", () => ({
 vi.mock("@kan/db/repository/list.repo", () => ({
   getWorkspaceAndListIdByListPublicId: vi.fn(),
   getByPublicId: vi.fn(),
+  // No in-progress list, so the due date rule never blocks these tests.
+  getPositionsByBoardId: vi.fn().mockResolvedValue([]),
 }));
 vi.mock("@kan/db/repository/workspace.repo", () => ({
   getAllMembersByPublicIds: vi.fn(),
