@@ -2,7 +2,7 @@ import { useSyncExternalStore } from "react";
 
 export type ActivitySortOrder = "oldest" | "newest";
 
-const DEFAULT_ACTIVITY_SORT_ORDER: ActivitySortOrder = "oldest";
+const DEFAULT_ACTIVITY_SORT_ORDER: ActivitySortOrder = "newest";
 const STORAGE_KEY = "kan_activity-sort-order";
 const CHANGE_EVENT = `${STORAGE_KEY}-change`;
 

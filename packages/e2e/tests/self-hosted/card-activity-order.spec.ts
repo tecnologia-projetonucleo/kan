@@ -108,6 +108,17 @@ test(
       .getByRole("button", { name: "Submit comment" })
       .locator("xpath=ancestor::form");
 
+    // Default order: newest first.
+    await expect(newestComment).toBeVisible();
+    await expect(firstComment).toHaveCount(0);
+
+    // The rest of the test starts from oldest first.
+    await page.evaluate(
+      (key) => localStorage.setItem(key, "oldest"),
+      activityOrderKey,
+    );
+    await page.reload();
+
     await expect(firstComment).toBeVisible();
     await expect(newestComment).toHaveCount(0);
     await expect(loadMore).toBeVisible();
