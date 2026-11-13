@@ -71,6 +71,13 @@ export const create = async (
       publicId: workspaceMembers.publicId,
     });
 
+  if (result && memberInput.status === "active")
+    await boardMemberRepo.addMemberToAllBoards(db, {
+      workspaceMemberId: result.id,
+      workspaceId: memberInput.workspaceId,
+      createdBy: memberInput.createdBy,
+    });
+
   return result;
 };
 
@@ -141,6 +148,14 @@ export const acceptInvite = async (
     .returning({
       id: workspaceMembers.id,
       publicId: workspaceMembers.publicId,
+      workspaceId: workspaceMembers.workspaceId,
+    });
+
+  if (result)
+    await boardMemberRepo.addMemberToAllBoards(db, {
+      workspaceMemberId: result.id,
+      workspaceId: result.workspaceId,
+      createdBy: args.userId,
     });
 
   return result;

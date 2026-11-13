@@ -711,6 +711,11 @@ export const create = async (
         workspaceId: boardInput.workspaceId,
         userId: boardInput.createdBy,
       });
+      await boardMemberRepo.addAllWorkspaceMembers(tx, {
+        boardId: result.id,
+        workspaceId: boardInput.workspaceId,
+        createdBy: boardInput.createdBy,
+      });
     }
 
     return result;
@@ -926,6 +931,11 @@ export const createFromSnapshot = async (
         boardId: newBoard.id,
         workspaceId: args.workspaceId,
         userId: args.createdBy,
+      });
+      await boardMemberRepo.addAllWorkspaceMembers(tx, {
+        boardId: newBoard.id,
+        workspaceId: args.workspaceId,
+        createdBy: args.createdBy,
       });
     }
 
@@ -1182,6 +1192,11 @@ export const moveToWorkspace = async (
       boardId,
       workspaceId: targetWorkspaceId,
       userId: movedBy,
+    });
+    await boardMemberRepo.addAllWorkspaceMembers(tx, {
+      boardId,
+      workspaceId: targetWorkspaceId,
+      createdBy: movedBy,
     });
 
     return updatedBoard;

@@ -1,12 +1,13 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 
 import * as boardRepo from "@kan/db/repository/board.repo";
 import * as boardMemberRepo from "@kan/db/repository/boardMember.repo";
 import * as memberRepo from "@kan/db/repository/member.repo";
 import * as schema from "@kan/db/schema";
 
+import type { TestDbClient } from "./test-db";
 import { assertBoardAccess } from "../src/utils/permissions";
-import { createTestDb, seedTestData, type TestDbClient } from "./test-db";
+import { createTestDb, seedTestData } from "./test-db";
 
 describe("board access permission helpers", () => {
   let db: TestDbClient;
@@ -70,7 +71,26 @@ describe("board access permission helpers", () => {
     ).resolves.toBeUndefined();
   });
 
-  it("blocks assertBoardAccess for a public board a member isn't invited to", async () => {
+  it("adds workspace members to boards created after they joined", async () => {
+    const member = await addWorkspaceMember("member", "wm1autoadd01");
+
+    const board = await boardRepo.create(db, {
+      name: "Auto Board",
+      createdBy: adminUser.id,
+      workspaceId: workspace.id,
+      slug: "auto-board",
+    });
+
+    await expect(
+      assertBoardAccess(db, member.id, {
+        id: board!.id,
+        workspaceId: workspace.id,
+        type: "regular",
+      }),
+    ).resolves.toBeUndefined();
+  });
+
+  it("blocks assertBoardAccess for a public board a member was removed from", async () => {
     const member = await addWorkspaceMember("member", "wm1public001");
 
     const board = await boardRepo.create(db, {
@@ -85,6 +105,12 @@ describe("board access permission helpers", () => {
       boardPublicId: board!.publicId,
       visibility: "public",
     });
+    await boardMemberRepo.remove(db, {
+      boardId: board!.id,
+      workspaceMemberId: (await db.query.workspaceMembers.findFirst({
+        where: (wm, { eq }) => eq(wm.publicId, "wm1public001"),
+      }))!.id,
+    });
 
     await expect(
       assertBoardAccess(db, member.id, {
@@ -95,7 +121,7 @@ describe("board access permission helpers", () => {
     ).rejects.toThrow();
   });
 
-  it("excludes public boards from the workspace board list for uninvited members", async () => {
+  it("excludes boards a member was removed from, public ones included", async () => {
     const member = await addWorkspaceMember("member", "wm1listpub01");
 
     const publicBoard = await boardRepo.create(db, {
@@ -110,16 +136,29 @@ describe("board access permission helpers", () => {
       boardPublicId: publicBoard!.publicId,
       visibility: "public",
     });
-    await boardRepo.create(db, {
+    const privateBoard = await boardRepo.create(db, {
       name: "Private Unlisted Board",
       createdBy: adminUser.id,
       workspaceId: workspace.id,
       slug: "private-unlisted-board",
     });
+    const listedMemberId = (await db.query.workspaceMembers.findFirst({
+      where: (wm, { eq }) => eq(wm.publicId, "wm1listpub01"),
+    }))!.id;
+    for (const removedFrom of [publicBoard!, privateBoard!])
+      await boardMemberRepo.remove(db, {
+        boardId: removedFrom.id,
+        workspaceMemberId: listedMemberId,
+      });
 
-    const visible = await boardRepo.getAllByWorkspaceId(db, workspace.id, member.id, {
-      isWorkspaceAdmin: false,
-    });
+    const visible = await boardRepo.getAllByWorkspaceId(
+      db,
+      workspace.id,
+      member.id,
+      {
+        isWorkspaceAdmin: false,
+      },
+    );
 
     expect(visible.map((b) => b.name)).toEqual([]);
   });
@@ -148,17 +187,10 @@ describe("board access permission helpers", () => {
       boardId: board!.id,
       userId: adminUser.id,
     });
-    await boardMemberRepo.add(db, {
+    await boardMemberRepo.updateRole(db, {
       boardId: board!.id,
       workspaceMemberId: soleAdminRow!.id,
       role: "admin",
-      createdBy: adminUser.id,
-    });
-    await boardMemberRepo.add(db, {
-      boardId: board!.id,
-      workspaceMemberId: otherMemberRow!.id,
-      role: "member",
-      createdBy: adminUser.id,
     });
     await boardMemberRepo.updateRole(db, {
       boardId: board!.id,
@@ -175,7 +207,10 @@ describe("board access permission helpers", () => {
       deletedBy: adminUser.id,
     });
 
-    const remainingAdminCount = await boardMemberRepo.countAdmins(db, board!.id);
+    const remainingAdminCount = await boardMemberRepo.countAdmins(
+      db,
+      board!.id,
+    );
     expect(remainingAdminCount).toBe(1);
 
     // The promotion picks the longest-standing remaining board member - here

@@ -1,9 +1,11 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 
 import * as boardRepo from "@kan/db/repository/board.repo";
 import * as boardMemberRepo from "@kan/db/repository/boardMember.repo";
 import * as schema from "@kan/db/schema";
-import { createTestDb, seedTestData, type TestDbClient } from "./test-db";
+
+import type { TestDbClient } from "./test-db";
+import { createTestDb, seedTestData } from "./test-db";
 
 describe("board membership integration tests", () => {
   let db: TestDbClient;
@@ -80,7 +82,7 @@ describe("board membership integration tests", () => {
     expect(membership).toBeUndefined();
   });
 
-  it("scopes board.all to boards the user has been invited to", async () => {
+  it("scopes board.all to the boards the user is a member of", async () => {
     const member = await addWorkspaceMember("member", "wm1invited01");
 
     const invitedBoard = await boardRepo.create(db, {
@@ -107,12 +109,12 @@ describe("board membership integration tests", () => {
       where: (wm, { eq }) => eq(wm.publicId, "wm1invited01"),
     });
 
-    await boardMemberRepo.add(db, {
-      boardId: invitedBoard!.id,
+    // Members join every board automatically; take this one off one board.
+    await boardMemberRepo.remove(db, {
+      boardId: uninvitedBoard!.id,
       workspaceMemberId: memberRow!.id,
-      role: "member",
-      createdBy: adminUser.id,
     });
+    expect(invitedBoard).not.toBeNull();
 
     const visibleToMember = await boardRepo.getAllByWorkspaceId(
       db,
@@ -194,17 +196,15 @@ describe("board membership integration tests", () => {
 
     // Promote both to admin alongside the creator, so the board has three
     // admins, then demote the creator so exactly two admins (A and B) remain.
-    await boardMemberRepo.add(db, {
+    await boardMemberRepo.updateRole(db, {
       boardId: board!.id,
       workspaceMemberId: memberARow!.id,
       role: "admin",
-      createdBy: adminUser.id,
     });
-    await boardMemberRepo.add(db, {
+    await boardMemberRepo.updateRole(db, {
       boardId: board!.id,
       workspaceMemberId: memberBRow!.id,
       role: "admin",
-      createdBy: adminUser.id,
     });
     const creatorMembership = await boardMemberRepo.getMembership(db, {
       boardId: board!.id,
@@ -238,9 +238,9 @@ describe("board membership integration tests", () => {
     // been blocked by the lock seeing the now-reduced admin count.
     expect(fulfilled).toHaveLength(1);
     expect(rejected).toHaveLength(1);
-    expect(
-      (rejected[0] as PromiseRejectedResult).reason,
-    ).toBeInstanceOf(boardMemberRepo.CannotRemoveLastBoardAdminError);
+    expect((rejected[0] as PromiseRejectedResult).reason).toBeInstanceOf(
+      boardMemberRepo.CannotRemoveLastBoardAdminError,
+    );
 
     const finalAdminCount = await boardMemberRepo.countAdmins(db, board!.id);
     expect(finalAdminCount).toBe(1);
