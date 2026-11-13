@@ -37,7 +37,7 @@ async function inviteSecondMember(ownerPage: Page, browser: Browser) {
 }
 
 test(
-  "a board is invisible to a newly invited member until an admin adds them to it on the board members page",
+  "a newly invited member joins existing boards, and loses one when removed on the board members page",
   { tag: "@self-hosted" },
   async ({ page, browser }) => {
     const owner = createTestUser();
@@ -57,20 +57,25 @@ test(
     const { memberUser, memberContext, memberPage, ownerWorkspacePublicId } =
       await inviteSecondMember(page, browser);
 
+    // Joining the workspace adds the member to every board in it.
     // Pin the workspace: WorkspaceProvider can race to the member's own one post-invite.
-    await memberPage.goto(`/boards?workspacePublicId=${ownerWorkspacePublicId}`);
-    await expect(
-      memberPage.getByRole("link", { name: "Members Board" }),
-    ).toHaveCount(0);
-
-    await page.goto(boardUrl);
-    await board.goToBoardMembers();
-    await boardMembers.addMember(memberUser.email);
-
-    await memberPage.goto(`/boards?workspacePublicId=${ownerWorkspacePublicId}`);
+    await memberPage.goto(
+      `/boards?workspacePublicId=${ownerWorkspacePublicId}`,
+    );
     await expect(
       memberPage.getByRole("link", { name: "Members Board" }),
     ).toBeVisible();
+
+    await page.goto(boardUrl);
+    await board.goToBoardMembers();
+    await boardMembers.removeMember(memberUser.email);
+
+    await memberPage.goto(
+      `/boards?workspacePublicId=${ownerWorkspacePublicId}`,
+    );
+    await expect(
+      memberPage.getByRole("link", { name: "Members Board" }),
+    ).toHaveCount(0);
 
     await memberContext.close();
   },
@@ -99,9 +104,9 @@ test(
       browser,
     );
 
+    // The member is already on the board since joining the workspace.
     await page.goto(boardUrl);
     await board.goToBoardMembers();
-    await boardMembers.addMember(memberUser.email);
     await boardMembers.changeRole(memberUser.email, "admin");
 
     // The promoted member (now a board admin) removes the owner. Two

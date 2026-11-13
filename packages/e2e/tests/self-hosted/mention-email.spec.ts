@@ -71,7 +71,9 @@ async function addToBoard(page: Page, boardPublicId: string, email: string) {
       },
     },
   );
-  expect(response.ok()).toBe(true);
+  // Members join every board when they join the workspace, so the add may
+  // report that they are already there.
+  expect(response.ok() || response.status() === 409).toBe(true);
 }
 
 function commentEditor(page: Page): Locator {

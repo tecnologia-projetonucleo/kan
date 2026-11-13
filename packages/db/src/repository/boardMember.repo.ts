@@ -2,7 +2,7 @@ import { and, asc, count, eq, isNotNull, isNull, ne } from "drizzle-orm";
 
 import type { dbClient } from "@kan/db/client";
 import type { BoardMemberRole } from "@kan/db/schema";
-import { boardMembers, workspaceMembers } from "@kan/db/schema";
+import { boardMembers, boards, workspaceMembers } from "@kan/db/schema";
 
 // Accepts either the db client or a transaction
 type DbOrTx = Pick<dbClient, "select" | "insert" | "update" | "delete">;
@@ -61,6 +61,73 @@ export const addCreatorAsAdmin = async (
     .onConflictDoNothing();
 };
 
+// Every active workspace member belongs to every regular board of the
+// workspace, so anyone in the workspace can be picked as responsible on any
+// card. Existing memberships (and their roles) are left untouched.
+export const addAllWorkspaceMembers = async (
+  db: DbOrTx,
+  args: { boardId: number; workspaceId: number; createdBy: string | null },
+) => {
+  const members = await db
+    .select({ id: workspaceMembers.id })
+    .from(workspaceMembers)
+    .where(
+      and(
+        eq(workspaceMembers.workspaceId, args.workspaceId),
+        eq(workspaceMembers.status, "active"),
+        isNull(workspaceMembers.deletedAt),
+      ),
+    );
+  if (!members.length) return;
+
+  await db
+    .insert(boardMembers)
+    .values(
+      members.map((member) => ({
+        boardId: args.boardId,
+        workspaceMemberId: member.id,
+        role: "member" as const,
+        createdBy: args.createdBy,
+      })),
+    )
+    .onConflictDoNothing();
+};
+
+// Counterpart for a member who just joined or became active: add them to
+// every regular board of their workspace.
+export const addMemberToAllBoards = async (
+  db: DbOrTx,
+  args: {
+    workspaceMemberId: number;
+    workspaceId: number;
+    createdBy: string | null;
+  },
+) => {
+  const workspaceBoards = await db
+    .select({ id: boards.id })
+    .from(boards)
+    .where(
+      and(
+        eq(boards.workspaceId, args.workspaceId),
+        eq(boards.type, "regular"),
+        isNull(boards.deletedAt),
+      ),
+    );
+  if (!workspaceBoards.length) return;
+
+  await db
+    .insert(boardMembers)
+    .values(
+      workspaceBoards.map((board) => ({
+        boardId: board.id,
+        workspaceMemberId: args.workspaceMemberId,
+        role: "member" as const,
+        createdBy: args.createdBy,
+      })),
+    )
+    .onConflictDoNothing();
+};
+
 // Locks every admin row of a board for the duration of the caller's
 // transaction, so concurrent demotions/removals serialize instead of both
 // reading a stale admin count and leaving the board with zero admins.
@@ -68,7 +135,9 @@ const lockAdminRows = async (tx: DbOrTx, boardId: number) => {
   return tx
     .select({ workspaceMemberId: boardMembers.workspaceMemberId })
     .from(boardMembers)
-    .where(and(eq(boardMembers.boardId, boardId), eq(boardMembers.role, "admin")))
+    .where(
+      and(eq(boardMembers.boardId, boardId), eq(boardMembers.role, "admin")),
+    )
     .for("update");
 };
 

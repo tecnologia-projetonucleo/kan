@@ -183,7 +183,11 @@ test(
         },
       },
     );
-    expect(boardMemberAddResponse.ok()).toBe(true);
+    // Members join every board when they join the workspace, so the add may
+    // report that they are already there.
+    expect(
+      boardMemberAddResponse.ok() || boardMemberAddResponse.status() === 409,
+    ).toBe(true);
 
     const cardInput = {
       title: "Blocked card",
