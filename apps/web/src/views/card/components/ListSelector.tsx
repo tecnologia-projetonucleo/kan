@@ -2,15 +2,17 @@ import { t } from "@lingui/core/macro";
 import { useState } from "react";
 import { HiChevronDown } from "react-icons/hi2";
 
+import type { MoveNeeds } from "~/components/MoveRequirementsDialog";
 import CheckboxDropdown from "~/components/CheckboxDropdown";
-import MoveCommentDialog from "~/components/MoveCommentDialog";
+import MoveRequirementsDialog, {
+  hasMoveNeeds,
+} from "~/components/MoveRequirementsDialog";
 import { usePopup } from "~/providers/popup";
 import { api } from "~/utils/api";
 import { invalidateCard } from "~/utils/cardInvalidation";
 import {
   isCommentRequiredError,
   isDueDateRequiredError,
-  listRequiresComment,
 } from "~/views/board/utils/listStatus";
 
 interface ListSelectorProps {
@@ -23,8 +25,10 @@ interface ListSelectorProps {
   isLoading: boolean;
   disabled?: boolean;
   showChevron?: boolean;
-  // Ask for a comment when moving into blocked, validation or done lists.
-  requireMoveComment?: boolean;
+  // What the card is missing to enter a list (area, responsible, due date,
+  // comment); when anything is, a dialog asks for it before moving.
+  getMoveNeeds?: (listPublicId: string, listName: string) => MoveNeeds | null;
+  members?: { publicId: string; name: string }[];
 }
 
 export default function ListSelector({
@@ -33,12 +37,15 @@ export default function ListSelector({
   isLoading,
   disabled = false,
   showChevron = false,
-  requireMoveComment = false,
+  getMoveNeeds,
+  members = [],
 }: ListSelectorProps) {
   const [pending, setPending] = useState<{
     listPublicId: string;
     listName: string;
+    needs: MoveNeeds;
   } | null>(null);
+  const addCardMember = api.card.addOrRemoveMember.useMutation();
   const utils = api.useUtils();
 
   const { showPopup } = usePopup();
@@ -108,8 +115,13 @@ export default function ListSelector({
           items={lists}
           handleSelect={(_, member) => {
             if (member.key === selectedList?.key) return;
-            if (requireMoveComment && listRequiresComment(member.value)) {
-              setPending({ listPublicId: member.key, listName: member.value });
+            const needs = getMoveNeeds?.(member.key, member.value);
+            if (needs && hasMoveNeeds(needs)) {
+              setPending({
+                listPublicId: member.key,
+                listName: member.value,
+                needs,
+              });
               return;
             }
             updateCardList.mutate({
@@ -136,21 +148,39 @@ export default function ListSelector({
         </CheckboxDropdown>
       )}
       {pending && (
-        <MoveCommentDialog
+        <MoveRequirementsDialog
           listName={pending.listName}
-          isPending={updateCardList.isPending}
+          needs={pending.needs}
+          members={members}
+          isPending={updateCardList.isPending || addCardMember.isPending}
           onCancel={() => setPending(null)}
-          onConfirm={(comment) =>
+          onConfirm={async (fill) => {
+            try {
+              for (const workspaceMemberPublicId of fill.memberPublicIds ?? [])
+                await addCardMember.mutateAsync({
+                  cardPublicId,
+                  workspaceMemberPublicId,
+                });
+            } catch {
+              showPopup({
+                header: t`Unable to update card`,
+                message: t`Please try again later, or contact customer support.`,
+                icon: "error",
+              });
+              return;
+            }
             updateCardList.mutate(
               {
                 cardPublicId,
                 listPublicId: pending.listPublicId,
                 index: 0,
-                comment,
+                ...(fill.area && { area: fill.area }),
+                ...(fill.dueDate && { dueDate: fill.dueDate }),
+                ...(fill.comment && { comment: fill.comment }),
               },
               { onSettled: () => setPending(null) },
-            )
-          }
+            );
+          }}
         />
       )}
     </>

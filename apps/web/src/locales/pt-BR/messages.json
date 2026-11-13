@@ -60,7 +60,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        411
+        418
       ]
     ],
     "translation": "{0} | {1}"
@@ -140,7 +140,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        995
+        1002
       ]
     ],
     "translation": "{0} não encontrado"
@@ -617,7 +617,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        546
+        572
       ]
     ],
     "translation": "Adicionar checklist"
@@ -1472,7 +1472,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1051
+        1058
       ]
     ],
     "translation": "Raias por área"
@@ -1804,7 +1804,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        967
+        974
       ],
       [
         "src/views/board/members/index.tsx",
@@ -1816,7 +1816,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        411
+        418
       ],
       [
         "src/views/public/board/index.tsx",
@@ -1913,7 +1913,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        985
+        992
       ]
     ],
     "translation": "Nome do quadro"
@@ -2593,6 +2593,10 @@
         100
       ],
       [
+        "src/components/MoveRequirementsDialog.tsx",
+        236
+      ],
+      [
         "src/components/YouTubeEmbed/EditYouTubeModal.tsx",
         176
       ],
@@ -2678,7 +2682,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        411
+        418
       ]
     ],
     "translation": "Cartão"
@@ -2742,11 +2746,11 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        471
+        497
       ],
       [
         "src/views/card/index.tsx",
-        485
+        511
       ]
     ],
     "translation": "Cartão não encontrado"
@@ -2774,7 +2778,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        497
+        523
       ]
     ],
     "translation": "Título do cartão"
@@ -2786,7 +2790,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        500
+        503
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -2962,7 +2966,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        553
+        579
       ]
     ],
     "translation": "Checklist"
@@ -3012,6 +3016,10 @@
     "placeholders": {},
     "comments": [],
     "origin": [
+      [
+        "src/components/MoveRequirementsDialog.tsx",
+        151
+      ],
       [
         "src/views/board/components/NewCardForm.tsx",
         561
@@ -3174,7 +3182,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        462
+        488
       ],
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
@@ -3269,6 +3277,10 @@
         95
       ],
       [
+        "src/components/MoveRequirementsDialog.tsx",
+        220
+      ],
+      [
         "src/views/card/components/MoveCardForm.tsx",
         173
       ]
@@ -3282,7 +3294,7 @@
     "origin": [
       [
         "src/components/MoveCommentDialog.tsx",
-        107
+        103
       ]
     ],
     "translation": "Comentar e mover"
@@ -3310,11 +3322,11 @@
       ],
       [
         "src/views/board/index.tsx",
-        384
+        387
       ],
       [
         "src/views/card/components/ListSelector.tsx",
-        72
+        79
       ]
     ],
     "translation": "Comentário obrigatório"
@@ -3346,7 +3358,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        594
+        620
       ]
     ],
     "translation": "Comentários e atividade"
@@ -3386,6 +3398,18 @@
       ]
     ],
     "translation": "Controle e propriedade completos:"
+  },
+  "kI5axt": {
+    "translation": "Complete o card para mover",
+    "message": "Complete the card to move it",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/MoveRequirementsDialog.tsx",
+        131
+      ]
+    ]
   },
   "Lt+ZP3": {
     "message": "completed a checklist item",
@@ -3948,11 +3972,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        149
+        152
       ],
       [
         "src/views/board/index.tsx",
-        1169
+        1176
       ]
     ],
     "translation": "Criar nova lista"
@@ -4076,7 +4100,7 @@
     "origin": [
       [
         "src/views/card/components/ListSelector.tsx",
-        123
+        135
       ]
     ],
     "translation": "Lista atual"
@@ -4536,7 +4560,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        517
+        543
       ]
     ],
     "translation": "Descrição"
@@ -4824,6 +4848,10 @@
     "comments": [],
     "origin": [
       [
+        "src/components/MoveRequirementsDialog.tsx",
+        205
+      ],
+      [
         "src/views/board/components/Filters.tsx",
         178
       ],
@@ -4833,7 +4861,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        187
+        191
       ]
     ],
     "translation": "Data de vencimento"
@@ -4849,15 +4877,11 @@
       ],
       [
         "src/views/board/index.tsx",
-        392
+        395
       ],
       [
         "src/views/board/index.tsx",
-        437
-      ],
-      [
-        "src/views/board/index.tsx",
-        762
+        440
       ],
       [
         "src/views/card/components/DueDateSelector.tsx",
@@ -4865,7 +4889,7 @@
       ],
       [
         "src/views/card/components/ListSelector.tsx",
-        80
+        87
       ]
     ],
     "translation": "Data de vencimento obrigatória"
@@ -6143,7 +6167,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1151
+        1158
       ]
     ],
     "translation": "Comece criando uma nova lista"
@@ -6375,7 +6399,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1027
+        1034
       ]
     ],
     "translation": "Agrupar o quadro por área responsável para todos"
@@ -7089,7 +7113,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        178
+        182
       ]
     ],
     "translation": "Etiquetas"
@@ -7299,7 +7323,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        498
+        501
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -7898,11 +7922,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        385
+        388
       ],
       [
         "src/views/card/components/ListSelector.tsx",
-        73
+        80
       ],
       [
         "src/views/card/components/MoveCardForm.tsx",
@@ -8090,7 +8114,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1083
+        1090
       ]
     ],
     "translation": "Nova lista"
@@ -8374,7 +8398,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1147
+        1154
       ]
     ],
     "translation": "Nenhuma lista"
@@ -8386,7 +8410,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1152
+        1159
       ]
     ],
     "translation": "Nenhuma lista foi criada ainda"
@@ -8558,7 +8582,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        328
+        331
       ]
     ],
     "translation": "Só administradores do workspace podem ligar ou desligar as raias."
@@ -9202,15 +9226,19 @@
       ],
       [
         "src/views/board/index.tsx",
-        300
+        303
       ],
       [
         "src/views/board/index.tsx",
-        400
+        403
       ],
       [
         "src/views/board/index.tsx",
-        445
+        448
+      ],
+      [
+        "src/views/board/index.tsx",
+        1279
       ],
       [
         "src/views/boards/components/ImportBoardsForm.tsx",
@@ -9270,7 +9298,11 @@
       ],
       [
         "src/views/card/components/ListSelector.tsx",
-        88
+        95
+      ],
+      [
+        "src/views/card/components/ListSelector.tsx",
+        167
       ],
       [
         "src/views/card/components/MemberSelector.tsx",
@@ -9298,11 +9330,11 @@
       ],
       [
         "src/views/card/index.tsx",
-        322
+        329
       ],
       [
         "src/views/card/index.tsx",
-        335
+        342
       ],
       [
         "src/views/members/components/DeleteMemberConfirmation.tsx",
@@ -9406,7 +9438,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        507
+        510
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -9502,7 +9534,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        150
+        154
       ]
     ],
     "translation": "Prioridade"
@@ -10041,6 +10073,10 @@
     "comments": [],
     "origin": [
       [
+        "src/components/MoveRequirementsDialog.tsx",
+        175
+      ],
+      [
         "src/views/board/components/NewCardForm.tsx",
         568
       ],
@@ -10054,7 +10090,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        169
+        173
       ]
     ],
     "translation": "Responsável"
@@ -10064,6 +10100,10 @@
     "placeholders": {},
     "comments": [],
     "origin": [
+      [
+        "src/components/MoveRequirementsDialog.tsx",
+        143
+      ],
       [
         "src/views/board/components/NewCardForm.tsx",
         538
@@ -10078,7 +10118,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        159
+        163
       ]
     ],
     "translation": "Área responsável"
@@ -10235,6 +10275,18 @@
       ]
     ],
     "translation": "Salvar"
+  },
+  "9JNB1N": {
+    "translation": "Salvar e mover",
+    "message": "Save and move",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/MoveRequirementsDialog.tsx",
+        239
+      ]
+    ]
   },
   "y3aU20": {
     "message": "Save changes",
@@ -10555,19 +10607,15 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        393
+        396
       ],
       [
         "src/views/board/index.tsx",
-        438
-      ],
-      [
-        "src/views/board/index.tsx",
-        763
+        441
       ],
       [
         "src/views/card/components/ListSelector.tsx",
-        81
+        88
       ],
       [
         "src/views/card/components/MoveCardForm.tsx",
@@ -11277,7 +11325,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1026
+        1033
       ]
     ],
     "translation": "As raias por área estão ligadas para todos neste quadro"
@@ -11353,11 +11401,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        967
+        974
       ],
       [
         "src/views/board/index.tsx",
-        1004
+        1011
       ]
     ],
     "translation": "Modelo"
@@ -12065,6 +12113,25 @@
     ],
     "translation": "A fazer"
   },
+  "XbolBV": {
+    "translation": "Para mover \"{cardTitle}\" para {listName}, preencha o que falta.",
+    "message": "To move \"{cardTitle}\" to {listName}, fill in what is missing.",
+    "placeholders": {
+      "cardTitle": [
+        "cardTitle"
+      ],
+      "listName": [
+        "listName"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/components/MoveRequirementsDialog.tsx",
+        135
+      ]
+    ]
+  },
   "40kVab": {
     "message": "To move \"{cardTitle}\" to {listName}, leave a comment explaining why.",
     "placeholders": {
@@ -12083,6 +12150,22 @@
       ]
     ],
     "translation": "Para mover \"{cardTitle}\" para {listName}, deixe um comentário explicando o motivo."
+  },
+  "NmjZ9c": {
+    "translation": "Para mover o card para {listName}, preencha o que falta.",
+    "message": "To move the card to {listName}, fill in what is missing.",
+    "placeholders": {
+      "listName": [
+        "listName"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/components/MoveRequirementsDialog.tsx",
+        136
+      ]
+    ]
   },
   "Q15qpk": {
     "message": "To move the card to {listName}, leave a comment explaining why.",
@@ -12255,7 +12338,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        334
+        341
       ]
     ],
     "translation": "Não foi possível adicionar etiqueta"
@@ -12279,7 +12362,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        327
+        330
       ]
     ],
     "translation": "Não foi possível mudar a visualização do quadro"
@@ -12319,7 +12402,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        505
+        508
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -12667,11 +12750,19 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        399
+        402
+      ],
+      [
+        "src/views/board/index.tsx",
+        1278
+      ],
+      [
+        "src/views/card/components/ListSelector.tsx",
+        166
       ],
       [
         "src/views/card/index.tsx",
-        321
+        328
       ]
     ],
     "translation": "Não foi possível atualizar o cartão"
@@ -12719,7 +12810,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        444
+        447
       ],
       [
         "src/views/card/components/DueDateSelector.tsx",
@@ -12747,11 +12838,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        299
+        302
       ],
       [
         "src/views/card/components/ListSelector.tsx",
-        87
+        94
       ]
     ],
     "translation": "Não foi possível atualizar a lista"
@@ -13758,6 +13849,22 @@
     ],
     "translation": "Quando o Trello foi lançado em 2011, impressionou a todos com sua simplicidade cuidadosamente projetada, mas ao longo dos anos perdeu sua magia e se transformou em algo mais próximo de \"Jira Lite\". Este projeto é nossa tentativa de resgatar a magia original da simplicidade do Trello, em código aberto."
   },
+  "kBnH/8": {
+    "translation": "Por que o card vai para {listName}?",
+    "message": "Why is the card going to {listName}?",
+    "placeholders": {
+      "listName": [
+        "listName"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/components/MoveRequirementsDialog.tsx",
+        227
+      ]
+    ]
+  },
   "EVnXTM": {
     "message": "Why is the card going to {selectedListName}?",
     "placeholders": {
@@ -13817,7 +13924,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        967
+        974
       ],
       [
         "src/views/boards/index.tsx",
@@ -14239,11 +14346,11 @@
       ],
       [
         "src/views/board/index.tsx",
-        1071
+        1078
       ],
       [
         "src/views/board/index.tsx",
-        1158
+        1165
       ],
       [
         "src/views/boards/components/BoardsList.tsx",

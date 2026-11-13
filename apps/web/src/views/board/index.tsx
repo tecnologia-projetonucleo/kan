@@ -89,7 +89,10 @@ import {
   isDueDateRequiredError,
   listRequiresComment,
 } from "./utils/listStatus";
-import MoveCommentDialog from "~/components/MoveCommentDialog";
+import type { MoveNeeds } from "~/components/MoveRequirementsDialog";
+import MoveRequirementsDialog, {
+  hasMoveNeeds,
+} from "~/components/MoveRequirementsDialog";
 
 type PublicListId = string;
 
@@ -541,7 +544,9 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
     index: number;
     listName: string;
     cardTitle?: string;
+    needs: MoveNeeds;
   } | null>(null);
+  const addCardMember = api.card.addOrRemoveMember.useMutation();
   const [dragCardsByList, setDragCardsByList] = useState<Record<
     string,
     BoardCard[]
@@ -752,27 +757,29 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
       if (
         !isTemplate &&
         destList &&
-        sourceListPublicId !== destListPublicId &&
-        listRequiresComment(destList.name)
+        movedCard &&
+        sourceListPublicId !== destListPublicId
       ) {
-        setDragCardsByList(null);
-        // Ask for the date first: the move would be refused without it.
-        if (dueDateRequiredListIds.has(destListPublicId) && !movedCard?.dueDate) {
-          showPopup({
-            header: t`Due date required`,
-            message: t`Set a due date before moving the card to In Progress or any list after it.`,
-            icon: "error",
+        const needs: MoveNeeds = {
+          area: !movedCard.area,
+          responsible: movedCard.members.length === 0,
+          dueDate:
+            dueDateRequiredListIds.has(destListPublicId) && !movedCard.dueDate,
+          comment: listRequiresComment(destList.name),
+        };
+        if (hasMoveNeeds(needs)) {
+          // The card stays put until the missing fields are filled in.
+          setDragCardsByList(null);
+          setPendingMove({
+            cardPublicId: activeIdStr,
+            listPublicId: destListPublicId,
+            index: finalIndex,
+            listName: destList.name,
+            cardTitle: movedCard.title,
+            needs,
           });
           return;
         }
-        setPendingMove({
-          cardPublicId: activeIdStr,
-          listPublicId: destListPublicId,
-          index: finalIndex,
-          listName: destList.name,
-          cardTitle: movedCard?.title,
-        });
-        return;
       }
 
       setDragCardsByList(finalPreview);
@@ -1248,18 +1255,40 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
           </div>
         )}
         {pendingMove && (
-          <MoveCommentDialog
+          <MoveRequirementsDialog
             listName={pendingMove.listName}
             cardTitle={pendingMove.cardTitle}
-            isPending={updateCardMutation.isPending}
+            needs={pendingMove.needs}
+            members={(boardData?.workspace.members ?? []).map((member) => ({
+              publicId: member.publicId,
+              name: member.user?.name ?? member.email,
+            }))}
+            isPending={updateCardMutation.isPending || addCardMember.isPending}
             onCancel={() => setPendingMove(null)}
-            onConfirm={(comment) =>
+            onConfirm={async (fill) => {
+              try {
+                for (const workspaceMemberPublicId of fill.memberPublicIds ??
+                  [])
+                  await addCardMember.mutateAsync({
+                    cardPublicId: pendingMove.cardPublicId,
+                    workspaceMemberPublicId,
+                  });
+              } catch {
+                showPopup({
+                  header: t`Unable to update card`,
+                  message: t`Please try again later, or contact customer support.`,
+                  icon: "error",
+                });
+                return;
+              }
               updateCardMutation.mutate(
                 {
                   cardPublicId: pendingMove.cardPublicId,
                   listPublicId: pendingMove.listPublicId,
                   index: pendingMove.index,
-                  comment,
+                  ...(fill.area && { area: fill.area }),
+                  ...(fill.dueDate && { dueDate: fill.dueDate }),
+                  ...(fill.comment && { comment: fill.comment }),
                 },
                 {
                   onSettled: () => {
@@ -1267,8 +1296,8 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
                     setDragCardsByList(null);
                   },
                 },
-              )
-            }
+              );
+            }}
           />
         )}
         {contextMenu && (
