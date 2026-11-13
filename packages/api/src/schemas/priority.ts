@@ -18,4 +18,5 @@ export const cardAreaSchema = z.enum([
   "afiliado",
   "financeiro",
   "marketing",
+  "diretoria",
 ]);

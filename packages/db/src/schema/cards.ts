@@ -72,6 +72,7 @@ export const cardAreas = [
   "afiliado",
   "financeiro",
   "marketing",
+  "diretoria",
 ] as const;
 export type CardArea = (typeof cardAreas)[number];
 export const cardAreaEnum = pgEnum("card_area", cardAreas);

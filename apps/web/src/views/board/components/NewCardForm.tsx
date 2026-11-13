@@ -484,6 +484,7 @@ export function NewCardForm({
           <CheckboxDropdown
             items={formattedLists}
             handleSelect={(_groupKey, item) => handleSelectList(item.key)}
+            ariaLabel={t`List`}
           >
             <div className="flex items-center gap-1 rounded-[5px] bg-light-200 px-2 py-1 text-xs font-semibold text-light-1000 hover:bg-light-300 dark:bg-dark-200 dark:text-dark-1000 dark:hover:bg-dark-300">
               {selectedList?.value}
@@ -507,7 +508,8 @@ export function NewCardForm({
         </button>
       </div>
 
-      <div className="list-scroll max-h-[70vh] overflow-y-auto px-5 py-5">
+      {/* No inner scroll: it clipped the area, responsible and label menus. */}
+      <div className="px-6 py-5">
         <input
           id="title"
           type="text"
@@ -719,7 +721,7 @@ export function NewCardForm({
             />
             {t`Description`}
           </h3>
-          <div className="block max-h-48 min-h-24 w-full overflow-y-auto rounded-md border border-light-300 px-3 py-2 text-sm focus-within:border-light-600 dark:border-dark-300 dark:focus-within:border-dark-600 sm:leading-6">
+          <div className="block max-h-80 min-h-40 w-full overflow-y-auto rounded-md border border-light-300 px-3 py-2 text-sm focus-within:border-light-600 dark:border-dark-300 dark:focus-within:border-dark-600 sm:leading-6">
             <Editor
               content={description}
               onChange={(value) => {

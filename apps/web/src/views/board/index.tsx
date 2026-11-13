@@ -309,6 +309,18 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
     },
   });
 
+  // Cards are created in the backlog; boards without one use their first list.
+  const addCardListIds = new Set(
+    (() => {
+      const all = boardData?.lists ?? [];
+      const backlog = all.filter(
+        (list) => getListTone(list.name) === "backlog",
+      );
+      return (backlog.length ? backlog : all.slice(0, 1)).map(
+        (list) => list.publicId,
+      );
+    })(),
+  );
   const dueDateRequiredListIds = getDueDateRequiredListIds(
     boardData?.lists ?? [],
   );
@@ -828,7 +840,8 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
         </Modal>
 
         <Modal
-          modalSize="md"
+          modalSize="lg"
+          positionFromTop="sm"
           isVisible={isOpen && modalContentType === "NEW_CARD"}
         >
           <NewCardForm
@@ -1130,6 +1143,16 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
               isTemplate={!!isTemplate}
               dueDateRequiredListIds={dueDateRequiredListIds}
               getCardHref={(cardPublicId) => `/cards/${cardPublicId}${cardReturnQuery}`}
+              addCardListIds={addCardListIds}
+              onAddCard={
+                canCreateCard
+                  ? (listPublicId) => {
+                      setNewCardInitialDueDate(null);
+                      setSelectedPublicListId(listPublicId);
+                      openModal("NEW_CARD");
+                    }
+                  : undefined
+              }
             />
           </div>
         ) : (
@@ -1199,6 +1222,7 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
                             cardCount={
                               (cardsByList[list.publicId] ?? list.cards).length
                             }
+                            canAddCards={addCardListIds.has(list.publicId)}
                             setSelectedPublicListId={(publicListId) => {
                               setNewCardInitialDueDate(null);
                               setSelectedPublicListId(publicListId);

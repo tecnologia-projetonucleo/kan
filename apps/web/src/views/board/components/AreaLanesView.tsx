@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { t } from "@lingui/core/macro";
 import { useState } from "react";
-import { HiChevronDown, HiChevronRight } from "react-icons/hi2";
+import {
+  HiChevronDown,
+  HiChevronRight,
+  HiOutlinePlusSmall,
+} from "react-icons/hi2";
 import { twMerge } from "tailwind-merge";
 
 import type { BoardList } from "../types";
@@ -29,6 +33,9 @@ interface AreaLanesViewProps {
   isTemplate: boolean;
   dueDateRequiredListIds: Set<string>;
   getCardHref: (cardPublicId: string) => string;
+  // Lists where new cards start (the backlog), and how to open the form.
+  addCardListIds?: Set<string>;
+  onAddCard?: (listPublicId: string) => void;
 }
 
 /**
@@ -43,6 +50,8 @@ export default function AreaLanesView({
   isTemplate,
   dueDateRequiredListIds,
   getCardHref,
+  addCardListIds,
+  onAddCard,
 }: AreaLanesViewProps) {
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
 
@@ -103,6 +112,19 @@ export default function AreaLanesView({
               <span className="ml-auto text-xs tabular-nums text-light-800 dark:text-dark-800">
                 {list.cards.length}
               </span>
+              {onAddCard && addCardListIds?.has(list.publicId) && (
+                <button
+                  type="button"
+                  onClick={() => onAddCard(list.publicId)}
+                  aria-label={t`Add card`}
+                  className="-mr-1 rounded-md p-0.5 hover:bg-light-400 dark:hover:bg-dark-200"
+                >
+                  <HiOutlinePlusSmall
+                    className="h-5 w-5 text-dark-900"
+                    aria-hidden="true"
+                  />
+                </button>
+              )}
             </div>
           ))}
         </div>
