@@ -13,7 +13,8 @@ export type CardArea =
   | "crm"
   | "afiliado"
   | "financeiro"
-  | "marketing";
+  | "marketing"
+  | "diretoria";
 
 // Names are team names, not UI copy, so they are not translated.
 // Twelve hues spread around the colour wheel so no two areas look alike,
@@ -31,6 +32,7 @@ export const CARD_AREAS: { key: CardArea; name: string; colour: string }[] = [
   { key: "afiliado", name: "Afiliado", colour: "#C026D3" }, // fuchsia
   { key: "financeiro", name: "Financeiro", colour: "#84CC16" }, // lime
   { key: "marketing", name: "Marketing", colour: "#0D9488" }, // teal
+  { key: "diretoria", name: "Diretoria", colour: "#9F1239" }, // wine
 ];
 
 export const getArea = (key: CardArea | null | undefined) =>

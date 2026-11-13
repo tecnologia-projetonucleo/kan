@@ -288,6 +288,13 @@
       "when": 1794516153821,
       "tag": "20261112204233_AddBoardAreaLanes",
       "breakpoints": true
+    },
+    {
+      "idx": 41,
+      "version": "7",
+      "when": 1794542352922,
+      "tag": "20261113035912_AddDiretoriaArea",
+      "breakpoints": true
     }
   ]
 }

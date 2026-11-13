@@ -1,0 +1,1 @@
+ALTER TYPE "public"."card_area" ADD VALUE 'diretoria';
