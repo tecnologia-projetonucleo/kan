@@ -16,20 +16,21 @@ export type CardArea =
   | "marketing";
 
 // Names are team names, not UI copy, so they are not translated.
-// Colours are the ones the old area labels used.
+// Twelve hues spread around the colour wheel so no two areas look alike,
+// mid-tone enough to read on light and dark backgrounds.
 export const CARD_AREAS: { key: CardArea; name: string; colour: string }[] = [
-  { key: "produto", name: "Produto", colour: "#7C3AED" },
-  { key: "dados", name: "Dados", colour: "#2563EB" },
-  { key: "tecnologia", name: "Tecnologia", colour: "#0891B2" },
-  { key: "risco", name: "Risco", colour: "#DC2626" },
-  { key: "sportbook", name: "Sportbook", colour: "#16A34A" },
-  { key: "cassino", name: "Cassino", colour: "#9333EA" },
-  { key: "atendimento", name: "Atendimento", colour: "#F59E0B" },
-  { key: "criativo", name: "Criativo", colour: "#EC4899" },
-  { key: "crm", name: "CRM", colour: "#0D9488" },
-  { key: "afiliado", name: "Afiliado", colour: "#EA580C" },
-  { key: "financeiro", name: "Financeiro", colour: "#65A30D" },
-  { key: "marketing", name: "Marketing", colour: "#DB2777" },
+  { key: "produto", name: "Produto", colour: "#7C3AED" }, // violet
+  { key: "dados", name: "Dados", colour: "#2563EB" }, // blue
+  { key: "tecnologia", name: "Tecnologia", colour: "#0EA5E9" }, // sky
+  { key: "risco", name: "Risco", colour: "#DC2626" }, // red
+  { key: "sportbook", name: "Sportbook", colour: "#16A34A" }, // green
+  { key: "cassino", name: "Cassino", colour: "#CA8A04" }, // gold
+  { key: "atendimento", name: "Atendimento", colour: "#EA580C" }, // orange
+  { key: "criativo", name: "Criativo", colour: "#EC4899" }, // pink
+  { key: "crm", name: "CRM", colour: "#64748B" }, // slate
+  { key: "afiliado", name: "Afiliado", colour: "#C026D3" }, // fuchsia
+  { key: "financeiro", name: "Financeiro", colour: "#84CC16" }, // lime
+  { key: "marketing", name: "Marketing", colour: "#0D9488" }, // teal
 ];
 
 export const getArea = (key: CardArea | null | undefined) =>
