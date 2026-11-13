@@ -35,8 +35,11 @@ export class CardPage {
       .filter({ visible: true })
       .click();
 
-    // Blocked, waiting-for-validation and done lists ask for a comment.
-    const dialog = this.page.getByRole("dialog", { name: "Comment required" });
+    // Moving can ask for missing fields; blocked, waiting-for-validation and
+    // done lists ask for a comment.
+    const dialog = this.page.getByRole("dialog", {
+      name: "Complete the card to move it",
+    });
     const asked = await dialog
       .waitFor({ state: "visible", timeout: 2000 })
       .then(
@@ -45,7 +48,7 @@ export class CardPage {
       );
     if (asked) {
       await dialog.getByRole("textbox").fill("Moved by the e2e test");
-      await dialog.getByRole("button", { name: "Comment and move" }).click();
+      await dialog.getByRole("button", { name: "Save and move" }).click();
     }
     await updated;
   }

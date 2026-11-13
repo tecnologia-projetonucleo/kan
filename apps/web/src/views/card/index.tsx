@@ -34,7 +34,11 @@ import { getBoardReturnUrl } from "~/utils/board-return-url";
 import { invalidateCard } from "~/utils/cardInvalidation";
 import { formatMemberDisplayName, getAvatarUrl } from "~/utils/helpers";
 import { DeleteLabelConfirmation } from "../../components/DeleteLabelConfirmation";
-import { getDueDateRequiredListIds } from "../board/utils/listStatus";
+import type { MoveNeeds } from "~/components/MoveRequirementsDialog";
+import {
+  getDueDateRequiredListIds,
+  listRequiresComment,
+} from "../board/utils/listStatus";
 import ActivityList from "./components/ActivityList";
 import { ActivitySortOrderToggle } from "./components/ActivitySortOrderToggle";
 import { AttachmentThumbnails } from "./components/AttachmentThumbnails";
@@ -202,12 +206,14 @@ function CardListChip({
   cardPublicId,
   lists,
   disabled,
-  requireMoveComment,
+  getMoveNeeds,
+  members,
 }: {
   cardPublicId: string;
   lists: { key: string; value: string; selected: boolean }[];
   disabled: boolean;
-  requireMoveComment: boolean;
+  getMoveNeeds?: (listPublicId: string, listName: string) => MoveNeeds | null;
+  members: { publicId: string; name: string }[];
 }) {
   return (
     <div className="rounded-[5px] bg-light-200 text-xs font-semibold dark:bg-dark-200 [&>*]:!border-transparent">
@@ -217,7 +223,8 @@ function CardListChip({
         isLoading={false}
         disabled={disabled}
         showChevron
-        requireMoveComment={requireMoveComment}
+        getMoveNeeds={getMoveNeeds}
+        members={members}
       />
     </div>
   );
@@ -423,7 +430,26 @@ export default function CardPage({ isTemplate }: { isTemplate?: boolean }) {
                   cardPublicId={cardId}
                   lists={formattedLists}
                   disabled={!canEdit}
-                  requireMoveComment={!isTemplate}
+                  getMoveNeeds={
+                    isTemplate
+                      ? undefined
+                      : (listPublicId, listName) => ({
+                          area: !card.area,
+                          responsible: card.members.length === 0,
+                          dueDate:
+                            !card.dueDate &&
+                            getDueDateRequiredListIds(
+                              card.list.board.lists,
+                            ).has(listPublicId),
+                          comment: listRequiresComment(listName),
+                        })
+                  }
+                  members={(card.list.board.workspace.members ?? []).map(
+                    (member) => ({
+                      publicId: member.publicId,
+                      name: member.user?.name ?? member.email,
+                    }),
+                  )}
                 />
                 {card.cardNumber != null &&
                   card.list.board.workspace.cardPrefix && (
