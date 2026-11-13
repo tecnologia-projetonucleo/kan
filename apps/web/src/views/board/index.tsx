@@ -1143,6 +1143,16 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
               isTemplate={!!isTemplate}
               dueDateRequiredListIds={dueDateRequiredListIds}
               getCardHref={(cardPublicId) => `/cards/${cardPublicId}${cardReturnQuery}`}
+              addCardListIds={addCardListIds}
+              onAddCard={
+                canCreateCard
+                  ? (listPublicId) => {
+                      setNewCardInitialDueDate(null);
+                      setSelectedPublicListId(listPublicId);
+                      openModal("NEW_CARD");
+                    }
+                  : undefined
+              }
             />
           </div>
         ) : (
