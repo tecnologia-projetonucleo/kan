@@ -124,7 +124,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        659
+        661
       ]
     ],
     "translation": "{0} Labels"
@@ -140,7 +140,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1002
+        1015
       ]
     ],
     "translation": "{0} nicht gefunden"
@@ -188,7 +188,7 @@
     "origin": [
       [
         "src/views/board/components/List.tsx",
-        158
+        161
       ]
     ],
     "translation": ""
@@ -529,11 +529,11 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        625
+        627
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        681
+        683
       ]
     ],
     "translation": ""
@@ -557,7 +557,7 @@
     "origin": [
       [
         "src/views/board/components/List.tsx",
-        260
+        267
       ]
     ],
     "translation": "Karte hinzufügen"
@@ -592,12 +592,16 @@
     "comments": [],
     "origin": [
       [
+        "src/views/board/components/AreaLanesView.tsx",
+        119
+      ],
+      [
         "src/views/board/components/CalendarView.tsx",
         499
       ],
       [
         "src/views/board/components/List.tsx",
-        247
+        253
       ]
     ],
     "translation": "Karte hinzufügen"
@@ -729,7 +733,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        768
+        770
       ]
     ],
     "translation": ""
@@ -741,7 +745,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        767
+        769
       ]
     ],
     "translation": ""
@@ -1472,7 +1476,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1058
+        1071
       ]
     ],
     "translation": ""
@@ -1529,7 +1533,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        757
+        759
       ],
       [
         "src/views/card/components/AttachmentUpload.tsx",
@@ -1804,7 +1808,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        974
+        987
       ],
       [
         "src/views/board/members/index.tsx",
@@ -1913,7 +1917,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        992
+        1005
       ]
     ],
     "translation": "Board-Name"
@@ -2130,7 +2134,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        777
+        779
       ]
     ],
     "translation": ""
@@ -2774,7 +2778,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        517
+        519
       ],
       [
         "src/views/card/index.tsx",
@@ -2790,7 +2794,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        503
+        515
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -2886,7 +2890,7 @@
     "origin": [
       [
         "src/views/board/components/List.tsx",
-        282
+        289
       ]
     ],
     "translation": ""
@@ -3022,7 +3026,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        561
+        563
       ]
     ],
     "translation": ""
@@ -3062,7 +3066,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        679
+        681
       ]
     ],
     "translation": ""
@@ -3074,7 +3078,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        581
+        583
       ]
     ],
     "translation": ""
@@ -3174,7 +3178,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        499
+        500
       ],
       [
         "src/views/card/components/MoveCardForm.tsx",
@@ -3250,7 +3254,7 @@
     "origin": [
       [
         "src/views/board/components/List.tsx",
-        273
+        280
       ]
     ],
     "translation": ""
@@ -3322,7 +3326,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        387
+        399
       ],
       [
         "src/views/card/components/ListSelector.tsx",
@@ -3400,7 +3404,6 @@
     "translation": "Vollständige Kontrolle und Eigentümerschaft:"
   },
   "kI5axt": {
-    "translation": "",
     "message": "Complete the card to move it",
     "placeholders": {},
     "comments": [],
@@ -3409,7 +3412,8 @@
         "src/components/MoveRequirementsDialog.tsx",
         131
       ]
-    ]
+    ],
+    "translation": ""
   },
   "Lt+ZP3": {
     "message": "completed a checklist item",
@@ -3836,7 +3840,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        805
+        807
       ],
       [
         "src/views/board/components/NewListForm.tsx",
@@ -3864,7 +3868,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        821
+        823
       ]
     ],
     "translation": "Karte erstellen"
@@ -3956,7 +3960,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        621
+        623
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -3976,7 +3980,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1176
+        1199
       ]
     ],
     "translation": "Neue Liste erstellen"
@@ -4444,7 +4448,7 @@
     "origin": [
       [
         "src/views/board/components/List.tsx",
-        294
+        301
       ]
     ],
     "translation": "Liste löschen"
@@ -4556,7 +4560,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        720
+        722
       ],
       [
         "src/views/card/index.tsx",
@@ -4857,7 +4861,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        668
+        670
       ],
       [
         "src/views/card/index.tsx",
@@ -4877,11 +4881,11 @@
       ],
       [
         "src/views/board/index.tsx",
-        395
+        407
       ],
       [
         "src/views/board/index.tsx",
-        440
+        452
       ],
       [
         "src/views/card/components/DueDateSelector.tsx",
@@ -5643,7 +5647,7 @@
     "origin": [
       [
         "src/views/board/components/List.tsx",
-        193
+        196
       ]
     ],
     "translation": ""
@@ -6167,7 +6171,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1158
+        1181
       ]
     ],
     "translation": "Legen Sie los, indem Sie eine neue Liste erstellen"
@@ -6399,7 +6403,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1034
+        1047
       ]
     ],
     "translation": ""
@@ -7105,7 +7109,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        612
+        614
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -7323,7 +7327,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        501
+        513
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -7350,6 +7354,10 @@
         117
       ],
       [
+        "src/views/board/components/NewCardForm.tsx",
+        487
+      ],
+      [
         "src/views/card/components/MoveCardForm.tsx",
         149
       ]
@@ -7363,7 +7371,7 @@
     "origin": [
       [
         "src/views/board/components/List.tsx",
-        231
+        234
       ],
       [
         "src/views/board/components/NewListForm.tsx",
@@ -7379,7 +7387,7 @@
     "origin": [
       [
         "src/views/board/components/List.tsx",
-        310
+        317
       ]
     ],
     "translation": "Listen-Optionen"
@@ -7599,7 +7607,7 @@
     "origin": [
       [
         "src/views/board/components/List.tsx",
-        79
+        82
       ]
     ],
     "translation": ""
@@ -7922,7 +7930,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        388
+        400
       ],
       [
         "src/views/card/components/ListSelector.tsx",
@@ -8062,7 +8070,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        494
+        495
       ]
     ],
     "translation": "Neue Karte"
@@ -8114,7 +8122,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1090
+        1103
       ]
     ],
     "translation": "Neue Liste"
@@ -8262,11 +8270,11 @@
     "origin": [
       [
         "src/components/CardArea.tsx",
-        76
+        79
       ],
       [
         "src/views/board/components/AreaLanesView.tsx",
-        55
+        64
       ]
     ],
     "translation": ""
@@ -8314,7 +8322,7 @@
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        112
+        134
       ]
     ],
     "translation": ""
@@ -8398,7 +8406,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1154
+        1177
       ]
     ],
     "translation": "Keine Listen"
@@ -8410,7 +8418,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1159
+        1182
       ]
     ],
     "translation": "Es wurden noch keine Listen erstellt"
@@ -8582,7 +8590,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        331
+        343
       ]
     ],
     "translation": ""
@@ -8710,7 +8718,7 @@
     "origin": [
       [
         "src/views/board/components/List.tsx",
-        152
+        155
       ]
     ],
     "translation": ""
@@ -9230,15 +9238,15 @@
       ],
       [
         "src/views/board/index.tsx",
-        403
+        415
       ],
       [
         "src/views/board/index.tsx",
-        448
+        460
       ],
       [
         "src/views/board/index.tsx",
-        1279
+        1303
       ],
       [
         "src/views/boards/components/ImportBoardsForm.tsx",
@@ -9438,7 +9446,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        510
+        522
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -9530,7 +9538,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        530
+        532
       ],
       [
         "src/views/card/index.tsx",
@@ -9803,7 +9811,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        792
+        794
       ]
     ],
     "translation": "Datei entfernen"
@@ -10078,11 +10086,11 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        568
+        570
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        575
+        577
       ],
       [
         "src/views/card/components/MemberSelector.tsx",
@@ -10106,11 +10114,11 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        538
+        540
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        550
+        552
       ],
       [
         "src/views/card/components/AreaSelector.tsx",
@@ -10134,7 +10142,7 @@
     "origin": [
       [
         "src/components/CardArea.tsx",
-        83
+        86
       ]
     ],
     "translation": ""
@@ -10277,7 +10285,6 @@
     "translation": "Speichern"
   },
   "9JNB1N": {
-    "translation": "",
     "message": "Save and move",
     "placeholders": {},
     "comments": [],
@@ -10286,7 +10293,8 @@
         "src/components/MoveRequirementsDialog.tsx",
         239
       ]
-    ]
+    ],
+    "translation": ""
   },
   "y3aU20": {
     "message": "Save changes",
@@ -10607,11 +10615,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        396
+        408
       ],
       [
         "src/views/board/index.tsx",
-        441
+        453
       ],
       [
         "src/views/card/components/ListSelector.tsx",
@@ -10723,7 +10731,7 @@
     "origin": [
       [
         "src/views/board/components/List.tsx",
-        283
+        290
       ]
     ],
     "translation": ""
@@ -11325,7 +11333,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1033
+        1046
       ]
     ],
     "translation": ""
@@ -11401,11 +11409,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        974
+        987
       ],
       [
         "src/views/board/index.tsx",
-        1011
+        1024
       ]
     ],
     "translation": "Vorlage"
@@ -11912,7 +11920,7 @@
     "origin": [
       [
         "src/components/CardArea.tsx",
-        70
+        73
       ]
     ],
     "translation": ""
@@ -12114,7 +12122,6 @@
     "translation": "Zu erledigen"
   },
   "XbolBV": {
-    "translation": "",
     "message": "To move \"{cardTitle}\" to {listName}, fill in what is missing.",
     "placeholders": {
       "cardTitle": [
@@ -12130,7 +12137,8 @@
         "src/components/MoveRequirementsDialog.tsx",
         135
       ]
-    ]
+    ],
+    "translation": ""
   },
   "40kVab": {
     "message": "To move \"{cardTitle}\" to {listName}, leave a comment explaining why.",
@@ -12152,7 +12160,6 @@
     "translation": ""
   },
   "NmjZ9c": {
-    "translation": "",
     "message": "To move the card to {listName}, fill in what is missing.",
     "placeholders": {
       "listName": [
@@ -12165,7 +12172,8 @@
         "src/components/MoveRequirementsDialog.tsx",
         136
       ]
-    ]
+    ],
+    "translation": ""
   },
   "Q15qpk": {
     "message": "To move the card to {listName}, leave a comment explaining why.",
@@ -12226,7 +12234,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        777
+        779
       ]
     ],
     "translation": ""
@@ -12362,7 +12370,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        330
+        342
       ]
     ],
     "translation": ""
@@ -12402,7 +12410,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        508
+        520
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -12750,11 +12758,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        402
+        414
       ],
       [
         "src/views/board/index.tsx",
-        1278
+        1302
       ],
       [
         "src/views/card/components/ListSelector.tsx",
@@ -12810,7 +12818,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        447
+        459
       ],
       [
         "src/views/card/components/DueDateSelector.tsx",
@@ -13850,7 +13858,6 @@
     "translation": "Als Trello 2011 auf den Markt kam, begeisterte es alle mit seiner sorgfältig gestalteten Einfachheit, aber im Laufe der Jahre verlor es seinen Zauber und entwickelte sich zu etwas, das eher \"Jira Lite\" ähnelt. Dieses Projekt ist unser Versuch, den ursprünglichen Zauber der Einfachheit von Trello in Open Source wiederzubeleben."
   },
   "kBnH/8": {
-    "translation": "",
     "message": "Why is the card going to {listName}?",
     "placeholders": {
       "listName": [
@@ -13863,7 +13870,8 @@
         "src/components/MoveRequirementsDialog.tsx",
         227
       ]
-    ]
+    ],
+    "translation": ""
   },
   "EVnXTM": {
     "message": "Why is the card going to {selectedListName}?",
@@ -13904,7 +13912,7 @@
     "origin": [
       [
         "src/views/board/components/List.tsx",
-        153
+        156
       ]
     ],
     "translation": ""
@@ -13924,7 +13932,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        974
+        987
       ],
       [
         "src/views/boards/index.tsx",
@@ -14338,7 +14346,7 @@
     "origin": [
       [
         "src/views/board/components/List.tsx",
-        241
+        246
       ],
       [
         "src/views/board/components/VisibilityButton.tsx",
@@ -14346,11 +14354,11 @@
       ],
       [
         "src/views/board/index.tsx",
-        1078
+        1091
       ],
       [
         "src/views/board/index.tsx",
-        1165
+        1188
       ],
       [
         "src/views/boards/components/BoardsList.tsx",

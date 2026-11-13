@@ -40,11 +40,33 @@ export class BoardPage {
   }
 
   async createCard(title: string, listName?: string) {
-    const scope = listName
-      ? this.page.getByRole("button", { name: listName })
-      : this.page;
-    await scope.getByRole("button", { name: "Add card", exact: true }).click();
+    // Only the backlog (or first) list has the add button; other lists are
+    // picked on the list chip inside the new card dialog.
+    const ownButton = listName
+      ? this.page
+          .getByRole("button", { name: listName })
+          .getByRole("button", { name: "Add card", exact: true })
+      : null;
+    const pickList = !!ownButton && (await ownButton.count()) === 0;
+    if (ownButton && !pickList) await ownButton.click();
+    else
+      await this.page
+        .getByRole("button", { name: "Add card", exact: true })
+        .first()
+        .click();
     await this.page.getByPlaceholder("Card title").fill(title);
+    if (pickList && listName) {
+      await this.page
+        .locator('[aria-label="List"]')
+        .filter({ visible: true })
+        .first()
+        .click();
+      await this.page
+        .getByRole("checkbox", { name: listName })
+        .filter({ visible: true })
+        .click();
+      await this.page.getByPlaceholder("Card title").click({ force: true });
+    }
     await fillRequiredCardFields(this.page);
     const created = waitForTrpcMutation(this.page, "card.create");
     await this.page.getByRole("button", { name: "Create card" }).click();

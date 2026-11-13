@@ -484,6 +484,7 @@ export function NewCardForm({
           <CheckboxDropdown
             items={formattedLists}
             handleSelect={(_groupKey, item) => handleSelectList(item.key)}
+            ariaLabel={t`List`}
           >
             <div className="flex items-center gap-1 rounded-[5px] bg-light-200 px-2 py-1 text-xs font-semibold text-light-1000 hover:bg-light-300 dark:bg-dark-200 dark:text-dark-1000 dark:hover:bg-dark-300">
               {selectedList?.value}
