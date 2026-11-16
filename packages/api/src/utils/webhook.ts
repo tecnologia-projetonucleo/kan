@@ -18,6 +18,9 @@ export interface WebhookPayload {
   // Mattermost, Rocket.Chat) post it as the message; other consumers can
   // ignore it.
   text: string;
+  // Slack-style coloured attachment: the card title as a link and its board
+  // and list in the footer (same layout as the daily due-date digest).
+  attachments?: SlackAttachment[];
   data: {
     card: {
       id: string;
@@ -42,6 +45,14 @@ export interface WebhookPayload {
     };
     changes?: Record<string, { from: unknown; to: unknown }>;
   };
+}
+
+export interface SlackAttachment {
+  color: string;
+  fallback: string;
+  title: string;
+  title_link?: string;
+  footer: string;
 }
 
 function generateSignature(payload: string, secret: string): string {
@@ -259,48 +270,71 @@ export const buildCardLink = (publicId: string, title: string) => {
     : `*${escapeSlack(title)}*`;
 };
 
-export function buildWebhookText(
+// Side-bar colour per event in Slack.
+const EVENT_COLOURS: Record<string, string> = {
+  "card.created": "#1D4ED8",
+  "card.moved": "#6D28D9",
+  "card.deleted": "#4B5563",
+  "card.assigned": "#0F766E",
+  "card.mentioned": "#B45309",
+};
+const DEFAULT_COLOUR = "#4B5563";
+
+/**
+ * Coloured attachment for a card: linked title, then `[BOARD] list` and any
+ * extra details in the small footer. Deleted cards get no link.
+ */
+export function buildCardAttachment(
   event: WebhookEventType,
   card: { publicId: string; title: string },
-  context: {
-    boardName?: string;
-    listName?: string;
-    user?: { name: string | null };
-    changes?: Record<string, unknown>;
-  },
+  context: { boardName?: string; listName?: string; fromListName?: string },
+  extra: string[] = [],
+): SlackAttachment {
+  const baseUrl = env("NEXT_PUBLIC_BASE_URL") ?? "";
+  const list =
+    context.fromListName && context.fromListName !== context.listName
+      ? `${context.fromListName} → ${context.listName ?? ""}`
+      : context.listName;
+  const place = [
+    context.boardName && `[${context.boardName.toUpperCase()}]`,
+    list,
+  ]
+    .filter(Boolean)
+    .join(" ");
+  return {
+    color: EVENT_COLOURS[event] ?? DEFAULT_COLOUR,
+    fallback: card.title,
+    title: card.title,
+    ...(baseUrl && event !== "card.deleted"
+      ? { title_link: `${baseUrl}/cards/${card.publicId}` }
+      : {}),
+    footer: [place, ...extra].filter(Boolean).join(" · "),
+  };
+}
+
+/** Headline shown above the card attachment. */
+export function buildWebhookText(
+  event: WebhookEventType,
+  context: { user?: { name: string | null } },
 ): string {
   const who = escapeSlack(context.user?.name ?? "Alguém");
-  const baseUrl = env("NEXT_PUBLIC_BASE_URL") ?? "";
-  const title = escapeSlack(card.title);
-  const cardRef =
-    baseUrl && event !== "card.deleted"
-      ? `<${baseUrl}/cards/${card.publicId}|${title}>`
-      : `*${title}*`;
-  const where = [context.boardName, context.listName]
-    .filter(Boolean)
-    .map((part) => escapeSlack(part!))
-    .join(" › ");
-  const inWhere = where ? ` em *${where}*` : "";
-
   switch (event) {
     case "card.created":
-      return `:new: ${who} criou o card ${cardRef}${inWhere}`;
+      return `🆕 *Card criado* por ${who}`;
     case "card.moved":
-      return `:arrow_right: ${who} moveu ${cardRef} para *${escapeSlack(context.listName ?? "outra coluna")}*${context.boardName ? ` (${escapeSlack(context.boardName)})` : ""}`;
+      return `➡️ *Card movido* por ${who}`;
     case "card.deleted":
-      return `:wastebasket: ${who} excluiu o card ${cardRef}${inWhere}`;
-    case "card.assigned":
-      return `:bust_in_silhouette: ${who} definiu responsáveis em ${cardRef}${inWhere}`;
-    case "card.mentioned":
-      return `:speech_balloon: ${who} mencionou alguém em ${cardRef}${inWhere}`;
-    default: {
-      const fields = Object.keys(context.changes ?? {})
-        .map((key) => CHANGE_LABELS[key] ?? key)
-        .join(", ");
-      return `:pencil2: ${who} atualizou ${cardRef}${inWhere}${fields ? ` (${fields})` : ""}`;
-    }
+      return `🗑️ *Card excluído* por ${who}`;
+    default:
+      return `✏️ *Card atualizado* por ${who}`;
   }
 }
+
+const changedFields = (changes?: Record<string, unknown>) =>
+  Object.keys(changes ?? {})
+    .filter((key) => key !== "listId")
+    .map((key) => CHANGE_LABELS[key] ?? key)
+    .join(", ");
 
 export function createCardWebhookPayload(
   event: WebhookEventType,
@@ -316,6 +350,7 @@ export function createCardWebhookPayload(
     boardId: string;
     boardName?: string;
     listName?: string;
+    fromListName?: string;
     user?: {
       id: string;
       name: string | null;
@@ -323,10 +358,15 @@ export function createCardWebhookPayload(
     changes?: Record<string, { from: unknown; to: unknown }>;
   },
 ): WebhookPayload {
+  const fields =
+    event === "card.updated" ? changedFields(context.changes) : "";
   return {
     event,
     timestamp: new Date().toISOString(),
-    text: buildWebhookText(event, card, context),
+    text: buildWebhookText(event, context),
+    attachments: [
+      buildCardAttachment(event, card, context, fields ? [fields] : []),
+    ],
     data: {
       card: {
         id: card.id,

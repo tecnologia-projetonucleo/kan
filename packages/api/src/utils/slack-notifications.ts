@@ -6,7 +6,7 @@ import * as workspaceRepo from "@kan/db/repository/workspace.repo";
 import { createLogger } from "@kan/logger";
 
 import {
-  buildCardLink,
+  buildCardAttachment,
   createCardWebhookPayload,
   escapeSlack,
   sendWebhooksForWorkspace,
@@ -85,7 +85,8 @@ async function send(
   db: dbClient,
   event: WebhookEvent,
   cardPublicId: string,
-  buildText: (ctx: { cardLink: string; where: string }) => Promise<string>,
+  headline: () => Promise<string>,
+  extra: string[] = [],
 ) {
   const loaded = await loadCardContext(db, cardPublicId);
   if (!loaded) return;
@@ -108,10 +109,15 @@ async function send(
       listName: card.list.name,
     },
   );
-  payload.text = await buildText({
-    cardLink: buildCardLink(cardPublicId, card.title),
-    where: `*${escapeSlack(board.name)} › ${escapeSlack(card.list.name)}*`,
-  });
+  payload.text = await headline();
+  payload.attachments = [
+    buildCardAttachment(
+      event,
+      { publicId: cardPublicId, title: card.title },
+      { boardName: board.name, listName: card.list.name },
+      extra,
+    ),
+  ];
   await sendWebhooksForWorkspace(db, workspaceId, payload);
 }
 
@@ -146,14 +152,15 @@ export async function notifyAssigned({
       db,
       "card.assigned",
       cardPublicId,
-      async ({ cardLink, where }) => {
+      async () => {
         const tags = await Promise.all(
           others.map((m) =>
             slackMention(m.user?.email ?? m.email, displayName(m)),
           ),
         );
-        return `:bust_in_silhouette: ${tags.join(" ")} ${others.length > 1 ? "agora são responsáveis" : "agora é responsável"} por ${cardLink} em ${where}${assignerName ? ` (por ${escapeSlack(assignerName)})` : ""}`;
+        return `👤 ${tags.join(" ")} ${others.length > 1 ? "agora são responsáveis" : "agora é responsável"}`;
       },
+      assignerName ? [`definido por ${assignerName}`] : [],
     );
   } catch (error) {
     log.error({ err: error, cardPublicId }, "Failed to notify assignment");
@@ -181,13 +188,13 @@ export async function notifyMentioned({
       db,
       "card.mentioned",
       cardPublicId,
-      async ({ cardLink, where }) => {
+      async () => {
         const tags = await Promise.all(
           members.map((m) =>
             slackMention(m.user?.email ?? m.email, displayName(m)),
           ),
         );
-        return `:speech_balloon: ${escapeSlack(commenterName)} mencionou ${tags.join(" ")} em ${cardLink} (${where})`;
+        return `💬 *${escapeSlack(commenterName)}* mencionou ${tags.join(" ")}`;
       },
     );
   } catch (error) {
