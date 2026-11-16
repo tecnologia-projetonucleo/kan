@@ -40,10 +40,14 @@ import type { CardContextMenuAction } from "./components/CardContextMenu";
 import type { BoardView } from "./components/ViewToggle";
 import type { DragData } from "./dnd/types";
 import type { BoardCard, BoardList } from "./types";
+import type { MoveNeeds } from "~/components/MoveRequirementsDialog";
 import Button from "~/components/Button";
 import { DeleteLabelConfirmation } from "~/components/DeleteLabelConfirmation";
 import { LabelForm } from "~/components/LabelForm";
 import Modal from "~/components/modal";
+import MoveRequirementsDialog, {
+  hasMoveNeeds,
+} from "~/components/MoveRequirementsDialog";
 import { NewWorkspaceForm } from "~/components/NewWorkspaceForm";
 import { PageHead } from "~/components/PageHead";
 import PatternedBackground from "~/components/PatternedBackground";
@@ -59,6 +63,7 @@ import { useWorkspace } from "~/providers/workspace";
 import { api } from "~/utils/api";
 import { formatToArray, isPlaceholderPublicId } from "~/utils/helpers";
 import { DeleteCardConfirmation } from "~/views/card/components/DeleteCardConfirmation";
+import AreaLanesView from "./components/AreaLanesView";
 import BoardDropdown from "./components/BoardDropdown";
 import CalendarView from "./components/CalendarView";
 import { CardContextDueDateModal } from "./components/CardContextDueDateModal";
@@ -79,7 +84,6 @@ import { NewListForm } from "./components/NewListForm";
 import { NewTemplateForm } from "./components/NewTemplateForm";
 import { UpdateBoardSlugForm } from "./components/UpdateBoardSlugForm";
 import ViewToggle from "./components/ViewToggle";
-import AreaLanesView from "./components/AreaLanesView";
 import VisibilityButton from "./components/VisibilityButton";
 import { createBoardCollisionDetection } from "./dnd/collision";
 import {
@@ -89,10 +93,6 @@ import {
   isDueDateRequiredError,
   listRequiresComment,
 } from "./utils/listStatus";
-import type { MoveNeeds } from "~/components/MoveRequirementsDialog";
-import MoveRequirementsDialog, {
-  hasMoveNeeds,
-} from "~/components/MoveRequirementsDialog";
 
 type PublicListId = string;
 
@@ -682,6 +682,51 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
     });
   };
 
+  // Swimlanes: a card dropped on another column moves to the end of that
+  // list, asking for missing required fields first like the list view.
+  const moveCardFromLanes = (
+    cardPublicId: string,
+    destListPublicId: string,
+  ) => {
+    if (!canEditCard || isTemplate || !boardData) return;
+    const sourceList = boardData.lists.find((list) =>
+      list.cards.some((card) => card.publicId === cardPublicId),
+    );
+    const destList = boardData.lists.find(
+      (list) => list.publicId === destListPublicId,
+    );
+    const movedCard = sourceList?.cards.find(
+      (card) => card.publicId === cardPublicId,
+    );
+    if (!sourceList || !destList || !movedCard) return;
+    if (sourceList.publicId === destListPublicId) return;
+
+    const index = destList.cards.length;
+    const needs: MoveNeeds = {
+      area: !movedCard.area,
+      responsible: movedCard.members.length === 0,
+      dueDate:
+        dueDateRequiredListIds.has(destListPublicId) && !movedCard.dueDate,
+      comment: listRequiresComment(destList.name),
+    };
+    if (hasMoveNeeds(needs)) {
+      setPendingMove({
+        cardPublicId,
+        listPublicId: destListPublicId,
+        index,
+        listName: destList.name,
+        cardTitle: movedCard.title,
+        needs,
+      });
+      return;
+    }
+    updateCardMutation.mutate({
+      cardPublicId,
+      listPublicId: destListPublicId,
+      index,
+    });
+  };
+
   const handleDragEnd = ({ active, over }: DragEndEvent): void => {
     setActiveId(null);
     setActiveWidth(null);
@@ -988,7 +1033,8 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
       />
       <div className="relative flex h-full flex-col dark:bg-[#0f0f10]">
         <PatternedBackground />
-        <div className="z-10 flex w-full flex-col justify-between p-6 md:flex-row md:p-8">
+        {/* Above the board content (z-10) so header menus are not covered. */}
+        <div className="relative z-20 flex w-full flex-col justify-between p-6 md:flex-row md:p-8">
           {isLoading && !boardData && (
             <div className="flex space-x-2">
               <div className="h-[2.3rem] w-[150px] animate-pulse rounded-[5px] bg-light-200 dark:bg-dark-100" />
@@ -1142,8 +1188,11 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
               cardPrefix={boardData.workspace.cardPrefix}
               isTemplate={!!isTemplate}
               dueDateRequiredListIds={dueDateRequiredListIds}
-              getCardHref={(cardPublicId) => `/cards/${cardPublicId}${cardReturnQuery}`}
+              getCardHref={(cardPublicId) =>
+                `/cards/${cardPublicId}${cardReturnQuery}`
+              }
               addCardListIds={addCardListIds}
+              onMoveCard={canEditCard ? moveCardFromLanes : undefined}
               onAddCard={
                 canCreateCard
                   ? (listPublicId) => {

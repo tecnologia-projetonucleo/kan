@@ -593,7 +593,7 @@
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        119
+        152
       ],
       [
         "src/views/board/components/CalendarView.tsx",
@@ -5772,6 +5772,22 @@
     ],
     "translation": "Ofte stillede spørgsmål"
   },
+  "zr30eG": {
+    "translation": "",
+    "message": "Favourite lane",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/AreaLanesView.tsx",
+        208
+      ],
+      [
+        "src/views/board/components/AreaLanesView.tsx",
+        213
+      ]
+    ]
+  },
   "en3oy5": {
     "message": "Feature",
     "placeholders": {},
@@ -8196,7 +8212,7 @@
       ],
       [
         "src/views/board/components/AreaLanesView.tsx",
-        64
+        93
       ]
     ],
     "translation": ""
@@ -8244,7 +8260,7 @@
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        134
+        167
       ]
     ],
     "translation": ""
@@ -9761,6 +9777,22 @@
       ]
     ],
     "translation": "Fjern fra favoritter"
+  },
+  "tZ2EkJ": {
+    "translation": "",
+    "message": "Remove lane from favourites",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/AreaLanesView.tsx",
+        207
+      ],
+      [
+        "src/views/board/components/AreaLanesView.tsx",
+        212
+      ]
+    ]
   },
   "99VIgC": {
     "message": "Remove member",
