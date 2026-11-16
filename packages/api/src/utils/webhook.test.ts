@@ -622,35 +622,39 @@ describe("webhook utilities", () => {
 describe("buildWebhookText", () => {
   const card = { publicId: "card12345678", title: "Fix <login> & signup" };
 
-  it("summarises a created card with its board, list and author", async () => {
+  it("names the event and its author", async () => {
     const { buildWebhookText } = await import("./webhook");
-    const text = buildWebhookText("card.created", card, {
-      boardName: "Casa da Roleta",
-      listName: "Backlog",
-      user: { name: "Produto" },
-    });
-    expect(text).toContain("Produto criou o card");
-    expect(text).toContain("Fix &lt;login&gt; &amp; signup");
-    expect(text).toContain("*Casa da Roleta › Backlog*");
+    expect(
+      buildWebhookText("card.created", { user: { name: "Produto" } }),
+    ).toBe("🆕 *Card criado* por Produto");
+    expect(buildWebhookText("card.updated", {})).toContain("Alguém");
   });
 
-  it("names the destination list when a card moves", async () => {
-    const { buildWebhookText } = await import("./webhook");
-    const text = buildWebhookText("card.moved", card, {
+  it("puts board and list in the attachment footer", async () => {
+    const { buildCardAttachment } = await import("./webhook");
+    const attachment = buildCardAttachment("card.moved", card, {
       boardName: "Axio",
+      fromListName: "Backlog",
       listName: "Concluído",
-      user: { name: "LK" },
     });
-    expect(text).toContain("LK moveu");
-    expect(text).toContain("para *Concluído* (Axio)");
+    expect(attachment.title).toBe(card.title);
+    expect(attachment.footer).toBe("[AXIO] Backlog → Concluído");
   });
 
   it("lists the changed fields on update", async () => {
-    const { buildWebhookText } = await import("./webhook");
-    const text = buildWebhookText("card.updated", card, {
-      changes: { title: {}, dueDate: {} },
-    });
-    expect(text).toContain("Alguém atualizou");
-    expect(text).toContain("(título, data de vencimento)");
+    const { createCardWebhookPayload } = await import("./webhook");
+    const payload = createCardWebhookPayload(
+      "card.updated",
+      { id: "1", publicId: card.publicId, title: card.title, listId: "l" },
+      {
+        boardId: "b",
+        boardName: "Axio",
+        listName: "Backlog",
+        changes: { title: { from: 1, to: 2 }, dueDate: { from: 1, to: 2 } },
+      },
+    );
+    expect(payload.attachments?.[0]?.footer).toBe(
+      "[AXIO] Backlog · título, data de vencimento",
+    );
   });
 });

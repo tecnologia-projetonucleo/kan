@@ -1396,6 +1396,7 @@ export const cardRouter = createTRPCRouter({
             boardId: card.boardPublicId,
             boardName: card.boardName,
             listName: currentWebhookListName,
+            fromListName: movedToNewList ? existingCard.list.name : undefined,
             user: ctx.user
               ? { id: ctx.user.id, name: ctx.user.name }
               : undefined,

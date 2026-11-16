@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { t } from "@lingui/core/macro";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   HiChevronDown,
   HiChevronRight,
   HiOutlinePlusSmall,
+  HiOutlineStar,
+  HiStar,
 } from "react-icons/hi2";
 import { twMerge } from "tailwind-merge";
 
@@ -27,6 +29,24 @@ const TONE_DOT_CLASS: Record<string, string> = {
 
 const NO_AREA = "__none__";
 
+// The favourite lane is a personal preference, kept in this browser.
+const FAVOURITE_KEY = "kan.favouriteAreaLane";
+const readFavourite = (): string | null => {
+  try {
+    return window.localStorage.getItem(FAVOURITE_KEY);
+  } catch {
+    return null;
+  }
+};
+const saveFavourite = (key: string | null) => {
+  try {
+    if (key) window.localStorage.setItem(FAVOURITE_KEY, key);
+    else window.localStorage.removeItem(FAVOURITE_KEY);
+  } catch {
+    // Storage blocked: the choice lasts until the page reloads.
+  }
+};
+
 interface AreaLanesViewProps {
   lists: BoardList[];
   cardPrefix: string;
@@ -36,13 +56,17 @@ interface AreaLanesViewProps {
   // Lists where new cards start (the backlog), and how to open the form.
   addCardListIds?: Set<string>;
   onAddCard?: (listPublicId: string) => void;
+  // Moves a card dropped on another column; without it cards can't be dragged.
+  onMoveCard?: (cardPublicId: string, listPublicId: string) => void;
 }
+
+const DRAG_TYPE = "application/x-kan-card";
 
 /**
  * Board grouped into one horizontal swimlane per responsible area, with the
  * lists as columns. Lanes without cards are hidden; cards without an area go
- * to a last "No area" lane. Read-only layout: cards open on click, and are
- * moved with the swimlanes switched off.
+ * to a last "No area" lane. Cards open on click and can be dragged to another
+ * column (the area stays the same).
  */
 export default function AreaLanesView({
   lists,
@@ -52,8 +76,20 @@ export default function AreaLanesView({
   getCardHref,
   addCardListIds,
   onAddCard,
+  onMoveCard,
 }: AreaLanesViewProps) {
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
+  // Cell under the dragged card, as `${laneKey}:${listPublicId}`.
+  const [dropTarget, setDropTarget] = useState<string | null>(null);
+  // Only one favourite lane: marking another one replaces it.
+  const [favourite, setFavourite] = useState<string | null>(null);
+  useEffect(() => setFavourite(readFavourite()), []);
+
+  const toggleFavourite = (key: string) => {
+    const next = favourite === key ? null : key;
+    setFavourite(next);
+    saveFavourite(next);
+  };
 
   const lanes = [
     ...CARD_AREAS.map((area) => ({
@@ -77,7 +113,9 @@ export default function AreaLanesView({
         total: cells.reduce((sum, cards) => sum + cards.length, 0),
       };
     })
-    .filter((lane) => lane.total > 0);
+    .filter((lane) => lane.total > 0)
+    // The favourite lane comes first; the others keep their usual order.
+    .sort((a, b) => Number(b.key === favourite) - Number(a.key === favourite));
 
   const toggleLane = (key: string) =>
     setCollapsed((current) => {
@@ -137,32 +175,63 @@ export default function AreaLanesView({
 
         {lanes.map((lane) => {
           const isCollapsed = collapsed.has(lane.key);
+          const isFavourite = favourite === lane.key;
           return (
             <section key={lane.key} className="mt-3">
-              <button
-                type="button"
-                onClick={() => toggleLane(lane.key)}
-                aria-expanded={!isCollapsed}
-                className="sticky left-0 flex items-center gap-2 rounded-md px-1 py-1 text-sm font-semibold text-light-1000 hover:bg-light-200 dark:text-dark-1000 dark:hover:bg-dark-200"
-              >
-                {isCollapsed ? (
-                  <HiChevronRight className="h-4 w-4" aria-hidden="true" />
-                ) : (
-                  <HiChevronDown className="h-4 w-4" aria-hidden="true" />
-                )}
-                {lane.colour ? (
-                  <AreaDot colour={lane.colour} className="h-2.5 w-2.5" />
-                ) : (
-                  <span
-                    aria-hidden="true"
-                    className="h-2.5 w-2.5 rounded-full border border-dashed border-amber-500"
-                  />
-                )}
-                {lane.name}
-                <span className="text-xs font-normal tabular-nums text-light-800 dark:text-dark-800">
-                  {lane.total}
-                </span>
-              </button>
+              <div className="sticky left-0 flex w-max items-center gap-1">
+                <button
+                  type="button"
+                  onClick={() => toggleLane(lane.key)}
+                  aria-expanded={!isCollapsed}
+                  className="flex items-center gap-2 rounded-md px-1 py-1 text-sm font-semibold text-light-1000 hover:bg-light-200 dark:text-dark-1000 dark:hover:bg-dark-200"
+                >
+                  {isCollapsed ? (
+                    <HiChevronRight className="h-4 w-4" aria-hidden="true" />
+                  ) : (
+                    <HiChevronDown className="h-4 w-4" aria-hidden="true" />
+                  )}
+                  {lane.colour ? (
+                    <AreaDot colour={lane.colour} className="h-2.5 w-2.5" />
+                  ) : (
+                    <span
+                      aria-hidden="true"
+                      className="h-2.5 w-2.5 rounded-full border border-dashed border-amber-500"
+                    />
+                  )}
+                  {lane.name}
+                  <span className="text-xs font-normal tabular-nums text-light-800 dark:text-dark-800">
+                    {lane.total}
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => toggleFavourite(lane.key)}
+                  aria-pressed={isFavourite}
+                  aria-label={
+                    isFavourite
+                      ? t`Remove lane from favourites`
+                      : t`Favourite lane`
+                  }
+                  title={
+                    isFavourite
+                      ? t`Remove lane from favourites`
+                      : t`Favourite lane`
+                  }
+                  className="rounded-md p-1 hover:bg-light-200 dark:hover:bg-dark-200"
+                >
+                  {isFavourite ? (
+                    <HiStar
+                      className="h-4 w-4 text-amber-400"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <HiOutlineStar
+                      className="h-4 w-4 text-light-800 dark:text-dark-800"
+                      aria-hidden="true"
+                    />
+                  )}
+                </button>
+              </div>
               {!isCollapsed && (
                 <div
                   className={twMerge(
@@ -174,31 +243,85 @@ export default function AreaLanesView({
                     ...(lane.colour ? { borderLeftColor: lane.colour } : {}),
                   }}
                 >
-                  {lists.map((list, index) => (
-                    <div
-                      key={list.publicId}
-                      className="flex min-h-[48px] flex-col gap-2 rounded-md bg-light-200/60 p-1.5 dark:bg-[#141416]"
-                    >
-                      {(lane.cells[index] ?? []).map((card) => (
-                        <Link
-                          key={card.publicId}
-                          href={getCardHref(card.publicId)}
-                          className="block rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-light-700"
-                        >
-                          <CardPreview
-                            card={card}
-                            cardPrefix={cardPrefix}
-                            listTone={getListTone(list.name)}
-                            requireAssignee={!isTemplate}
-                            requireDueDate={
-                              !isTemplate &&
-                              dueDateRequiredListIds.has(list.publicId)
-                            }
-                          />
-                        </Link>
-                      ))}
-                    </div>
-                  ))}
+                  {lists.map((list, index) => {
+                    const cellKey = `${lane.key}:${list.publicId}`;
+                    return (
+                      <div
+                        key={list.publicId}
+                        onDragOver={
+                          onMoveCard
+                            ? (event) => {
+                                if (
+                                  !event.dataTransfer.types.includes(DRAG_TYPE)
+                                )
+                                  return;
+                                event.preventDefault();
+                                event.dataTransfer.dropEffect = "move";
+                                if (dropTarget !== cellKey)
+                                  setDropTarget(cellKey);
+                              }
+                            : undefined
+                        }
+                        onDragLeave={(event) => {
+                          if (
+                            !event.currentTarget.contains(
+                              event.relatedTarget as Node | null,
+                            )
+                          )
+                            setDropTarget(null);
+                        }}
+                        onDrop={
+                          onMoveCard
+                            ? (event) => {
+                                event.preventDefault();
+                                setDropTarget(null);
+                                const cardPublicId =
+                                  event.dataTransfer.getData(DRAG_TYPE);
+                                if (cardPublicId)
+                                  onMoveCard(cardPublicId, list.publicId);
+                              }
+                            : undefined
+                        }
+                        className={twMerge(
+                          "flex min-h-[48px] flex-col gap-2 rounded-md bg-light-200/60 p-1.5 dark:bg-[#141416]",
+                          dropTarget === cellKey &&
+                            "ring-2 ring-light-700 dark:ring-dark-700",
+                        )}
+                      >
+                        {(lane.cells[index] ?? []).map((card) => (
+                          <Link
+                            key={card.publicId}
+                            href={getCardHref(card.publicId)}
+                            draggable={!!onMoveCard}
+                            onDragStart={(event) => {
+                              event.dataTransfer.setData(
+                                DRAG_TYPE,
+                                card.publicId,
+                              );
+                              event.dataTransfer.effectAllowed = "move";
+                            }}
+                            onDragEnd={() => setDropTarget(null)}
+                            className={twMerge(
+                              "block rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-light-700",
+                              onMoveCard &&
+                                "cursor-grab active:cursor-grabbing",
+                            )}
+                          >
+                            <CardPreview
+                              card={card}
+                              cardPrefix={cardPrefix}
+                              listTone={getListTone(list.name)}
+                              requireAssignee={!isTemplate}
+                              requireDueDate={
+                                !isTemplate &&
+                                dueDateRequiredListIds.has(list.publicId)
+                              }
+                            />
+                          </Link>
+                        ))}
+                      </div>
+                    );
+                  })}
                 </div>
               )}
             </section>
