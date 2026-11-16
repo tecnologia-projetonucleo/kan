@@ -39,6 +39,13 @@ const COMMENT_PATTERN =
 export const listRequiresComment = (name: string) =>
   COMMENT_PATTERN.test(normalize(name));
 
+// Lists whose moves are announced in Slack: blocked and waiting for validation.
+const NOTIFY_MOVE_PATTERN =
+  /bloque|blocked|impedid|travad|aguardando|valida|review|homolog/;
+
+export const listNotifiesMove = (name: string) =>
+  NOTIFY_MOVE_PATTERN.test(normalize(name));
+
 export const commentRequiredError = () =>
   new TRPCError({
     code: "BAD_REQUEST",

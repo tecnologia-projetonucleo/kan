@@ -27,6 +27,7 @@ import { createAvatarUrlResolver } from "../utils/avatarUrls";
 import {
   commentRequiredError,
   dueDateRequiredError,
+  listNotifiesMove,
   listRequiresComment,
   listRequiresDueDate,
 } from "../utils/dueDateRule";
@@ -1371,37 +1372,39 @@ export const cardRouter = createTRPCRouter({
         };
       }
 
-      // Fire webhooks (non-blocking)
-      sendWebhooksForWorkspace(
-        ctx.db,
-        card.workspaceId,
-        createCardWebhookPayload(
-          movedToNewList ? "card.moved" : "card.updated",
-          {
-            id: String(result.id),
-            publicId: result.publicId,
-            title: result.title,
-            description: result.description,
-            dueDate: result.dueDate,
-            listId: currentWebhookListPublicId,
-          },
-          {
-            boardId: card.boardPublicId,
-            boardName: card.boardName,
-            listName: currentWebhookListName,
-            fromListName: movedToNewList ? existingCard.list.name : undefined,
-            user: ctx.user
-              ? { id: ctx.user.id, name: ctx.user.name }
-              : undefined,
-            changes:
-              Object.keys(webhookChanges).length > 0
-                ? webhookChanges
+      // Fire webhooks (non-blocking). Moves are only announced when the card
+      // goes to a blocked or waiting-for-validation list.
+      if (!movedToNewList || listNotifiesMove(currentWebhookListName))
+        sendWebhooksForWorkspace(
+          ctx.db,
+          card.workspaceId,
+          createCardWebhookPayload(
+            movedToNewList ? "card.moved" : "card.updated",
+            {
+              id: String(result.id),
+              publicId: result.publicId,
+              title: result.title,
+              description: result.description,
+              dueDate: result.dueDate,
+              listId: currentWebhookListPublicId,
+            },
+            {
+              boardId: card.boardPublicId,
+              boardName: card.boardName,
+              listName: currentWebhookListName,
+              fromListName: movedToNewList ? existingCard.list.name : undefined,
+              user: ctx.user
+                ? { id: ctx.user.id, name: ctx.user.name }
                 : undefined,
-          },
-        ),
-      ).catch((error) => {
-        console.error("Webhook delivery failed:", error);
-      });
+              changes:
+                Object.keys(webhookChanges).length > 0
+                  ? webhookChanges
+                  : undefined,
+            },
+          ),
+        ).catch((error) => {
+          console.error("Webhook delivery failed:", error);
+        });
 
       return result;
     }),
