@@ -12,6 +12,7 @@ import {
 
 import { authClient } from "@kan/auth/client";
 
+import type { MoveNeeds } from "~/components/MoveRequirementsDialog";
 import Avatar from "~/components/Avatar";
 import Editor from "~/components/Editor";
 import FeedbackModal from "~/components/FeedbackModal";
@@ -34,13 +35,13 @@ import { getBoardReturnUrl } from "~/utils/board-return-url";
 import { invalidateCard } from "~/utils/cardInvalidation";
 import { formatMemberDisplayName, getAvatarUrl } from "~/utils/helpers";
 import { DeleteLabelConfirmation } from "../../components/DeleteLabelConfirmation";
-import type { MoveNeeds } from "~/components/MoveRequirementsDialog";
 import {
   getDueDateRequiredListIds,
   listRequiresComment,
 } from "../board/utils/listStatus";
 import ActivityList from "./components/ActivityList";
 import { ActivitySortOrderToggle } from "./components/ActivitySortOrderToggle";
+import { AreaSelector } from "./components/AreaSelector";
 import { AttachmentThumbnails } from "./components/AttachmentThumbnails";
 import { AttachmentUpload } from "./components/AttachmentUpload";
 import Checklists from "./components/Checklists";
@@ -49,14 +50,14 @@ import { DeleteChecklistConfirmation } from "./components/DeleteChecklistConfirm
 import { DeleteCommentConfirmation } from "./components/DeleteCommentConfirmation";
 import Dropdown from "./components/Dropdown";
 import { DueDateSelector } from "./components/DueDateSelector";
-import { PrioritySelector } from "./components/PrioritySelector";
-import { AreaSelector } from "./components/AreaSelector";
 import LabelSelector from "./components/LabelSelector";
 import ListSelector from "./components/ListSelector";
 import MemberSelector from "./components/MemberSelector";
 import { MoveCardForm } from "./components/MoveCardForm";
 import { NewChecklistForm } from "./components/NewChecklistForm";
 import NewCommentForm from "./components/NewCommentForm";
+import { PrioritySelector } from "./components/PrioritySelector";
+import { TypeSelector } from "./components/TypeSelector";
 
 const ACTION_BUTTON_CLASS =
   "flex items-center gap-1.5 rounded-[5px] border border-light-300 px-2.5 py-1.5 text-sm font-medium text-light-900 hover:bg-light-200 dark:border-dark-300 dark:text-dark-900 dark:hover:bg-dark-200";
@@ -164,6 +165,15 @@ export function CardFields({ isTemplate }: { isTemplate?: boolean }) {
         <AreaSelector
           cardPublicId={cardId ?? ""}
           area={card?.area}
+          isLoading={!card}
+          disabled={!canEdit}
+        />,
+      )}
+      {field(
+        t`Type`,
+        <TypeSelector
+          cardPublicId={cardId ?? ""}
+          type={card?.type}
           isLoading={!card}
           disabled={!canEdit}
         />,

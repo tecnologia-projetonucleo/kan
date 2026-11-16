@@ -60,7 +60,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        418
+        428
       ]
     ],
     "translation": "{0} | {1}"
@@ -124,7 +124,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        661
+        703
       ]
     ],
     "translation": "{0} Labels"
@@ -156,7 +156,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        211
+        223
       ]
     ],
     "translation": ""
@@ -220,7 +220,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        202
+        214
       ]
     ],
     "translation": ""
@@ -377,7 +377,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        192
+        204
       ]
     ],
     "translation": ""
@@ -529,11 +529,11 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        627
+        666
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        683
+        725
       ]
     ],
     "translation": ""
@@ -621,7 +621,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        572
+        582
       ]
     ],
     "translation": "Checkliste hinzufügen"
@@ -733,7 +733,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        770
+        812
       ]
     ],
     "translation": ""
@@ -745,7 +745,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        769
+        811
       ]
     ],
     "translation": ""
@@ -1533,7 +1533,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        759
+        801
       ],
       [
         "src/views/card/components/AttachmentUpload.tsx",
@@ -1772,7 +1772,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        162
+        174
       ]
     ],
     "translation": ""
@@ -1820,7 +1820,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        418
+        428
       ],
       [
         "src/views/public/board/index.tsx",
@@ -2134,7 +2134,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        779
+        821
       ]
     ],
     "translation": ""
@@ -2156,6 +2156,10 @@
     "placeholders": {},
     "comments": [],
     "origin": [
+      [
+        "src/components/CardType.tsx",
+        12
+      ],
       [
         "src/views/boards/components/TemplateBoards.tsx",
         24
@@ -2686,7 +2690,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        418
+        428
       ]
     ],
     "translation": "Karte"
@@ -2750,11 +2754,11 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        497
+        507
       ],
       [
         "src/views/card/index.tsx",
-        511
+        521
       ]
     ],
     "translation": "Karte nicht gefunden"
@@ -2778,11 +2782,11 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        519
+        529
       ],
       [
         "src/views/card/index.tsx",
-        523
+        533
       ]
     ],
     "translation": "Kartentitel"
@@ -2826,7 +2830,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        221
+        227
       ]
     ],
     "translation": ""
@@ -2970,7 +2974,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        579
+        589
       ]
     ],
     "translation": ""
@@ -3026,7 +3030,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        563
+        573
       ]
     ],
     "translation": ""
@@ -3066,10 +3070,26 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        681
+        723
       ]
     ],
     "translation": ""
+  },
+  "m+gFiJ": {
+    "translation": "",
+    "message": "Choose the type",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        602
+      ],
+      [
+        "src/views/card/components/TypeSelector.tsx",
+        86
+      ]
+    ]
   },
   "pOUIRc": {
     "message": "Choose who",
@@ -3078,7 +3098,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        583
+        622
       ]
     ],
     "translation": ""
@@ -3178,7 +3198,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        500
+        510
       ],
       [
         "src/views/card/components/MoveCardForm.tsx",
@@ -3186,7 +3206,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        488
+        498
       ],
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
@@ -3362,7 +3382,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        620
+        630
       ]
     ],
     "translation": ""
@@ -3840,7 +3860,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        807
+        849
       ],
       [
         "src/views/board/components/NewListForm.tsx",
@@ -3868,7 +3888,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        823
+        866
       ]
     ],
     "translation": "Karte erstellen"
@@ -3960,7 +3980,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        623
+        662
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -4048,7 +4068,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        221
+        233
       ]
     ],
     "translation": ""
@@ -4560,11 +4580,11 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        722
+        764
       ],
       [
         "src/views/card/index.tsx",
-        543
+        553
       ]
     ],
     "translation": ""
@@ -4841,7 +4861,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        181
+        193
       ]
     ],
     "translation": ""
@@ -4861,11 +4881,11 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        670
+        712
       ],
       [
         "src/views/card/index.tsx",
-        191
+        201
       ]
     ],
     "translation": "Fälligkeitsdatum"
@@ -4877,7 +4897,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        220
+        226
       ],
       [
         "src/views/board/index.tsx",
@@ -6756,6 +6776,18 @@
     ],
     "translation": "Imports"
   },
+  "CC2hHg": {
+    "translation": "",
+    "message": "Improvement",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/CardType.tsx",
+        14
+      ]
+    ]
+  },
   "JxhWxU": {
     "message": "in",
     "placeholders": {},
@@ -7109,7 +7141,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        614
+        653
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -7117,7 +7149,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        182
+        192
       ]
     ],
     "translation": "Labels"
@@ -7355,7 +7387,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        487
+        497
       ],
       [
         "src/views/card/components/MoveCardForm.tsx",
@@ -8070,7 +8102,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        495
+        505
       ]
     ],
     "translation": "Neue Karte"
@@ -8346,7 +8378,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        196
+        208
       ]
     ],
     "translation": ""
@@ -8430,7 +8462,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        262
+        274
       ]
     ],
     "translation": ""
@@ -8475,6 +8507,18 @@
     ],
     "translation": "Für diesen Workspace wurden noch keine Rollen gefunden."
   },
+  "jaJgUm": {
+    "translation": "",
+    "message": "No type",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/CardType.tsx",
+        78
+      ]
+    ]
+  },
   "TX0bT7": {
     "message": "No webhooks configured. Add a webhook to receive notifications.",
     "placeholders": {},
@@ -8494,7 +8538,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        261
+        273
       ]
     ],
     "translation": ""
@@ -8746,7 +8790,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        180
+        192
       ]
     ],
     "translation": ""
@@ -9210,7 +9254,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        230
+        236
       ],
       [
         "src/views/board/components/NewListForm.tsx",
@@ -9337,12 +9381,16 @@
         40
       ],
       [
-        "src/views/card/index.tsx",
-        329
+        "src/views/card/components/TypeSelector.tsx",
+        39
       ],
       [
         "src/views/card/index.tsx",
-        342
+        339
+      ],
+      [
+        "src/views/card/index.tsx",
+        352
       ],
       [
         "src/views/members/components/DeleteMemberConfirmation.tsx",
@@ -9538,11 +9586,11 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        532
+        542
       ],
       [
         "src/views/card/index.tsx",
-        154
+        155
       ]
     ],
     "translation": ""
@@ -9811,7 +9859,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        794
+        836
       ]
     ],
     "translation": "Datei entfernen"
@@ -10086,11 +10134,11 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        570
+        609
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        577
+        616
       ],
       [
         "src/views/card/components/MemberSelector.tsx",
@@ -10098,7 +10146,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        173
+        183
       ]
     ],
     "translation": ""
@@ -10114,11 +10162,11 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        540
+        550
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        552
+        562
       ],
       [
         "src/views/card/components/AreaSelector.tsx",
@@ -10126,7 +10174,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        163
+        164
       ]
     ],
     "translation": ""
@@ -11099,7 +11147,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        376
+        386
       ]
     ],
     "translation": "Einige Anhänge sind fehlgeschlagen"
@@ -11692,7 +11740,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        377
+        387
       ]
     ],
     "translation": "Die Karte wurde erstellt, aber {failedCount} von {0} Anhängen konnten nicht hochgeladen werden."
@@ -11924,6 +11972,18 @@
       ]
     ],
     "translation": ""
+  },
+  "agui1Z": {
+    "translation": "",
+    "message": "This card has no type yet",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/CardType.tsx",
+        72
+      ]
+    ]
   },
   "mTwGOf": {
     "message": "This invitation link is invalid or has expired.",
@@ -12234,7 +12294,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        779
+        821
       ]
     ],
     "translation": ""
@@ -12315,6 +12375,46 @@
     ],
     "translation": "Vertraut von schnellen Teams<0/>auf der ganzen Welt"
   },
+  "+zy2Nq": {
+    "translation": "",
+    "message": "Type",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        579
+      ],
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        591
+      ],
+      [
+        "src/views/card/components/TypeSelector.tsx",
+        71
+      ],
+      [
+        "src/views/card/index.tsx",
+        173
+      ]
+    ]
+  },
+  "bn4fIE": {
+    "translation": "",
+    "message": "Type: {label}",
+    "placeholders": {
+      "label": [
+        "label"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/components/CardType.tsx",
+        86
+      ]
+    ]
+  },
   "bZSICm": {
     "message": "Unable to add checklist item",
     "placeholders": {},
@@ -12346,7 +12446,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        341
+        351
       ]
     ],
     "translation": "Label konnte nicht hinzugefügt werden"
@@ -12434,7 +12534,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        227
+        233
       ]
     ],
     "translation": "Karte konnte nicht erstellt werden"
@@ -12770,7 +12870,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        328
+        338
       ]
     ],
     "translation": "Karte konnte nicht aktualisiert werden"
@@ -12910,6 +13010,18 @@
       ]
     ],
     "translation": "Rolle konnte nicht aktualisiert werden"
+  },
+  "HX2b+Q": {
+    "translation": "",
+    "message": "Unable to update type",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/TypeSelector.tsx",
+        38
+      ]
+    ]
   },
   "V1o9Jo": {
     "message": "Unable to update webhook",

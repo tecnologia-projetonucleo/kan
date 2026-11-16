@@ -12,7 +12,7 @@ import {
 } from "drizzle-orm";
 
 import type { dbClient } from "@kan/db/client";
-import type { CardArea, CardPriority } from "@kan/db/schema";
+import type { CardArea, CardPriority, CardType } from "@kan/db/schema";
 import {
   cardActivities,
   cardAttachments,
@@ -49,6 +49,7 @@ export const create = async (
     dueDate?: Date | null;
     priority?: CardPriority;
     area?: CardArea | null;
+    type?: CardType | null;
   },
 ) => {
   return db.transaction(async (tx) => {
@@ -112,6 +113,7 @@ export const create = async (
         dueDate: cardInput.dueDate ?? null,
         ...(cardInput.priority && { priority: cardInput.priority }),
         area: cardInput.area ?? null,
+        type: cardInput.type ?? null,
       })
       .returning({
         id: cards.id,
@@ -330,6 +332,7 @@ export const update = async (
     dueDate?: Date | null;
     priority?: CardPriority;
     area?: CardArea | null;
+    type?: CardType | null;
   },
   args: {
     cardPublicId: string;
@@ -343,6 +346,7 @@ export const update = async (
       dueDate: cardInput.dueDate !== undefined ? cardInput.dueDate : undefined,
       priority: cardInput.priority,
       area: cardInput.area,
+      type: cardInput.type,
       updatedAt: new Date(),
     })
     .where(and(eq(cards.publicId, args.cardPublicId), isNull(cards.deletedAt)))
@@ -354,6 +358,7 @@ export const update = async (
       dueDate: cards.dueDate,
       priority: cards.priority,
       area: cards.area,
+      type: cards.type,
     });
 
   return result;
@@ -391,6 +396,7 @@ export const getByPublicId = (db: dbClient, cardPublicId: string) => {
       dueDate: true,
       priority: true,
       area: true,
+      type: true,
     },
     with: {
       list: {
@@ -620,6 +626,7 @@ export const getWithListAndMembersByPublicId = async (
       dueDate: true,
       priority: true,
       area: true,
+      type: true,
       createdBy: true,
       cardNumber: true,
       index: true,
@@ -1015,6 +1022,7 @@ export const reorder = async (
         dueDate: true,
         priority: true,
         area: true,
+        type: true,
       },
       where: eq(cards.id, card.id),
     });

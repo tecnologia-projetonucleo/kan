@@ -12,10 +12,12 @@ import { twMerge } from "tailwind-merge";
 import type { ListTone } from "../utils/listStatus";
 import type { CardArea } from "~/components/CardArea";
 import type { CardPriority } from "~/components/CardPriority";
+import type { CardType } from "~/components/CardType";
 import Avatar from "~/components/Avatar";
 import Badge from "~/components/Badge";
 import { AreaTag } from "~/components/CardArea";
 import { PriorityBadge } from "~/components/CardPriority";
+import { TypeBadge } from "~/components/CardType";
 import CircularProgress from "~/components/CircularProgress";
 import LabelIcon from "~/components/LabelIcon";
 import { useLocalisation } from "~/hooks/useLocalisation";
@@ -37,6 +39,7 @@ const Card = ({
   listTone,
   priority,
   area,
+  type,
   requireAssignee,
   requireDueDate,
 }: {
@@ -71,6 +74,8 @@ const Card = ({
   priority?: CardPriority;
   // undefined: caller has no area data; null: card has no area yet.
   area?: CardArea | null;
+  // undefined: caller has no type data; null: card has no type yet.
+  type?: CardType | null;
   // Board view only: flag cards that nobody is responsible for.
   requireAssignee?: boolean;
   // Board view only: the card sits where a due date is mandatory.
@@ -120,7 +125,9 @@ const Card = ({
           "border-red-400/70 hover:border-red-500 dark:border-red-500/50 dark:hover:border-red-400/80",
       )}
     >
-      {(ticketNumber ?? priority ?? area !== undefined) && (
+      {(ticketNumber ??
+        priority ??
+        (area !== undefined || type !== undefined)) && (
         <div className="mb-1 flex items-center justify-between gap-2">
           <div className="flex min-w-0 items-center gap-1.5">
             {ticketNumber && (
@@ -138,7 +145,12 @@ const Card = ({
             )}
             {area !== undefined && <AreaTag area={area} />}
           </div>
-          {priority && <PriorityBadge priority={priority} />}
+          {(type !== undefined || priority) && (
+            <div className="flex shrink-0 items-center gap-1">
+              {type !== undefined && <TypeBadge type={type} />}
+              {priority && <PriorityBadge priority={priority} />}
+            </div>
+          )}
         </div>
       )}
       <span className="break-words font-medium">{title}</span>
