@@ -140,7 +140,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1015
+        1061
       ]
     ],
     "translation": "{0} blev ikke fundet"
@@ -593,7 +593,7 @@
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        152
+        157
       ],
       [
         "src/views/board/components/CalendarView.tsx",
@@ -1476,7 +1476,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1071
+        1117
       ]
     ],
     "translation": ""
@@ -1808,7 +1808,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        987
+        1032
       ],
       [
         "src/views/board/members/index.tsx",
@@ -1917,7 +1917,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1005
+        1051
       ]
     ],
     "translation": ""
@@ -3076,7 +3076,6 @@
     "translation": ""
   },
   "m+gFiJ": {
-    "translation": "",
     "message": "Choose the type",
     "placeholders": {},
     "comments": [],
@@ -3089,7 +3088,8 @@
         "src/views/card/components/TypeSelector.tsx",
         86
       ]
-    ]
+    ],
+    "translation": ""
   },
   "pOUIRc": {
     "message": "Choose who",
@@ -3987,7 +3987,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1199
+        1248
       ]
     ],
     "translation": "Opret ny liste"
@@ -5793,20 +5793,20 @@
     "translation": "Ofte stillede spørgsmål"
   },
   "zr30eG": {
-    "translation": "",
     "message": "Favourite lane",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        208
+        213
       ],
       [
         "src/views/board/components/AreaLanesView.tsx",
-        213
+        218
       ]
-    ]
+    ],
+    "translation": ""
   },
   "en3oy5": {
     "message": "Feature",
@@ -6155,7 +6155,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1181
+        1230
       ]
     ],
     "translation": "Kom i gang ved at oprette en ny liste"
@@ -6387,7 +6387,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1047
+        1093
       ]
     ],
     "translation": ""
@@ -6741,7 +6741,6 @@
     "translation": "Importer"
   },
   "CC2hHg": {
-    "translation": "",
     "message": "Improvement",
     "placeholders": {},
     "comments": [],
@@ -6750,7 +6749,8 @@
         "src/components/CardType.tsx",
         14
       ]
-    ]
+    ],
+    "translation": ""
   },
   "JxhWxU": {
     "message": "in",
@@ -8092,7 +8092,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1103
+        1149
       ]
     ],
     "translation": "Ny liste"
@@ -8244,7 +8244,7 @@
       ],
       [
         "src/views/board/components/AreaLanesView.tsx",
-        93
+        100
       ]
     ],
     "translation": ""
@@ -8292,7 +8292,7 @@
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        167
+        172
       ]
     ],
     "translation": ""
@@ -8376,7 +8376,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1177
+        1226
       ]
     ],
     "translation": "Ingen lister"
@@ -8388,7 +8388,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1182
+        1231
       ]
     ],
     "translation": "Der er endnu ikke oprettet nogen lister"
@@ -8446,7 +8446,6 @@
     "translation": "Der er endnu ikke fundet nogen roller for dette arbejdsområde."
   },
   "jaJgUm": {
-    "translation": "",
     "message": "No type",
     "placeholders": {},
     "comments": [],
@@ -8455,7 +8454,8 @@
         "src/components/CardType.tsx",
         78
       ]
-    ]
+    ],
+    "translation": ""
   },
   "TX0bT7": {
     "message": "No webhooks configured. Add a webhook to receive notifications.",
@@ -9228,7 +9228,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1303
+        1352
       ],
       [
         "src/views/boards/components/ImportBoardsForm.tsx",
@@ -9827,20 +9827,20 @@
     "translation": "Fjern fra favoritter"
   },
   "tZ2EkJ": {
-    "translation": "",
     "message": "Remove lane from favourites",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        207
+        212
       ],
       [
         "src/views/board/components/AreaLanesView.tsx",
-        212
+        217
       ]
-    ]
+    ],
+    "translation": ""
   },
   "99VIgC": {
     "message": "Remove member",
@@ -11335,7 +11335,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1046
+        1092
       ]
     ],
     "translation": ""
@@ -11411,11 +11411,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        987
+        1032
       ],
       [
         "src/views/board/index.tsx",
-        1024
+        1070
       ]
     ],
     "translation": "Skabelon"
@@ -11928,7 +11928,6 @@
     "translation": ""
   },
   "agui1Z": {
-    "translation": "",
     "message": "This card has no type yet",
     "placeholders": {},
     "comments": [],
@@ -11937,7 +11936,8 @@
         "src/components/CardType.tsx",
         72
       ]
-    ]
+    ],
+    "translation": ""
   },
   "mTwGOf": {
     "message": "This invitation link is invalid or has expired.",
@@ -12330,7 +12330,6 @@
     "translation": "Betroet af teams med højt tempo<0/>over hele verden"
   },
   "+zy2Nq": {
-    "translation": "",
     "message": "Type",
     "placeholders": {},
     "comments": [],
@@ -12351,10 +12350,10 @@
         "src/views/card/index.tsx",
         173
       ]
-    ]
+    ],
+    "translation": ""
   },
   "bn4fIE": {
-    "translation": "",
     "message": "Type: {label}",
     "placeholders": {
       "label": [
@@ -12367,7 +12366,8 @@
         "src/components/CardType.tsx",
         86
       ]
-    ]
+    ],
+    "translation": ""
   },
   "bZSICm": {
     "message": "Unable to add checklist item",
@@ -12816,7 +12816,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1302
+        1351
       ],
       [
         "src/views/card/components/ListSelector.tsx",
@@ -12966,7 +12966,6 @@
     "translation": "Kunne ikke opdatere rolle"
   },
   "HX2b+Q": {
-    "translation": "",
     "message": "Unable to update type",
     "placeholders": {},
     "comments": [],
@@ -12975,7 +12974,8 @@
         "src/views/card/components/TypeSelector.tsx",
         38
       ]
-    ]
+    ],
+    "translation": ""
   },
   "V1o9Jo": {
     "message": "Unable to update webhook",
@@ -13968,7 +13968,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        987
+        1032
       ],
       [
         "src/views/boards/index.tsx",
@@ -14377,11 +14377,11 @@
       ],
       [
         "src/views/board/index.tsx",
-        1091
+        1137
       ],
       [
         "src/views/board/index.tsx",
-        1188
+        1237
       ],
       [
         "src/views/boards/components/BoardsList.tsx",

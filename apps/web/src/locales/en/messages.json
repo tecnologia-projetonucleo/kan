@@ -140,7 +140,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1015
+        1061
       ]
     ],
     "translation": "{0} not found"
@@ -593,7 +593,7 @@
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        152
+        157
       ],
       [
         "src/views/board/components/CalendarView.tsx",
@@ -1476,7 +1476,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1071
+        1117
       ]
     ],
     "translation": "Area lanes"
@@ -1808,7 +1808,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        987
+        1032
       ],
       [
         "src/views/board/members/index.tsx",
@@ -1917,7 +1917,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1005
+        1051
       ]
     ],
     "translation": "Board name"
@@ -3076,7 +3076,6 @@
     "translation": "Choose the date"
   },
   "m+gFiJ": {
-    "translation": "Choose the type",
     "message": "Choose the type",
     "placeholders": {},
     "comments": [],
@@ -3089,7 +3088,8 @@
         "src/views/card/components/TypeSelector.tsx",
         86
       ]
-    ]
+    ],
+    "translation": "Choose the type"
   },
   "pOUIRc": {
     "message": "Choose who",
@@ -4000,7 +4000,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1199
+        1248
       ]
     ],
     "translation": "Create new list"
@@ -5845,20 +5845,20 @@
     "translation": "FAQs"
   },
   "zr30eG": {
-    "translation": "Favourite lane",
     "message": "Favourite lane",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        208
+        213
       ],
       [
         "src/views/board/components/AreaLanesView.tsx",
-        213
+        218
       ]
-    ]
+    ],
+    "translation": "Favourite lane"
   },
   "en3oy5": {
     "message": "Feature",
@@ -6207,7 +6207,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1181
+        1230
       ]
     ],
     "translation": "Get started by creating a new list"
@@ -6439,7 +6439,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1047
+        1093
       ]
     ],
     "translation": "Group the board by responsible area for everyone"
@@ -6793,7 +6793,6 @@
     "translation": "Imports"
   },
   "CC2hHg": {
-    "translation": "Improvement",
     "message": "Improvement",
     "placeholders": {},
     "comments": [],
@@ -6802,7 +6801,8 @@
         "src/components/CardType.tsx",
         14
       ]
-    ]
+    ],
+    "translation": "Improvement"
   },
   "JxhWxU": {
     "message": "in",
@@ -8170,7 +8170,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1103
+        1149
       ]
     ],
     "translation": "New list"
@@ -8322,7 +8322,7 @@
       ],
       [
         "src/views/board/components/AreaLanesView.tsx",
-        93
+        100
       ]
     ],
     "translation": "No area"
@@ -8370,7 +8370,7 @@
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        167
+        172
       ]
     ],
     "translation": "No cards on this board yet"
@@ -8454,7 +8454,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1177
+        1226
       ]
     ],
     "translation": "No lists"
@@ -8466,7 +8466,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1182
+        1231
       ]
     ],
     "translation": "No lists have been created yet"
@@ -8524,7 +8524,6 @@
     "translation": "No roles found for this workspace yet."
   },
   "jaJgUm": {
-    "translation": "No type",
     "message": "No type",
     "placeholders": {},
     "comments": [],
@@ -8533,7 +8532,8 @@
         "src/components/CardType.tsx",
         78
       ]
-    ]
+    ],
+    "translation": "No type"
   },
   "TX0bT7": {
     "message": "No webhooks configured. Add a webhook to receive notifications.",
@@ -9306,7 +9306,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1303
+        1352
       ],
       [
         "src/views/boards/components/ImportBoardsForm.tsx",
@@ -9905,20 +9905,20 @@
     "translation": "Remove from favorites"
   },
   "tZ2EkJ": {
-    "translation": "Remove lane from favourites",
     "message": "Remove lane from favourites",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        207
+        212
       ],
       [
         "src/views/board/components/AreaLanesView.tsx",
-        212
+        217
       ]
-    ]
+    ],
+    "translation": "Remove lane from favourites"
   },
   "99VIgC": {
     "message": "Remove member",
@@ -11413,7 +11413,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1046
+        1092
       ]
     ],
     "translation": "Swimlanes by area are on for everyone on this board"
@@ -11489,11 +11489,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        987
+        1032
       ],
       [
         "src/views/board/index.tsx",
-        1024
+        1070
       ]
     ],
     "translation": "Template"
@@ -12006,7 +12006,6 @@
     "translation": "This card has no responsible area yet"
   },
   "agui1Z": {
-    "translation": "This card has no type yet",
     "message": "This card has no type yet",
     "placeholders": {},
     "comments": [],
@@ -12015,7 +12014,8 @@
         "src/components/CardType.tsx",
         72
       ]
-    ]
+    ],
+    "translation": "This card has no type yet"
   },
   "mTwGOf": {
     "message": "This invitation link is invalid or has expired.",
@@ -12408,7 +12408,6 @@
     "translation": "Trusted by fast-moving teams<0/>around the world"
   },
   "+zy2Nq": {
-    "translation": "Type",
     "message": "Type",
     "placeholders": {},
     "comments": [],
@@ -12429,10 +12428,10 @@
         "src/views/card/index.tsx",
         173
       ]
-    ]
+    ],
+    "translation": "Type"
   },
   "bn4fIE": {
-    "translation": "Type: {label}",
     "message": "Type: {label}",
     "placeholders": {
       "label": [
@@ -12445,7 +12444,8 @@
         "src/components/CardType.tsx",
         86
       ]
-    ]
+    ],
+    "translation": "Type: {label}"
   },
   "bZSICm": {
     "message": "Unable to add checklist item",
@@ -12894,7 +12894,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1302
+        1351
       ],
       [
         "src/views/card/components/ListSelector.tsx",
@@ -13044,7 +13044,6 @@
     "translation": "Unable to update role"
   },
   "HX2b+Q": {
-    "translation": "Unable to update type",
     "message": "Unable to update type",
     "placeholders": {},
     "comments": [],
@@ -13053,7 +13052,8 @@
         "src/views/card/components/TypeSelector.tsx",
         38
       ]
-    ]
+    ],
+    "translation": "Unable to update type"
   },
   "V1o9Jo": {
     "message": "Unable to update webhook",
@@ -14076,7 +14076,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        987
+        1032
       ],
       [
         "src/views/boards/index.tsx",
@@ -14498,11 +14498,11 @@
       ],
       [
         "src/views/board/index.tsx",
-        1091
+        1137
       ],
       [
         "src/views/board/index.tsx",
-        1188
+        1237
       ],
       [
         "src/views/boards/components/BoardsList.tsx",
