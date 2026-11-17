@@ -18,6 +18,17 @@ export async function fillRequiredCardFields(page: Page) {
   // as covering the title while the menu is open, so skip that check.
   await page.getByPlaceholder("Card title").click({ force: true });
 
+  await page
+    .locator('[aria-label="Type"]')
+    .filter({ visible: true })
+    .first()
+    .click();
+  await page
+    .getByRole("checkbox", { name: "Bug" })
+    .filter({ visible: true })
+    .click();
+  await page.getByPlaceholder("Card title").click({ force: true });
+
   const responsible = page
     .locator('[aria-label="Responsible"]')
     .filter({ visible: true });
