@@ -36,6 +36,7 @@ export default function CardPreview({
       listTone={listTone}
       priority={card.priority}
       area={card.area}
+      type={card.type}
       requireAssignee={requireAssignee}
       requireDueDate={requireDueDate}
     />

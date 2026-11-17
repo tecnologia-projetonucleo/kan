@@ -1,8 +1,8 @@
+import type { ReactNode } from "react";
 import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import { format } from "date-fns";
 import { env } from "next-runtime-env";
-import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { HiOutlinePaperClip } from "react-icons/hi";
@@ -19,11 +19,13 @@ import { generateUID } from "@kan/shared/utils";
 
 import type { CardArea } from "~/components/CardArea";
 import type { CardPriority } from "~/components/CardPriority";
+import type { CardType } from "~/components/CardType";
 import type { WorkspaceMember } from "~/components/Editor";
 import Avatar from "~/components/Avatar";
 import Button from "~/components/Button";
 import { AreaDot, CARD_AREAS, getArea } from "~/components/CardArea";
 import { PriorityPicker } from "~/components/CardPriority";
+import { CARD_TYPES, TypeIcon, typeLabel } from "~/components/CardType";
 import CheckboxDropdown from "~/components/CheckboxDropdown";
 import DateSelector from "~/components/DateSelector";
 import Editor from "~/components/Editor";
@@ -40,11 +42,12 @@ import {
   isDueDateRequiredError,
 } from "../utils/listStatus";
 
-type NewCardFormInput = Omit<NewCardInput, "area" | "priority"> & {
+type NewCardFormInput = Omit<NewCardInput, "area" | "priority" | "type"> & {
   isCreateAnotherEnabled: boolean;
   dueDate?: Date | null;
   priority: CardPriority;
   area: CardArea | null;
+  type: CardType | null;
 };
 
 interface QueryParams {
@@ -89,6 +92,7 @@ export function NewCardForm({
       dueDate: initialDueDate,
       priority: "normal",
       area: null,
+      type: null,
     },
     resetOnClose: true,
   });
@@ -108,6 +112,7 @@ export function NewCardForm({
   const priority = watch("priority") ?? "normal";
   const area = watch("area") ?? null;
   const selectedArea = getArea(area);
+  const type = watch("type") ?? null;
   const [isDateSelectorOpen, setIsDateSelectorOpen] = useState(false);
 
   // Files queued for upload after the card is created. Kept outside of
@@ -175,6 +180,7 @@ export function NewCardForm({
               dueDate: args.dueDate ?? null,
               priority: args.priority ?? "normal",
               area: args.area ?? null,
+              type: args.type ?? null,
               cardNumber: null,
               comments: [],
               commentCount: 0,
@@ -250,6 +256,8 @@ export function NewCardForm({
           priority: "normal" as const,
           // Keep the area: cards created in a row usually share it.
           area: watch("area"),
+          // Keep the type too, for the same reason.
+          type: watch("type"),
         };
         reset(newFormState);
         saveFormState(newFormState);
@@ -339,6 +347,7 @@ export function NewCardForm({
     // and not only through the disabled button.
     if (
       !data.area ||
+      !data.type ||
       (!isTemplate && data.memberPublicIds.length === 0) ||
       (dueDateRequired && !data.dueDate)
     )
@@ -359,6 +368,7 @@ export function NewCardForm({
         dueDate: data.dueDate ?? null,
         priority: data.priority ?? "normal",
         area: data.area ?? undefined,
+        type: data.type,
       });
     } catch {
       // onError already surfaced the failure; keep the files queued for retry.
@@ -565,6 +575,35 @@ export function NewCardForm({
               </div>
             </CheckboxDropdown>,
           )}
+          {field(
+            t`Type`,
+            true,
+            <CheckboxDropdown
+              items={CARD_TYPES.map((option) => ({
+                key: option,
+                value: typeLabel(option),
+                selected: option === type,
+                leftIcon: <TypeIcon type={option} coloured />,
+              }))}
+              handleSelect={(_groupKey, item) =>
+                setValue("type", item.key as CardType)
+              }
+              ariaLabel={t`Type`}
+            >
+              <div
+                className={`${chipClass} ${type ? chipFilled : chipMissing}`}
+              >
+                {type ? (
+                  <>
+                    <TypeIcon type={type} coloured />
+                    {typeLabel(type)}
+                  </>
+                ) : (
+                  t`Choose the type`
+                )}
+              </div>
+            </CheckboxDropdown>,
+          )}
           {!isTemplate &&
             field(
               t`Responsible`,
@@ -640,7 +679,10 @@ export function NewCardForm({
                         );
 
                         return (
-                          <span key={labelPublicId} className="flex items-center">
+                          <span
+                            key={labelPublicId}
+                            className="flex items-center"
+                          >
                             <svg
                               fill={label?.colourCode ?? "#3730a3"}
                               className="h-2 w-2"
@@ -815,6 +857,7 @@ export function NewCardForm({
             disabled={
               title.length === 0 ||
               !area ||
+              !type ||
               (!isTemplate && memberPublicIds.length === 0) ||
               (dueDateRequired && !dueDate) ||
               createCard.isPending

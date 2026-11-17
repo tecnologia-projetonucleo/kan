@@ -1,12 +1,12 @@
 import { z } from "zod";
 
-import { cardAreaSchema, cardPrioritySchema } from "./priority";
-
 import {
   checklistResponseSchema,
   labelSchema,
   workspaceMemberSchema,
 } from "./common";
+import { cardAreaSchema, cardPrioritySchema } from "./priority";
+import { cardTypeSchema } from "./type";
 
 // ─── board.all ───────────────────────────────────────────────
 export const boardListItemSchema = z.object({
@@ -45,6 +45,7 @@ const boardDetailCardSchema = z.object({
   dueDate: z.date().nullable(),
   priority: cardPrioritySchema.default("normal"),
   area: cardAreaSchema.nullable().default(null),
+  type: cardTypeSchema.nullable().default(null),
   labels: z.array(labelSchema),
   members: z.array(boardCardMemberSchema),
   attachments: z.array(z.object({ publicId: z.string() })),
@@ -95,6 +96,7 @@ const boardSlugCardSchema = z.object({
   dueDate: z.date().nullable(),
   priority: cardPrioritySchema.default("normal"),
   area: cardAreaSchema.nullable().default(null),
+  type: cardTypeSchema.nullable().default(null),
   labels: z.array(labelSchema),
   attachments: z.array(z.object({ publicId: z.string() })),
   checklists: z.array(checklistResponseSchema),

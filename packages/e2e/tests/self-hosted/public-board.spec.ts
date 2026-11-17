@@ -56,6 +56,8 @@ test(
       .getByRole("checkbox", { name: "Public" })
       .filter({ visible: true })
       .click();
+    // Wait for the change to be saved before leaving the page.
+    await expect(page.getByText("Board visibility updated")).toBeVisible();
 
     await page.goto("/boards");
     await board.createBoard("Private Board Test");

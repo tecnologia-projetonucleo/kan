@@ -60,7 +60,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        418
+        428
       ]
     ],
     "translation": "{0} | {1}"
@@ -124,7 +124,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        661
+        703
       ]
     ],
     "translation": "{0} etiketter"
@@ -140,7 +140,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1015
+        1061
       ]
     ],
     "translation": "{0} blev ikke fundet"
@@ -156,7 +156,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        211
+        223
       ]
     ],
     "translation": ""
@@ -220,7 +220,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        202
+        214
       ]
     ],
     "translation": ""
@@ -377,7 +377,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        192
+        204
       ]
     ],
     "translation": ""
@@ -529,11 +529,11 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        627
+        666
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        683
+        725
       ]
     ],
     "translation": ""
@@ -593,7 +593,7 @@
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        152
+        157
       ],
       [
         "src/views/board/components/CalendarView.tsx",
@@ -621,7 +621,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        572
+        582
       ]
     ],
     "translation": "Tilføj tjekliste"
@@ -733,7 +733,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        770
+        812
       ]
     ],
     "translation": ""
@@ -745,7 +745,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        769
+        811
       ]
     ],
     "translation": ""
@@ -1476,7 +1476,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1071
+        1117
       ]
     ],
     "translation": ""
@@ -1533,7 +1533,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        759
+        801
       ],
       [
         "src/views/card/components/AttachmentUpload.tsx",
@@ -1772,7 +1772,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        162
+        174
       ]
     ],
     "translation": ""
@@ -1808,7 +1808,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        987
+        1032
       ],
       [
         "src/views/board/members/index.tsx",
@@ -1820,7 +1820,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        418
+        428
       ],
       [
         "src/views/public/board/index.tsx",
@@ -1917,7 +1917,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1005
+        1051
       ]
     ],
     "translation": ""
@@ -2134,7 +2134,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        779
+        821
       ]
     ],
     "translation": ""
@@ -2156,6 +2156,10 @@
     "placeholders": {},
     "comments": [],
     "origin": [
+      [
+        "src/components/CardType.tsx",
+        12
+      ],
       [
         "src/views/boards/components/TemplateBoards.tsx",
         24
@@ -2686,7 +2690,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        418
+        428
       ]
     ],
     "translation": "Kort"
@@ -2750,11 +2754,11 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        497
+        507
       ],
       [
         "src/views/card/index.tsx",
-        511
+        521
       ]
     ],
     "translation": "Kortet blev ikke fundet"
@@ -2778,11 +2782,11 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        519
+        529
       ],
       [
         "src/views/card/index.tsx",
-        523
+        533
       ]
     ],
     "translation": "Korttitel"
@@ -2826,7 +2830,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        221
+        227
       ]
     ],
     "translation": ""
@@ -2970,7 +2974,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        579
+        589
       ]
     ],
     "translation": ""
@@ -3026,7 +3030,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        563
+        573
       ]
     ],
     "translation": ""
@@ -3066,7 +3070,23 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        681
+        723
+      ]
+    ],
+    "translation": ""
+  },
+  "m+gFiJ": {
+    "message": "Choose the type",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        602
+      ],
+      [
+        "src/views/card/components/TypeSelector.tsx",
+        86
       ]
     ],
     "translation": ""
@@ -3078,7 +3098,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        583
+        622
       ]
     ],
     "translation": ""
@@ -3178,7 +3198,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        500
+        510
       ],
       [
         "src/views/card/components/MoveCardForm.tsx",
@@ -3186,7 +3206,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        488
+        498
       ],
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
@@ -3362,7 +3382,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        620
+        630
       ]
     ],
     "translation": ""
@@ -3827,7 +3847,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        807
+        849
       ],
       [
         "src/views/board/components/NewListForm.tsx",
@@ -3855,7 +3875,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        823
+        866
       ]
     ],
     "translation": "Opret kort"
@@ -3947,7 +3967,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        623
+        662
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -3967,7 +3987,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1199
+        1248
       ]
     ],
     "translation": "Opret ny liste"
@@ -4035,7 +4055,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        221
+        233
       ]
     ],
     "translation": ""
@@ -4534,11 +4554,11 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        722
+        764
       ],
       [
         "src/views/card/index.tsx",
-        543
+        553
       ]
     ],
     "translation": ""
@@ -4802,7 +4822,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        181
+        193
       ]
     ],
     "translation": ""
@@ -4822,11 +4842,11 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        670
+        712
       ],
       [
         "src/views/card/index.tsx",
-        191
+        201
       ]
     ],
     "translation": "Forfaldsdato"
@@ -4838,7 +4858,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        220
+        226
       ],
       [
         "src/views/board/index.tsx",
@@ -5773,20 +5793,20 @@
     "translation": "Ofte stillede spørgsmål"
   },
   "zr30eG": {
-    "translation": "",
     "message": "Favourite lane",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        208
+        213
       ],
       [
         "src/views/board/components/AreaLanesView.tsx",
-        213
+        218
       ]
-    ]
+    ],
+    "translation": ""
   },
   "en3oy5": {
     "message": "Feature",
@@ -6135,7 +6155,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1181
+        1230
       ]
     ],
     "translation": "Kom i gang ved at oprette en ny liste"
@@ -6367,7 +6387,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1047
+        1093
       ]
     ],
     "translation": ""
@@ -6720,6 +6740,18 @@
     ],
     "translation": "Importer"
   },
+  "CC2hHg": {
+    "message": "Improvement",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/CardType.tsx",
+        14
+      ]
+    ],
+    "translation": ""
+  },
   "JxhWxU": {
     "message": "in",
     "placeholders": {},
@@ -7060,7 +7092,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        614
+        653
       ],
       [
         "src/views/card/components/LabelSelector.tsx",
@@ -7068,7 +7100,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        182
+        192
       ]
     ],
     "translation": "Etiketter"
@@ -7293,7 +7325,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        487
+        497
       ],
       [
         "src/views/card/components/MoveCardForm.tsx",
@@ -8008,7 +8040,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        495
+        505
       ]
     ],
     "translation": "Nyt kort"
@@ -8060,7 +8092,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1103
+        1149
       ]
     ],
     "translation": "Ny liste"
@@ -8212,7 +8244,7 @@
       ],
       [
         "src/views/board/components/AreaLanesView.tsx",
-        93
+        100
       ]
     ],
     "translation": ""
@@ -8260,7 +8292,7 @@
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        167
+        172
       ]
     ],
     "translation": ""
@@ -8284,7 +8316,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        196
+        208
       ]
     ],
     "translation": ""
@@ -8344,7 +8376,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1177
+        1226
       ]
     ],
     "translation": "Ingen lister"
@@ -8356,7 +8388,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1182
+        1231
       ]
     ],
     "translation": "Der er endnu ikke oprettet nogen lister"
@@ -8368,7 +8400,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        262
+        274
       ]
     ],
     "translation": ""
@@ -8413,6 +8445,18 @@
     ],
     "translation": "Der er endnu ikke fundet nogen roller for dette arbejdsområde."
   },
+  "jaJgUm": {
+    "message": "No type",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/CardType.tsx",
+        78
+      ]
+    ],
+    "translation": ""
+  },
   "TX0bT7": {
     "message": "No webhooks configured. Add a webhook to receive notifications.",
     "placeholders": {},
@@ -8432,7 +8476,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        261
+        273
       ]
     ],
     "translation": ""
@@ -8684,7 +8728,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        180
+        192
       ]
     ],
     "translation": ""
@@ -9148,7 +9192,7 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        230
+        236
       ],
       [
         "src/views/board/components/NewListForm.tsx",
@@ -9184,7 +9228,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1303
+        1352
       ],
       [
         "src/views/boards/components/ImportBoardsForm.tsx",
@@ -9275,12 +9319,16 @@
         40
       ],
       [
-        "src/views/card/index.tsx",
-        329
+        "src/views/card/components/TypeSelector.tsx",
+        39
       ],
       [
         "src/views/card/index.tsx",
-        342
+        339
+      ],
+      [
+        "src/views/card/index.tsx",
+        352
       ],
       [
         "src/views/members/components/DeleteMemberConfirmation.tsx",
@@ -9476,11 +9524,11 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        532
+        542
       ],
       [
         "src/views/card/index.tsx",
-        154
+        155
       ]
     ],
     "translation": ""
@@ -9749,7 +9797,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        794
+        836
       ]
     ],
     "translation": ""
@@ -9779,20 +9827,20 @@
     "translation": "Fjern fra favoritter"
   },
   "tZ2EkJ": {
-    "translation": "",
     "message": "Remove lane from favourites",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        207
+        212
       ],
       [
         "src/views/board/components/AreaLanesView.tsx",
-        212
+        217
       ]
-    ]
+    ],
+    "translation": ""
   },
   "99VIgC": {
     "message": "Remove member",
@@ -10040,11 +10088,11 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        570
+        609
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        577
+        616
       ],
       [
         "src/views/card/components/MemberSelector.tsx",
@@ -10052,7 +10100,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        173
+        183
       ]
     ],
     "translation": ""
@@ -10068,11 +10116,11 @@
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        540
+        550
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
-        552
+        562
       ],
       [
         "src/views/card/components/AreaSelector.tsx",
@@ -10080,7 +10128,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        163
+        164
       ]
     ],
     "translation": ""
@@ -11053,7 +11101,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        376
+        386
       ]
     ],
     "translation": ""
@@ -11287,7 +11335,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1046
+        1092
       ]
     ],
     "translation": ""
@@ -11363,11 +11411,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        987
+        1032
       ],
       [
         "src/views/board/index.tsx",
-        1024
+        1070
       ]
     ],
     "translation": "Skabelon"
@@ -11646,7 +11694,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        377
+        387
       ]
     ],
     "translation": ""
@@ -11875,6 +11923,18 @@
       [
         "src/components/CardArea.tsx",
         73
+      ]
+    ],
+    "translation": ""
+  },
+  "agui1Z": {
+    "message": "This card has no type yet",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/CardType.tsx",
+        72
       ]
     ],
     "translation": ""
@@ -12188,7 +12248,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        779
+        821
       ]
     ],
     "translation": ""
@@ -12269,6 +12329,46 @@
     ],
     "translation": "Betroet af teams med højt tempo<0/>over hele verden"
   },
+  "+zy2Nq": {
+    "message": "Type",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        579
+      ],
+      [
+        "src/views/board/components/NewCardForm.tsx",
+        591
+      ],
+      [
+        "src/views/card/components/TypeSelector.tsx",
+        71
+      ],
+      [
+        "src/views/card/index.tsx",
+        173
+      ]
+    ],
+    "translation": ""
+  },
+  "bn4fIE": {
+    "message": "Type: {label}",
+    "placeholders": {
+      "label": [
+        "label"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/components/CardType.tsx",
+        86
+      ]
+    ],
+    "translation": ""
+  },
   "bZSICm": {
     "message": "Unable to add checklist item",
     "placeholders": {},
@@ -12300,7 +12400,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        341
+        351
       ]
     ],
     "translation": "Kunne ikke tilføje etiket"
@@ -12388,7 +12488,7 @@
     "origin": [
       [
         "src/views/board/components/NewCardForm.tsx",
-        227
+        233
       ]
     ],
     "translation": "Kunne ikke oprette kort"
@@ -12716,7 +12816,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1302
+        1351
       ],
       [
         "src/views/card/components/ListSelector.tsx",
@@ -12724,7 +12824,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        328
+        338
       ]
     ],
     "translation": "Kunne ikke opdatere kort"
@@ -12864,6 +12964,18 @@
       ]
     ],
     "translation": "Kunne ikke opdatere rolle"
+  },
+  "HX2b+Q": {
+    "message": "Unable to update type",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/TypeSelector.tsx",
+        38
+      ]
+    ],
+    "translation": ""
   },
   "V1o9Jo": {
     "message": "Unable to update webhook",
@@ -13856,7 +13968,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        987
+        1032
       ],
       [
         "src/views/boards/index.tsx",
@@ -14265,11 +14377,11 @@
       ],
       [
         "src/views/board/index.tsx",
-        1091
+        1137
       ],
       [
         "src/views/board/index.tsx",
-        1188
+        1237
       ],
       [
         "src/views/boards/components/BoardsList.tsx",

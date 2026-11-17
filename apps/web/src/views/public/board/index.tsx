@@ -229,6 +229,7 @@ export default function PublicBoardView() {
                               dueDate={card.dueDate ?? null}
                               priority={card.priority}
                               area={card.area}
+                              type={card.type}
                             />
                           </Link>
                         );

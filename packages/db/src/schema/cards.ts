@@ -77,6 +77,10 @@ export const cardAreas = [
 export type CardArea = (typeof cardAreas)[number];
 export const cardAreaEnum = pgEnum("card_area", cardAreas);
 
+export const cardTypes = ["bug", "improvement"] as const;
+export type CardType = (typeof cardTypes)[number];
+export const cardTypeEnum = pgEnum("card_type", cardTypes);
+
 export const cards = pgTable(
   "card",
   {
@@ -106,6 +110,9 @@ export const cards = pgTable(
     // Nullable only for cards created before the field existed; the app
     // requires it for new cards.
     area: cardAreaEnum("area"),
+    // Bug or improvement. Nullable for cards created before the field
+    // existed; the app requires it for new cards.
+    type: cardTypeEnum("type"),
   },
   (table) => [
     index("card_list_number_idx").on(table.listId, table.cardNumber),

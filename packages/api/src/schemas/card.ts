@@ -1,12 +1,12 @@
 import { z } from "zod";
 
-import { cardAreaSchema, cardPrioritySchema } from "./priority";
-
 import {
   checklistResponseSchema,
   labelSchema,
   workspaceMemberSchema,
 } from "./common";
+import { cardAreaSchema, cardPrioritySchema } from "./priority";
+import { cardTypeSchema } from "./type";
 
 // ─── card.create ─────────────────────────────────────────────
 export const cardCreateResponseSchema = z.object({
@@ -21,6 +21,7 @@ export const cardUpdateResponseSchema = z.object({
   dueDate: z.date().nullable(),
   priority: cardPrioritySchema.default("normal"),
   area: cardAreaSchema.nullable().default(null),
+  type: cardTypeSchema.nullable().default(null),
 });
 
 // ─── Comment responses ───────────────────────────────────────
@@ -55,6 +56,7 @@ export const cardDetailSchema = z.object({
   dueDate: z.date().nullable(),
   priority: cardPrioritySchema.default("normal"),
   area: cardAreaSchema.nullable().default(null),
+  type: cardTypeSchema.nullable().default(null),
   createdBy: z.string().nullable(),
   labels: z.array(labelSchema),
   attachments: z.array(
