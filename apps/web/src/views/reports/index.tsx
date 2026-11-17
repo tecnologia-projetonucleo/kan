@@ -3,7 +3,9 @@ import Link from "next/link";
 import { t } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
 import { keepPreviousData } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import { HiXMark } from "react-icons/hi2";
 import { twMerge } from "tailwind-merge";
 
 import type { CardArea } from "~/components/CardArea";
@@ -16,6 +18,7 @@ import { api } from "~/utils/api";
 type Report = RouterOutputs["report"]["workspace"];
 type ReportCard = Report["aging"][number];
 type Period = 7 | 30 | 90;
+type KpiKey = keyof Report["kpiCards"];
 type AreaFilter = CardArea | "none" | "";
 
 const PERIODS: Period[] = [7, 30, 90];
@@ -289,6 +292,7 @@ function ReportBody({
   locale: string;
 }) {
   const { kpis, cycle } = data;
+  const [openKpi, setOpenKpi] = useState<KpiKey | null>(null);
   const diff = kpis.doneLast7Days - kpis.donePrevious7Days;
   const signedDiff = `${diff >= 0 ? "+" : ""}${diff}`;
   const openCount = kpis.open;
@@ -301,18 +305,21 @@ function ReportBody({
   const kpiTiles = [
     {
       label: t({ message: "In progress", context: "report" }),
+      key: "progress" as KpiKey | null,
       value: kpis.progress,
       hint: t`${openCount} open cards in total`,
       colour: BLUE,
     },
     {
       label: t({ message: "Blocked", context: "report" }),
+      key: "blocked" as KpiKey | null,
       value: kpis.blocked,
       hint: kpis.blocked ? t`For ${blockedAvg} on average` : t`None right now`,
       colour: RED,
     },
     {
       label: t`Awaiting validation`,
+      key: "validation" as KpiKey | null,
       value: kpis.validation,
       hint: kpis.validation
         ? t`Average wait of ${validationAvg}`
@@ -321,18 +328,21 @@ function ReportBody({
     },
     {
       label: t({ message: "Overdue", context: "report" }),
+      key: "overdue" as KpiKey | null,
       value: kpis.overdue,
       hint: t`Past due date, still open`,
       colour: RED,
     },
     {
       label: t`Done in 7 days`,
+      key: "doneLast7Days" as KpiKey | null,
       value: kpis.doneLast7Days,
       hint: t`${signedDiff} vs. previous 7 days`,
       colour: GREEN,
     },
     {
       label: t`Cycle time`,
+      key: null as KpiKey | null,
       value: formatDays(cycle.median),
       hint:
         cycle.median == null
@@ -388,24 +398,54 @@ function ReportBody({
         aria-label={t`Summary`}
         className="grid grid-cols-[repeat(auto-fit,minmax(170px,1fr))] gap-3"
       >
-        {kpiTiles.map((kpi) => (
-          <div
-            key={kpi.label}
-            className="flex flex-col gap-1.5 rounded-[10px] border border-light-300 bg-white px-4 py-3.5 dark:border-dark-300 dark:bg-dark-100"
-          >
-            <div
-              className={twMerge("flex items-center gap-2 text-[13px]", MUTED)}
+        {kpiTiles.map((kpi) => {
+          const key = kpi.key;
+          const Tile = key ? "button" : "div";
+          return (
+            <Tile
+              key={kpi.label}
+              {...(key
+                ? {
+                    type: "button" as const,
+                    onClick: () => setOpenKpi(key),
+                  }
+                : {})}
+              className={twMerge(
+                "flex flex-col gap-1.5 rounded-[10px] border border-light-300 bg-white px-4 py-3.5 text-left dark:border-dark-300 dark:bg-dark-100",
+                key &&
+                  "cursor-pointer transition-colors hover:border-light-600 hover:bg-light-50 dark:hover:border-dark-500 dark:hover:bg-dark-200",
+              )}
             >
-              <Dot colour={kpi.colour} />
-              {kpi.label}
-            </div>
-            <div className="text-[26px] font-semibold tracking-tight text-neutral-900 dark:text-dark-1000">
-              {kpi.value}
-            </div>
-            <div className={twMerge("text-xs", MUTED)}>{kpi.hint}</div>
-          </div>
-        ))}
+              <div
+                className={twMerge(
+                  "flex items-center gap-2 text-[13px]",
+                  MUTED,
+                )}
+              >
+                <Dot colour={kpi.colour} />
+                {kpi.label}
+              </div>
+              <div className="text-[26px] font-semibold tracking-tight text-neutral-900 dark:text-dark-1000">
+                {kpi.value}
+              </div>
+              <div className={twMerge("text-xs", MUTED)}>{kpi.hint}</div>
+            </Tile>
+          );
+        })}
       </section>
+
+      {openKpi && (
+        <KpiCardsDialog
+          title={kpiTiles.find((kpi) => kpi.key === openKpi)?.label ?? ""}
+          colour={kpiTiles.find((kpi) => kpi.key === openKpi)?.colour ?? GREY}
+          cards={data.kpiCards[openKpi]}
+          ticket={ticket}
+          owners={owners}
+          areaName={areaName}
+          areaColour={areaColour}
+          onClose={() => setOpenKpi(null)}
+        />
+      )}
 
       <section className={SECTION}>
         <div className="mb-3.5 flex flex-wrap items-baseline justify-between gap-2">
@@ -787,5 +827,120 @@ function ReportBody({
         )}
       </section>
     </>
+  );
+}
+
+function KpiCardsDialog({
+  title,
+  colour,
+  cards,
+  ticket,
+  owners,
+  areaName,
+  areaColour,
+  onClose,
+}: {
+  title: string;
+  colour: string;
+  cards: ReportCard[];
+  ticket: (card: ReportCard) => string | null;
+  owners: (card: ReportCard) => string;
+  areaName: (key: string | null) => string;
+  areaColour: (key: string | null) => string;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onClose]);
+
+  const count = cards.length;
+
+  // Portalled to <body> so the page's stacking contexts cannot cover it.
+  if (typeof document === "undefined") return null;
+  return createPortal(
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+      onMouseDown={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label={title}
+        className="flex max-h-[85vh] w-full max-w-[960px] flex-col rounded-xl border border-light-300 bg-white shadow-xl dark:border-dark-300 dark:bg-dark-100"
+      >
+        <div className="flex items-center justify-between gap-4 border-b border-light-300 px-5 py-4 dark:border-dark-300">
+          <h2 className={twMerge(TITLE, "flex items-center gap-2")}>
+            <Dot colour={colour} />
+            {title}
+            <span className={twMerge("text-[13px] font-normal", MUTED)}>
+              {count === 1 ? t`1 card` : t`${count} cards`}
+            </span>
+          </h2>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label={t`Close`}
+            className="rounded-md p-1 text-light-900 hover:bg-light-200 dark:text-dark-900 dark:hover:bg-dark-300"
+          >
+            <HiXMark className="h-5 w-5" />
+          </button>
+        </div>
+        <div className="overflow-auto px-5 pb-5">
+          {count === 0 ? (
+            <div className={twMerge("py-10 text-center text-[13px]", MUTED)}>
+              {t`No cards here right now.`}
+            </div>
+          ) : (
+            <table className="w-full min-w-[640px] border-collapse text-[13px]">
+              <thead className="sticky top-0 bg-white dark:bg-dark-100">
+                <tr className={twMerge("text-left", MUTED)}>
+                  <th className={twMerge(TH, "w-[110px]")}>{t`Code`}</th>
+                  <th className={TH}>{t`Name`}</th>
+                  <th className={twMerge(TH, "w-[170px]")}>{t`Area`}</th>
+                  <th className={twMerge(TH, "w-[220px]")}>{t`Assignee`}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cards.map((card) => (
+                  <tr key={card.publicId}>
+                    <td
+                      className={twMerge(
+                        TD,
+                        "whitespace-nowrap font-mono text-[12px]",
+                        MUTED,
+                      )}
+                    >
+                      {ticket(card) ?? "—"}
+                    </td>
+                    <td className={TD}>
+                      <Link
+                        href={`/cards/${card.publicId}`}
+                        className="text-neutral-900 hover:underline dark:text-dark-1000"
+                      >
+                        {card.title}
+                      </Link>
+                    </td>
+                    <td className={twMerge(TD, SOFT)}>
+                      <span className="flex items-center gap-2">
+                        <Dot colour={areaColour(card.area)} />
+                        {areaName(card.area)}
+                      </span>
+                    </td>
+                    <td className={twMerge(TD, SOFT)}>{owners(card)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+      </div>
+    </div>,
+    document.body,
   );
 }
