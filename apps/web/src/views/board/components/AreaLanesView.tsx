@@ -28,6 +28,7 @@ const TONE_DOT_CLASS: Record<string, string> = {
 };
 
 const NO_AREA = "__none__";
+const DONE_PAGE_SIZE = 5;
 
 // The favourite lane is a personal preference, kept in this browser.
 const FAVOURITE_KEY = "kan.favouriteAreaLane";
@@ -81,6 +82,17 @@ export default function AreaLanesView({
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
   // Cell under the dragged card, as `${laneKey}:${listPublicId}`.
   const [dropTarget, setDropTarget] = useState<string | null>(null);
+  // Done columns show 5 cards per lane; "Show more" adds 5 at a time.
+  const [shownByCell, setShownByCell] = useState<Record<string, number>>({});
+  const visibleCards = <T,>(cellKey: string, listName: string, cards: T[]) =>
+    getListTone(listName) === "done"
+      ? cards.slice(0, shownByCell[cellKey] ?? DONE_PAGE_SIZE)
+      : cards;
+  const showMore = (cellKey: string) =>
+    setShownByCell((current) => ({
+      ...current,
+      [cellKey]: (current[cellKey] ?? DONE_PAGE_SIZE) + DONE_PAGE_SIZE,
+    }));
   // Only one favourite lane: marking another one replaces it.
   const [favourite, setFavourite] = useState<string | null>(null);
   useEffect(() => setFavourite(readFavourite()), []);
@@ -288,7 +300,11 @@ export default function AreaLanesView({
                             "ring-2 ring-light-700 dark:ring-dark-700",
                         )}
                       >
-                        {(lane.cells[index] ?? []).map((card) => (
+                        {visibleCards(
+                          cellKey,
+                          list.name,
+                          lane.cells[index] ?? [],
+                        ).map((card) => (
                           <Link
                             key={card.publicId}
                             href={getCardHref(card.publicId)}
@@ -319,6 +335,24 @@ export default function AreaLanesView({
                             />
                           </Link>
                         ))}
+                        {(() => {
+                          const hidden =
+                            (lane.cells[index]?.length ?? 0) -
+                            visibleCards(
+                              cellKey,
+                              list.name,
+                              lane.cells[index] ?? [],
+                            ).length;
+                          return hidden > 0 ? (
+                            <button
+                              type="button"
+                              onClick={() => showMore(cellKey)}
+                              className="w-full rounded-md border border-dashed border-light-400 py-1.5 text-xs font-medium text-light-900 hover:bg-light-200 dark:border-dark-400 dark:text-dark-900 dark:hover:bg-dark-200"
+                            >
+                              {t`Show more (${hidden})`}
+                            </button>
+                          ) : null;
+                        })()}
                       </div>
                     );
                   })}

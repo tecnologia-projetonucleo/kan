@@ -593,7 +593,7 @@
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        157
+        169
       ],
       [
         "src/views/board/components/CalendarView.tsx",
@@ -5803,11 +5803,11 @@
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        213
+        225
       ],
       [
         "src/views/board/components/AreaLanesView.tsx",
-        218
+        230
       ]
     ],
     "translation": ""
@@ -8248,7 +8248,7 @@
       ],
       [
         "src/views/board/components/AreaLanesView.tsx",
-        100
+        112
       ]
     ],
     "translation": ""
@@ -8296,7 +8296,7 @@
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        172
+        184
       ]
     ],
     "translation": ""
@@ -9837,11 +9837,11 @@
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        212
+        224
       ],
       [
         "src/views/board/components/AreaLanesView.tsx",
-        217
+        229
       ]
     ],
     "translation": ""
@@ -10853,6 +10853,22 @@
       ]
     ],
     "translation": "Genveje"
+  },
+  "kuB4bH": {
+    "translation": "",
+    "message": "Show more ({hidden})",
+    "placeholders": {
+      "hidden": [
+        "hidden"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/AreaLanesView.tsx",
+        352
+      ]
+    ]
   },
   "3sK30L": {
     "message": "Show more ({hiddenCount})",
