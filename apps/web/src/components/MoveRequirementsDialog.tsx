@@ -5,12 +5,16 @@ import { HiOutlineClipboardDocumentCheck } from "react-icons/hi2";
 import { twMerge } from "tailwind-merge";
 
 import type { CardArea } from "~/components/CardArea";
+import type { CardType } from "~/components/CardType";
 import Button from "~/components/Button";
 import { AreaDot, CARD_AREAS } from "~/components/CardArea";
+import { CARD_TYPES, typeLabel } from "~/components/CardType";
 import { commentTextToHtml } from "~/components/MoveCommentDialog";
 
 export interface MoveNeeds {
   area: boolean;
+  // Cards created before the type existed must get one before moving.
+  type?: boolean;
   responsible: boolean;
   dueDate: boolean;
   comment: boolean;
@@ -18,13 +22,18 @@ export interface MoveNeeds {
 
 export interface MoveFill {
   area?: CardArea;
+  type?: CardType;
   memberPublicIds?: string[];
   dueDate?: Date;
   comment?: string;
 }
 
 export const hasMoveNeeds = (needs: MoveNeeds) =>
-  needs.area || needs.responsible || needs.dueDate || needs.comment;
+  needs.area ||
+  !!needs.type ||
+  needs.responsible ||
+  needs.dueDate ||
+  needs.comment;
 
 interface MoveRequirementsDialogProps {
   listName: string;
@@ -64,6 +73,7 @@ export default function MoveRequirementsDialog({
   onCancel,
 }: MoveRequirementsDialogProps) {
   const [area, setArea] = useState<CardArea | "">("");
+  const [type, setType] = useState<CardType | "">("");
   const [memberIds, setMemberIds] = useState<string[]>([]);
   const [dueDate, setDueDate] = useState("");
   const [comment, setComment] = useState("");
@@ -77,6 +87,7 @@ export default function MoveRequirementsDialog({
 
   const ready =
     (!needs.area || !!area) &&
+    (!needs.type || !!type) &&
     (!needs.responsible || memberIds.length > 0) &&
     (!needs.dueDate || !!dueDate) &&
     (!needs.comment || comment.trim().length > 0) &&
@@ -86,6 +97,7 @@ export default function MoveRequirementsDialog({
     if (!ready) return;
     const fill: MoveFill = {};
     if (needs.area && area) fill.area = area;
+    if (needs.type && type) fill.type = type;
     if (needs.responsible) fill.memberPublicIds = memberIds;
     if (needs.dueDate && dueDate) {
       const [year, month, day] = dueDate.split("-").map(Number);
@@ -166,6 +178,27 @@ export default function MoveRequirementsDialog({
                   {CARD_AREAS.find((option) => option.key === area)?.name}
                 </span>
               )}
+            </label>
+          )}
+
+          {needs.type && (
+            <label className="block">
+              <span className={FIELD_LABEL}>
+                {t`Type`}
+                <Required />
+              </span>
+              <select
+                className={INPUT}
+                value={type}
+                onChange={(e) => setType(e.target.value as CardType | "")}
+              >
+                <option value="">{t`Choose the type`}</option>
+                {CARD_TYPES.map((option) => (
+                  <option key={option} value={option}>
+                    {typeLabel(option)}
+                  </option>
+                ))}
+              </select>
             </label>
           )}
 

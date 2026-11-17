@@ -445,6 +445,7 @@ export default function CardPage({ isTemplate }: { isTemplate?: boolean }) {
                       ? undefined
                       : (listPublicId, listName) => ({
                           area: !card.area,
+                          type: !card.type,
                           responsible: card.members.length === 0,
                           dueDate:
                             !card.dueDate &&

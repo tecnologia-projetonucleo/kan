@@ -140,7 +140,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1061
+        1074
       ]
     ],
     "translation": "{0} not found"
@@ -621,7 +621,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        582
+        583
       ]
     ],
     "translation": "Add checklist"
@@ -1476,7 +1476,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1117
+        1130
       ]
     ],
     "translation": "Area lanes"
@@ -1808,7 +1808,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1032
+        1045
       ],
       [
         "src/views/board/members/index.tsx",
@@ -1917,7 +1917,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1051
+        1064
       ]
     ],
     "translation": "Board name"
@@ -2602,7 +2602,7 @@
       ],
       [
         "src/components/MoveRequirementsDialog.tsx",
-        236
+        269
       ],
       [
         "src/components/YouTubeEmbed/EditYouTubeModal.tsx",
@@ -2754,11 +2754,11 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        507
+        508
       ],
       [
         "src/views/card/index.tsx",
-        521
+        522
       ]
     ],
     "translation": "Card not found"
@@ -2786,7 +2786,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        533
+        534
       ]
     ],
     "translation": "Card title"
@@ -2974,7 +2974,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        589
+        590
       ]
     ],
     "translation": "Checklist"
@@ -3026,7 +3026,7 @@
     "origin": [
       [
         "src/components/MoveRequirementsDialog.tsx",
-        151
+        163
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
@@ -3080,6 +3080,10 @@
     "placeholders": {},
     "comments": [],
     "origin": [
+      [
+        "src/components/MoveRequirementsDialog.tsx",
+        195
+      ],
       [
         "src/views/board/components/NewCardForm.tsx",
         602
@@ -3206,7 +3210,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        498
+        499
       ],
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
@@ -3302,7 +3306,7 @@
       ],
       [
         "src/components/MoveRequirementsDialog.tsx",
-        220
+        253
       ],
       [
         "src/views/card/components/MoveCardForm.tsx",
@@ -3382,7 +3386,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        630
+        631
       ]
     ],
     "translation": "Comments and activity"
@@ -3430,7 +3434,7 @@
     "origin": [
       [
         "src/components/MoveRequirementsDialog.tsx",
-        131
+        143
       ]
     ],
     "translation": "Complete the card to move it"
@@ -4000,7 +4004,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1248
+        1261
       ]
     ],
     "translation": "Create new list"
@@ -4584,7 +4588,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        553
+        554
       ]
     ],
     "translation": "Description"
@@ -4873,7 +4877,7 @@
     "origin": [
       [
         "src/components/MoveRequirementsDialog.tsx",
-        205
+        238
       ],
       [
         "src/views/board/components/Filters.tsx",
@@ -6207,7 +6211,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1230
+        1243
       ]
     ],
     "translation": "Get started by creating a new list"
@@ -6439,7 +6443,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1093
+        1106
       ]
     ],
     "translation": "Group the board by responsible area for everyone"
@@ -8170,7 +8174,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1149
+        1162
       ]
     ],
     "translation": "New list"
@@ -8454,7 +8458,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1226
+        1239
       ]
     ],
     "translation": "No lists"
@@ -8466,7 +8470,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1231
+        1244
       ]
     ],
     "translation": "No lists have been created yet"
@@ -9306,7 +9310,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1352
+        1365
       ],
       [
         "src/views/boards/components/ImportBoardsForm.tsx",
@@ -10162,7 +10166,7 @@
     "origin": [
       [
         "src/components/MoveRequirementsDialog.tsx",
-        175
+        208
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
@@ -10190,7 +10194,7 @@
     "origin": [
       [
         "src/components/MoveRequirementsDialog.tsx",
-        143
+        155
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
@@ -10371,7 +10375,7 @@
     "origin": [
       [
         "src/components/MoveRequirementsDialog.tsx",
-        239
+        272
       ]
     ],
     "translation": "Save and move"
@@ -10928,6 +10932,22 @@
     ],
     "translation": "Shortcuts"
   },
+  "3sK30L": {
+    "message": "Show more ({hiddenCount})",
+    "placeholders": {
+      "hiddenCount": [
+        "hiddenCount"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/CardList.tsx",
+        129
+      ]
+    ],
+    "translation": "Show more ({hiddenCount})"
+  },
   "0XmVWH": {
     "message": "Show newest activity first",
     "placeholders": {},
@@ -11413,7 +11433,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1092
+        1105
       ]
     ],
     "translation": "Swimlanes by area are on for everyone on this board"
@@ -11489,11 +11509,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1032
+        1045
       ],
       [
         "src/views/board/index.tsx",
-        1070
+        1083
       ]
     ],
     "translation": "Template"
@@ -12227,7 +12247,7 @@
     "origin": [
       [
         "src/components/MoveRequirementsDialog.tsx",
-        135
+        147
       ]
     ],
     "translation": "To move \"{cardTitle}\" to {listName}, fill in what is missing."
@@ -12262,7 +12282,7 @@
     "origin": [
       [
         "src/components/MoveRequirementsDialog.tsx",
-        136
+        148
       ]
     ],
     "translation": "To move the card to {listName}, fill in what is missing."
@@ -12412,6 +12432,10 @@
     "placeholders": {},
     "comments": [],
     "origin": [
+      [
+        "src/components/MoveRequirementsDialog.tsx",
+        187
+      ],
       [
         "src/views/board/components/NewCardForm.tsx",
         579
@@ -12894,7 +12918,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1351
+        1364
       ],
       [
         "src/views/card/components/ListSelector.tsx",
@@ -14016,7 +14040,7 @@
     "origin": [
       [
         "src/components/MoveRequirementsDialog.tsx",
-        227
+        260
       ]
     ],
     "translation": "Why is the card going to {listName}?"
@@ -14080,7 +14104,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1032
+        1045
       ],
       [
         "src/views/boards/index.tsx",
@@ -14502,11 +14526,11 @@
       ],
       [
         "src/views/board/index.tsx",
-        1137
+        1150
       ],
       [
         "src/views/board/index.tsx",
-        1237
+        1250
       ],
       [
         "src/views/boards/components/BoardsList.tsx",

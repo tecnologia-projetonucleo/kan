@@ -175,6 +175,7 @@ export default function ListSelector({
                 listPublicId: pending.listPublicId,
                 index: 0,
                 ...(fill.area && { area: fill.area }),
+                ...(fill.type && { type: fill.type }),
                 ...(fill.dueDate && { dueDate: fill.dueDate }),
                 ...(fill.comment && { comment: fill.comment }),
               },
