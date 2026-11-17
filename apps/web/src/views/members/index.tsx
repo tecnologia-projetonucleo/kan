@@ -33,6 +33,7 @@ import { getAvatarUrl } from "~/utils/helpers";
 import { DeleteMemberConfirmation } from "./components/DeleteMemberConfirmation";
 import { EditMemberPermissionsModal } from "./components/EditMemberPermissionsModal";
 import { InviteMemberForm } from "./components/InviteMemberForm";
+import { PasswordResetLinkModal } from "./components/PasswordResetLinkModal";
 
 export default function MembersPage() {
   const { modalContentType, openModal, isOpen } = useModal();
@@ -249,6 +250,19 @@ export default function MembersPage() {
                           memberEmail ?? "",
                         ),
                     },
+                    ...(memberStatus === "active"
+                      ? [
+                          {
+                            label: t`Create new password link`,
+                            action: () =>
+                              openModal(
+                                "PASSWORD_RESET_LINK",
+                                memberPublicId,
+                                memberName ?? memberEmail ?? "",
+                              ),
+                          },
+                        ]
+                      : []),
                     {
                       label: t`Remove member`,
                       action: () =>
@@ -335,7 +349,7 @@ export default function MembersPage() {
 
         <div className="mt-8 flow-root">
           <div className="-mx-4 -my-2 sm:-mx-6 lg:-mx-8">
-            <div className="inline-block min-w-full overflow-x-auto px-4 py-2 pb-16 align-middle sm:px-6 lg:px-8">
+            <div className="inline-block min-w-full overflow-x-auto px-4 py-2 pb-32 align-middle sm:px-6 lg:px-8">
               <div className="h-full shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
                 <table className="min-w-full divide-y divide-light-600 overflow-visible dark:divide-dark-600">
                   <thead className="rounded-t-lg bg-light-300 dark:bg-dark-200">
@@ -421,6 +435,13 @@ export default function MembersPage() {
             isVisible={isOpen && modalContentType === "REMOVE_MEMBER"}
           >
             <DeleteMemberConfirmation />
+          </Modal>
+
+          <Modal
+            modalSize="sm"
+            isVisible={isOpen && modalContentType === "PASSWORD_RESET_LINK"}
+          >
+            <PasswordResetLinkModal />
           </Modal>
 
           <Modal
