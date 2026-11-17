@@ -20,10 +20,16 @@ export type CardArea =
 // Names are team names, not UI copy, so they are not translated.
 // Twelve hues spread around the colour wheel so no two areas look alike,
 // mid-tone enough to read on light and dark backgrounds.
-export const CARD_AREAS: { key: CardArea; name: string; colour: string }[] = [
+export const CARD_AREAS: {
+  key: CardArea;
+  name: string;
+  colour: string;
+  /** No longer offered for new choices; kept so old cards still show it. */
+  retired?: true;
+}[] = [
   { key: "produto", name: "Produto", colour: "#7C3AED" }, // violet
-  { key: "dados", name: "Dados", colour: "#2563EB" }, // blue
-  { key: "tecnologia", name: "Tecnologia", colour: "#0EA5E9" }, // sky
+  { key: "dados", name: "Dados", colour: "#2563EB", retired: true }, // blue
+  { key: "tecnologia", name: "Tecnologia", colour: "#0EA5E9", retired: true }, // sky
   { key: "risco", name: "Risco", colour: "#DC2626" }, // red
   { key: "sportbook", name: "Sportbook", colour: "#16A34A" }, // green
   { key: "cassino", name: "Cassino", colour: "#CA8A04" }, // gold
@@ -36,6 +42,9 @@ export const CARD_AREAS: { key: CardArea; name: string; colour: string }[] = [
   { key: "diretoria", name: "Diretoria", colour: "#9F1239" }, // wine
   { key: "administrativo", name: "Administrativo", colour: "#92400E" }, // brown
 ];
+
+/** Areas people can pick for a card or filter by. */
+export const SELECTABLE_AREAS = CARD_AREAS.filter((area) => !area.retired);
 
 export const getArea = (key: CardArea | null | undefined) =>
   key ? CARD_AREAS.find((area) => area.key === key) : undefined;
