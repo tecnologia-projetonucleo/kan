@@ -226,7 +226,18 @@ export function computeReport<Area extends string>(
     .filter((row) => row.opened > 0 || row.done > 0)
     .sort((a, b) => b.opened + b.done - (a.opened + a.done));
 
+  // Cards behind each summary tile, longest in their column first.
+  const listOf = (list: typeof cards) =>
+    [...list].sort((a, b) => b.daysInList - a.daysInList).map(summary);
+
   return {
+    kpiCards: {
+      progress: listOf(byTone("progress")),
+      blocked: listOf(blocked),
+      validation,
+      overdue: listOf(overdue),
+      doneLast7Days: listOf(doneLastWeek),
+    },
     kpis: {
       open: open.length,
       progress: byTone("progress").length,

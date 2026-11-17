@@ -210,8 +210,23 @@
     "translation": "",
     "obsolete": true
   },
-  "6UxNGy": {
+  "wzKLvZ": {
     "translation": "",
+    "message": "{count} cards",
+    "placeholders": {
+      "count": [
+        "count"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        882
+      ]
+    ]
+  },
+  "6UxNGy": {
     "message": "{count} days",
     "placeholders": {
       "count": [
@@ -222,9 +237,10 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        137
+        142
       ]
-    ]
+    ],
+    "translation": ""
   },
   "tGl8I7": {
     "message": "{openCount} open cards in total",
@@ -237,7 +253,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        303
+        310
       ]
     ],
     "translation": ""
@@ -269,7 +285,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        329
+        340
       ]
     ],
     "translation": ""
@@ -363,17 +379,29 @@
     ],
     "translation": "$8/месяц"
   },
-  "gphxoA": {
+  "nWiKv4": {
     "translation": "",
+    "message": "1 card",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        882
+      ]
+    ]
+  },
+  "gphxoA": {
     "message": "1 day",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/views/reports/index.tsx",
-        137
+        142
       ]
-    ]
+    ],
+    "translation": ""
   },
   "zMlxCA": {
     "message": "1 user",
@@ -454,7 +482,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        580
+        622
       ]
     ],
     "translation": ""
@@ -1128,7 +1156,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        417
+        459
       ]
     ],
     "translation": ""
@@ -1140,7 +1168,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        199
+        204
       ]
     ],
     "translation": ""
@@ -1152,7 +1180,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        186
+        191
       ]
     ],
     "translation": ""
@@ -1601,15 +1629,19 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        194
+        199
       ],
       [
         "src/views/reports/index.tsx",
-        428
+        470
       ],
       [
         "src/views/reports/index.tsx",
-        706
+        748
+      ],
+      [
+        "src/views/reports/index.tsx",
+        905
       ]
     ],
     "translation": ""
@@ -1649,7 +1681,11 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        430
+        472
+      ],
+      [
+        "src/views/reports/index.tsx",
+        906
       ]
     ],
     "translation": ""
@@ -1718,7 +1754,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        512
+        554
       ]
     ],
     "translation": ""
@@ -1730,7 +1766,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        658
+        700
       ]
     ],
     "translation": ""
@@ -1746,7 +1782,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        316
+        325
       ]
     ],
     "translation": ""
@@ -1770,11 +1806,11 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        313
+        321
       ],
       [
         "src/views/reports/index.tsx",
-        644
+        686
       ]
     ],
     "translation": ""
@@ -1818,7 +1854,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        530
+        572
       ]
     ],
     "translation": ""
@@ -1834,7 +1870,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        633
+        675
       ]
     ],
     "translation": ""
@@ -2014,7 +2050,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        307
+        314
       ]
     ],
     "translation": ""
@@ -2054,7 +2090,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        488
+        530
       ]
     ],
     "translation": ""
@@ -2098,7 +2134,7 @@
       ],
       [
         "src/views/reports/index.tsx",
-        180
+        185
       ]
     ],
     "translation": "Доска"
@@ -2460,7 +2496,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        711
+        753
       ]
     ],
     "translation": ""
@@ -2977,7 +3013,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        426
+        468
       ]
     ],
     "translation": ""
@@ -3129,7 +3165,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        490
+        532
       ]
     ],
     "translation": ""
@@ -3165,7 +3201,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        526
+        568
       ]
     ],
     "translation": ""
@@ -3177,7 +3213,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        651
+        693
       ]
     ],
     "translation": ""
@@ -3552,11 +3588,27 @@
         175
       ],
       [
+        "src/views/reports/index.tsx",
+        888
+      ],
+      [
         "src/views/settings/components/NewApiKeyModal.tsx",
         136
       ]
     ],
     "translation": "Закрыть"
+  },
+  "EWPtMO": {
+    "translation": "",
+    "message": "Code",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        903
+      ]
+    ]
   },
   "N2eHWq": {
     "message": "Code Block",
@@ -3625,7 +3677,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        429
+        471
       ]
     ],
     "translation": ""
@@ -4191,7 +4243,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        233
+        238
       ]
     ],
     "translation": ""
@@ -4667,11 +4719,11 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        333
+        344
       ],
       [
         "src/views/reports/index.tsx",
-        565
+        607
       ]
     ],
     "translation": ""
@@ -4959,7 +5011,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        696
+        738
       ]
     ],
     "translation": ""
@@ -5193,11 +5245,11 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        709
+        751
       ],
       [
         "src/views/reports/index.tsx",
-        779
+        821
       ]
     ],
     "translation": ""
@@ -5253,7 +5305,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        327
+        337
       ]
     ],
     "translation": ""
@@ -6407,7 +6459,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        646
+        688
       ]
     ],
     "translation": ""
@@ -6435,7 +6487,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        309
+        317
       ]
     ],
     "translation": ""
@@ -6543,7 +6595,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        567
+        609
       ]
     ],
     "translation": ""
@@ -6987,7 +7039,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        713
+        755
       ]
     ],
     "translation": ""
@@ -7308,7 +7360,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        301
+        307
       ]
     ],
     "translation": ""
@@ -7348,7 +7400,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        413
+        455
       ]
     ],
     "translation": ""
@@ -7610,7 +7662,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        167
+        172
       ]
     ],
     "translation": ""
@@ -7996,7 +8048,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        176
+        181
       ]
     ],
     "translation": ""
@@ -8208,11 +8260,11 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        573
+        615
       ],
       [
         "src/views/reports/index.tsx",
-        624
+        666
       ]
     ],
     "translation": ""
@@ -8228,7 +8280,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        338
+        350
       ]
     ],
     "translation": ""
@@ -8594,6 +8646,10 @@
         134
       ],
       [
+        "src/views/reports/index.tsx",
+        904
+      ],
+      [
         "src/views/settings/components/NewWebhookModal.tsx",
         227
       ],
@@ -8891,7 +8947,7 @@
     "origin": [
       [
         "src/components/CardArea.tsx",
-        79
+        81
       ],
       [
         "src/views/board/components/AreaLanesView.tsx",
@@ -8899,11 +8955,11 @@
       ],
       [
         "src/views/reports/index.tsx",
-        140
+        145
       ],
       [
         "src/views/reports/index.tsx",
-        205
+        210
       ]
     ],
     "translation": ""
@@ -8915,7 +8971,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        152
+        157
       ]
     ],
     "translation": ""
@@ -8951,7 +9007,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        690
+        732
       ]
     ],
     "translation": ""
@@ -8963,7 +9019,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        519
+        561
       ]
     ],
     "translation": ""
@@ -8980,6 +9036,18 @@
     ],
     "translation": "Нет карт с дедлайном"
   },
+  "edes+n": {
+    "translation": "",
+    "message": "No cards here right now.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        897
+      ]
+    ]
+  },
   "uPn1u2": {
     "message": "No cards in progress, blocked or awaiting validation.",
     "placeholders": {},
@@ -8987,7 +9055,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        482
+        524
       ]
     ],
     "translation": ""
@@ -9011,7 +9079,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        784
+        826
       ]
     ],
     "translation": ""
@@ -9059,7 +9127,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        638
+        680
       ]
     ],
     "translation": ""
@@ -9083,7 +9151,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        337
+        349
       ]
     ],
     "translation": ""
@@ -9231,11 +9299,11 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        309
+        317
       ],
       [
         "src/views/reports/index.tsx",
-        317
+        326
       ]
     ],
     "translation": ""
@@ -9391,11 +9459,11 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        707
+        749
       ],
       [
         "src/views/reports/index.tsx",
-        772
+        814
       ]
     ],
     "translation": ""
@@ -9407,7 +9475,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        716
+        758
       ]
     ],
     "translation": ""
@@ -9500,7 +9568,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        321
+        330
       ]
     ],
     "translation": ""
@@ -9672,7 +9740,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        323
+        333
       ]
     ],
     "translation": ""
@@ -9772,7 +9840,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        209
+        214
       ]
     ],
     "translation": ""
@@ -10848,11 +10916,11 @@
       ],
       [
         "src/views/reports/index.tsx",
-        161
+        166
       ],
       [
         "src/views/reports/index.tsx",
-        170
+        175
       ]
     ],
     "translation": ""
@@ -10988,7 +11056,7 @@
     "origin": [
       [
         "src/components/CardArea.tsx",
-        86
+        88
       ]
     ],
     "translation": ""
@@ -12025,7 +12093,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        411
+        453
       ]
     ],
     "translation": ""
@@ -12037,7 +12105,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        431
+        473
       ]
     ],
     "translation": ""
@@ -12182,7 +12250,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        386
+        398
       ]
     ],
     "translation": ""
@@ -12834,7 +12902,7 @@
     "origin": [
       [
         "src/components/CardArea.tsx",
-        73
+        75
       ]
     ],
     "translation": ""
@@ -13002,7 +13070,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        524
+        566
       ]
     ],
     "translation": ""
@@ -14809,7 +14877,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        361
+        373
       ]
     ],
     "translation": ""
@@ -14849,7 +14917,7 @@
     "origin": [
       [
         "src/views/reports/index.tsx",
-        698
+        740
       ]
     ],
     "translation": ""
@@ -14985,7 +15053,7 @@
       ],
       [
         "src/views/reports/index.tsx",
-        161
+        166
       ]
     ],
     "translation": "Рабочее пространство"
