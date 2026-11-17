@@ -193,6 +193,55 @@
     ],
     "translation": "{cardCount} cards"
   },
+  "MkGgai": {
+    "message": "{count, plural, one {# day} other {# days}}",
+    "placeholders": {
+      "count": [
+        "count"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        135
+      ]
+    ],
+    "translation": "{count, plural, one {# dia} other {# dias}}",
+    "obsolete": true
+  },
+  "6UxNGy": {
+    "translation": "{count} dias",
+    "message": "{count} days",
+    "placeholders": {
+      "count": [
+        "count"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        137
+      ]
+    ]
+  },
+  "tGl8I7": {
+    "message": "{openCount} open cards in total",
+    "placeholders": {
+      "openCount": [
+        "openCount"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        303
+      ]
+    ],
+    "translation": "{openCount} cards abertos no total"
+  },
   "yndBF+": {
     "message": "{projectCount, plural, one {Import project (1)} other {Import projects ({projectCount})}}",
     "placeholders": {
@@ -208,6 +257,22 @@
       ]
     ],
     "translation": "{projectCount, plural, one {Importar projeto (1)} other {Importar projetos ({projectCount})}}"
+  },
+  "9QPDDS": {
+    "message": "{signedDiff} vs. previous 7 days",
+    "placeholders": {
+      "signedDiff": [
+        "signedDiff"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        329
+      ]
+    ],
+    "translation": "{signedDiff} vs. 7 dias anteriores"
   },
   "uJ5FWW": {
     "message": "{totalComments} comments",
@@ -298,6 +363,18 @@
     ],
     "translation": "$8/mês"
   },
+  "gphxoA": {
+    "translation": "1 dia",
+    "message": "1 day",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        137
+      ]
+    ]
+  },
   "zMlxCA": {
     "message": "1 user",
     "placeholders": {},
@@ -369,6 +446,18 @@
       ]
     ],
     "translation": "404 - Página Não Encontrada | kan.bn"
+  },
+  "VqxEX0": {
+    "message": "85% done within",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        580
+      ]
+    ],
+    "translation": "85% concluídos em até"
   },
   "3fkgYi": {
     "message": "A due date is required in this list",
@@ -593,7 +682,7 @@
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        169
+        188
       ],
       [
         "src/views/board/components/CalendarView.tsx",
@@ -1032,6 +1121,42 @@
     ],
     "translation": "Segurança avançada, conformidade e suporte dedicado para grandes organizações."
   },
+  "6dDWT6": {
+    "message": "Alert from 5 days in the column",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        417
+      ]
+    ],
+    "translation": "Alerta a partir de 5 dias na coluna"
+  },
+  "Fw2HrS": {
+    "message": "All areas",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        199
+      ]
+    ],
+    "translation": "Todas as áreas"
+  },
+  "me3LEG": {
+    "message": "All boards",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        186
+      ]
+    ],
+    "translation": "Todos os quadros"
+  },
   "h2ztFt": {
     "message": "All Free features +",
     "placeholders": {},
@@ -1469,6 +1594,26 @@
     ],
     "translation": "Tem certeza de que deseja remover {entityLabel}?"
   },
+  "ofldSs": {
+    "message": "Area",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        194
+      ],
+      [
+        "src/views/reports/index.tsx",
+        428
+      ],
+      [
+        "src/views/reports/index.tsx",
+        706
+      ]
+    ],
+    "translation": "Área"
+  },
   "64oFmH": {
     "message": "Area lanes",
     "placeholders": {},
@@ -1496,6 +1641,18 @@
       ]
     ],
     "translation": "atribuiu <0>{0}</0> ao cartão"
+  },
+  "ojKCLU": {
+    "message": "Assignee",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        430
+      ]
+    ],
+    "translation": "Responsável"
   },
   "JUce1S": {
     "message": "Assignees",
@@ -1554,6 +1711,46 @@
     ],
     "translation": "Anexo enviado"
   },
+  "rrbIaA": {
+    "message": "Average time blocked:",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        512
+      ]
+    ],
+    "translation": "Tempo médio bloqueado:"
+  },
+  "MO0cne": {
+    "message": "Average wait",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        658
+      ]
+    ],
+    "translation": "Espera média"
+  },
+  "EwUoM3": {
+    "message": "Average wait of {validationAvg}",
+    "placeholders": {
+      "validationAvg": [
+        "validationAvg"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        316
+      ]
+    ],
+    "translation": "Espera média de {validationAvg}"
+  },
   "1rWxEw": {
     "message": "Awaiting Customer",
     "placeholders": {},
@@ -1565,6 +1762,22 @@
       ]
     ],
     "translation": "Aguardando cliente"
+  },
+  "Ncazbt": {
+    "message": "Awaiting validation",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        313
+      ],
+      [
+        "src/views/reports/index.tsx",
+        644
+      ]
+    ],
+    "translation": "Aguardando validação"
   },
   "iH8pgl": {
     "message": "Back",
@@ -1593,6 +1806,38 @@
       ]
     ],
     "translation": "Backlog"
+  },
+  "IIUYyi": {
+    "message": "Bar chart: {weeksSummary}",
+    "placeholders": {
+      "weeksSummary": [
+        "weeksSummary"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        530
+      ]
+    ],
+    "translation": "Gráfico de barras: {weeksSummary}"
+  },
+  "1U7ivt": {
+    "message": "Based on {cycleCount} cards",
+    "placeholders": {
+      "cycleCount": [
+        "cycleCount"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        633
+      ]
+    ],
+    "translation": "Base: {cycleCount} cards"
   },
   "Vt50G1": {
     "message": "Basic Kanban",
@@ -1761,6 +2006,19 @@
     ],
     "translation": "Portal de cobrança"
   },
+  "Q9DQzl": {
+    "message": "Blocked",
+    "context": "report",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        307
+      ]
+    ],
+    "translation": "Bloqueados"
+  },
   "d+4g8a": {
     "message": "Blocked since {0}",
     "placeholders": {
@@ -1788,6 +2046,18 @@
       ]
     ],
     "translation": "Citação"
+  },
+  "7s3WlU": {
+    "message": "Blocks",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        488
+      ]
+    ],
+    "translation": "Bloqueios"
   },
   "4RoY9J": {
     "message": "Blog Post",
@@ -1825,6 +2095,10 @@
       [
         "src/views/public/board/index.tsx",
         125
+      ],
+      [
+        "src/views/reports/index.tsx",
+        180
       ]
     ],
     "translation": "Quadro"
@@ -2094,7 +2368,7 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        101
+        102
       ],
       [
         "src/utils/permission-category-label.ts",
@@ -2178,6 +2452,18 @@
       ]
     ],
     "translation": "Relatório de bug"
+  },
+  "2MpzOK": {
+    "message": "Bugs",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        711
+      ]
+    ],
+    "translation": "Bugs"
   },
   "s1c0ja": {
     "message": "Bullet List",
@@ -2683,6 +2969,19 @@
     ],
     "translation": "Cancelar"
   },
+  "AzV8mk": {
+    "message": "Card",
+    "context": "report",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        426
+      ]
+    ],
+    "translation": "Card"
+  },
   "kryGs+": {
     "message": "Card",
     "placeholders": {},
@@ -2823,6 +3122,18 @@
     ],
     "translation": "Cards"
   },
+  "tmIl7g": {
+    "message": "Cards blocked right now, by area.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        490
+      ]
+    ],
+    "translation": "Cards bloqueados agora, por área."
+  },
   "E7ql/H": {
     "message": "Cards created in In Progress or any list after it need a due date.",
     "placeholders": {},
@@ -2846,6 +3157,30 @@
       ]
     ],
     "translation": "Cards em Em Andamento e nas colunas seguintes precisam manter a data de vencimento."
+  },
+  "24ur2r": {
+    "message": "Cards that entered Done per week (weeks start on Monday).",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        526
+      ]
+    ],
+    "translation": "Cards que entraram em Concluído por semana (semana começa na segunda)."
+  },
+  "lrsqpZ": {
+    "message": "Cards waiting",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        651
+      ]
+    ],
+    "translation": "Cards esperando"
   },
   "VhMDMg": {
     "message": "Change Password",
@@ -3282,6 +3617,18 @@
       ]
     ],
     "translation": "Recolher coluna"
+  },
+  "WtgDbl": {
+    "message": "Column",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        429
+      ]
+    ],
+    "translation": "Coluna"
   },
   "AUYALh": {
     "message": "Coming soon",
@@ -3837,6 +4184,18 @@
     ],
     "translation": "Recursos principais"
   },
+  "vdiL9o": {
+    "message": "Could not load the report.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        233
+      ]
+    ],
+    "translation": "Não foi possível carregar o relatório."
+  },
   "b9XOHo": {
     "message": "Create {0}",
     "placeholders": {
@@ -4301,6 +4660,22 @@
     ],
     "translation": "Suporte ao cliente"
   },
+  "TGKBg3": {
+    "message": "Cycle time",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        333
+      ],
+      [
+        "src/views/reports/index.tsx",
+        565
+      ]
+    ],
+    "translation": "Tempo de ciclo"
+  },
   "pvnfJD": {
     "message": "Dark",
     "placeholders": {},
@@ -4577,6 +4952,18 @@
     ],
     "translation": "excluiu o item da checklist <0>{0}</0>"
   },
+  "2Y9VAw": {
+    "message": "Demand intake by area",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        696
+      ]
+    ],
+    "translation": "Entrada de demandas por área"
+  },
   "Nu4oKW": {
     "message": "Description",
     "placeholders": {},
@@ -4798,6 +5185,23 @@
     ],
     "translation": "Não tem uma conta? <0><1>Cadastre-se</1></0>"
   },
+  "fkyE9k": {
+    "message": "Done",
+    "context": "report",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        709
+      ],
+      [
+        "src/views/reports/index.tsx",
+        779
+      ]
+    ],
+    "translation": "Concluídos"
+  },
   "DPfwMq": {
     "message": "Done",
     "placeholders": {},
@@ -4841,6 +5245,18 @@
       ]
     ],
     "translation": "Concluído"
+  },
+  "GR03iJ": {
+    "message": "Done in 7 days",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        327
+      ]
+    ],
+    "translation": "Concluídos em 7 dias"
   },
   "R3FsF4": {
     "message": "Download failed",
@@ -5855,11 +6271,11 @@
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        225
+        244
       ],
       [
         "src/views/board/components/AreaLanesView.tsx",
-        230
+        249
       ]
     ],
     "translation": "Favoritar raia"
@@ -5984,6 +6400,18 @@
     ],
     "translation": "Encontre respostas para perguntas comuns sobre o Kan. Não encontrou o que procura? Sinta-se à vontade para <0>entrar em contato</0>."
   },
+  "3LBX7h": {
+    "message": "Finished work waiting for approval.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        646
+      ]
+    ],
+    "translation": "Trabalho pronto esperando aprovação."
+  },
   "q3il6U": {
     "message": "Font size",
     "placeholders": {},
@@ -5995,6 +6423,22 @@
       ]
     ],
     "translation": "Tamanho da fonte"
+  },
+  "UxRGxq": {
+    "message": "For {blockedAvg} on average",
+    "placeholders": {
+      "blockedAvg": [
+        "blockedAvg"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        309
+      ]
+    ],
+    "translation": "Há {blockedAvg} em média"
   },
   "+3TYXa": {
     "message": "For long-term sustainability, we recognise all good open source projects need a source of revenue. Ours comes from the paid cloud offering for workspaces with multiple users and for custom workspace slugs. There's no obligation to use it, and you can self-host the software on your own infrastructure free of charge.",
@@ -6091,6 +6535,18 @@
       ]
     ],
     "translation": "Grátis, para sempre"
+  },
+  "PObJGk": {
+    "message": "From the first entry into \"In progress\" until \"Done\". Median and 85% of cards.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        567
+      ]
+    ],
+    "translation": "Da primeira entrada em \"Em andamento\" até \"Concluído\". Mediana e 85% dos cards."
   },
   "6uBU1F": {
     "message": "Full API access",
@@ -6339,7 +6795,7 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        109
+        110
       ],
       [
         "src/pages/404.tsx",
@@ -6367,10 +6823,22 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        133
+        154
       ]
     ],
     "translation": "Ir para membros"
+  },
+  "G641og": {
+    "message": "Go to reports",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/SideNavigation.tsx",
+        130
+      ]
+    ],
+    "translation": "Ir para relatórios"
   },
   "1WuwiM": {
     "message": "Go to settings",
@@ -6379,7 +6847,7 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        145
+        166
       ]
     ],
     "translation": "Ir para configurações"
@@ -6391,7 +6859,7 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        121
+        142
       ]
     ],
     "translation": "Ir para modelos"
@@ -6511,6 +6979,18 @@
       ]
     ],
     "translation": "Alta"
+  },
+  "XrUr1B": {
+    "message": "High or urgent",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        713
+      ]
+    ],
+    "translation": "Alta ou urgente"
   },
   "CB/NpV": {
     "message": "High Priority",
@@ -6820,6 +7300,19 @@
     ],
     "translation": "em"
   },
+  "merISI": {
+    "message": "In progress",
+    "context": "report",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        301
+      ]
+    ],
+    "translation": "Em andamento"
+  },
   "WbTDwg": {
     "message": "In Progress",
     "placeholders": {},
@@ -6847,6 +7340,18 @@
       ]
     ],
     "translation": "Em andamento"
+  },
+  "NqTOk/": {
+    "message": "In progress, blocked and awaiting validation, from longest to shortest stalled.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        413
+      ]
+    ],
+    "translation": "Em andamento, bloqueados e aguardando validação, do mais parado para o menos parado."
   },
   "NoNwIX": {
     "message": "Inactive",
@@ -7093,6 +7598,22 @@
       ]
     ],
     "translation": "Júnior"
+  },
+  "H7jY6e": {
+    "message": "Kanban · {workspaceName}",
+    "placeholders": {
+      "workspaceName": [
+        "workspaceName"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        167
+      ]
+    ],
+    "translation": "Kanban · {workspaceName}"
   },
   "aWDhU5": {
     "message": "Kanban is better with a team. Perfect for small and growing teams looking to collaborate.",
@@ -7464,6 +7985,22 @@
     ],
     "translation": "Listas"
   },
+  "9iFQu2": {
+    "message": "Live data from {dataDate}",
+    "placeholders": {
+      "dataDate": [
+        "dataDate"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        176
+      ]
+    ],
+    "translation": "Dados reais de {dataDate}"
+  },
   "1rVAfU": {
     "message": "Load more activities",
     "placeholders": {},
@@ -7664,6 +8201,38 @@
     ],
     "translation": "Número máximo de cards nesta coluna (deixe vazio para remover o limite)"
   },
+  "jbPrMa": {
+    "message": "Median",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        573
+      ],
+      [
+        "src/views/reports/index.tsx",
+        624
+      ]
+    ],
+    "translation": "Mediana"
+  },
+  "TTXGXT": {
+    "message": "Median · 85% within {cycleP85}",
+    "placeholders": {
+      "cycleP85": [
+        "cycleP85"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        338
+      ]
+    ],
+    "translation": "Mediana · 85% em até {cycleP85}"
+  },
   "agPptk": {
     "message": "Medium",
     "placeholders": {},
@@ -7763,7 +8332,7 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        125
+        146
       ],
       [
         "src/utils/permission-category-label.ts",
@@ -8326,10 +8895,30 @@
       ],
       [
         "src/views/board/components/AreaLanesView.tsx",
-        112
+        131
+      ],
+      [
+        "src/views/reports/index.tsx",
+        140
+      ],
+      [
+        "src/views/reports/index.tsx",
+        205
       ]
     ],
     "translation": "Sem área"
+  },
+  "3bvkPk": {
+    "message": "No assignee",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        152
+      ]
+    ],
+    "translation": "Sem responsável"
   },
   "Eg99Sc": {
     "message": "No authentication methods are currently available",
@@ -8355,6 +8944,30 @@
     ],
     "translation": "Nenhum quadro encontrado"
   },
+  "Q3cY81": {
+    "message": "No cards awaiting validation right now.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        690
+      ]
+    ],
+    "translation": "Nenhum card aguardando validação agora."
+  },
+  "CpfTtB": {
+    "message": "No cards blocked right now.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        519
+      ]
+    ],
+    "translation": "Nenhum card bloqueado agora."
+  },
   "WAQMrN": {
     "message": "No cards due",
     "placeholders": {},
@@ -8367,6 +8980,18 @@
     ],
     "translation": "Nenhum cartão vencendo"
   },
+  "uPn1u2": {
+    "message": "No cards in progress, blocked or awaiting validation.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        482
+      ]
+    ],
+    "translation": "Nenhum card em andamento, bloqueado ou aguardando validação."
+  },
   "r2k5Ix": {
     "message": "No cards on this board yet",
     "placeholders": {},
@@ -8374,10 +8999,22 @@
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        184
+        203
       ]
     ],
     "translation": "Ainda não há cards neste quadro"
+  },
+  "v7bfmb": {
+    "message": "No cards opened or done in this period.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        784
+      ]
+    ],
+    "translation": "Nenhum card aberto ou concluído neste período."
   },
   "OpNhRn": {
     "message": "No credit card required",
@@ -8415,6 +9052,18 @@
     ],
     "translation": "Nenhuma data"
   },
+  "rvM+mr": {
+    "message": "No done cards with a recorded pass through \"In progress\" yet. Column history started being recorded a few days ago.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        638
+      ]
+    ],
+    "translation": "Ainda não há cards concluídos com passagem registrada por \"Em andamento\". O histórico de colunas passou a ser registrado há poucos dias."
+  },
   "sY2lzr": {
     "message": "No download URL available for this attachment.",
     "placeholders": {},
@@ -8426,6 +9075,18 @@
       ]
     ],
     "translation": "Nenhuma URL de download disponível para este anexo."
+  },
+  "Ta25TG": {
+    "message": "No history yet",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        337
+      ]
+    ],
+    "translation": "Sem histórico ainda"
   },
   "TXO5TM": {
     "message": "No keyboard shortcuts registered.",
@@ -8562,6 +9223,22 @@
       ]
     ],
     "translation": "Este card ainda não tem responsável"
+  },
+  "Nz66fX": {
+    "message": "None right now",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        309
+      ],
+      [
+        "src/views/reports/index.tsx",
+        317
+      ]
+    ],
+    "translation": "Nenhum agora"
   },
   "CsekCi": {
     "message": "Normal",
@@ -8707,6 +9384,34 @@
     ],
     "translation": "Amigos open source"
   },
+  "OV5wZZ": {
+    "message": "Opened",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        707
+      ],
+      [
+        "src/views/reports/index.tsx",
+        772
+      ]
+    ],
+    "translation": "Abertos"
+  },
+  "uN4SQ0": {
+    "message": "Opened vs. done",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        716
+      ]
+    ],
+    "translation": "Abertos x concluídos"
+  },
   "BzEFor": {
     "message": "or",
     "placeholders": {},
@@ -8786,6 +9491,19 @@
       ]
     ],
     "translation": "Acima do limite WIP de {wipLimit}"
+  },
+  "I+rcL5": {
+    "message": "Overdue",
+    "context": "report",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        321
+      ]
+    ],
+    "translation": "Atrasados"
   },
   "ddrz1m": {
     "message": "Overdue",
@@ -8947,6 +9665,18 @@
     ],
     "translation": "As senhas não coincidem"
   },
+  "DVeMxF": {
+    "message": "Past due date, still open",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        323
+      ]
+    ],
+    "translation": "Prazo vencido, ainda abertos"
+  },
   "URAE3q": {
     "message": "Paused",
     "placeholders": {},
@@ -9034,6 +9764,18 @@
       ]
     ],
     "translation": "Perfeito para equipes pequenas e em crescimento que buscam colaborar."
+  },
+  "NtQvjo": {
+    "message": "Period",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        209
+      ]
+    ],
+    "translation": "Período"
   },
   "TH3Irz": {
     "message": "Permission",
@@ -9915,11 +10657,11 @@
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        224
+        243
       ],
       [
         "src/views/board/components/AreaLanesView.tsx",
-        229
+        248
       ]
     ],
     "translation": "Tirar raia dos favoritos"
@@ -10094,6 +10836,26 @@
       ]
     ],
     "translation": "renomeou o item da lista de verificação para <0>{0}</0>"
+  },
+  "t9yxlZ": {
+    "message": "Reports",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/SideNavigation.tsx",
+        114
+      ],
+      [
+        "src/views/reports/index.tsx",
+        161
+      ],
+      [
+        "src/views/reports/index.tsx",
+        170
+      ]
+    ],
+    "translation": "Relatórios"
   },
   "Yx0Ud8": {
     "message": "Requested",
@@ -10831,7 +11593,7 @@
       ],
       [
         "src/components/SideNavigation.tsx",
-        137
+        158
       ]
     ],
     "translation": "Configurações"
@@ -10933,7 +11695,6 @@
     "translation": "Atalhos"
   },
   "kuB4bH": {
-    "translation": "Ver mais ({hidden})",
     "message": "Show more ({hidden})",
     "placeholders": {
       "hidden": [
@@ -10944,9 +11705,10 @@
     "origin": [
       [
         "src/views/board/components/AreaLanesView.tsx",
-        352
+        371
       ]
-    ]
+    ],
+    "translation": "Ver mais ({hidden})"
   },
   "3sK30L": {
     "message": "Show more ({hiddenCount})",
@@ -11256,6 +12018,30 @@
     ],
     "translation": "SSO"
   },
+  "s+MB2L": {
+    "message": "Stalled cards",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        411
+      ]
+    ],
+    "translation": "Cards parados"
+  },
+  "1++iZA": {
+    "message": "Stalled for",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        431
+      ]
+    ],
+    "translation": "Parado há"
+  },
   "R6pB8R": {
     "message": "Star on Github",
     "placeholders": {},
@@ -11288,15 +12074,15 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        232
+        254
       ],
       [
         "src/components/SideNavigation.tsx",
-        233
+        255
       ],
       [
         "src/components/SideNavigation.tsx",
-        243
+        265
       ]
     ],
     "translation": "Iniciar teste gratuito"
@@ -11388,6 +12174,18 @@
       ]
     ],
     "translation": "Sucesso"
+  },
+  "dXoieq": {
+    "message": "Summary",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        386
+      ]
+    ],
+    "translation": "Resumo"
   },
   "DBC3t5": {
     "message": "Sunday",
@@ -11601,7 +12399,7 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        113
+        134
       ],
       [
         "src/views/boards/index.tsx",
@@ -12196,6 +12994,18 @@
       ]
     ],
     "translation": "Este nome de usuário de workspace já está em uso"
+  },
+  "UXC8eb": {
+    "message": "Throughput per week",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        524
+      ]
+    ],
+    "translation": "Vazão por semana"
   },
   "pEb95p": {
     "message": "Ticket ID copied to clipboard",
@@ -13985,6 +14795,25 @@
     ],
     "translation": "Webhooks"
   },
+  "imvClf": {
+    "message": "week of {label}, {count}",
+    "placeholders": {
+      "label": [
+        "label"
+      ],
+      "count": [
+        "count"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        361
+      ]
+    ],
+    "translation": "semana de {label}, {count}"
+  },
   "xLTZVf": {
     "message": "Week start day",
     "placeholders": {},
@@ -14008,6 +14837,22 @@
       ]
     ],
     "translation": "Bem-vindo de volta"
+  },
+  "2A6hBE": {
+    "message": "What each area opened and finished in the last {periodDays} days. Bugs and high priority count among the opened ones.",
+    "placeholders": {
+      "periodDays": [
+        "periodDays"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/reports/index.tsx",
+        698
+      ]
+    ],
+    "translation": "O que cada área abriu e concluiu nos últimos {periodDays} dias. Bugs e alta prioridade contam entre os abertos."
   },
   "xEbBrW": {
     "message": "What license are you using?",
@@ -14137,6 +14982,10 @@
       [
         "src/views/public/boards/index.tsx",
         75
+      ],
+      [
+        "src/views/reports/index.tsx",
+        161
       ]
     ],
     "translation": "Workspace"

@@ -6,7 +6,7 @@ import { useLingui } from "@lingui/react";
 import { env } from "next-runtime-env";
 import { useTheme } from "next-themes";
 import { useEffect, useMemo, useState } from "react";
-import { HiBolt } from "react-icons/hi2";
+import { HiBolt, HiChartBar, HiOutlineChartBar } from "react-icons/hi2";
 import {
   TbLayoutSidebarLeftCollapse,
   TbLayoutSidebarLeftExpand,
@@ -93,7 +93,8 @@ export default function SideNavigation({
   const navigation: {
     name: string;
     href: string;
-    icon: object;
+    icon?: object;
+    iconNode?: (current: boolean) => React.ReactNode;
     keyboardShortcut: KeyboardShortcut;
   }[] = useMemo(
     () => [
@@ -107,6 +108,26 @@ export default function SideNavigation({
           action: () => router.push("/boards"),
           group: "NAVIGATION",
           description: t`Go to boards`,
+        },
+      },
+      {
+        name: t`Reports`,
+        href: "/reports",
+        iconNode: (current) =>
+          current ? (
+            <HiChartBar aria-hidden="true" className="h-[18px] w-[18px]" />
+          ) : (
+            <HiOutlineChartBar
+              aria-hidden="true"
+              className="h-[18px] w-[18px]"
+            />
+          ),
+        keyboardShortcut: {
+          type: "SEQUENCE",
+          strokes: [{ key: "G" }, { key: "R" }],
+          action: () => router.push("/reports"),
+          group: "NAVIGATION",
+          description: t`Go to reports`,
         },
       },
       {
@@ -202,6 +223,7 @@ export default function SideNavigation({
                   current={pathname.includes(item.href)}
                   name={item.name}
                   json={item.icon}
+                  iconNode={item.iconNode?.(pathname.includes(item.href))}
                   isCollapsed={isCollapsed}
                   onCloseSideNav={onCloseSideNav}
                   keyboardShortcut={item.keyboardShortcut}
