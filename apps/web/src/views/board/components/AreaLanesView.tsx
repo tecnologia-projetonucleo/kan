@@ -30,18 +30,30 @@ const TONE_DOT_CLASS: Record<string, string> = {
 const NO_AREA = "__none__";
 const DONE_PAGE_SIZE = 5;
 
-// The favourite lane is a personal preference, kept in this browser.
+// Favourite lanes are a personal preference, kept in this browser. Up to
+// two, in the order they were marked. The key used to hold one lane as a
+// plain string, which is still read.
 const FAVOURITE_KEY = "kan.favouriteAreaLane";
-const readFavourite = (): string | null => {
+const MAX_FAVOURITES = 2;
+const readFavourites = (): string[] => {
   try {
-    return window.localStorage.getItem(FAVOURITE_KEY);
+    const raw = window.localStorage.getItem(FAVOURITE_KEY);
+    if (!raw) return [];
+    if (!raw.startsWith("[")) return [raw];
+    const parsed: unknown = JSON.parse(raw);
+    return Array.isArray(parsed)
+      ? parsed
+          .filter((key): key is string => typeof key === "string")
+          .slice(0, MAX_FAVOURITES)
+      : [];
   } catch {
-    return null;
+    return [];
   }
 };
-const saveFavourite = (key: string | null) => {
+const saveFavourites = (keys: string[]) => {
   try {
-    if (key) window.localStorage.setItem(FAVOURITE_KEY, key);
+    if (keys.length)
+      window.localStorage.setItem(FAVOURITE_KEY, JSON.stringify(keys));
     else window.localStorage.removeItem(FAVOURITE_KEY);
   } catch {
     // Storage blocked: the choice lasts until the page reloads.
@@ -93,14 +105,21 @@ export default function AreaLanesView({
       ...current,
       [cellKey]: (current[cellKey] ?? DONE_PAGE_SIZE) + DONE_PAGE_SIZE,
     }));
-  // Only one favourite lane: marking another one replaces it.
-  const [favourite, setFavourite] = useState<string | null>(null);
-  useEffect(() => setFavourite(readFavourite()), []);
+  // Up to two favourite lanes: marking a third replaces the oldest.
+  const [favourites, setFavourites] = useState<string[]>([]);
+  useEffect(() => setFavourites(readFavourites()), []);
 
   const toggleFavourite = (key: string) => {
-    const next = favourite === key ? null : key;
-    setFavourite(next);
-    saveFavourite(next);
+    const next = favourites.includes(key)
+      ? favourites.filter((k) => k !== key)
+      : [...favourites, key].slice(-MAX_FAVOURITES);
+    setFavourites(next);
+    saveFavourites(next);
+  };
+  // Favourites first, in the order they were marked.
+  const favouriteRank = (key: string) => {
+    const index = favourites.indexOf(key);
+    return index === -1 ? MAX_FAVOURITES : index;
   };
 
   const lanes = [
@@ -126,8 +145,8 @@ export default function AreaLanesView({
       };
     })
     .filter((lane) => lane.total > 0)
-    // The favourite lane comes first; the others keep their usual order.
-    .sort((a, b) => Number(b.key === favourite) - Number(a.key === favourite));
+    // Favourite lanes come first; the others keep their usual order.
+    .sort((a, b) => favouriteRank(a.key) - favouriteRank(b.key));
 
   const toggleLane = (key: string) =>
     setCollapsed((current) => {
@@ -187,7 +206,7 @@ export default function AreaLanesView({
 
         {lanes.map((lane) => {
           const isCollapsed = collapsed.has(lane.key);
-          const isFavourite = favourite === lane.key;
+          const isFavourite = favourites.includes(lane.key);
           return (
             <section key={lane.key} className="mt-3">
               <div className="sticky left-0 flex w-max items-center gap-1">
