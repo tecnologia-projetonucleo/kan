@@ -620,6 +620,12 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
     }
   };
 
+  const isDoneList = (listPublicId: string) =>
+    getListTone(
+      boardData?.lists.find((list) => list.publicId === listPublicId)?.name ??
+        "",
+    ) === "done";
+
   const handleDragOver = ({ active, over }: DragOverEvent): void => {
     if (!over) return;
 
@@ -658,7 +664,8 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
 
       let insertAt: number;
       if (overIndex === -1) {
-        insertAt = destCards.length;
+        // Done lists only show their top cards, so new arrivals go first.
+        insertAt = isDoneList(destListPublicId) ? 0 : destCards.length;
       } else {
         const overRect = over.rect;
         const isBelowOverItem =
@@ -701,9 +708,10 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
     if (!sourceList || !destList || !movedCard) return;
     if (sourceList.publicId === destListPublicId) return;
 
-    const index = destList.cards.length;
+    const index = isDoneList(destListPublicId) ? 0 : destList.cards.length;
     const needs: MoveNeeds = {
       area: !movedCard.area,
+      type: !movedCard.type,
       responsible: movedCard.members.length === 0,
       dueDate:
         dueDateRequiredListIds.has(destListPublicId) && !movedCard.dueDate,
@@ -793,7 +801,11 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
           ? destCards.findIndex((card) => card.publicId === over.id)
           : -1;
       const overIndex =
-        rawOverIndex === -1 ? destCards.length - 1 : rawOverIndex;
+        rawOverIndex !== -1
+          ? rawOverIndex
+          : isDoneList(destListPublicId)
+            ? activeIndex
+            : destCards.length - 1;
 
       const finalPreview = {
         ...finalLists,
@@ -819,6 +831,7 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
       ) {
         const needs: MoveNeeds = {
           area: !movedCard.area,
+          type: !movedCard.type,
           responsible: movedCard.members.length === 0,
           dueDate:
             dueDateRequiredListIds.has(destListPublicId) && !movedCard.dueDate,
@@ -1360,6 +1373,7 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
                   listPublicId: pendingMove.listPublicId,
                   index: pendingMove.index,
                   ...(fill.area && { area: fill.area }),
+                  ...(fill.type && { type: fill.type }),
                   ...(fill.dueDate && { dueDate: fill.dueDate }),
                   ...(fill.comment && { comment: fill.comment }),
                 },

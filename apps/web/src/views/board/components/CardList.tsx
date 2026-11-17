@@ -3,6 +3,7 @@ import {
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
+import { t } from "@lingui/core/macro";
 import { useLayoutEffect, useMemo, useRef, useState } from "react";
 
 import type { ListBodyDragData } from "../dnd/types";
@@ -11,6 +12,8 @@ import type { ListTone } from "../utils/listStatus";
 import { isPlaceholderPublicId } from "~/utils/helpers";
 import { getListBodyId } from "../dnd/ids";
 import SortableCard from "./SortableCard";
+
+const DONE_PAGE_SIZE = 5;
 
 interface CardListProps {
   listPublicId: string;
@@ -67,7 +70,20 @@ export default function CardList({
     disabled: isPlaceholderPublicId(listPublicId),
   });
 
-  const cardIds = useMemo(() => cards.map((card) => card.publicId), [cards]);
+  // Done lists show the 5 most recent cards (the top of the list), with a
+  // button revealing 5 more at a time.
+  const isDone = listTone === "done";
+  const [shownCount, setShownCount] = useState(DONE_PAGE_SIZE);
+  const visibleCards = useMemo(
+    () => (isDone ? cards.slice(0, shownCount) : cards),
+    [isDone, cards, shownCount],
+  );
+  const hiddenCount = cards.length - visibleCards.length;
+
+  const cardIds = useMemo(
+    () => visibleCards.map((card) => card.publicId),
+    [visibleCards],
+  );
 
   return (
     <div
@@ -89,7 +105,7 @@ export default function CardList({
     >
       <div ref={contentRef}>
         <SortableContext items={cardIds} strategy={verticalListSortingStrategy}>
-          {cards.map((card) => (
+          {visibleCards.map((card) => (
             <SortableCard
               key={card.publicId}
               card={card}
@@ -104,6 +120,15 @@ export default function CardList({
             />
           ))}
         </SortableContext>
+        {hiddenCount > 0 && (
+          <button
+            type="button"
+            onClick={() => setShownCount((count) => count + DONE_PAGE_SIZE)}
+            className="mt-1 w-full rounded-md border border-dashed border-light-400 py-1.5 text-xs font-medium text-light-900 hover:bg-light-200 dark:border-dark-400 dark:text-dark-900 dark:hover:bg-dark-200"
+          >
+            {t`Show more (${hiddenCount})`}
+          </button>
+        )}
       </div>
     </div>
   );
