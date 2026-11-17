@@ -156,7 +156,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        223
+        226
       ]
     ],
     "translation": "{attachmentCount} attachments"
@@ -220,7 +220,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        214
+        217
       ]
     ],
     "translation": "{totalComments} comments"
@@ -377,7 +377,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        204
+        207
       ]
     ],
     "translation": "A due date is required in this list"
@@ -1772,7 +1772,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        174
+        177
       ]
     ],
     "translation": "Blocked since {0}"
@@ -4068,7 +4068,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        233
+        236
       ]
     ],
     "translation": "Created {0}"
@@ -4861,7 +4861,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        193
+        196
       ]
     ],
     "translation": "Due {0}"
@@ -6503,7 +6503,7 @@
     "origin": [
       [
         "src/components/CardPriority.tsx",
-        12
+        24
       ]
     ],
     "translation": "High"
@@ -7551,7 +7551,7 @@
     "origin": [
       [
         "src/components/CardPriority.tsx",
-        14
+        26
       ]
     ],
     "translation": "Low"
@@ -8394,7 +8394,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        208
+        211
       ]
     ],
     "translation": "No date"
@@ -8478,7 +8478,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        274
+        277
       ]
     ],
     "translation": "No one responsible"
@@ -8554,7 +8554,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        273
+        276
       ]
     ],
     "translation": "Nobody is responsible for this card yet"
@@ -8566,7 +8566,7 @@
     "origin": [
       [
         "src/components/CardPriority.tsx",
-        16
+        28
       ]
     ],
     "translation": "Normal"
@@ -8806,7 +8806,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        192
+        195
       ]
     ],
     "translation": "Overdue since {0}"
@@ -9598,7 +9598,7 @@
     "origin": [
       [
         "src/components/CardPriority.tsx",
-        83
+        98
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
@@ -9642,7 +9642,7 @@
     "origin": [
       [
         "src/components/CardPriority.tsx",
-        55
+        70
       ]
     ],
     "translation": "Priority: {label}"
@@ -13501,6 +13501,10 @@
     "placeholders": {},
     "comments": [],
     "origin": [
+      [
+        "src/components/CardPriority.tsx",
+        22
+      ],
       [
         "src/views/boards/components/TemplateBoards.tsx",
         50

@@ -1,0 +1,1 @@
+ALTER TYPE "public"."card_priority" ADD VALUE 'urgent' BEFORE 'high';

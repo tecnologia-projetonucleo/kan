@@ -1,13 +1,25 @@
 import { t } from "@lingui/core/macro";
-import { HiChevronDoubleUp, HiChevronDown, HiMinus } from "react-icons/hi2";
+import {
+  HiChevronDoubleUp,
+  HiChevronDown,
+  HiExclamationTriangle,
+  HiMinus,
+} from "react-icons/hi2";
 import { twMerge } from "tailwind-merge";
 
-export type CardPriority = "high" | "normal" | "low";
+export type CardPriority = "urgent" | "high" | "normal" | "low";
 
-export const CARD_PRIORITIES: CardPriority[] = ["high", "normal", "low"];
+export const CARD_PRIORITIES: CardPriority[] = [
+  "urgent",
+  "high",
+  "normal",
+  "low",
+];
 
 export const priorityLabel = (priority: CardPriority) => {
   switch (priority) {
+    case "urgent":
+      return t`Urgent`;
     case "high":
       return t`High`;
     case "low":
@@ -19,6 +31,8 @@ export const priorityLabel = (priority: CardPriority) => {
 
 // Class names live in this .tsx file so Tailwind picks them up.
 const PRIORITY_STYLE: Record<CardPriority, string> = {
+  urgent:
+    "border-red-600 bg-red-600 text-white dark:border-red-500 dark:bg-red-600 dark:text-white",
   high: "border-red-500/30 bg-red-500/10 text-red-700 dark:border-red-400/30 dark:bg-red-500/15 dark:text-red-300",
   normal:
     "border-amber-500/30 bg-amber-500/10 text-amber-800 dark:border-amber-400/25 dark:bg-amber-500/10 dark:text-amber-300",
@@ -26,6 +40,7 @@ const PRIORITY_STYLE: Record<CardPriority, string> = {
 };
 
 const PRIORITY_ICON: Record<CardPriority, typeof HiMinus> = {
+  urgent: HiExclamationTriangle,
   high: HiChevronDoubleUp,
   normal: HiMinus,
   low: HiChevronDown,
@@ -65,7 +80,7 @@ export function PriorityBadge({
   );
 }
 
-/** Segmented control: one of the three priorities is always selected. */
+/** Segmented control: one of the four priorities is always selected. */
 export function PriorityPicker({
   value,
   onChange,
@@ -99,7 +114,10 @@ export function PriorityPicker({
             className={twMerge(
               "flex items-center gap-1 rounded border border-transparent px-2 py-1 text-xs font-medium text-light-800 transition-colors hover:bg-light-200 disabled:cursor-not-allowed disabled:opacity-60 dark:text-dark-800 dark:hover:bg-dark-200",
               selected && PRIORITY_STYLE[priority],
-              selected && "hover:bg-transparent dark:hover:bg-transparent",
+              selected &&
+                (priority === "urgent"
+                  ? "hover:bg-red-600 dark:hover:bg-red-600"
+                  : "hover:bg-transparent dark:hover:bg-transparent"),
             )}
           >
             <PriorityIcon priority={priority} />

@@ -55,7 +55,7 @@ export type ActivityType = (typeof activityTypes)[number];
 
 export const activityTypeEnum = pgEnum("card_activity_type", activityTypes);
 
-export const cardPriorities = ["high", "normal", "low"] as const;
+export const cardPriorities = ["urgent", "high", "normal", "low"] as const;
 export type CardPriority = (typeof cardPriorities)[number];
 export const cardPriorityEnum = pgEnum("card_priority", cardPriorities);
 

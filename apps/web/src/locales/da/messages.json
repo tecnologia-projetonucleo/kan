@@ -156,7 +156,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        223
+        226
       ]
     ],
     "translation": ""
@@ -220,7 +220,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        214
+        217
       ]
     ],
     "translation": ""
@@ -377,7 +377,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        204
+        207
       ]
     ],
     "translation": ""
@@ -1772,7 +1772,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        174
+        177
       ]
     ],
     "translation": ""
@@ -4055,7 +4055,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        233
+        236
       ]
     ],
     "translation": ""
@@ -4822,7 +4822,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        193
+        196
       ]
     ],
     "translation": ""
@@ -6451,7 +6451,7 @@
     "origin": [
       [
         "src/components/CardPriority.tsx",
-        12
+        24
       ]
     ],
     "translation": ""
@@ -7473,7 +7473,7 @@
     "origin": [
       [
         "src/components/CardPriority.tsx",
-        14
+        26
       ]
     ],
     "translation": ""
@@ -8316,7 +8316,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        208
+        211
       ]
     ],
     "translation": ""
@@ -8400,7 +8400,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        274
+        277
       ]
     ],
     "translation": ""
@@ -8476,7 +8476,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        273
+        276
       ]
     ],
     "translation": ""
@@ -8488,7 +8488,7 @@
     "origin": [
       [
         "src/components/CardPriority.tsx",
-        16
+        28
       ]
     ],
     "translation": ""
@@ -8728,7 +8728,7 @@
     "origin": [
       [
         "src/views/board/components/Card.tsx",
-        192
+        195
       ]
     ],
     "translation": ""
@@ -9520,7 +9520,7 @@
     "origin": [
       [
         "src/components/CardPriority.tsx",
-        83
+        98
       ],
       [
         "src/views/board/components/NewCardForm.tsx",
@@ -9564,7 +9564,7 @@
     "origin": [
       [
         "src/components/CardPriority.tsx",
-        55
+        70
       ]
     ],
     "translation": ""
@@ -13406,6 +13406,10 @@
     "placeholders": {},
     "comments": [],
     "origin": [
+      [
+        "src/components/CardPriority.tsx",
+        22
+      ],
       [
         "src/views/boards/components/TemplateBoards.tsx",
         50
