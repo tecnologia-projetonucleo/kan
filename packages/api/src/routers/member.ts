@@ -7,6 +7,7 @@ import * as memberRepo from "@kan/db/repository/member.repo";
 import * as permissionRepo from "@kan/db/repository/permission.repo";
 import * as subscriptionRepo from "@kan/db/repository/subscription.repo";
 import * as userRepo from "@kan/db/repository/user.repo";
+import * as verificationRepo from "@kan/db/repository/verification.repo";
 import * as workspaceRepo from "@kan/db/repository/workspace.repo";
 import { createLogger } from "@kan/logger";
 import {
@@ -23,9 +24,12 @@ import {
   assertCanManageMember,
   assertCanManageRole,
   assertPermission,
+  isWorkspaceAdmin,
 } from "../utils/permissions";
 
 const log = createLogger("member");
+
+const RESET_LINK_TTL_MS = 24 * 60 * 60 * 1000;
 
 export const memberRouter = createTRPCRouter({
   invite: protectedProcedure
@@ -858,6 +862,81 @@ export const memberRouter = createTRPCRouter({
       return {
         success: true,
         role: input.role,
+      };
+    }),
+  createPasswordResetLink: protectedProcedure
+    .input(
+      z.object({
+        workspacePublicId: z.string().min(12),
+        memberPublicId: z.string().min(12),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      const userId = ctx.user?.id;
+
+      if (!userId)
+        throw new TRPCError({
+          message: "User not authenticated",
+          code: "UNAUTHORIZED",
+        });
+
+      const workspace = await workspaceRepo.getByPublicId(
+        ctx.db,
+        input.workspacePublicId,
+      );
+
+      if (!workspace)
+        throw new TRPCError({
+          message: "Workspace not found",
+          code: "NOT_FOUND",
+        });
+
+      // Only admins: the link lets whoever holds it sign in as the member.
+      if (!(await isWorkspaceAdmin(ctx.db, userId, workspace.id)))
+        throw new TRPCError({
+          message: "Only workspace admins can create password reset links",
+          code: "FORBIDDEN",
+        });
+
+      const member = await memberRepo.getByPublicId(
+        ctx.db,
+        input.memberPublicId,
+      );
+
+      if (!member || member.workspaceId !== workspace.id || member.deletedAt)
+        throw new TRPCError({
+          message: "Member not found",
+          code: "NOT_FOUND",
+        });
+
+      await assertCanManageMember(ctx.db, userId, workspace.id, member.id);
+
+      if (!member.userId || member.status !== "active")
+        throw new TRPCError({
+          message: "This member has not created an account yet",
+          code: "BAD_REQUEST",
+        });
+
+      if (member.userId === userId)
+        throw new TRPCError({
+          message: "Change your own password in Settings",
+          code: "BAD_REQUEST",
+        });
+
+      const expiresAt = new Date(Date.now() + RESET_LINK_TTL_MS);
+      const token = await verificationRepo.createPasswordResetToken(ctx.db, {
+        userId: member.userId,
+        expiresAt,
+      });
+
+      log.info(
+        { workspacePublicId: workspace.publicId, memberId: member.id },
+        "Password reset link created by admin",
+      );
+
+      return {
+        resetLink: `${env("NEXT_PUBLIC_BASE_URL")}/reset-password?token=${token}`,
+        expiresAt,
       };
     }),
 });

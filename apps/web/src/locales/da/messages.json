@@ -211,7 +211,6 @@
     "obsolete": true
   },
   "wzKLvZ": {
-    "translation": "",
     "message": "{count} cards",
     "placeholders": {
       "count": [
@@ -224,7 +223,8 @@
         "src/views/reports/index.tsx",
         882
       ]
-    ]
+    ],
+    "translation": ""
   },
   "6UxNGy": {
     "message": "{count} days",
@@ -380,7 +380,6 @@
     "translation": "$8/måned"
   },
   "nWiKv4": {
-    "translation": "",
     "message": "1 card",
     "placeholders": {},
     "comments": [],
@@ -389,7 +388,8 @@
         "src/views/reports/index.tsx",
         882
       ]
-    ]
+    ],
+    "translation": ""
   },
   "gphxoA": {
     "message": "1 day",
@@ -1080,7 +1080,7 @@
       ],
       [
         "src/views/members/index.tsx",
-        221
+        222
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2532,7 +2532,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        149
+        148
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2548,7 +2548,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        134
+        133
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2564,7 +2564,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        144
+        143
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2580,7 +2580,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        139
+        138
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2596,7 +2596,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        136
+        135
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2612,7 +2612,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        146
+        145
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2628,7 +2628,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        151
+        150
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2644,7 +2644,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        141
+        140
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2660,7 +2660,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        130
+        129
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2676,7 +2676,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        135
+        134
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2692,7 +2692,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        145
+        144
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2708,7 +2708,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        150
+        149
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2724,7 +2724,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        140
+        139
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2740,7 +2740,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        155
+        154
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2756,7 +2756,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        129
+        128
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2772,7 +2772,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        154
+        153
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2788,7 +2788,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        131
+        130
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2804,7 +2804,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        156
+        155
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2820,7 +2820,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        133
+        132
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2836,7 +2836,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        143
+        142
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2852,7 +2852,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        148
+        147
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2868,7 +2868,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        138
+        137
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2884,7 +2884,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        153
+        152
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2900,7 +2900,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        128
+        127
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -2973,6 +2973,10 @@
       [
         "src/views/members/components/DeleteMemberConfirmation.tsx",
         55
+      ],
+      [
+        "src/views/members/components/PasswordResetLinkModal.tsx",
+        65
       ],
       [
         "src/views/onboarding/select-plan/index.tsx",
@@ -3585,7 +3589,11 @@
       ],
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        175
+        174
+      ],
+      [
+        "src/views/members/components/PasswordResetLinkModal.tsx",
+        50
       ],
       [
         "src/views/reports/index.tsx",
@@ -3599,7 +3607,6 @@
     "translation": "Luk"
   },
   "EWPtMO": {
-    "translation": "",
     "message": "Code",
     "placeholders": {},
     "comments": [],
@@ -3608,7 +3615,8 @@
         "src/views/reports/index.tsx",
         903
       ]
-    ]
+    ],
+    "translation": ""
   },
   "N2eHWq": {
     "message": "Code Block",
@@ -3903,6 +3911,18 @@
     ],
     "translation": "Konfigurer, hvilke handlinger der er tilladt for hver rolle i arbejdsområdet. Disse rettigheder gælder for alle medlemmer med den pågældende rolle."
   },
+  "JRQitQ": {
+    "message": "Confirm new password",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/auth/reset-password/index.tsx",
+        100
+      ]
+    ],
+    "translation": ""
+  },
   "479pdJ": {
     "message": "Confirm your new password",
     "placeholders": {},
@@ -4115,6 +4135,18 @@
     ],
     "translation": "Konvertér til link"
   },
+  "6V3Ea3": {
+    "message": "Copied",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/members/components/PasswordResetLinkModal.tsx",
+        52
+      ]
+    ],
+    "translation": ""
+  },
   "5RkSzq": {
     "message": "Copy board link",
     "placeholders": {},
@@ -4162,6 +4194,18 @@
       ]
     ],
     "translation": "Kopiér etiketter"
+  },
+  "y1eoq1": {
+    "message": "Copy link",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/members/components/PasswordResetLinkModal.tsx",
+        52
+      ]
+    ],
+    "translation": ""
   },
   "1bJKhj": {
     "message": "Copy link to card",
@@ -4222,6 +4266,18 @@
       ]
     ],
     "translation": "Kernefunktioner"
+  },
+  "t2SrTO": {
+    "message": "Could not change the password.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/auth/reset-password/index.tsx",
+        48
+      ]
+    ],
+    "translation": ""
   },
   "vdiL9o": {
     "message": "Could not load the report.",
@@ -4331,6 +4387,18 @@
     ],
     "translation": "Opret etiket"
   },
+  "vv176r": {
+    "message": "Create link",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/members/components/PasswordResetLinkModal.tsx",
+        77
+      ]
+    ],
+    "translation": ""
+  },
   "XTKtey": {
     "message": "Create list",
     "placeholders": {},
@@ -4406,6 +4474,18 @@
       ]
     ],
     "translation": "Opret ny liste"
+  },
+  "651sMr": {
+    "message": "Create new password link",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/members/index.tsx",
+        256
+      ]
+    ],
+    "translation": ""
   },
   "A5hiCy": {
     "message": "Create template",
@@ -5506,11 +5586,11 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        165
+        164
       ],
       [
         "src/views/members/index.tsx",
-        244
+        245
       ]
     ],
     "translation": "Rediger rettigheder"
@@ -6519,7 +6599,7 @@
       ],
       [
         "src/views/members/index.tsx",
-        312
+        326
       ]
     ],
     "translation": "Gratis abonnement"
@@ -6816,6 +6896,18 @@
     ],
     "translation": "Gå til startsiden"
   },
+  "Jf0PuK": {
+    "message": "Go to login",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/auth/reset-password/index.tsx",
+        82
+      ]
+    ],
+    "translation": ""
+  },
   "KAsRdK": {
     "message": "Go to members",
     "placeholders": {},
@@ -6923,7 +7015,7 @@
     "origin": [
       [
         "src/views/members/index.tsx",
-        223
+        224
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -7448,7 +7540,7 @@
     "origin": [
       [
         "src/views/members/index.tsx",
-        331
+        345
       ]
     ],
     "translation": "Invitér"
@@ -7994,7 +8086,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        183
+        182
       ]
     ],
     "translation": "Indlæser rettigheder..."
@@ -8266,7 +8358,7 @@
       ],
       [
         "src/views/members/index.tsx",
-        222
+        223
       ],
       [
         "src/views/settings/components/RolePermissions.tsx",
@@ -8282,7 +8374,7 @@
     "origin": [
       [
         "src/views/members/index.tsx",
-        262
+        276
       ]
     ],
     "translation": ""
@@ -8318,7 +8410,7 @@
       ],
       [
         "src/views/members/index.tsx",
-        284
+        298
       ],
       [
         "src/views/pricing/components/FeatureComparisonTable.tsx",
@@ -8338,7 +8430,7 @@
     "origin": [
       [
         "src/views/members/index.tsx",
-        279
+        293
       ]
     ],
     "translation": "Medlemmer | {0}"
@@ -8726,6 +8818,30 @@
     ],
     "translation": "Ny liste"
   },
+  "/nT6AE": {
+    "message": "New password",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/auth/reset-password/index.tsx",
+        93
+      ]
+    ],
+    "translation": ""
+  },
+  "pkb7u5": {
+    "message": "New password | kan.bn",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/auth/reset-password/index.tsx",
+        57
+      ]
+    ],
+    "translation": ""
+  },
   "+MdEsf": {
     "message": "New password is required",
     "placeholders": {},
@@ -8737,6 +8853,22 @@
       ]
     ],
     "translation": "Ny adgangskode er påkrævet"
+  },
+  "448fDG": {
+    "message": "New password link for {entityLabel}",
+    "placeholders": {
+      "entityLabel": [
+        "entityLabel"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/members/components/PasswordResetLinkModal.tsx",
+        35
+      ]
+    ],
+    "translation": ""
   },
   "5iplxh": {
     "message": "New password must be different from current password",
@@ -8869,7 +9001,7 @@
     "origin": [
       [
         "src/components/CardArea.tsx",
-        81
+        90
       ],
       [
         "src/views/board/components/AreaLanesView.tsx",
@@ -8959,7 +9091,6 @@
     "translation": ""
   },
   "edes+n": {
-    "translation": "",
     "message": "No cards here right now.",
     "placeholders": {},
     "comments": [],
@@ -8968,7 +9099,8 @@
         "src/views/reports/index.tsx",
         897
       ]
-    ]
+    ],
+    "translation": ""
   },
   "uPn1u2": {
     "message": "No cards in progress, blocked or awaiting validation.",
@@ -9674,7 +9806,7 @@
     "origin": [
       [
         "src/views/members/index.tsx",
-        230
+        231
       ]
     ],
     "translation": "Sat på pause"
@@ -9702,7 +9834,7 @@
     "origin": [
       [
         "src/views/members/index.tsx",
-        230
+        231
       ]
     ],
     "translation": "Afventer"
@@ -9798,7 +9930,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        83
+        82
       ]
     ],
     "translation": "Rettigheder nulstillet"
@@ -9810,11 +9942,11 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        37
+        36
       ],
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        60
+        59
       ]
     ],
     "translation": "Rettigheder opdateret"
@@ -10150,15 +10282,15 @@
       ],
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        45
+        44
       ],
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        68
+        67
       ],
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        96
+        95
       ],
       [
         "src/views/members/components/InviteMemberForm.tsx",
@@ -10166,7 +10298,7 @@
       ],
       [
         "src/views/members/index.tsx",
-        70
+        71
       ],
       [
         "src/views/onboarding/workspace-details/index.tsx",
@@ -10439,7 +10571,7 @@
       ],
       [
         "src/views/members/index.tsx",
-        309
+        323
       ]
     ],
     "translation": "Pro-abonnement"
@@ -10663,7 +10795,7 @@
     "origin": [
       [
         "src/views/members/index.tsx",
-        253
+        267
       ]
     ],
     "translation": "Fjern medlem"
@@ -10882,7 +11014,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        248
+        247
       ]
     ],
     "translation": "Nulstil til rollens standardindstillinger"
@@ -10978,7 +11110,7 @@
     "origin": [
       [
         "src/components/CardArea.tsx",
-        88
+        97
       ]
     ],
     "translation": ""
@@ -11034,7 +11166,7 @@
       ],
       [
         "src/views/members/index.tsx",
-        353
+        367
       ]
     ],
     "translation": "Rolle"
@@ -11046,7 +11178,7 @@
     "origin": [
       [
         "src/views/members/index.tsx",
-        62
+        63
       ]
     ],
     "translation": "Rolle opdateret"
@@ -11144,6 +11276,18 @@
     ],
     "translation": "Gem ændringer"
   },
+  "2SOFq+": {
+    "message": "Save password",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/auth/reset-password/index.tsx",
+        112
+      ]
+    ],
+    "translation": ""
+  },
   "MdwUGG": {
     "message": "Save time with reusable board templates.",
     "placeholders": {},
@@ -11215,7 +11359,7 @@
       ],
       [
         "src/views/members/index.tsx",
-        320
+        334
       ]
     ],
     "translation": "pladser"
@@ -11432,6 +11576,18 @@
     ],
     "translation": "Send test"
   },
+  "/2CWp5": {
+    "message": "Send this link to the member. It works once and expires in 24 hours.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/members/components/PasswordResetLinkModal.tsx",
+        40
+      ]
+    ],
+    "translation": ""
+  },
   "v3YoMA": {
     "message": "Senior",
     "placeholders": {},
@@ -11464,6 +11620,18 @@
       [
         "src/views/card/components/MoveCardForm.tsx",
         99
+      ]
+    ],
+    "translation": ""
+  },
+  "+DlsTY": {
+    "message": "Set a new password",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/auth/reset-password/index.tsx",
+        67
       ]
     ],
     "translation": ""
@@ -12281,7 +12449,7 @@
       ],
       [
         "src/views/members/index.tsx",
-        311
+        325
       ]
     ],
     "translation": "Team-abonnement"
@@ -12632,11 +12800,11 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        38
+        37
       ],
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        61
+        60
       ]
     ],
     "translation": "Medlemmets rettigheder er blevet opdateret."
@@ -12648,7 +12816,7 @@
     "origin": [
       [
         "src/views/members/index.tsx",
-        63
+        64
       ]
     ],
     "translation": "Medlemmets rolle er blevet opdateret."
@@ -12676,6 +12844,34 @@
       ]
     ],
     "translation": "Siden, du leder efter, findes ikke eller er blevet flyttet."
+  },
+  "bUk/Rl": {
+    "message": "The password must have at least {MIN_LENGTH} characters.",
+    "placeholders": {
+      "MIN_LENGTH": [
+        "MIN_LENGTH"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/auth/reset-password/index.tsx",
+        31
+      ]
+    ],
+    "translation": ""
+  },
+  "lL9akr": {
+    "message": "The passwords do not match.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/auth/reset-password/index.tsx",
+        35
+      ]
+    ],
+    "translation": ""
   },
   "fQCrjt": {
     "message": "The visibility of your board has been set to {0}.",
@@ -12824,7 +13020,7 @@
     "origin": [
       [
         "src/components/CardArea.tsx",
-        75
+        84
       ]
     ],
     "translation": ""
@@ -12853,6 +13049,22 @@
     ],
     "translation": "Dette invitationslink er ugyldigt eller udløbet."
   },
+  "YezJGV": {
+    "message": "This link is invalid or has expired. Ask an admin for a new one.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/auth/reset-password/index.tsx",
+        47
+      ],
+      [
+        "src/views/auth/reset-password/index.tsx",
+        73
+      ]
+    ],
+    "translation": ""
+  },
   "afgZRd": {
     "message": "This list requires a due date. Set one on the card first, or pick an earlier list.",
     "placeholders": {},
@@ -12872,7 +13084,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        84
+        83
       ]
     ],
     "translation": "Dette medlems rettigheder er nulstillet til standardindstillingerne for rollen."
@@ -13630,7 +13842,7 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        95
+        94
       ]
     ],
     "translation": "Kunne ikke nulstille rettigheder"
@@ -13846,11 +14058,11 @@
     "origin": [
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        44
+        43
       ],
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
-        67
+        66
       ]
     ],
     "translation": "Kunne ikke opdatere rettigheder"
@@ -13878,7 +14090,7 @@
       ],
       [
         "src/views/members/index.tsx",
-        69
+        70
       ]
     ],
     "translation": "Kunne ikke opdatere rolle"
@@ -14115,7 +14327,7 @@
     "origin": [
       [
         "src/views/members/index.tsx",
-        319
+        333
       ]
     ],
     "translation": "Ubegrænset antal pladser"
@@ -14248,7 +14460,7 @@
       ],
       [
         "src/views/members/index.tsx",
-        296
+        310
       ],
       [
         "src/views/onboarding/select-plan/index.tsx",
@@ -14450,7 +14662,7 @@
       ],
       [
         "src/views/members/index.tsx",
-        347
+        361
       ]
     ],
     "translation": "Bruger"
@@ -14850,6 +15062,18 @@
     ],
     "translation": "Da Trello blev lanceret i 2011, imponerede det alle med sin gennemtænkte enkelhed, men gennem årene mistede det sin magi og udviklede sig til noget, der minder mere om \"Jira Lite\". Dette projekt er vores forsøg på at genfinde magien i Trellos oprindelige enkelhed som open source."
   },
+  "4kbfdP": {
+    "message": "Whoever opens the link can set a new password for this account. Only send it to the member.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/members/components/PasswordResetLinkModal.tsx",
+        58
+      ]
+    ],
+    "translation": ""
+  },
   "kBnH/8": {
     "message": "Why is the card going to {listName}?",
     "placeholders": {
@@ -14933,7 +15157,7 @@
       ],
       [
         "src/views/members/index.tsx",
-        279
+        293
       ],
       [
         "src/views/public/board/index.tsx",
@@ -15596,6 +15820,10 @@
     "placeholders": {},
     "comments": [],
     "origin": [
+      [
+        "src/views/auth/reset-password/index.tsx",
+        78
+      ],
       [
         "src/views/settings/components/ChangePasswordConfirmation.tsx",
         95
