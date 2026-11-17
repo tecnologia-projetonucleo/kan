@@ -1212,9 +1212,9 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
           >
             {isLoading ? (
               <div className="ml-[2rem] flex">
-                <div className="0 mr-5 h-[500px] w-[18rem] animate-pulse rounded-md bg-light-200 dark:bg-dark-100" />
-                <div className="0 mr-5 h-[275px] w-[18rem] animate-pulse rounded-md bg-light-200 dark:bg-dark-100" />
-                <div className="0 mr-5 h-[375px] w-[18rem] animate-pulse rounded-md bg-light-200 dark:bg-dark-100" />
+                <div className="0 mr-5 h-[500px] w-[20rem] animate-pulse rounded-md bg-light-200 dark:bg-dark-100" />
+                <div className="0 mr-5 h-[275px] w-[20rem] animate-pulse rounded-md bg-light-200 dark:bg-dark-100" />
+                <div className="0 mr-5 h-[375px] w-[20rem] animate-pulse rounded-md bg-light-200 dark:bg-dark-100" />
               </div>
             ) : boardData ? (
               <>
@@ -1304,7 +1304,7 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
                             />
                           </List>
                         ))}
-                        <div className="min-w-[calc(100vw-18rem)] shrink-0 md:min-w-[0.75rem]" />
+                        <div className="min-w-[calc(100vw-20rem)] shrink-0 md:min-w-[0.75rem]" />
                       </div>
                     </SortableContext>
                     <DragOverlay dropAnimation={activeCard ? undefined : null}>

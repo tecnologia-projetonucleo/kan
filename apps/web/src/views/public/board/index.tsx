@@ -169,9 +169,9 @@ export default function PublicBoardView() {
           >
             {isLoading || !router.isReady ? (
               <div className="ml-[2rem] flex">
-                <div className="0 mr-5 h-[500px] w-[18rem] animate-pulse rounded-md bg-light-200 dark:bg-dark-100" />
-                <div className="0 mr-5 h-[275px] w-[18rem] animate-pulse rounded-md bg-light-200 dark:bg-dark-100" />
-                <div className="0 mr-5 h-[375px] w-[18rem] animate-pulse rounded-md bg-light-200 dark:bg-dark-100" />
+                <div className="0 mr-5 h-[500px] w-[20rem] animate-pulse rounded-md bg-light-200 dark:bg-dark-100" />
+                <div className="0 mr-5 h-[275px] w-[20rem] animate-pulse rounded-md bg-light-200 dark:bg-dark-100" />
+                <div className="0 mr-5 h-[375px] w-[20rem] animate-pulse rounded-md bg-light-200 dark:bg-dark-100" />
               </div>
             ) : !data && !isLoading && router.isReady && !!boardSlug ? (
               <div className="z-10 flex h-full w-full flex-col items-center justify-center space-y-8 pb-[150px]">
@@ -192,7 +192,7 @@ export default function PublicBoardView() {
                 {data?.lists.map((list) => (
                   <div
                     key={list.publicId}
-                    className="dark-text-dark-1000 mr-5 h-fit min-w-[18rem] max-w-[18rem] snap-start rounded-md border border-light-400 bg-light-300 py-2 pl-2 pr-1 text-neutral-900 dark:border-dark-300 dark:bg-dark-100 md:snap-align-none"
+                    className="dark-text-dark-1000 mr-5 h-fit min-w-[20rem] max-w-[20rem] snap-start rounded-md border border-light-400 bg-light-300 py-2 pl-2 pr-1 text-neutral-900 dark:border-dark-300 dark:bg-dark-100 md:snap-align-none"
                   >
                     <div className="flex justify-between">
                       <span className="mb-4 block px-4 pt-1 text-sm font-medium text-neutral-900 dark:text-dark-1000">
@@ -237,7 +237,7 @@ export default function PublicBoardView() {
                     </div>
                   </div>
                 ))}
-                <div className="min-w-[calc(100vw-18rem)] md:min-w-[0.75rem]" />
+                <div className="min-w-[calc(100vw-20rem)] md:min-w-[0.75rem]" />
               </div>
             )}
           </div>

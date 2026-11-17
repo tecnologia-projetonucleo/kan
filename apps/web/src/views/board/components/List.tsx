@@ -216,7 +216,7 @@ export default function List({
       {...listeners}
       className={twMerge(
         baseClassName,
-        "min-w-[280px] max-w-[360px] flex-[1_1_280px] pl-2 pr-1",
+        "min-w-[320px] max-w-[380px] flex-[1_1_320px] pl-2 pr-1",
       )}
     >
       <div className="mb-2 flex justify-between">

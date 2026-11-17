@@ -102,6 +102,8 @@ const Card = ({
   const blockedSince = isBlocked ? listEnteredAt : undefined;
   // A missed due date stops mattering once the card is done or cancelled.
   const showOverdue = isOverdue && !isDone;
+  // Only urgent and high priorities earn a badge on the board.
+  const showPriority = priority === "urgent" || priority === "high";
   const fullDate = (date: Date) => format(date, "PPp", { locale: dateLocale });
 
   const missingDueDate = !!requireDueDate && !dueDate;
@@ -110,7 +112,7 @@ const Card = ({
     missingDueDate ||
     totalComments > 0 ||
     attachmentCount > 0 ||
-    !!createdAt ||
+    (!!createdAt && !isBlocked) ||
     !!blockedSince;
   const missingAssignee = !!requireAssignee && members.length === 0;
   const hasRight =
@@ -125,9 +127,10 @@ const Card = ({
           "border-red-400/70 hover:border-red-500 dark:border-red-500/50 dark:hover:border-red-400/80",
       )}
     >
-      {(ticketNumber ??
-        priority ??
-        (area !== undefined || type !== undefined)) && (
+      {(!!ticketNumber ||
+        showPriority ||
+        area !== undefined ||
+        type !== undefined) && (
         <div className="mb-1 flex items-center justify-between gap-2">
           <div className="flex min-w-0 items-center gap-1.5">
             {ticketNumber && (
@@ -145,10 +148,10 @@ const Card = ({
             )}
             {area !== undefined && <AreaTag area={area} />}
           </div>
-          {(type !== undefined || priority) && (
+          {(type !== undefined || showPriority) && (
             <div className="flex shrink-0 items-center gap-1">
               {type !== undefined && <TypeBadge type={type} />}
-              {priority && <PriorityBadge priority={priority} />}
+              {showPriority && <PriorityBadge priority={priority} />}
             </div>
           )}
         </div>
@@ -229,7 +232,7 @@ const Card = ({
                 {attachmentCount}
               </span>
             )}
-            {createdAt && (
+            {createdAt && !isBlocked && (
               <span title={t`Created ${fullDate(createdAt)}`}>
                 {compactAge(createdAt)}
               </span>

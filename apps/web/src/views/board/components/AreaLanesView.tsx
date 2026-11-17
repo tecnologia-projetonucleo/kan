@@ -126,7 +126,7 @@ export default function AreaLanesView({
     });
 
   const gridStyle = {
-    gridTemplateColumns: `repeat(${lists.length}, minmax(260px, 320px))`,
+    gridTemplateColumns: `repeat(${lists.length}, minmax(300px, 340px))`,
   };
 
   return (
