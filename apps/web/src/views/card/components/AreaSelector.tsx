@@ -2,7 +2,7 @@ import { t } from "@lingui/core/macro";
 import { HiOutlineExclamationTriangle } from "react-icons/hi2";
 
 import type { CardArea } from "~/components/CardArea";
-import { AreaDot, CARD_AREAS, getArea } from "~/components/CardArea";
+import { AreaDot, getArea, SELECTABLE_AREAS } from "~/components/CardArea";
 import CheckboxDropdown from "~/components/CheckboxDropdown";
 import { usePopup } from "~/providers/popup";
 import { api } from "~/utils/api";
@@ -59,7 +59,7 @@ export function AreaSelector({
 
   return (
     <CheckboxDropdown
-      items={CARD_AREAS.map((option) => ({
+      items={SELECTABLE_AREAS.map((option) => ({
         key: option.key,
         value: option.name,
         selected: option.key === area,

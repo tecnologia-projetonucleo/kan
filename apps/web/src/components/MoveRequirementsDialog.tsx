@@ -7,7 +7,7 @@ import { twMerge } from "tailwind-merge";
 import type { CardArea } from "~/components/CardArea";
 import type { CardType } from "~/components/CardType";
 import Button from "~/components/Button";
-import { AreaDot, CARD_AREAS } from "~/components/CardArea";
+import { AreaDot, CARD_AREAS, SELECTABLE_AREAS } from "~/components/CardArea";
 import { CARD_TYPES, typeLabel } from "~/components/CardType";
 import { commentTextToHtml } from "~/components/MoveCommentDialog";
 
@@ -161,7 +161,7 @@ export default function MoveRequirementsDialog({
                 onChange={(e) => setArea(e.target.value as CardArea | "")}
               >
                 <option value="">{t`Choose an area`}</option>
-                {CARD_AREAS.map((option) => (
+                {SELECTABLE_AREAS.map((option) => (
                   <option key={option.key} value={option.key}>
                     {option.name}
                   </option>

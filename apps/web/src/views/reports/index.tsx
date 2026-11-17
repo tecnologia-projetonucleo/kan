@@ -10,7 +10,7 @@ import { twMerge } from "tailwind-merge";
 
 import type { CardArea } from "~/components/CardArea";
 import type { RouterOutputs } from "~/utils/api";
-import { AreaDot, CARD_AREAS, getArea } from "~/components/CardArea";
+import { AreaDot, getArea, SELECTABLE_AREAS } from "~/components/CardArea";
 import { PageHead } from "~/components/PageHead";
 import { useWorkspace } from "~/providers/workspace";
 import { api } from "~/utils/api";
@@ -202,7 +202,7 @@ export default function ReportsView() {
                 onChange={(e) => setArea(e.target.value as AreaFilter)}
               >
                 <option value="">{t`All areas`}</option>
-                {CARD_AREAS.map((option) => (
+                {SELECTABLE_AREAS.map((option) => (
                   <option key={option.key} value={option.key}>
                     {option.name}
                   </option>

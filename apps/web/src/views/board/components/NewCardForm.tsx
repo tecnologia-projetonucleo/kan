@@ -23,7 +23,7 @@ import type { CardType } from "~/components/CardType";
 import type { WorkspaceMember } from "~/components/Editor";
 import Avatar from "~/components/Avatar";
 import Button from "~/components/Button";
-import { AreaDot, CARD_AREAS, getArea } from "~/components/CardArea";
+import { AreaDot, getArea, SELECTABLE_AREAS } from "~/components/CardArea";
 import { PriorityPicker } from "~/components/CardPriority";
 import { CARD_TYPES, TypeIcon, typeLabel } from "~/components/CardType";
 import CheckboxDropdown from "~/components/CheckboxDropdown";
@@ -550,7 +550,7 @@ export function NewCardForm({
             t`Responsible area`,
             true,
             <CheckboxDropdown
-              items={CARD_AREAS.map((option) => ({
+              items={SELECTABLE_AREAS.map((option) => ({
                 key: option.key,
                 value: option.name,
                 selected: option.key === area,
