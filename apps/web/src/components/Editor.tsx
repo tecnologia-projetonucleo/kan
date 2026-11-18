@@ -58,6 +58,26 @@ declare module "@tiptap/core" {
   }
 }
 
+// Only images the Kan stores itself (pasted into a card), never arbitrary
+// <img> from stored HTML or markdown: those could track readers or carry
+// handlers, so they are dropped like other unsafe markup.
+const CARD_IMAGE_SRC = /^\/api\/attachments\/[A-Za-z0-9]{12}$/;
+const CardImage = Image.extend({
+  parseHTML() {
+    return [
+      {
+        tag: "img[src]",
+        getAttrs: (element) =>
+          CARD_IMAGE_SRC.test(
+            (element as HTMLElement).getAttribute("src") ?? "",
+          )
+            ? null
+            : false,
+      },
+    ];
+  },
+});
+
 export interface SlashCommandItem {
   title: string;
   icon?: React.ReactNode;
@@ -529,7 +549,7 @@ export default function Editor({
           linkOnPaste: true,
         }),
         Markdown.configure({ transformPastedText: true }),
-        Image.configure({
+        CardImage.configure({
           HTMLAttributes: {
             class: "my-2 max-h-[480px] max-w-full rounded-md",
             loading: "lazy",
