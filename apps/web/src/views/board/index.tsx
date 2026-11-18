@@ -149,7 +149,7 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
       type: "PRESS" as const,
       stroke: { key: "C" },
       action: () => boardId && canCreateList && openNewListForm(boardId),
-      description: t`Create new list`,
+      description: t`Create new column`,
       group: "ACTIONS" as const,
     }),
     [boardId, canCreateList],
@@ -475,6 +475,19 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
   const openNewListForm = (publicBoardId: string) => {
     openModal("NEW_LIST");
     setSelectedPublicListId(publicBoardId);
+  };
+
+  // Toolbar shortcut for creating a card without picking a column first:
+  // it always lands in the board's first list (named "Backlog" on every
+  // board we have today), same default list used by the calendar's
+  // openNewCardForDate.
+  const openNewCardFromToolbar = () => {
+    const targetListPublicId = boardData?.lists[0]?.publicId;
+    if (!canCreateCard || !targetListPublicId) return;
+
+    setSelectedPublicListId(targetListPublicId);
+    setNewCardInitialDueDate(null);
+    openModal("NEW_CARD");
   };
 
   const openNewCardForDate = (date: Date) => {
@@ -1132,14 +1145,6 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
                           </button>
                         </Tooltip>
                       )}
-                    <Filters
-                      labels={boardData.labels}
-                      members={boardData.workspace.members.filter(
-                        (member) => member.user !== null,
-                      )}
-                      lists={boardData.allLists}
-                      isLoading={!boardData}
-                    />
                   </>
                 )}
               </>
@@ -1152,6 +1157,7 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
               }
             >
               <Button
+                variant="secondary"
                 onClick={() => {
                   if (boardId && canCreateList) openNewListForm(boardId);
                 }}
@@ -1159,7 +1165,34 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
               >
                 <span className="flex items-center gap-2">
                   <HiOutlinePlusSmall className="h-5 w-5" aria-hidden="true" />
-                  <span className="hidden sm:inline">{t`New list`}</span>
+                  <span className="hidden sm:inline">{t`New column`}</span>
+                </span>
+              </Button>
+            </Tooltip>
+            {!isTemplate && boardData && (
+              <Filters
+                labels={boardData.labels}
+                members={boardData.workspace.members.filter(
+                  (member) => member.user !== null,
+                )}
+                lists={boardData.allLists}
+                isLoading={!boardData}
+              />
+            )}
+            <Tooltip
+              content={
+                !canCreateCard
+                  ? t`You don't have permission`
+                  : t`Create new card`
+              }
+            >
+              <Button
+                onClick={openNewCardFromToolbar}
+                disabled={!boardData || !canCreateCard}
+              >
+                <span className="flex items-center gap-2">
+                  <HiOutlinePlusSmall className="h-5 w-5" aria-hidden="true" />
+                  <span className="hidden sm:inline">{t`New card`}</span>
                 </span>
               </Button>
             </Tooltip>
