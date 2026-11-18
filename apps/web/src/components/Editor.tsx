@@ -1,4 +1,5 @@
 import type { Range as TiptapRange } from "@tiptap/core";
+import type { EditorView } from "@tiptap/pm/view";
 import type { Editor as TiptapEditor } from "@tiptap/react";
 import type {
   SuggestionKeyDownProps,
@@ -7,6 +8,7 @@ import type {
 import type { Instance as TippyInstance } from "tippy.js";
 import { Button } from "@headlessui/react";
 import { t } from "@lingui/core/macro";
+import Image from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";
 import Mention from "@tiptap/extension-mention";
 import Placeholder from "@tiptap/extension-placeholder";
@@ -446,6 +448,7 @@ export default function Editor({
   enableYouTubeEmbed = true,
   placeholder,
   disableHeadings = false,
+  onUploadImage,
 }: {
   content: string | null;
   onChange?: (value: string) => void;
@@ -456,6 +459,8 @@ export default function Editor({
   enableYouTubeEmbed?: boolean;
   placeholder?: string;
   disableHeadings?: boolean;
+  /** Uploads a pasted or dropped image and returns its address. */
+  onUploadImage?: (file: File) => Promise<string | null>;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -473,6 +478,38 @@ export default function Editor({
   useEffect(() => {
     onSubmitRef.current = onSubmit;
   }, [onSubmit]);
+  const onUploadImageRef = useRef(onUploadImage);
+  useEffect(() => {
+    onUploadImageRef.current = onUploadImage;
+  }, [onUploadImage]);
+
+  // Uploads each image and inserts it at `pos` (or the cursor), in order.
+  const insertImages = (view: EditorView, files: File[], pos?: number) => {
+    const upload = onUploadImageRef.current;
+    if (!upload) return;
+    void (async () => {
+      let at = pos;
+      for (const file of files) {
+        const src = await upload(file);
+        if (!src) continue;
+        const node = view.state.schema.nodes.image?.create({
+          src,
+          alt: file.name,
+        });
+        if (!node) continue;
+        const insertAt = Math.min(
+          at ?? view.state.selection.from,
+          view.state.doc.content.size,
+        );
+        const tr = view.state.tr.insert(insertAt, node);
+        // Goes through the editor, so onUpdate reports the new HTML.
+        view.dispatch(tr);
+        at = insertAt + node.nodeSize;
+      }
+    })();
+  };
+  const imageFiles = (list: FileList | null | undefined) =>
+    Array.from(list ?? []).filter((file) => file.type.startsWith("image/"));
 
   const editor = useEditor(
     {
@@ -492,6 +529,12 @@ export default function Editor({
           linkOnPaste: true,
         }),
         Markdown.configure({ transformPastedText: true }),
+        Image.configure({
+          HTMLAttributes: {
+            class: "my-2 max-h-[480px] max-w-full rounded-md",
+            loading: "lazy",
+          },
+        }),
         Placeholder.configure({
           placeholder: readOnly
             ? ""
@@ -588,6 +631,25 @@ export default function Editor({
       editorProps: {
         attributes: {
           class: "outline-none focus:outline-none focus-visible:ring-0",
+        },
+        handlePaste: (view, event) => {
+          const files = imageFiles(event.clipboardData?.files);
+          if (!files.length || !onUploadImageRef.current) return false;
+          event.preventDefault();
+          insertImages(view, files);
+          return true;
+        },
+        handleDrop: (view, event, _slice, moved) => {
+          if (moved) return false;
+          const files = imageFiles(event.dataTransfer?.files);
+          if (!files.length || !onUploadImageRef.current) return false;
+          event.preventDefault();
+          const pos = view.posAtCoords({
+            left: event.clientX,
+            top: event.clientY,
+          })?.pos;
+          insertImages(view, files, pos);
+          return true;
         },
         handleKeyDown: (_view, event) => {
           if ((event.metaKey || event.ctrlKey) && event.key === "Enter") {

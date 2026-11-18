@@ -6,7 +6,7 @@
     "origin": [
       [
         "src/views/card/components/Comment.tsx",
-        153
+        155
       ]
     ],
     "translation": " (bearbeitet)"
@@ -60,7 +60,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        428
+        438
       ]
     ],
     "translation": "{0} | {1}"
@@ -140,7 +140,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1074
+        1087
       ]
     ],
     "translation": "{0} nicht gefunden"
@@ -738,7 +738,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        583
+        596
       ]
     ],
     "translation": "Checkliste hinzufügen"
@@ -762,11 +762,11 @@
     "origin": [
       [
         "src/views/card/components/Comment.tsx",
-        185
+        188
       ],
       [
         "src/views/card/components/NewCommentForm.tsx",
-        90
+        93
       ]
     ],
     "translation": "Kommentar hinzufügen... (‚/' für Befehle oder ‚@' zum Erwähnen eingeben)"
@@ -778,7 +778,7 @@
     "origin": [
       [
         "src/components/Editor.tsx",
-        499
+        542
       ]
     ],
     "translation": "Beschreibung hinzufügen... (‚/' für Befehle oder ‚@' zum Erwähnen eingeben)"
@@ -1653,7 +1653,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1130
+        1143
       ]
     ],
     "translation": ""
@@ -2078,7 +2078,7 @@
     "origin": [
       [
         "src/components/Editor.tsx",
-        427
+        429
       ]
     ],
     "translation": ""
@@ -2114,7 +2114,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1045
+        1058
       ],
       [
         "src/views/board/members/index.tsx",
@@ -2126,7 +2126,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        428
+        438
       ],
       [
         "src/views/public/board/index.tsx",
@@ -2227,7 +2227,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1064
+        1077
       ]
     ],
     "translation": "Board-Name"
@@ -2508,7 +2508,7 @@
     "origin": [
       [
         "src/components/Editor.tsx",
-        417
+        419
       ]
     ],
     "translation": ""
@@ -2952,7 +2952,7 @@
       ],
       [
         "src/views/card/components/Comment.tsx",
-        195
+        198
       ],
       [
         "src/views/card/components/DeleteCardConfirmation.tsx",
@@ -3029,7 +3029,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        428
+        438
       ]
     ],
     "translation": "Karte"
@@ -3093,11 +3093,11 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        508
+        518
       ],
       [
         "src/views/card/index.tsx",
-        522
+        532
       ]
     ],
     "translation": "Karte nicht gefunden"
@@ -3125,7 +3125,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        534
+        544
       ]
     ],
     "translation": "Kartentitel"
@@ -3137,7 +3137,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        515
+        528
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -3349,7 +3349,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        590
+        603
       ]
     ],
     "translation": ""
@@ -3585,7 +3585,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        499
+        509
       ],
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
@@ -3625,7 +3625,7 @@
     "origin": [
       [
         "src/components/Editor.tsx",
-        432
+        434
       ]
     ],
     "translation": ""
@@ -3741,7 +3741,7 @@
     "origin": [
       [
         "src/views/card/components/Comment.tsx",
-        161
+        163
       ]
     ],
     "translation": "Kommentaroptionen"
@@ -3793,7 +3793,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        631
+        644
       ]
     ],
     "translation": ""
@@ -4304,6 +4304,18 @@
     ],
     "translation": ""
   },
+  "z7So5i": {
+    "translation": "",
+    "message": "Could not upload the image. Please try again.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/hooks/useCardImageUpload.ts",
+        60
+      ]
+    ]
+  },
   "b9XOHo": {
     "message": "Create {0}",
     "placeholders": {
@@ -4444,6 +4456,30 @@
     ],
     "translation": "Neues {0} erstellen"
   },
+  "JeWYQB": {
+    "translation": "",
+    "message": "Create new card",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/index.tsx",
+        1186
+      ]
+    ]
+  },
+  "H+o4D2": {
+    "translation": "",
+    "message": "Create new column",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/index.tsx",
+        152
+      ]
+    ]
+  },
   "okpxfB": {
     "message": "Create new key",
     "placeholders": {},
@@ -4479,11 +4515,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        152
-      ],
-      [
-        "src/views/board/index.tsx",
-        1261
+        1294
       ]
     ],
     "translation": "Neue Liste erstellen"
@@ -4967,7 +4999,7 @@
     "origin": [
       [
         "src/views/card/components/Comment.tsx",
-        120
+        122
       ]
     ],
     "translation": "Kommentar löschen"
@@ -5107,7 +5139,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        554
+        564
       ]
     ],
     "translation": ""
@@ -5437,7 +5469,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        201
+        202
       ]
     ],
     "translation": "Fälligkeitsdatum"
@@ -5601,7 +5633,7 @@
     "origin": [
       [
         "src/views/card/components/Comment.tsx",
-        111
+        113
       ]
     ],
     "translation": "Kommentar bearbeiten"
@@ -6799,7 +6831,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1243
+        1276
       ]
     ],
     "translation": "Legen Sie los, indem Sie eine neue Liste erstellen"
@@ -7055,7 +7087,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1106
+        1119
       ]
     ],
     "translation": ""
@@ -7083,7 +7115,7 @@
     "origin": [
       [
         "src/components/Editor.tsx",
-        395
+        397
       ]
     ],
     "translation": ""
@@ -7095,7 +7127,7 @@
     "origin": [
       [
         "src/components/Editor.tsx",
-        401
+        403
       ]
     ],
     "translation": ""
@@ -7107,7 +7139,7 @@
     "origin": [
       [
         "src/components/Editor.tsx",
-        407
+        409
       ]
     ],
     "translation": ""
@@ -7315,6 +7347,30 @@
       ]
     ],
     "translation": "Ideen zur Verbesserung dieser Seite..."
+  },
+  "xYrhQc": {
+    "translation": "",
+    "message": "Image too large",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/hooks/useCardImageUpload.ts",
+        24
+      ]
+    ]
+  },
+  "0TfFAy": {
+    "translation": "",
+    "message": "Images can have up to 20 MB.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/hooks/useCardImageUpload.ts",
+        25
+      ]
+    ]
   },
   "l3s5ri": {
     "message": "Import",
@@ -7834,7 +7890,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        192
+        193
       ]
     ],
     "translation": "Labels"
@@ -8044,7 +8100,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        513
+        526
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -8840,6 +8896,10 @@
       [
         "src/views/board/components/NewCardForm.tsx",
         505
+      ],
+      [
+        "src/views/board/index.tsx",
+        1195
       ]
     ],
     "translation": "Neue Karte"
@@ -8855,6 +8915,18 @@
       ]
     ],
     "translation": "Neue Checkliste"
+  },
+  "xBAmAc": {
+    "translation": "",
+    "message": "New column",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/index.tsx",
+        1168
+      ]
+    ]
   },
   "WYwN1G": {
     "message": "New import",
@@ -8888,10 +8960,6 @@
       [
         "src/views/board/components/NewListForm.tsx",
         128
-      ],
-      [
-        "src/views/board/index.tsx",
-        1162
       ]
     ],
     "translation": "Neue Liste"
@@ -9319,7 +9387,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1239
+        1272
       ]
     ],
     "translation": "Keine Listen"
@@ -9331,7 +9399,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1244
+        1277
       ]
     ],
     "translation": "Es wurden noch keine Listen erstellt"
@@ -9643,7 +9711,7 @@
     "origin": [
       [
         "src/components/Editor.tsx",
-        422
+        424
       ]
     ],
     "translation": ""
@@ -10252,7 +10320,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1365
+        1398
       ],
       [
         "src/views/boards/components/ImportBoardsForm.tsx",
@@ -10288,7 +10356,7 @@
       ],
       [
         "src/views/card/components/Comment.tsx",
-        93
+        95
       ],
       [
         "src/views/card/components/DeleteCardConfirmation.tsx",
@@ -10336,7 +10404,7 @@
       ],
       [
         "src/views/card/components/NewCommentForm.tsx",
-        43
+        45
       ],
       [
         "src/views/card/components/PrioritySelector.tsx",
@@ -10348,11 +10416,11 @@
       ],
       [
         "src/views/card/index.tsx",
-        339
+        340
       ],
       [
         "src/views/card/index.tsx",
-        352
+        353
       ],
       [
         "src/views/members/components/DeleteMemberConfirmation.tsx",
@@ -10456,7 +10524,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        522
+        535
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -10552,7 +10620,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        155
+        156
       ]
     ],
     "translation": ""
@@ -11144,7 +11212,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        183
+        184
       ]
     ],
     "translation": ""
@@ -11172,7 +11240,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        164
+        165
       ]
     ],
     "translation": ""
@@ -11321,7 +11389,7 @@
       ],
       [
         "src/views/card/components/Comment.tsx",
-        202
+        205
       ],
       [
         "src/views/settings/components/Avatar.tsx",
@@ -12366,7 +12434,7 @@
     "origin": [
       [
         "src/views/card/components/NewCommentForm.tsx",
-        65
+        67
       ]
     ],
     "translation": "Absenden"
@@ -12378,7 +12446,7 @@
     "origin": [
       [
         "src/views/card/components/NewCommentForm.tsx",
-        97
+        100
       ]
     ],
     "translation": "Kommentar absenden"
@@ -12483,7 +12551,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1105
+        1118
       ]
     ],
     "translation": ""
@@ -12559,11 +12627,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        1045
+        1058
       ],
       [
         "src/views/board/index.tsx",
-        1083
+        1096
       ]
     ],
     "translation": "Vorlage"
@@ -13556,7 +13624,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        173
+        174
       ]
     ],
     "translation": ""
@@ -13596,7 +13664,7 @@
     "origin": [
       [
         "src/views/card/components/NewCommentForm.tsx",
-        42
+        44
       ]
     ],
     "translation": "Kommentar konnte nicht hinzugefügt werden"
@@ -13608,7 +13676,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        351
+        352
       ]
     ],
     "translation": "Label konnte nicht hinzugefügt werden"
@@ -13672,7 +13740,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        520
+        533
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -14024,7 +14092,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1364
+        1397
       ],
       [
         "src/views/card/components/ListSelector.tsx",
@@ -14032,7 +14100,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        338
+        339
       ]
     ],
     "translation": "Karte konnte nicht aktualisiert werden"
@@ -14068,7 +14136,7 @@
     "origin": [
       [
         "src/views/card/components/Comment.tsx",
-        92
+        94
       ]
     ],
     "translation": "Kommentar konnte nicht aktualisiert werden"
@@ -14607,6 +14675,10 @@
     "placeholders": {},
     "comments": [],
     "origin": [
+      [
+        "src/hooks/useCardImageUpload.ts",
+        59
+      ],
       [
         "src/views/card/components/AttachmentUpload.tsx",
         52
@@ -15257,7 +15329,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        1045
+        1058
       ],
       [
         "src/views/boards/index.tsx",
@@ -15683,11 +15755,15 @@
       ],
       [
         "src/views/board/index.tsx",
-        1150
+        1155
       ],
       [
         "src/views/board/index.tsx",
-        1250
+        1185
+      ],
+      [
+        "src/views/board/index.tsx",
+        1283
       ],
       [
         "src/views/boards/components/BoardsList.tsx",
