@@ -31,7 +31,7 @@ test(
       await route.continue();
     });
 
-    await page.getByRole("button", { name: "New list" }).click();
+    await page.getByRole("button", { name: "New column" }).click();
     await page.getByPlaceholder("List name").fill("Delayed list");
     const created = waitForTrpcMutation(page, "list.create");
     await page.getByRole("button", { name: "Create list" }).click();

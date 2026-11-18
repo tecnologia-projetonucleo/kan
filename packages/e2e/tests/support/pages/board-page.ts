@@ -28,7 +28,7 @@ export class BoardPage {
   }
 
   async createList(name: string) {
-    await this.page.getByRole("button", { name: "New list" }).click();
+    await this.page.getByRole("button", { name: "New column" }).click();
     await this.page.getByPlaceholder("List name").fill(name);
     const created = waitForTrpcMutation(this.page, "list.create");
     await this.page.getByRole("button", { name: "Create list" }).click();
