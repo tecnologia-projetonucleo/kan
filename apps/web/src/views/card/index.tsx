@@ -26,6 +26,7 @@ import {
   setActivitySortOrder,
   useActivitySortOrder,
 } from "~/hooks/useActivitySortOrder";
+import { useCardImageUpload } from "~/hooks/useCardImageUpload";
 import { usePermissions } from "~/hooks/usePermissions";
 import { useModal } from "~/providers/modal";
 import { usePopup } from "~/providers/popup";
@@ -376,6 +377,15 @@ export default function CardPage({ isTemplate }: { isTemplate?: boolean }) {
     });
   };
 
+  const uploadImage = useCardImageUpload(cardId);
+  // Save right after the editor inserts the image, so it is not lost if
+  // the card is closed without leaving the description.
+  const uploadDescriptionImage = async (file: File) => {
+    const src = await uploadImage(file);
+    if (src) setTimeout(() => void handleSubmit(onSubmit)(), 0);
+    return src;
+  };
+
   const handleCommentCreated = (commentPublicId: string) => {
     setRecentCommentPublicIds((current) => [...current, commentPublicId]);
   };
@@ -569,6 +579,9 @@ export default function CardPage({ isTemplate }: { isTemplate?: boolean }) {
                         }
                         workspaceMembers={workspaceMembers ?? []}
                         readOnly={!canEdit}
+                        onUploadImage={
+                          canEdit ? uploadDescriptionImage : undefined
+                        }
                       />
                     </form>
                   </section>

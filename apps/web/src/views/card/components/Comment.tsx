@@ -9,6 +9,7 @@ import Avatar from "~/components/Avatar";
 import Button from "~/components/Button";
 import Dropdown from "~/components/Dropdown";
 import Editor from "~/components/Editor";
+import { useCardImageUpload } from "~/hooks/useCardImageUpload";
 import { usePermissions } from "~/hooks/usePermissions";
 import { useModal } from "~/providers/modal";
 import { usePopup } from "~/providers/popup";
@@ -50,6 +51,7 @@ const Comment = ({
   const { showPopup } = usePopup();
   const { openModal } = useModal();
   const { canEditComment, canDeleteComment } = usePermissions();
+  const uploadImage = useCardImageUpload(cardPublicId);
   const { handleSubmit, setValue, watch } = useForm<FormValues>({
     defaultValues: {
       comment,
@@ -180,6 +182,7 @@ const Comment = ({
             <Editor
               content={watch("comment")}
               onChange={(value) => setValue("comment", value)}
+              onUploadImage={uploadImage}
               workspaceMembers={workspaceMembers}
               enableYouTubeEmbed={false}
               placeholder={t`Add comment... (type '/' to open commands or '@' to mention)`}

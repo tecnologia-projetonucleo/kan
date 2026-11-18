@@ -6,6 +6,7 @@ import type { WorkspaceMember } from "~/components/Editor";
 import Editor from "~/components/Editor";
 import LoadingSpinner from "~/components/LoadingSpinner";
 import { Tooltip } from "~/components/Tooltip";
+import { useCardImageUpload } from "~/hooks/useCardImageUpload";
 import { usePermissions } from "~/hooks/usePermissions";
 import { usePopup } from "~/providers/popup";
 import { api } from "~/utils/api";
@@ -27,6 +28,7 @@ const NewCommentForm = ({
   const utils = api.useUtils();
   const { showPopup } = usePopup();
   const { canCreateComment } = usePermissions();
+  const uploadImage = useCardImageUpload(cardPublicId);
   const { handleSubmit, setValue, watch, reset } = useForm<FormValues>({
     values: {
       comment: "",
@@ -84,6 +86,7 @@ const NewCommentForm = ({
       <Editor
         content={watch("comment")}
         onChange={(value) => setValue("comment", value)}
+        onUploadImage={uploadImage}
         onSubmit={handleSubmit(onSubmit)}
         workspaceMembers={workspaceMembers}
         enableYouTubeEmbed={false}

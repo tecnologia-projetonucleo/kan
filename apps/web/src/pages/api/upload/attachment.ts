@@ -3,7 +3,7 @@ import { Upload } from "@aws-sdk/lib-storage";
 
 import { createNextApiContext } from "@kan/api/trpc-context";
 import { withApiLogging } from "@kan/api/utils/apiLogging";
-import { assertPermission } from "@kan/api/utils/permissions";
+import { hasBoardAccess, hasPermission } from "@kan/api/utils/permissions";
 import { withRateLimit } from "@kan/api/utils/rateLimit";
 import * as cardRepo from "@kan/db/repository/card.repo";
 import * as cardActivityRepo from "@kan/db/repository/cardActivity.repo";
@@ -91,11 +91,22 @@ export default withRateLimit(
         return res.status(404).json({ error: "Card not found" });
       }
 
-      // Check if user has permission to edit the card
-      try {
-        await assertPermission(db, user.id, card.workspaceId, "card:edit");
-      } catch {
+      // Editing the card, or commenting on it (images pasted in comments).
+      const canAttach =
+        (await hasPermission(db, user.id, card.workspaceId, "card:edit")) ||
+        (await hasPermission(db, user.id, card.workspaceId, "comment:create"));
+      if (!canAttach) {
         return res.status(403).json({ error: "Permission denied" });
+      }
+
+      // Board members only, as everywhere else in the app.
+      const onBoard = await hasBoardAccess(db, user.id, {
+        id: card.boardId,
+        workspaceId: card.workspaceId,
+        type: card.boardType,
+      });
+      if (!onBoard) {
+        return res.status(404).json({ error: "Card not found" });
       }
 
       const s3Key = `${card.workspaceId}/${cardPublicId}/${generateUID()}-${sanitizedFilename}`;
