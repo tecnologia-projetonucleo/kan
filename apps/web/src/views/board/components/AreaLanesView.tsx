@@ -28,7 +28,11 @@ const TONE_DOT_CLASS: Record<string, string> = {
 };
 
 const NO_AREA = "__none__";
-const DONE_PAGE_SIZE = 5;
+// Long columns show a page per lane; "Show more" adds a page at a time.
+const PAGE_SIZE: Partial<Record<ReturnType<typeof getListTone>, number>> = {
+  done: 5,
+  backlog: 10,
+};
 
 // Favourite lanes are a personal preference, kept in this browser. Up to
 // two, in the order they were marked. The key used to hold one lane as a
@@ -94,17 +98,19 @@ export default function AreaLanesView({
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
   // Cell under the dragged card, as `${laneKey}:${listPublicId}`.
   const [dropTarget, setDropTarget] = useState<string | null>(null);
-  // Done columns show 5 cards per lane; "Show more" adds 5 at a time.
+  // Done shows 5 cards per lane and Backlog 10, with "Show more" per lane.
   const [shownByCell, setShownByCell] = useState<Record<string, number>>({});
-  const visibleCards = <T,>(cellKey: string, listName: string, cards: T[]) =>
-    getListTone(listName) === "done"
-      ? cards.slice(0, shownByCell[cellKey] ?? DONE_PAGE_SIZE)
-      : cards;
-  const showMore = (cellKey: string) =>
+  const visibleCards = <T,>(cellKey: string, listName: string, cards: T[]) => {
+    const size = PAGE_SIZE[getListTone(listName)];
+    return size ? cards.slice(0, shownByCell[cellKey] ?? size) : cards;
+  };
+  const showMore = (cellKey: string, listName: string) => {
+    const size = PAGE_SIZE[getListTone(listName)] ?? 0;
     setShownByCell((current) => ({
       ...current,
-      [cellKey]: (current[cellKey] ?? DONE_PAGE_SIZE) + DONE_PAGE_SIZE,
+      [cellKey]: (current[cellKey] ?? size) + size,
     }));
+  };
   // Up to two favourite lanes: marking a third replaces the oldest.
   const [favourites, setFavourites] = useState<string[]>([]);
   useEffect(() => setFavourites(readFavourites()), []);
@@ -365,7 +371,7 @@ export default function AreaLanesView({
                           return hidden > 0 ? (
                             <button
                               type="button"
-                              onClick={() => showMore(cellKey)}
+                              onClick={() => showMore(cellKey, list.name)}
                               className="w-full rounded-md border border-dashed border-light-400 py-1.5 text-xs font-medium text-light-900 hover:bg-light-200 dark:border-dark-400 dark:text-dark-900 dark:hover:bg-dark-200"
                             >
                               {t`Show more (${hidden})`}
